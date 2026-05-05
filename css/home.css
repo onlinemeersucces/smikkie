@@ -21,14 +21,14 @@
 }
 .hero__inner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 55% 45%;
   align-items: center;
   min-height: 520px;
   position: relative;
   z-index: 1;
   padding: 48px 0 0;
 }
-.hero__left { padding-right: 32px; padding-bottom: 48px; }
+.hero__left { padding-right: 40px; padding-bottom: 48px; }
 .hero__title {
   font-size: 52px;
   font-weight: 900;
@@ -58,34 +58,39 @@
 }
 .hero__approved strong { color: var(--dark); }
 
-/* Hero right */
+/* Hero right — purple rounded card with bear + box */
 .hero__right {
   position: relative;
-  height: 520px;
+  background: #EDE8F8;
+  border-radius: 24px 24px 0 0;
   display: flex;
   align-items: flex-end;
   justify-content: center;
+  gap: 16px;
+  min-height: 480px;
+  overflow: hidden;
+  padding: 0 24px;
 }
 
 /* Bear */
 .hero__bear {
-  position: absolute;
-  bottom: 0;
-  right: 52%;
-  width: 240px;
+  position: relative;
   z-index: 3;
-  transform: translateX(50%);
+  width: 210px;
+  flex-shrink: 0;
+  align-self: flex-end;
+  margin-right: -20px;
 }
 .hero__bear svg { width: 100%; height: auto; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15)); }
 .hero__bear-img { width: 100%; height: auto; display: block; filter: drop-shadow(0 8px 16px rgba(0,0,0,0.15)); }
 
 /* Box */
 .hero__box {
-  position: absolute;
-  bottom: 0;
-  right: 4%;
-  width: 310px;
+  position: relative;
   z-index: 2;
+  width: 230px;
+  flex-shrink: 0;
+  align-self: flex-end;
 }
 .hero__box-img {
   width: 100%;
@@ -94,16 +99,9 @@
   filter: drop-shadow(0 8px 28px rgba(0,0,0,0.20));
 }
 
-/* Grass hill */
+/* Grass hill — hidden, replaced by purple card bg */
 .hero__grass {
-  position: absolute;
-  bottom: 0;
-  right: -40px;
-  width: 300px;
-  height: 130px;
-  background: #7DC242;
-  border-radius: 50% 50% 0 0;
-  z-index: 1;
+  display: none;
 }
 
 /* Dashes */
@@ -112,6 +110,7 @@
   border-radius: 4px;
   background: var(--purple);
   z-index: 4;
+  opacity: 0.4;
 }
 .hero__dash--1 {
   width: 28px; height: 8px;
