@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drankjes – Smikkie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/category.css">
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<section class="cat-hero" style="background: linear-gradient(135deg, #E8F5E9 0%, #F1F8E9 100%);">
+  <div class="container">
+    <div class="cat-hero__inner">
+      <div class="cat-hero__text">
+        <nav class="breadcrumb__nav" style="margin-bottom:12px;">
+          <a href="../index.html">Home</a>
+          <span class="sep">›</span>
+          <span class="current">Drankjes</span>
+        </nav>
+        <h1 class="cat-hero__title">Drankjes 🥤</h1>
+        <p class="cat-hero__sub">Van BCAA-drankjes tot zero sugar frisdrank — verfrissend, lekker en zonder schuldgevoel.</p>
+        <div class="cat-hero__stats">
+          <div class="cat-stat"><strong>10</strong><span>producten</span></div>
+          <div class="cat-stat"><strong>Zero sugar</strong><span>opties</span></div>
+          <div class="cat-stat"><strong>Vanaf €1,89</strong><span>per stuk</span></div>
+        </div>
+      </div>
+      <div class="cat-hero__img">
+        <img src="../images/nocco.png" alt="Drankjes">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cat-section">
+  <div class="container">
+    <div class="cat-layout">
+      <aside class="cat-filters">
+        <div class="filter-group">
+          <h3 class="filter-group__title">Merk</h3>
+          <label class="filter-check"><input type="checkbox" checked> <span>NOCCO</span> <em>4</em></label>
+          <label class="filter-check"><input type="checkbox"> <span>Fanta</span> <em>3</em></label>
+          <label class="filter-check"><input type="checkbox"> <span>Monster</span> <em>2</em></label>
+          <label class="filter-check"><input type="checkbox"> <span>Reign</span> <em>1</em></label>
+        </div>
+        <div class="filter-group">
+          <h3 class="filter-group__title">Type</h3>
+          <label class="filter-check"><input type="checkbox"> <span>BCAA Drankje</span> <em>4</em></label>
+          <label class="filter-check"><input type="checkbox"> <span>Energy drink</span> <em>3</em></label>
+          <label class="filter-check"><input type="checkbox"> <span>Frisdrank</span> <em>3</em></label>
+        </div>
+        <div class="filter-group">
+          <h3 class="filter-group__title">Prijs</h3>
+          <div class="filter-range">
+            <div class="filter-range__labels"><span>€1,89</span><span>€3,49</span></div>
+            <input type="range" min="189" max="349" value="349" class="filter-range__input" id="price-range">
+            <div class="filter-range__value">Tot <strong id="price-val">€3,49</strong></div>
+          </div>
+        </div>
+        <div class="filter-group">
+          <h3 class="filter-group__title">Kenmerken</h3>
+          <label class="filter-check"><input type="checkbox"> <span>Zero sugar</span></label>
+          <label class="filter-check"><input type="checkbox"> <span>BCAA</span></label>
+          <label class="filter-check"><input type="checkbox"> <span>Cafeïnevrij</span></label>
+          <label class="filter-check"><input type="checkbox"> <span>Vegan</span></label>
+        </div>
+        <button class="btn btn--primary btn--full" style="margin-top:8px;">Filters toepassen</button>
+        <button class="btn btn--ghost btn--full" style="margin-top:8px;" id="reset-filters">Filters wissen</button>
+      </aside>
+
+      <div class="cat-main">
+        <div class="cat-main__header">
+          <span class="cat-main__count">10 producten</span>
+          <div class="cat-main__sort">
+            <label>Sorteren op:</label>
+            <select class="sort-select" id="sort-select">
+              <option value="popular">Populairste</option>
+              <option value="price-asc">Prijs: laag → hoog</option>
+              <option value="price-desc">Prijs: hoog → laag</option>
+              <option value="newest">Nieuwste</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="products-grid" id="products-grid">
+          <a href="product.html?id=4" class="prod-card prod-card--lg">
+            <div class="prod-card__badge">Bestseller</div>
+            <div class="prod-card__img"><img src="../images/nocco.png" alt="NOCCO BCAA Passion"></div>
+            <div class="prod-card__body">
+              <span class="prod-card__brand">NOCCO</span>
+              <span class="prod-card__name">BCAA Passion</span>
+              <div class="prod-card__stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="prod-card__rating-count">(214)</span></div>
+              <div class="prod-card__tags"><span class="tag">BCAA</span><span class="tag">Zero sugar</span></div>
+              <div class="prod-card__footer">
+                <span class="prod-card__price">€2,49</span>
+                <button class="prod-card__add" data-add-to-cart="4"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+              </div>
+            </div>
+          </a>
+          <a href="product.html?id=5" class="prod-card prod-card--lg">
+            <div class="prod-card__badge prod-card__badge--green">Nieuw</div>
+            <div class="prod-card__img"><img src="../images/fanta.png" alt="Fanta Zero Sugar"></div>
+            <div class="prod-card__body">
+              <span class="prod-card__brand">Fanta</span>
+              <span class="prod-card__name">Zero Sugar</span>
+              <div class="prod-card__stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="prod-card__rating-count">(89)</span></div>
+              <div class="prod-card__tags"><span class="tag">Zero sugar</span></div>
+              <div class="prod-card__footer">
+                <span class="prod-card__price">€1,89</span>
+                <button class="prod-card__add" data-add-to-cart="5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+              </div>
+            </div>
+          </a>
+          <a href="product.html?id=13" class="prod-card prod-card--lg">
+            <div class="prod-card__img"><img src="../images/nocco.png" alt="NOCCO BCAA Caribbean"></div>
+            <div class="prod-card__body">
+              <span class="prod-card__brand">NOCCO</span>
+              <span class="prod-card__name">BCAA Caribbean</span>
+              <div class="prod-card__stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="prod-card__rating-count">(156)</span></div>
+              <div class="prod-card__tags"><span class="tag">BCAA</span><span class="tag">Zero sugar</span></div>
+              <div class="prod-card__footer">
+                <span class="prod-card__price">€2,49</span>
+                <button class="prod-card__add" data-add-to-cart="13"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+              </div>
+            </div>
+          </a>
+          <a href="product.html?id=14" class="prod-card prod-card--lg">
+            <div class="prod-card__img"><img src="../images/nocco.png" alt="NOCCO BCAA Limon"></div>
+            <div class="prod-card__body">
+              <span class="prod-card__brand">NOCCO</span>
+              <span class="prod-card__name">BCAA Limon</span>
+              <div class="prod-card__stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="prod-card__rating-count">(102)</span></div>
+              <div class="prod-card__tags"><span class="tag">BCAA</span><span class="tag">Zero sugar</span></div>
+              <div class="prod-card__footer">
+                <span class="prod-card__price">€2,49</span>
+                <button class="prod-card__add" data-add-to-cart="14"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+              </div>
+            </div>
+          </a>
+          <a href="product.html?id=15" class="prod-card prod-card--lg">
+            <div class="prod-card__img"><img src="../images/fanta.png" alt="Fanta Zero Tropical"></div>
+            <div class="prod-card__body">
+              <span class="prod-card__brand">Fanta</span>
+              <span class="prod-card__name">Zero Tropical</span>
+              <div class="prod-card__stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="prod-card__rating-count">(44)</span></div>
+              <div class="prod-card__tags"><span class="tag">Zero sugar</span></div>
+              <div class="prod-card__footer">
+                <span class="prod-card__price">€1,89</span>
+                <button class="prod-card__add" data-add-to-cart="15"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+              </div>
+            </div>
+          </a>
+          <a href="product.html?id=16" class="prod-card prod-card--lg">
+            <div class="prod-card__img"><img src="../images/nocco.png" alt="NOCCO BCAA Pear"></div>
+            <div class="prod-card__body">
+              <span class="prod-card__brand">NOCCO</span>
+              <span class="prod-card__name">BCAA Pear</span>
+              <div class="prod-card__stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="prod-card__rating-count">(78)</span></div>
+              <div class="prod-card__tags"><span class="tag">BCAA</span><span class="tag">Zero sugar</span></div>
+              <div class="prod-card__footer">
+                <span class="prod-card__price">€2,49</span>
+                <button class="prod-card__add" data-add-to-cart="16"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+              </div>
+            </div>
+          </a>
+          <a href="product.html?id=17" class="prod-card prod-card--lg">
+            <div class="prod-card__img"><img src="../images/fanta.png" alt="Fanta Zero Orange"></div>
+            <div class="prod-card__body">
+              <span class="prod-card__brand">Fanta</span>
+              <span class="prod-card__name">Zero Orange</span>
+              <div class="prod-card__stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="prod-card__rating-count">(67)</span></div>
+              <div class="prod-card__tags"><span class="tag">Zero sugar</span></div>
+              <div class="prod-card__footer">
+                <span class="prod-card__price">€1,89</span>
+                <button class="prod-card__add" data-add-to-cart="17"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+              </div>
+            </div>
+          </a>
+          <a href="product.html?id=18" class="prod-card prod-card--lg">
+            <div class="prod-card__img"><img src="../images/nocco.png" alt="NOCCO BCAA Mango"></div>
+            <div class="prod-card__body">
+              <span class="prod-card__brand">NOCCO</span>
+              <span class="prod-card__name">BCAA Mango</span>
+              <div class="prod-card__stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="prod-card__rating-count">(91)</span></div>
+              <div class="prod-card__tags"><span class="tag">BCAA</span><span class="tag">Zero sugar</span></div>
+              <div class="prod-card__footer">
+                <span class="prod-card__price">€2,49</span>
+                <button class="prod-card__add" data-add-to-cart="18"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="pagination">
+          <button class="page-btn page-btn--active">1</button>
+          <button class="page-btn">2</button>
+          <button class="page-btn">→</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="../js/shop.js"></script>
+<script src="../js/header-template.js"></script>
+<script src="../js/category.js"></script>
+</body>
+</html>

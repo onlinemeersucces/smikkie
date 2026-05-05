@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alle snacks – Smikkie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/category.css">
+  <link rel="stylesheet" href="../css/alle-snacks.css">
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<!-- HERO -->
+<section class="alle-hero">
+  <div class="container">
+    <div class="alle-hero__inner">
+      <div class="alle-hero__text">
+        <h1 class="alle-hero__title">Alle snacks 🍫</h1>
+        <p class="alle-hero__sub">Van eiwitrepen tot drankjes en treats — alles wat jij lekker vindt op één plek. Stel jouw perfecte Smikkie mix samen.</p>
+      </div>
+      <div class="alle-hero__cats">
+        <a href="eiwitrepen.html" class="cat-pill" style="background:#EDE8F8;">
+          <span class="cat-pill__icon">💪</span> Eiwitrepen
+        </a>
+        <a href="snacks.html" class="cat-pill" style="background:#FFF3E0;">
+          <span class="cat-pill__icon">🍪</span> Snacks &amp; koekjes
+        </a>
+        <a href="drankjes.html" class="cat-pill" style="background:#E8F5E9;">
+          <span class="cat-pill__icon">🥤</span> Drankjes
+        </a>
+        <a href="treats.html" class="cat-pill" style="background:#FCE4EC;">
+          <span class="cat-pill__icon">🍬</span> Treats
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <div class="container">
+    <div class="filter-bar__inner">
+      <div class="filter-bar__cats">
+        <button class="filter-pill filter-pill--active" data-cat="all">Alles</button>
+        <button class="filter-pill" data-cat="eiwitrepen">Eiwitrepen</button>
+        <button class="filter-pill" data-cat="snacks">Snacks &amp; koekjes</button>
+        <button class="filter-pill" data-cat="drankjes">Drankjes</button>
+        <button class="filter-pill" data-cat="treats">Treats</button>
+      </div>
+      <div class="filter-bar__sort">
+        <select class="sort-select" id="sort-select">
+          <option value="popular">Populairste</option>
+          <option value="price-asc">Prijs: laag → hoog</option>
+          <option value="price-desc">Prijs: hoog → laag</option>
+          <option value="rating">Beste beoordeling</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="alle-section">
+  <div class="container">
+    <div class="alle-header">
+      <span class="alle-count" id="product-count">20 producten</span>
+    </div>
+    <div class="products-grid alle-grid" id="alle-grid">
+
+      <!-- Eiwitrepen -->
+      <a href="product.html?id=1" class="prod-card" data-cat="eiwitrepen">
+        <div class="prod-card__badge">Bestseller</div>
+        <div class="prod-card__img"><img src="../images/barebells.jpg" alt="Barebells Chocolate Dough"></div>
+        <div class="prod-card__body">
+          <span class="prod-card__brand">Barebells</span>
+          <span class="prod-card__name">Chocolate Dough</span>
+          <div class="prod-card__stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="prod-card__rating-count">(128)</span></div>
+          <div class="prod-card__footer"><span class="prod-card__price">€2,49</span><button class="prod-card__add" data-add-to-cart="1"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button></div>
+        </div>
+      </a>
+
+      <a href="product.html?id=6" class="prod-card" data-cat="eiwitrepen">
+        <div class="prod-card__img"><img src="../images/barebells.jpg" alt="Barebells Cookies & Cream"></div>
+        <div class="prod-card__body">
+          <span class="prod-card__brand">Barebells</span>
+          <span class="prod-card__name">Cookies &amp; Cream</span>
+          <div class="prod-card__stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="prod-card__rating-count">(94)</span></div>
+          <div class="prod-card__footer"><span class="prod-card__price">€2,49</span><button class="prod-card__add" data-add-to-cart="7"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button></div>
+        </div>
+      </a>
+
+      <a href="product.html?id=2" class="prod-card" data-cat="eiwitrepen">
+        <div class="prod-card__badge prod-card__badge--green">Nieuw</div>
+        <div class="prod-card__img"><img src="../images/nicks.png" alt="NICK'S Peanut Caramel Bar"></div>
+        <div class="prod-card__body">
+          <span class="prod-card__brand">N!CK'S</span>
+          <span class="prod-card__name">Peanut Caramel Bar</span>
+          <div class="prod-card__stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="prod-card__rating-count">(67)</span></div>
+          <div class="prod-card__footer"><span class="prod-card__price">€2,29</span><button class="prod-card__add" data-add-to-cart="2"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button></div>
+        </div>
+      </a>
+
+      <!-- Snacks & koekjes -->
+      <a href="product.html?id=3" class="prod-card" data-cat="snacks">
+        <div class="prod-card__img"><img src="../images/quest.jpg" alt="Quest Chocolate Chip Cookie"></div>
+        <div class="prod-card__body">
+          <span class="prod-card__brand">Quest</span>
+          <span class="prod-card__name">Chocolate Chip Cookie</span>
+          <div class="prod-card__stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="prod-card__rating-count">(89)</span></div>
+          <div class="prod-card__footer"><span class="prod-card__price">€2,99</span><button class="prod-card__add" data-add-to-cart="3"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button></div>
+        </div>
+      </a>
+
+      <a href="product.html?id=9" class="prod-card" data-cat="snacks">
+        <div class="prod-card__img"><img src="../images/quest.jpg" alt="Quest Double Chocolate Chip"></div>
+        <div class="prod-card__body">
+          <span class="prod-card__brand">Quest</span>
+          <span class="prod-card__name">Double Chocolate Chip</span>
+          <div class="prod-card__stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="prod-card__rating-count">(72)</span></div>
+          <div class="prod-card__footer"><span class="prod-card__price">€2,99</span><button class="prod-card__add" data-add-to-cart="13"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button></div>
+        </div>
+      </a>
+
+      <a href="product.html?id=8" class="prod-card" data-cat="snacks">
+        <div class="prod-card__img"><img src="../images/nicks.png" alt="N!CK'S Wafer Bar"></div>
+        <div class="prod-card__body">
+          <span class="prod-card__brand">N!CK'S</span>
+          <span class="prod-card__name">Wafer Bar Chocolate</span>
+          <div class="prod-card__stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="prod-card__rating-count">(43)</span></div>
+          <div class="prod-card__footer"><span class="prod-card__price">€1,99</span><button class="prod-card__add" data-add-to-cart="14"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button></div>
+        </div>
+      </a>
+
+      <!-- Drankjes -->
+      <a href="product.html?id=4" class="prod-card" data-cat="drankjes">
+        <div class="prod-card__badge">Populair</div>
+        <div class="prod-card__img"><img src="../images/nocco.png" alt="NOCCO BCAA Passion"></div>
+        <div class="prod-card__body">
+          <span class="prod-card__brand">NOCCO</span>
+          <span class="prod-card__name">BCAA Passion</span>
+          <div class="prod-card__stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="prod-card__rating-count">(156)</span></div>
+          <div class="prod-card__footer"><span class="prod-card__price">€2,49</span><button class="prod-card__add" data-add-to-cart="4"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button></div>
+        </div>
+      </a>
+
+      <a href="product.html?id=10" class="prod-card" data-cat="drankjes">
+        <div class="prod-card__img"><img src="../images/nocco.png" alt="NOCCO BCAA Caribbean"></div>
+        <div class="prod-card__body">
+          <span class="prod-card__brand">NOCCO</span>
+          <span class="prod-card__name">BCAA Caribbean</span>
+          <div class="prod-card__stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="prod-card__rating-count">(98)</span></div>
+          <div class="prod-card__footer"><span class="prod-card__price">€2,49</span><button class="prod-card__add" data-add-to-cart="15"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button></div>
+        </div>
+      </a>
+
+      <a href="product.html?id=5" class="prod-card" data-cat="drankjes">
+        <div class="prod-card__img"><img src="../images/fanta.png" alt="Fanta Zero Sugar"></div>
+        <div class="prod-card__body">
+          <span class="prod-card__brand">Fanta</span>
+          <span class="prod-card__name">Zero Sugar Orange</span>
+          <div class="prod-card__stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="prod-card__rating-count">(74)</span></div>
+          <div class="prod-card__footer"><span class="prod-card__price">€1,89</span><button class="prod-card__add" data-add-to-cart="5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button></div>
+        </div>
+      </a>
+
+      <!-- Treats -->
+      <a href="product.html?id=11" class="prod-card" data-cat="treats">
+        <div class="prod-card__img"><img src="../images/gummies.jpg" alt="Treats Gummy Bears"></div>
+        <div class="prod-card__body">
+          <span class="prod-card__brand">SmartSweets</span>
+          <span class="prod-card__name">Gummy Bears</span>
+          <div class="prod-card__stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="prod-card__rating-count">(61)</span></div>
+          <div class="prod-card__footer"><span class="prod-card__price">€2,99</span><button class="prod-card__add" data-add-to-cart="16"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button></div>
+        </div>
+      </a>
+
+      <a href="product.html?id=12" class="prod-card" data-cat="treats">
+        <div class="prod-card__img"><img src="../images/nicks.png" alt="N!CK'S Chocolate Cups"></div>
+        <div class="prod-card__body">
+          <span class="prod-card__brand">N!CK'S</span>
+          <span class="prod-card__name">Chocolate Peanut Cups</span>
+          <div class="prod-card__stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="prod-card__rating-count">(47)</span></div>
+          <div class="prod-card__footer"><span class="prod-card__price">€2,49</span><button class="prod-card__add" data-add-to-cart="17"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button></div>
+        </div>
+      </a>
+
+      <a href="product.html" class="prod-card" data-cat="treats">
+        <div class="prod-card__img"><img src="quest.jpg" alt="Sour Patch Kids Zero"></div>
+        <div class="prod-card__body">
+          <span class="prod-card__brand">Sour Patch</span>
+          <span class="prod-card__name">Kids Zero Sugar</span>
+          <div class="prod-card__stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="prod-card__rating-count">(38)</span></div>
+          <div class="prod-card__footer"><span class="prod-card__price">€2,29</span><button class="prod-card__add" data-add-to-cart="18"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button></div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="../js/shop.js"></script>
+<script src="../js/header-template.js"></script>
+<script src="../js/alle-snacks.js"></script>
+</body>
+</html>

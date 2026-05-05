@@ -1,0 +1,211 @@
+/* =============================================
+   SMIKKIE — CART PAGE CSS
+   ============================================= */
+
+.cart-section { padding: 40px 0 60px; }
+.cart-title {
+  font-size: 36px;
+  font-weight: 900;
+  color: var(--dark);
+  letter-spacing: -1px;
+  margin-bottom: 32px;
+}
+
+/* Layout */
+.cart-layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 40px;
+  align-items: start;
+}
+
+/* Empty state */
+.cart-empty {
+  text-align: center;
+  padding: 60px 20px;
+}
+.cart-empty__icon { margin-bottom: 16px; }
+.cart-empty h3 { font-size: 22px; font-weight: 900; color: var(--dark); margin-bottom: 8px; }
+.cart-empty p { font-size: 15px; color: var(--gray); margin-bottom: 24px; }
+
+/* Shipping progress */
+.shipping-progress {
+  background: var(--green-light);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  border: 1.5px solid #c8e8a0;
+}
+.shipping-progress__bar-wrap {
+  height: 8px;
+  background: #d8f0b0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.shipping-progress__bar {
+  height: 100%;
+  background: var(--green);
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+.shipping-progress__text { font-size: 13px; font-weight: 700; color: var(--green-dark); }
+.shipping-progress__text strong { color: var(--green-dark); }
+
+/* Cart items */
+.cart-item {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  gap: 16px;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1.5px solid var(--border);
+}
+.cart-item:last-child { border-bottom: none; }
+.cart-item__img {
+  width: 80px; height: 80px;
+  background: var(--gray-light);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.cart-item__img img { max-width: 100%; max-height: 100%; object-fit: contain; padding: 8px; }
+.cart-item__info { flex: 1; }
+.cart-item__brand { font-size: 12px; color: var(--gray); font-weight: 700; display: block; margin-bottom: 2px; }
+.cart-item__name { font-size: 16px; font-weight: 800; color: var(--dark); display: block; margin-bottom: 8px; }
+.cart-item__price { font-size: 15px; font-weight: 900; color: var(--purple); }
+.cart-item__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+.cart-item__total { font-size: 18px; font-weight: 900; color: var(--dark); }
+.cart-item__remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--gray);
+  font-size: 12px;
+  font-weight: 700;
+  font-family: var(--font);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color var(--transition);
+}
+.cart-item__remove:hover { color: #e53e3e; }
+
+/* Suggested */
+.cart-suggested { margin-top: 32px; padding-top: 24px; border-top: 1.5px solid var(--border); }
+.cart-suggested__title { font-size: 18px; font-weight: 900; color: var(--dark); margin-bottom: 16px; }
+.cart-suggested__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.suggested-card {
+  background: var(--gray-light);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+.suggested-card img { width: 70px; height: 70px; object-fit: contain; }
+.suggested-card__info span { display: block; font-size: 12px; color: var(--dark); font-weight: 700; margin-bottom: 2px; }
+.suggested-card__info strong { font-size: 14px; color: var(--purple); }
+
+/* Summary box */
+.cart-summary { position: sticky; top: 80px; }
+.cart-summary__box {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+.cart-summary__title { font-size: 20px; font-weight: 900; color: var(--dark); margin-bottom: 20px; }
+.cart-summary__lines { margin-bottom: 16px; }
+.summary-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  font-size: 14px;
+  color: var(--dark);
+}
+.summary-line span:first-child { color: var(--gray); }
+.summary-line strong { font-weight: 800; }
+.cart-summary__divider { height: 1.5px; background: var(--border); margin: 14px 0; }
+.cart-summary__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+  color: var(--dark);
+  margin-bottom: 10px;
+}
+.cart-summary__row--total {
+  font-size: 20px;
+  font-weight: 900;
+}
+.cart-summary__row--total strong { color: var(--purple); font-size: 24px; }
+.text-green { color: var(--green-dark) !important; }
+
+/* Coupon */
+.coupon-row {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+.coupon-input {
+  flex: 1;
+  font-family: var(--font);
+  font-size: 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  color: var(--dark);
+  transition: border-color var(--transition);
+}
+.coupon-input:focus { outline: none; border-color: var(--purple); }
+.coupon-feedback {
+  font-size: 13px;
+  font-weight: 700;
+  margin-top: 6px;
+  min-height: 18px;
+}
+.coupon-feedback.success { color: var(--green-dark); }
+.coupon-feedback.error   { color: #e53e3e; }
+
+/* Trust */
+.cart-summary__trust { margin-top: 16px; display: flex; flex-direction: column; gap: 8px; }
+.cart-trust-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--gray); }
+
+/* Payment logos */
+.payment-logos {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+.payment-logo {
+  background: var(--gray-light);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--dark);
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+  .cart-layout { grid-template-columns: 1fr; }
+  .cart-summary { position: static; }
+  .cart-item { grid-template-columns: 64px 1fr auto; gap: 12px; }
+  .cart-item__img { width: 64px; height: 64px; }
+  .cart-suggested__grid { grid-template-columns: repeat(2, 1fr); }
+  .cart-title { font-size: 26px; }
+}

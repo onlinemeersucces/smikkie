@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bestelling bevestigd – Smikkie</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/bestelling-bevestigd.css">
+  <style>
+    .confirm-page {
+      min-height: 80vh;
+      background: var(--bg-light);
+      padding: 60px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .confirm-card {
+      background: white;
+      border-radius: 24px;
+      padding: 48px 40px;
+      max-width: 560px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 8px 40px rgba(91,45,142,0.10);
+    }
+    .confirm-icon {
+      width: 80px; height: 80px;
+      background: var(--green);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 24px;
+    }
+    .confirm-icon svg { color: white; }
+    .confirm-title {
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+    .confirm-sub {
+      font-size: 16px;
+      color: var(--gray);
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+    .confirm-order-num {
+      background: var(--lavender);
+      border-radius: 12px;
+      padding: 16px 24px;
+      margin-bottom: 32px;
+      display: inline-block;
+    }
+    .confirm-order-num span {
+      font-size: 13px;
+      color: var(--purple);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .confirm-order-num strong {
+      font-size: 20px;
+      color: var(--dark);
+      font-weight: 900;
+    }
+    .confirm-steps {
+      display: flex;
+      gap: 0;
+      margin-bottom: 36px;
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+    .confirm-step {
+      flex: 1;
+      padding: 16px 12px;
+      text-align: center;
+      border-right: 2px solid var(--border);
+    }
+    .confirm-step:last-child { border-right: none; }
+    .confirm-step__icon { font-size: 24px; display: block; margin-bottom: 6px; }
+    .confirm-step__label { font-size: 12px; font-weight: 700; color: var(--dark); display: block; }
+    .confirm-step__time { font-size: 11px; color: var(--gray); display: block; margin-top: 2px; }
+    .confirm-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .confirm-actions .btn { min-width: 160px; }
+    .confirm-bear {
+      font-size: 64px;
+      display: block;
+      margin-bottom: 8px;
+      animation: bounce 1s ease infinite alternate;
+    }
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to { transform: translateY(-10px); }
+    }
+    .confirm-email-note {
+      font-size: 13px;
+      color: var(--gray);
+      margin-top: 20px;
+    }
+    .confirm-email-note strong { color: var(--dark); }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+
+  <section class="confirm-page">
+    <div class="confirm-card">
+      <span class="confirm-bear">🐻</span>
+
+      <div class="confirm-icon">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+
+      <h1 class="confirm-title">Bestelling geplaatst! 🎉</h1>
+      <p class="confirm-sub">
+        Jouw Smikkie mix is onderweg! We gaan direct voor je aan de slag.<br>
+        <strong>Voor 23:59 besteld = morgen in huis.</strong>
+      </p>
+
+      <div class="confirm-order-num">
+        <span>Bestelnummer</span>
+        <strong id="order-number">#SMK-2026-0001</strong>
+      </div>
+
+      <div class="confirm-steps">
+        <div class="confirm-step">
+          <span class="confirm-step__icon">✅</span>
+          <span class="confirm-step__label">Bestelling ontvangen</span>
+          <span class="confirm-step__time">Nu</span>
+        </div>
+        <div class="confirm-step">
+          <span class="confirm-step__icon">📦</span>
+          <span class="confirm-step__label">Wordt ingepakt</span>
+          <span class="confirm-step__time">Vandaag</span>
+        </div>
+        <div class="confirm-step">
+          <span class="confirm-step__icon">🚚</span>
+          <span class="confirm-step__label">Onderweg</span>
+          <span class="confirm-step__time">Morgen</span>
+        </div>
+        <div class="confirm-step">
+          <span class="confirm-step__icon">🏠</span>
+          <span class="confirm-step__label">Bezorgd!</span>
+          <span class="confirm-step__time">Morgen</span>
+        </div>
+      </div>
+
+      <div class="confirm-actions">
+        <a href="../index.html" class="btn btn--primary">Verder snacken →</a>
+        <a href="alle-snacks.html" class="btn btn--outline">Meer ontdekken</a>
+      </div>
+
+      <p class="confirm-email-note">
+        Een bevestiging is verstuurd naar <strong id="confirm-email">jouw e-mailadres</strong>.
+      </p>
+    </div>
+  </section>
+
+  <div id="site-footer"></div>
+
+  <script src="../js/shop.js"></script>
+  <script src="../js/header-template.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Generate random order number
+      const orderNum = '#SMK-2026-' + String(Math.floor(Math.random() * 9000) + 1000);
+      document.getElementById('order-number').textContent = orderNum;
+
+      // Get email from localStorage if available
+      const checkoutData = JSON.parse(localStorage.getItem('smikkie_checkout') || '{}');
+      if (checkoutData.email) {
+        document.getElementById('confirm-email').textContent = checkoutData.email;
+      }
+
+      // Clear cart after successful order
+      localStorage.removeItem('smikkie_cart');
+      if (window.SmikkieShop) {
+        window.SmikkieShop.updateCartBadge();
+      }
+    });
+  </script>
+</body>
+</html>

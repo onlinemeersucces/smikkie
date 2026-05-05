@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barebells Chocolate Dough – Smikkie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/product.css">
+</head>
+<body>
+
+<!-- HEADER -->
+<div id="site-header"></div>
+
+<!-- BREADCRUMB (desktop only) -->
+<div class="breadcrumb desktop-only">
+  <div class="container">
+    <nav class="breadcrumb__nav">
+      <a href="../index.html">Home</a>
+      <span class="sep">›</span>
+      <a href="eiwitrepen.html">Eiwitrepen</a>
+      <span class="sep">›</span>
+      <span class="current">Barebells Chocolate Dough</span>
+    </nav>
+  </div>
+</div>
+
+<!-- ==================== PRODUCT DETAIL ==================== -->
+<section class="product-section">
+  <div class="container">
+
+    <!-- DESKTOP LAYOUT -->
+    <div class="product-desktop desktop-only">
+      <!-- LEFT: Gallery -->
+      <div class="gallery">
+        <div class="gallery__thumbs">
+          <button class="gallery__thumb gallery__thumb--active" data-img="barebells.jpg">
+            <img src="../images/barebells.jpg" alt="Barebells Chocolate Dough">
+          </button>
+          <button class="gallery__thumb" data-img="barebells.jpg">
+            <img src="../images/barebells.jpg" alt="Barebells Chocolate Dough binnenkant">
+          </button>
+          <button class="gallery__thumb" data-img="barebells.jpg">
+            <img src="../images/barebells.jpg" alt="Barebells Chocolate Dough detail">
+          </button>
+          <button class="gallery__thumb" data-img="barebells.jpg">
+            <img src="../images/barebells.jpg" alt="Barebells Chocolate Dough voedingswaarden">
+          </button>
+        </div>
+        <div class="gallery__main">
+          <div class="gallery__img-wrap">
+            <img src="../images/barebells.jpg" alt="Barebells Chocolate Dough" id="gallery-main-img">
+            <div class="gallery__approved">
+              <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="approved-badge">
+                <circle cx="50" cy="50" r="48" fill="#3D1F6E" stroke="#7DC242" stroke-width="4"/>
+                <circle cx="50" cy="50" r="38" fill="none" stroke="#7DC242" stroke-width="1.5" stroke-dasharray="4 3"/>
+                <text x="50" y="28" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" font-weight="900" fill="white" letter-spacing="1">SMIKKIE</text>
+                <!-- Bear face -->
+                <circle cx="50" cy="52" r="16" fill="#A0673A"/>
+                <circle cx="40" cy="40" r="7" fill="#A0673A"/>
+                <circle cx="40" cy="40" r="4.5" fill="#C4845A"/>
+                <circle cx="60" cy="40" r="7" fill="#A0673A"/>
+                <circle cx="60" cy="40" r="4.5" fill="#C4845A"/>
+                <ellipse cx="50" cy="57" rx="11" ry="9" fill="#C4845A"/>
+                <circle cx="44" cy="47" r="4" fill="white"/>
+                <circle cx="56" cy="47" r="4" fill="white"/>
+                <circle cx="45" cy="48" r="2.5" fill="#1a1a2e"/>
+                <circle cx="57" cy="48" r="2.5" fill="#1a1a2e"/>
+                <ellipse cx="50" cy="54" rx="3.5" ry="2.5" fill="#1a1a2e"/>
+                <path d="M45 60 Q50 65 55 60" fill="none" stroke="#1a1a2e" stroke-width="1.5" stroke-linecap="round"/>
+                <text x="50" y="80" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" font-weight="900" fill="white" letter-spacing="1">APPROVED</text>
+              </svg>
+            </div>
+            <button class="gallery__nav gallery__nav--prev" id="gallery-prev">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="gallery__nav gallery__nav--next" id="gallery-next">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Product Info -->
+      <div class="product-info">
+        <h1 class="product-info__title">Barebells<br>Chocolate Dough</h1>
+        <div class="product-info__stars">
+          <div class="stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <span class="product-info__reviews">128 reviews</span>
+        </div>
+        <p class="product-info__desc">
+          Heerlijke eiwitreep met chocolade smaak 🍫<br>
+          Perfect als snack zonder schuldgevoel 💜
+        </p>
+        <div class="product-info__price">€2,49</div>
+        <div class="product-info__stock">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#7DC242"/><polyline points="6 12 10 16 18 8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Op voorraad – morgen in huis
+        </div>
+        <div class="product-info__actions">
+          <div class="qty-ctrl">
+            <button class="qty-btn" id="qty-minus-d">−</button>
+            <span class="qty-val" id="qty-val-d">1</span>
+            <button class="qty-btn" id="qty-plus-d">+</button>
+          </div>
+          <button class="btn btn--primary product-info__add-btn" id="add-to-cart-d" data-product-id="1">
+            Voeg toe aan jouw Smikkie mix 💜
+          </button>
+        </div>
+        <!-- Trust badges -->
+        <div class="product-info__trust">
+          <div class="trust-badge">
+            <div class="trust-badge__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="5"/><path d="M8 14s-4 1-4 5h16c0-4-4-5-4-5"/></svg>
+            </div>
+            <div>
+              <strong>Smikkie Approved</strong>
+              <span>alleen snacks die écht lekker zijn</span>
+            </div>
+          </div>
+          <div class="trust-badge">
+            <div class="trust-badge__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <div>
+              <strong>Morgen in huis</strong>
+              <span>Voor 23:59 besteld</span>
+            </div>
+          </div>
+          <div class="trust-badge">
+            <div class="trust-badge__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            </div>
+            <div>
+              <strong>Alles los te bestellen</strong>
+              <span>Mix &amp; match wat jij lekker vindt</span>
+            </div>
+          </div>
+        </div>
+        <!-- Smikkie zegt -->
+        <div class="smikkie-zegt">
+          <div class="smikkie-zegt__content">
+            <h4>Smikkie zegt:</h4>
+            <p>"Deze gaat hard...<br>echt eentje die je<br>moet proberen 🤤"</p>
+          </div>
+          <div class="smikkie-zegt__bear">
+            <svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="60" cy="105" rx="36" ry="38" fill="#7B4F2E"/>
+              <ellipse cx="60" cy="115" rx="34" ry="30" fill="#5B2D8E"/>
+              <path d="M43 95 Q60 105 77 95" fill="none" stroke="#4a2278" stroke-width="2"/>
+              <line x1="60" y1="98" x2="60" y2="138" stroke="#4a2278" stroke-width="1.5"/>
+              <ellipse cx="28" cy="112" rx="12" ry="18" fill="#5B2D8E" transform="rotate(-15 28 112)"/>
+              <ellipse cx="92" cy="112" rx="12" ry="18" fill="#5B2D8E" transform="rotate(15 92 112)"/>
+              <ellipse cx="22" cy="126" rx="10" ry="7" fill="#7B4F2E"/>
+              <ellipse cx="98" cy="126" rx="10" ry="7" fill="#7B4F2E"/>
+              <ellipse cx="107" cy="120" rx="4" ry="6" fill="#7B4F2E" transform="rotate(-20 107 120)"/>
+              <!-- Heart -->
+              <path d="M78 85 C78 82 82 80 84 83 C86 80 90 82 90 85 C90 88 84 93 84 93 C84 93 78 88 78 85Z" fill="#E8A87C"/>
+              <circle cx="60" cy="58" r="32" fill="#A0673A"/>
+              <circle cx="35" cy="32" r="11" fill="#A0673A"/>
+              <circle cx="35" cy="32" r="7" fill="#C4845A"/>
+              <circle cx="85" cy="32" r="11" fill="#A0673A"/>
+              <circle cx="85" cy="32" r="7" fill="#C4845A"/>
+              <ellipse cx="60" cy="66" rx="20" ry="16" fill="#C4845A"/>
+              <circle cx="50" cy="50" r="5.5" fill="white"/>
+              <circle cx="70" cy="50" r="5.5" fill="white"/>
+              <circle cx="51.5" cy="51" r="3.5" fill="#1a1a2e"/>
+              <circle cx="71.5" cy="51" r="3.5" fill="#1a1a2e"/>
+              <circle cx="53" cy="49.5" r="1.3" fill="white"/>
+              <circle cx="73" cy="49.5" r="1.3" fill="white"/>
+              <ellipse cx="60" cy="63" rx="5" ry="4" fill="#1a1a2e"/>
+              <path d="M53 72 Q60 78 67 72" fill="none" stroke="#1a1a2e" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="44" cy="62" r="5" fill="#E8A87C" opacity="0.5"/>
+              <circle cx="76" cy="62" r="5" fill="#E8A87C" opacity="0.5"/>
+            </svg>
+          </div>
+          <div class="smikkie-zegt__dashes">
+            <div class="sz-dash sz-dash--1"></div>
+            <div class="sz-dash sz-dash--2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MOBILE LAYOUT -->
+    <div class="product-mobile mobile-only">
+      <!-- Image Slider -->
+      <div class="mobile-slider">
+        <div class="mobile-slider__track" id="mobile-slider-track">
+          <div class="mobile-slider__slide">
+            <img src="../images/barebells.jpg" alt="Barebells Chocolate Dough">
+          </div>
+          <div class="mobile-slider__slide">
+            <img src="../images/barebells.jpg" alt="Barebells binnenkant">
+          </div>
+          <div class="mobile-slider__slide">
+            <img src="../images/barebells.jpg" alt="Barebells detail">
+          </div>
+          <div class="mobile-slider__slide">
+            <img src="../images/barebells.jpg" alt="Barebells voedingswaarden">
+          </div>
+        </div>
+        <div class="mobile-slider__approved">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="approved-badge">
+            <circle cx="50" cy="50" r="48" fill="#3D1F6E" stroke="#7DC242" stroke-width="4"/>
+            <circle cx="50" cy="50" r="38" fill="none" stroke="#7DC242" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <text x="50" y="28" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" font-weight="900" fill="white" letter-spacing="1">SMIKKIE</text>
+            <circle cx="50" cy="52" r="16" fill="#A0673A"/>
+            <circle cx="40" cy="40" r="7" fill="#A0673A"/>
+            <circle cx="40" cy="40" r="4.5" fill="#C4845A"/>
+            <circle cx="60" cy="40" r="7" fill="#A0673A"/>
+            <circle cx="60" cy="40" r="4.5" fill="#C4845A"/>
+            <ellipse cx="50" cy="57" rx="11" ry="9" fill="#C4845A"/>
+            <circle cx="44" cy="47" r="4" fill="white"/>
+            <circle cx="56" cy="47" r="4" fill="white"/>
+            <circle cx="45" cy="48" r="2.5" fill="#1a1a2e"/>
+            <circle cx="57" cy="48" r="2.5" fill="#1a1a2e"/>
+            <ellipse cx="50" cy="54" rx="3.5" ry="2.5" fill="#1a1a2e"/>
+            <path d="M45 60 Q50 65 55 60" fill="none" stroke="#1a1a2e" stroke-width="1.5" stroke-linecap="round"/>
+            <text x="50" y="80" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" font-weight="900" fill="white" letter-spacing="1">APPROVED</text>
+          </svg>
+        </div>
+        <div class="mobile-slider__dots" id="mobile-dots">
+          <span class="mobile-dot mobile-dot--active"></span>
+          <span class="mobile-dot"></span>
+          <span class="mobile-dot"></span>
+          <span class="mobile-dot"></span>
+        </div>
+      </div>
+      <!-- Outer dots -->
+      <div class="mobile-slider__dots-outer" id="mobile-dots-outer">
+        <span class="mobile-dot-outer mobile-dot-outer--active"></span>
+        <span class="mobile-dot-outer"></span>
+        <span class="mobile-dot-outer"></span>
+        <span class="mobile-dot-outer"></span>
+      </div>
+
+      <!-- Product Info -->
+      <div class="mobile-product-info">
+        <h1 class="mobile-product-info__title">Barebells Chocolate Dough</h1>
+        <div class="mobile-product-info__stars">
+          <div class="stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <span>128 reviews</span>
+        </div>
+        <div class="mobile-product-info__price">€2,49</div>
+        <div class="mobile-product-info__stock">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#7DC242"/><polyline points="6 12 10 16 18 8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Op voorraad – morgen in huis
+        </div>
+        <div class="mobile-product-info__actions">
+          <div class="qty-ctrl">
+            <button class="qty-btn" id="qty-minus-m">−</button>
+            <span class="qty-val" id="qty-val-m">1</span>
+            <button class="qty-btn" id="qty-plus-m">+</button>
+          </div>
+          <button class="btn btn--primary mobile-add-btn" id="add-to-cart-m" data-product-id="1">
+            Voeg toe aan jouw Smikkie mix 💜
+          </button>
+        </div>
+        <!-- Trust badges scrollable -->
+        <div class="mobile-trust-scroll">
+          <div class="mobile-trust-badge">
+            <div class="mobile-trust-badge__icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="5"/><path d="M8 14s-4 1-4 5h16c0-4-4-5-4-5"/></svg>
+            </div>
+            <div>
+              <strong>Smikkie Approved</strong>
+              <span>alleen snacks die écht lekker zijn</span>
+            </div>
+          </div>
+          <div class="mobile-trust-badge">
+            <div class="mobile-trust-badge__icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            </div>
+            <div>
+              <strong>Alles los te bestellen</strong>
+              <span>Mix &amp; match wat jij lekker vindt</span>
+            </div>
+          </div>
+          <div class="mobile-trust-badge">
+            <div class="mobile-trust-badge__icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <div>
+              <strong>Morgen in huis</strong>
+              <span>Voor 23:59 besteld = morgen genieten</span>
+            </div>
+          </div>
+        </div>
+        <!-- Smikkie zegt mobile -->
+        <div class="smikkie-zegt smikkie-zegt--mobile">
+          <div class="smikkie-zegt__bear">
+            <svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="60" cy="105" rx="36" ry="38" fill="#7B4F2E"/>
+              <ellipse cx="60" cy="115" rx="34" ry="30" fill="#5B2D8E"/>
+              <path d="M43 95 Q60 105 77 95" fill="none" stroke="#4a2278" stroke-width="2"/>
+              <line x1="60" y1="98" x2="60" y2="138" stroke="#4a2278" stroke-width="1.5"/>
+              <ellipse cx="28" cy="112" rx="12" ry="18" fill="#5B2D8E" transform="rotate(-15 28 112)"/>
+              <ellipse cx="92" cy="112" rx="12" ry="18" fill="#5B2D8E" transform="rotate(15 92 112)"/>
+              <ellipse cx="22" cy="126" rx="10" ry="7" fill="#7B4F2E"/>
+              <ellipse cx="98" cy="126" rx="10" ry="7" fill="#7B4F2E"/>
+              <ellipse cx="107" cy="120" rx="4" ry="6" fill="#7B4F2E" transform="rotate(-20 107 120)"/>
+              <path d="M78 85 C78 82 82 80 84 83 C86 80 90 82 90 85 C90 88 84 93 84 93 C84 93 78 88 78 85Z" fill="#E8A87C"/>
+              <circle cx="60" cy="58" r="32" fill="#A0673A"/>
+              <circle cx="35" cy="32" r="11" fill="#A0673A"/>
+              <circle cx="35" cy="32" r="7" fill="#C4845A"/>
+              <circle cx="85" cy="32" r="11" fill="#A0673A"/>
+              <circle cx="85" cy="32" r="7" fill="#C4845A"/>
+              <ellipse cx="60" cy="66" rx="20" ry="16" fill="#C4845A"/>
+              <circle cx="50" cy="50" r="5.5" fill="white"/>
+              <circle cx="70" cy="50" r="5.5" fill="white"/>
+              <circle cx="51.5" cy="51" r="3.5" fill="#1a1a2e"/>
+              <circle cx="71.5" cy="51" r="3.5" fill="#1a1a2e"/>
+              <circle cx="53" cy="49.5" r="1.3" fill="white"/>
+              <circle cx="73" cy="49.5" r="1.3" fill="white"/>
+              <ellipse cx="60" cy="63" rx="5" ry="4" fill="#1a1a2e"/>
+              <path d="M53 72 Q60 78 67 72" fill="none" stroke="#1a1a2e" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="44" cy="62" r="5" fill="#E8A87C" opacity="0.5"/>
+              <circle cx="76" cy="62" r="5" fill="#E8A87C" opacity="0.5"/>
+            </svg>
+          </div>
+          <div class="smikkie-zegt__content">
+            <h4>Smikkie zegt:</h4>
+            <p>"Deze gaat hard...<br>echt eentje die je<br>moet proberen 🤤"</p>
+          </div>
+          <div class="smikkie-zegt__dashes">
+            <div class="sz-dash sz-dash--1"></div>
+            <div class="sz-dash sz-dash--2"></div>
+          </div>
+        </div>
+
+        <!-- Accordions (mobile) -->
+        <div class="accordions">
+          <div class="accordion accordion--open">
+            <button class="accordion__btn">
+              <span>Over dit product</span>
+              <svg class="accordion__chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="accordion__body">
+              <p>Heerlijke eiwitreep met chocolade smaak 🍫<br>Perfect als snack zonder schuldgevoel 💜</p>
+              <button class="accordion__more">Lees meer <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+            </div>
+          </div>
+          <div class="accordion">
+            <button class="accordion__btn">
+              <span>Voedingswaarden</span>
+              <svg class="accordion__chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="accordion__body">
+              <table class="nutrition-table">
+                <thead><tr><th>Voedingswaarden</th><th>Per 100g</th></tr></thead>
+                <tbody>
+                  <tr><td>Energie</td><td>1598 kJ / 383 kcal</td></tr>
+                  <tr><td>Vetten</td><td>17 g</td></tr>
+                  <tr class="sub"><td>– waarvan verzadigd</td><td>7,6 g</td></tr>
+                  <tr><td>Koolhydraten</td><td>32 g</td></tr>
+                  <tr class="sub"><td>– waarvan suikers</td><td>3,4 g</td></tr>
+                  <tr><td>Vezels</td><td>1,6 g</td></tr>
+                  <tr><td>Eiwitten</td><td>29 g</td></tr>
+                  <tr><td>Zout</td><td>0,39 g</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="accordion">
+            <button class="accordion__btn">
+              <span>Ingrediënten</span>
+              <svg class="accordion__chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="accordion__body">
+              <p style="font-size:13px;line-height:1.6;color:#555;">Melkeiwit, cacaoboter, maltitol, zoetstof (sucralose), cacaopoeder, vanillearoma. Kan sporen bevatten van gluten, noten en soja.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /container -->
+</section>
+
+<!-- ==================== WHY TRY + NUTRITION (desktop) ==================== -->
+<section class="why-nutrition desktop-only">
+  <div class="container">
+    <div class="why-nutrition__grid">
+      <!-- Why try -->
+      <div class="why-try">
+        <h3>Waarom je deze wil proberen 👇</h3>
+        <div class="why-try__list">
+          <div class="why-try__item">
+            <div class="why-try__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12l3 3 5-5"/></svg>
+            </div>
+            <div>
+              <strong>Hoog in eiwitten</strong>
+              <span>20 gram eiwitten per reep.</span>
+            </div>
+          </div>
+          <div class="why-try__item">
+            <div class="why-try__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <strong>Laag in suiker</strong>
+              <span>Slechts 1,7 gram suiker.</span>
+            </div>
+          </div>
+          <div class="why-try__item">
+            <div class="why-try__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+            </div>
+            <div>
+              <strong>Super smaak</strong>
+              <span>Zachte textuur en heerlijke smaak.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Nutrition table -->
+      <div class="nutrition-wrap">
+        <table class="nutrition-table">
+          <thead>
+            <tr>
+              <th>Voedingswaarden</th>
+              <th>Per 100 gram</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Energie</td><td>1598 kJ / 383 kcal</td></tr>
+            <tr><td>Vetten</td><td>17 g</td></tr>
+            <tr class="sub"><td>– waarvan verzadigd</td><td>7,6 g</td></tr>
+            <tr><td>Koolhydraten</td><td>32 g</td></tr>
+            <tr class="sub"><td>– waarvan suikers</td><td>3,4 g</td></tr>
+            <tr><td>Vezels</td><td>1,6 g</td></tr>
+            <tr><td>Eiwitten</td><td>29 g</td></tr>
+            <tr><td>Zout</td><td>0,39 g</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== RELATED PRODUCTS ==================== -->
+<section class="section related">
+  <div class="container">
+    <div class="related__header">
+      <h2 class="section-title" style="text-align:left;">Past goed bij jouw mix 🍪🍫</h2>
+      <a href="alle-snacks.html" class="btn btn--ghost btn--sm">Bekijk alles</a>
+    </div>
+    <div class="related__slider-wrap">
+      <button class="related__nav related__nav--prev" id="related-prev">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="related__slider" id="related-slider">
+        <a href="product.html?id=6" class="prod-card">
+          <div class="prod-card__img"><img src="../images/barebells.jpg" alt="Barebells Cookies & Cream"></div>
+          <div class="prod-card__body">
+            <span class="prod-card__brand">Barebells</span>
+            <span class="prod-card__name">Cookies &amp; Cream</span>
+            <div class="prod-card__footer">
+              <span class="prod-card__price">€2,49</span>
+              <button class="prod-card__add" data-add-to-cart="6">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+            </div>
+          </div>
+        </a>
+        <a href="product.html?id=2" class="prod-card">
+          <div class="prod-card__img"><img src="../images/nicks.png" alt="NICK'S Peanut Caramel Bar"></div>
+          <div class="prod-card__body">
+            <span class="prod-card__brand">N!CK'S</span>
+            <span class="prod-card__name">Peanut Caramel Bar</span>
+            <div class="prod-card__footer">
+              <span class="prod-card__price">€2,29</span>
+              <button class="prod-card__add" data-add-to-cart="2">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+            </div>
+          </div>
+        </a>
+        <a href="product.html?id=4" class="prod-card">
+          <div class="prod-card__img"><img src="../images/nocco.png" alt="NOCCO BCAA Passion"></div>
+          <div class="prod-card__body">
+            <span class="prod-card__brand">NOCCO</span>
+            <span class="prod-card__name">BCAA Passion</span>
+            <div class="prod-card__footer">
+              <span class="prod-card__price">€2,49</span>
+              <button class="prod-card__add" data-add-to-cart="4">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+            </div>
+          </div>
+        </a>
+        <a href="product.html?id=3" class="prod-card">
+          <div class="prod-card__img"><img src="../images/quest.jpg" alt="Quest Chocolate Chip Cookie"></div>
+          <div class="prod-card__body">
+            <span class="prod-card__brand">Quest</span>
+            <span class="prod-card__name">Chocolate Chip Cookie</span>
+            <div class="prod-card__footer">
+              <span class="prod-card__price">€2,99</span>
+              <button class="prod-card__add" data-add-to-cart="3">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+            </div>
+          </div>
+        </a>
+        <a href="product.html?id=5" class="prod-card">
+          <div class="prod-card__img"><img src="../images/fanta.png" alt="Fanta zero sugar"></div>
+          <div class="prod-card__body">
+            <span class="prod-card__brand">Fanta</span>
+            <span class="prod-card__name">zero sugar</span>
+            <div class="prod-card__footer">
+              <span class="prod-card__price">€1,89</span>
+              <button class="prod-card__add" data-add-to-cart="5">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+            </div>
+          </div>
+        </a>
+      </div>
+      <button class="related__nav related__nav--next" id="related-next">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== REVIEWS ==================== -->
+<section class="section reviews desktop-only">
+  <div class="container">
+    <h2 class="section-title">Wat anderen zeggen 🍪🍫</h2>
+    <div class="reviews__slider-wrap">
+      <button class="related__nav related__nav--prev" id="reviews-prev">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="reviews__slider" id="reviews-slider">
+        <div class="review-card">
+          <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p>"Echt mijn favoriet! Smaakt naar chocolate chip koekjes 😍"</p>
+          <span>Sanne, 2 dagen geleden</span>
+        </div>
+        <div class="review-card">
+          <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p>"Heerlijke reep en goede voedingswaarden."</p>
+          <span>Mike, 5 dagen geleden</span>
+        </div>
+        <div class="review-card">
+          <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p>"Altijd in mijn mix, deze mag niet ontbreken!"</p>
+          <span>Lotte, 1 week geleden</span>
+        </div>
+        <div class="review-card">
+          <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p>"Zacht van binnen en echt super lekker."</p>
+          <span>Tom, 1 week geleden</span>
+        </div>
+      </div>
+      <button class="related__nav related__nav--next" id="reviews-next">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== USP BANNER (desktop) ==================== -->
+<section class="usp-banner desktop-only">
+  <div class="container">
+    <div class="usp-banner__grid">
+      <div class="usp-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12l3 3 5-5"/></svg>
+        <div>
+          <strong>Jouw mix, jouw keuze</strong>
+          <span>Stel zelf samen wat jij lekker vindt.</span>
+        </div>
+      </div>
+      <div class="usp-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <div>
+          <strong>Lekker snacken,</strong>
+          <span>zonder schuldgevoel.</span>
+        </div>
+      </div>
+      <div class="usp-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="5"/><path d="M8 14s-4 1-4 5h16c0-4-4-5-4-5"/></svg>
+        <div>
+          <strong>Smikkie Approved</strong>
+          <span>Alleen snacks die écht lekker zijn.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== STICKY BAR ==================== -->
+<div class="sticky-bar" id="sticky-bar">
+  <div class="sticky-bar__inner">
+    <img src="../images/barebells.jpg" alt="Barebells Chocolate Dough" class="sticky-bar__img desktop-only">
+    <div class="sticky-bar__info">
+      <span class="sticky-bar__name">Barebells Chocolate Dough</span>
+      <span class="sticky-bar__price">€2,49</span>
+    </div>
+    <div class="sticky-bar__actions">
+      <div class="qty-ctrl qty-ctrl--dark desktop-only">
+        <button class="qty-btn qty-btn--dark" id="qty-minus-sticky">−</button>
+        <span class="qty-val qty-val--dark" id="qty-val-sticky">1</span>
+        <button class="qty-btn qty-btn--dark" id="qty-plus-sticky">+</button>
+      </div>
+      <button class="btn btn--green sticky-bar__btn" id="add-to-cart-sticky" data-product-id="1">
+        <span class="desktop-only">Voeg toe aan jouw Smikkie mix 💜</span>
+        <span class="mobile-only">+ Voeg toe 💜</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div id="site-footer"></div>
+
+<script src="../js/shop.js"></script>
+<script src="../js/header-template.js"></script>
+<script src="../js/product.js"></script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stel jouw Smikkie mix samen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/mix.css">
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<!-- HERO -->
+<section class="mix-hero">
+  <div class="container">
+    <div class="mix-hero__inner">
+      <div class="mix-hero__text">
+        <h1 class="mix-hero__title">Stel jouw Smikkie mix samen 💜</h1>
+        <p class="mix-hero__sub">Kies precies wat jij lekker vindt — geen dozen, geen verplichtingen. Alleen de snacks die jij wil.</p>
+        <div class="mix-hero__steps">
+          <div class="mix-step">
+            <span class="mix-step__num">1</span>
+            <span>Kies jouw snacks</span>
+          </div>
+          <span class="mix-step__arrow">→</span>
+          <div class="mix-step">
+            <span class="mix-step__num">2</span>
+            <span>Voeg toe aan mix</span>
+          </div>
+          <span class="mix-step__arrow">→</span>
+          <div class="mix-step">
+            <span class="mix-step__num">3</span>
+            <span>Wij pakken in</span>
+          </div>
+          <span class="mix-step__arrow">→</span>
+          <div class="mix-step">
+            <span class="mix-step__num">4</span>
+            <span>Genieten maar 😋</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MIX BUILDER -->
+<div class="mix-builder">
+  <div class="container">
+    <div class="mix-layout">
+
+      <!-- LEFT: Product selector -->
+      <div class="mix-products">
+        <div class="mix-products__header">
+          <h2>Kies jouw snacks</h2>
+          <div class="mix-search">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gray)" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="mix-search" placeholder="Zoek snacks...">
+          </div>
+        </div>
+
+        <!-- Category tabs -->
+        <div class="mix-tabs">
+          <button class="mix-tab mix-tab--active" data-cat="all">Alles</button>
+          <button class="mix-tab" data-cat="eiwitrepen">Eiwitrepen</button>
+          <button class="mix-tab" data-cat="snacks">Snacks</button>
+          <button class="mix-tab" data-cat="drankjes">Drankjes</button>
+          <button class="mix-tab" data-cat="treats">Treats</button>
+        </div>
+
+        <!-- Product list -->
+        <div class="mix-product-list" id="mix-product-list">
+
+          <div class="mix-product-item" data-cat="eiwitrepen" data-id="1" data-name="Barebells Chocolate Dough" data-price="2.49" data-img="barebells.jpg">
+            <div class="mix-product-item__img"><img src="../images/barebells.jpg" alt="Barebells Chocolate Dough"></div>
+            <div class="mix-product-item__info">
+              <span class="mix-product-item__brand">Barebells</span>
+              <span class="mix-product-item__name">Chocolate Dough</span>
+              <span class="mix-product-item__price">€2,49</span>
+            </div>
+            <button class="mix-add-btn" data-id="1">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+          </div>
+
+          <div class="mix-product-item" data-cat="eiwitrepen" data-id="2" data-name="N!CK'S Peanut Caramel Bar" data-price="2.29" data-img="nicks.png">
+            <div class="mix-product-item__img"><img src="../images/nicks.png" alt="NICK'S Peanut Caramel Bar"></div>
+            <div class="mix-product-item__info">
+              <span class="mix-product-item__brand">N!CK'S</span>
+              <span class="mix-product-item__name">Peanut Caramel Bar</span>
+              <span class="mix-product-item__price">€2,29</span>
+            </div>
+            <button class="mix-add-btn" data-id="2">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+          </div>
+
+          <div class="mix-product-item" data-cat="snacks" data-id="3" data-name="Quest Chocolate Chip Cookie" data-price="2.99" data-img="quest.jpg">
+            <div class="mix-product-item__img"><img src="../images/quest.jpg" alt="Quest Chocolate Chip Cookie"></div>
+            <div class="mix-product-item__info">
+              <span class="mix-product-item__brand">Quest</span>
+              <span class="mix-product-item__name">Chocolate Chip Cookie</span>
+              <span class="mix-product-item__price">€2,99</span>
+            </div>
+            <button class="mix-add-btn" data-id="3">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+          </div>
+
+          <div class="mix-product-item" data-cat="drankjes" data-id="4" data-name="NOCCO BCAA Passion" data-price="2.49" data-img="nocco.png">
+            <div class="mix-product-item__img"><img src="../images/nocco.png" alt="NOCCO BCAA Passion"></div>
+            <div class="mix-product-item__info">
+              <span class="mix-product-item__brand">NOCCO</span>
+              <span class="mix-product-item__name">BCAA Passion</span>
+              <span class="mix-product-item__price">€2,49</span>
+            </div>
+            <button class="mix-add-btn" data-id="4">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+          </div>
+
+          <div class="mix-product-item" data-cat="drankjes" data-id="5" data-name="Fanta Zero Sugar" data-price="1.89" data-img="fanta.png">
+            <div class="mix-product-item__img"><img src="../images/fanta.png" alt="Fanta Zero Sugar"></div>
+            <div class="mix-product-item__info">
+              <span class="mix-product-item__brand">Fanta</span>
+              <span class="mix-product-item__name">Zero Sugar</span>
+              <span class="mix-product-item__price">€1,89</span>
+            </div>
+            <button class="mix-add-btn" data-id="5">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+          </div>
+
+          <div class="mix-product-item" data-cat="eiwitrepen" data-id="7" data-name="Barebells Cookies & Cream" data-price="2.49" data-img="barebells.jpg">
+            <div class="mix-product-item__img"><img src="../images/barebells.jpg" alt="Barebells Cookies & Cream"></div>
+            <div class="mix-product-item__info">
+              <span class="mix-product-item__brand">Barebells</span>
+              <span class="mix-product-item__name">Cookies &amp; Cream</span>
+              <span class="mix-product-item__price">€2,49</span>
+            </div>
+            <button class="mix-add-btn" data-id="7">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+          </div>
+
+          <div class="mix-product-item" data-cat="treats" data-id="16" data-name="SmartSweets Gummy Bears" data-price="2.99" data-img="quest.jpg">
+            <div class="mix-product-item__img"><img src="../images/quest.jpg" alt="SmartSweets Gummy Bears"></div>
+            <div class="mix-product-item__info">
+              <span class="mix-product-item__brand">SmartSweets</span>
+              <span class="mix-product-item__name">Gummy Bears</span>
+              <span class="mix-product-item__price">€2,99</span>
+            </div>
+            <button class="mix-add-btn" data-id="16">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+          </div>
+
+          <div class="mix-product-item" data-cat="snacks" data-id="13" data-name="Quest Double Chocolate Chip" data-price="2.99" data-img="quest.jpg">
+            <div class="mix-product-item__img"><img src="../images/quest.jpg" alt="Quest Double Chocolate Chip"></div>
+            <div class="mix-product-item__info">
+              <span class="mix-product-item__brand">Quest</span>
+              <span class="mix-product-item__name">Double Chocolate Chip</span>
+              <span class="mix-product-item__price">€2,99</span>
+            </div>
+            <button class="mix-add-btn" data-id="13">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- RIGHT: Mix summary -->
+      <div class="mix-summary">
+        <div class="mix-summary__box">
+          <div class="mix-summary__header">
+            <h3>Jouw mix 💜</h3>
+            <span class="mix-summary__count" id="mix-count">0 items</span>
+          </div>
+
+          <div class="mix-summary__items" id="mix-summary-items">
+            <div class="mix-summary__empty" id="mix-empty">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--border)" stroke-width="1.5" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              <p>Voeg snacks toe aan jouw mix!</p>
+            </div>
+          </div>
+
+          <!-- Shipping progress -->
+          <div class="mix-shipping" id="mix-shipping">
+            <div class="mix-shipping__bar-wrap">
+              <div class="mix-shipping__bar" id="mix-shipping-bar" style="width:0%"></div>
+            </div>
+            <p id="mix-shipping-text">Voeg nog <strong>€40,00</strong> toe voor gratis verzending</p>
+          </div>
+
+          <div class="mix-summary__divider"></div>
+
+          <div class="mix-summary__total">
+            <span>Totaal</span>
+            <strong id="mix-total">€0,00</strong>
+          </div>
+
+          <button class="btn btn--primary btn--full btn--lg" id="mix-to-cart" disabled>
+            Voeg mix toe aan winkelwagen →
+          </button>
+          <a href="winkelwagen.html" class="btn btn--ghost btn--full" style="margin-top:8px;" id="mix-go-cart" style="display:none;">
+            Ga naar winkelwagen
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div id="site-footer"></div>
+
+<script src="../js/shop.js"></script>
+<script src="../js/header-template.js"></script>
+<script src="../js/mix.js"></script>
+</body>
+</html>

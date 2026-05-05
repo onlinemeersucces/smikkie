@@ -1,0 +1,44 @@
+/* =============================================
+   SMIKKIE — ALLE SNACKS PAGE CSS
+   ============================================= */
+
+.alle-hero { background: linear-gradient(135deg, #F5F0FF 0%, #EDE8F8 100%); padding: 48px 0 32px; }
+.alle-hero__inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+.alle-hero__title { font-size: 44px; font-weight: 900; color: var(--dark); letter-spacing: -1.5px; margin-bottom: 12px; }
+.alle-hero__sub { font-size: 16px; color: #555; line-height: 1.7; max-width: 520px; }
+.alle-hero__cats { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+.cat-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 18px; border-radius: 50px;
+  font-size: 14px; font-weight: 800; color: var(--dark);
+  text-decoration: none; transition: transform var(--transition), box-shadow var(--transition);
+}
+.cat-pill:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+
+/* Filter bar */
+.filter-bar { background: var(--white); border-bottom: 1.5px solid var(--border); position: sticky; top: 64px; z-index: 90; }
+.filter-bar__inner { display: flex; align-items: center; justify-content: space-between; padding: 12px 0; gap: 16px; }
+.filter-bar__cats { display: flex; gap: 8px; flex-wrap: wrap; }
+.filter-pill {
+  padding: 8px 18px; border-radius: 50px;
+  border: 1.5px solid var(--border);
+  background: var(--white);
+  font-family: var(--font); font-size: 14px; font-weight: 700; color: var(--dark);
+  cursor: pointer; transition: all var(--transition);
+}
+.filter-pill:hover { border-color: var(--purple); color: var(--purple); }
+.filter-pill--active { background: var(--purple); color: white; border-color: var(--purple); }
+
+/* Products */
+.alle-section { padding: 32px 0 60px; }
+.alle-header { margin-bottom: 20px; }
+.alle-count { font-size: 15px; font-weight: 700; color: var(--gray); }
+.alle-grid { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 1024px) { .alle-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px) {
+  .alle-hero__title { font-size: 30px; }
+  .filter-bar { top: 56px; }
+  .filter-bar__inner { flex-direction: column; align-items: flex-start; }
+  .alle-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+}

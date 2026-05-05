@@ -1,0 +1,70 @@
+/* =============================================
+   SMIKKIE — FAVORIETEN PAGE CSS
+   ============================================= */
+
+.fav-hero { background: linear-gradient(135deg, #F5F0FF 0%, #EDE8F8 100%); padding: 48px 0; }
+.fav-hero__inner { display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+.fav-hero__title { font-size: 44px; font-weight: 900; color: var(--dark); letter-spacing: -1.5px; margin-bottom: 14px; }
+.fav-hero__sub { font-size: 16px; color: #555; line-height: 1.7; max-width: 500px; }
+.fav-hero__bear { flex-shrink: 0; }
+
+.fav-section { padding: 48px 0 60px; }
+.fav-intro { text-align: center; margin-bottom: 36px; }
+.fav-intro__badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--green-light); color: var(--green-dark);
+  font-size: 13px; font-weight: 800; padding: 6px 14px; border-radius: 50px;
+  margin-bottom: 14px;
+}
+.fav-section__title { font-size: 32px; font-weight: 900; color: var(--dark); letter-spacing: -1px; margin-bottom: 10px; }
+.fav-section > .container > p { font-size: 15px; color: var(--gray); }
+
+/* Featured cards */
+.fav-featured { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 16px; }
+.fav-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+.fav-card:hover { box-shadow: 0 8px 32px rgba(91,45,142,0.12); transform: translateY(-3px); }
+.fav-card__rank {
+  position: absolute; top: 14px; left: 14px;
+  background: var(--purple); color: white;
+  font-size: 13px; font-weight: 900;
+  padding: 4px 12px; border-radius: 50px;
+  z-index: 2;
+}
+.fav-card__img {
+  background: var(--purple-light);
+  height: 200px;
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+}
+.fav-card__img img { max-height: 160px; max-width: 100%; object-fit: contain; }
+.fav-card__body { padding: 20px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
+.fav-card__brand { font-size: 12px; font-weight: 700; color: var(--gray); text-transform: uppercase; letter-spacing: 0.5px; }
+.fav-card__name { font-size: 22px; font-weight: 900; color: var(--dark); letter-spacing: -0.5px; }
+.fav-card__desc { font-size: 14px; color: #555; line-height: 1.6; font-style: italic; }
+.fav-card__meta { display: flex; flex-direction: column; gap: 8px; }
+.fav-card__tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.fav-card__footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 14px; border-top: 1.5px solid var(--border); }
+.fav-card__price { font-size: 24px; font-weight: 900; color: var(--purple); }
+.fav-card__actions { display: flex; gap: 8px; }
+
+/* Fav grid */
+.fav-grid { grid-template-columns: repeat(6, 1fr); }
+
+@media (max-width: 1200px) { .fav-grid { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 1024px) { .fav-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px) {
+  .fav-hero__inner { flex-direction: column; }
+  .fav-hero__bear { display: none; }
+  .fav-hero__title { font-size: 30px; }
+  .fav-featured { grid-template-columns: 1fr; }
+  .fav-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+}

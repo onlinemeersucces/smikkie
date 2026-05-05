@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Treats – Smikkie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/category.css">
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<section class="cat-hero" style="background: linear-gradient(135deg, #FFF0F5 0%, #FFF5F8 100%);">
+  <div class="container">
+    <div class="cat-hero__inner">
+      <div class="cat-hero__text">
+        <nav class="breadcrumb__nav" style="margin-bottom:12px;">
+          <a href="../index.html">Home</a>
+          <span class="sep">›</span>
+          <span class="current">Treats</span>
+        </nav>
+        <h1 class="cat-hero__title">Treats 🍬</h1>
+        <p class="cat-hero__sub">Zoete verwennerijen met een gezondere twist — geniet van gummies, chocolade en meer zonder schuldgevoel.</p>
+        <div class="cat-hero__stats">
+          <div class="cat-stat"><strong>10</strong><span>producten</span></div>
+          <div class="cat-stat"><strong>Laag in suiker</strong><span>opties</span></div>
+          <div class="cat-stat"><strong>Vanaf €1,99</strong><span>per stuk</span></div>
+        </div>
+      </div>
+      <div class="cat-hero__img">
+        <img src="../images/gummies.jpg" alt="Treats">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cat-section">
+  <div class="container">
+    <div class="cat-layout">
+      <aside class="cat-filters">
+        <div class="filter-group">
+          <h3 class="filter-group__title">Merk</h3>
+          <label class="filter-check"><input type="checkbox" checked> <span>SmartSweets</span> <em>4</em></label>
+          <label class="filter-check"><input type="checkbox"> <span>N!CK'S</span> <em>3</em></label>
+          <label class="filter-check"><input type="checkbox"> <span>Lily's</span> <em>2</em></label>
+          <label class="filter-check"><input type="checkbox"> <span>Haribo</span> <em>1</em></label>
+        </div>
+        <div class="filter-group">
+          <h3 class="filter-group__title">Type</h3>
+          <label class="filter-check"><input type="checkbox"> <span>Gummies</span> <em>4</em></label>
+          <label class="filter-check"><input type="checkbox"> <span>Chocolade</span> <em>3</em></label>
+          <label class="filter-check"><input type="checkbox"> <span>Snoep</span> <em>3</em></label>
+        </div>
+        <div class="filter-group">
+          <h3 class="filter-group__title">Prijs</h3>
+          <div class="filter-range">
+            <div class="filter-range__labels"><span>€1,99</span><span>€4,99</span></div>
+            <input type="range" min="199" max="499" value="499" class="filter-range__input" id="price-range">
+            <div class="filter-range__value">Tot <strong id="price-val">€4,99</strong></div>
+          </div>
+        </div>
+        <div class="filter-group">
+          <h3 class="filter-group__title">Kenmerken</h3>
+          <label class="filter-check"><input type="checkbox"> <span>Laag in suiker</span></label>
+          <label class="filter-check"><input type="checkbox"> <span>Suikervrij</span></label>
+          <label class="filter-check"><input type="checkbox"> <span>Vegan</span></label>
+          <label class="filter-check"><input type="checkbox"> <span>Glutenvrij</span></label>
+        </div>
+        <button class="btn btn--primary btn--full" style="margin-top:8px;">Filters toepassen</button>
+        <button class="btn btn--ghost btn--full" style="margin-top:8px;" id="reset-filters">Filters wissen</button>
+      </aside>
+
+      <div class="cat-main">
+        <div class="cat-main__header">
+          <span class="cat-main__count">10 producten</span>
+          <div class="cat-main__sort">
+            <label>Sorteren op:</label>
+            <select class="sort-select" id="sort-select">
+              <option value="popular">Populairste</option>
+              <option value="price-asc">Prijs: laag → hoog</option>
+              <option value="price-desc">Prijs: hoog → laag</option>
+              <option value="newest">Nieuwste</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="products-grid" id="products-grid">
+          <a href="product.html?id=6" class="prod-card prod-card--lg">
+            <div class="prod-card__badge">Bestseller</div>
+            <div class="prod-card__img"><img src="../images/gummies.jpg" alt="SmartSweets Gummies"></div>
+            <div class="prod-card__body">
+              <span class="prod-card__brand">SmartSweets</span>
+              <span class="prod-card__name">Fruity Gummies</span>
+              <div class="prod-card__stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="prod-card__rating-count">(178)</span></div>
+              <div class="prod-card__tags"><span class="tag">Laag in suiker</span><span class="tag">Vegan</span></div>
+              <div class="prod-card__footer">
+                <span class="prod-card__price">€2,99</span>
+                <button class="prod-card__add" data-add-to-cart="6"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+              </div>
+            </div>
+          </a>
+          <a href="product.html?id=24" class="prod-card prod-card--lg">
+            <div class="prod-card__badge prod-card__badge--green">Nieuw</div>
+            <div class="prod-card__img"><img src="../images/gummies.jpg" alt="SmartSweets Sour Bears"></div>
+            <div class="prod-card__body">
+              <span class="prod-card__brand">SmartSweets</span>
+              <span class="prod-card__name">Sour Bears</span>
+              <div class="prod-card__stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="prod-card__rating-count">(94)</span></div>
+              <div class="prod-card__tags"><span class="tag">Laag in suiker</span><span class="tag">Vegan</span></div>
+              <div class="prod-card__footer">
+                <span class="prod-card__price">€2,99</span>
+                <button class="prod-card__add" data-add-to-cart="24"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+              </div>
+            </div>
+          </a>
+          <a href="product.html?id=25" class="prod-card prod-card--lg">
+            <div class="prod-card__img"><img src="../images/nicks.png" alt="N!CK'S Chocolate Bar"></div>
+            <div class="prod-card__body">
+              <span class="prod-card__brand">N!CK'S</span>
+              <span class="prod-card__name">Milk Chocolate Bar</span>
+              <div class="prod-card__stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="prod-card__rating-count">(67)</span></div>
+              <div class="prod-card__tags"><span class="tag">Suikervrij</span><span class="tag">Vegan</span></div>
+              <div class="prod-card__footer">
+                <span class="prod-card__price">€2,49</span>
+                <button class="prod-card__add" data-add-to-cart="25"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+              </div>
+            </div>
+          </a>
+          <a href="product.html?id=26" class="prod-card prod-card--lg">
+            <div class="prod-card__img"><img src="../images/gummies.jpg" alt="SmartSweets Peach Rings"></div>
+            <div class="prod-card__body">
+              <span class="prod-card__brand">SmartSweets</span>
+              <span class="prod-card__name">Peach Rings</span>
+              <div class="prod-card__stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="prod-card__rating-count">(112)</span></div>
+              <div class="prod-card__tags"><span class="tag">Laag in suiker</span></div>
+              <div class="prod-card__footer">
+                <span class="prod-card__price">€2,99</span>
+                <button class="prod-card__add" data-add-to-cart="26"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+              </div>
+            </div>
+          </a>
+          <a href="product.html?id=27" class="prod-card prod-card--lg">
+            <div class="prod-card__img"><img src="../images/nicks.png" alt="N!CK'S Dark Chocolate"></div>
+            <div class="prod-card__body">
+              <span class="prod-card__brand">N!CK'S</span>
+              <span class="prod-card__name">Dark Chocolate Bar</span>
+              <div class="prod-card__stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="prod-card__rating-count">(53)</span></div>
+              <div class="prod-card__tags"><span class="tag">Suikervrij</span><span class="tag">Vegan</span></div>
+              <div class="prod-card__footer">
+                <span class="prod-card__price">€2,49</span>
+                <button class="prod-card__add" data-add-to-cart="27"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+              </div>
+            </div>
+          </a>
+          <a href="product.html?id=28" class="prod-card prod-card--lg">
+            <div class="prod-card__img"><img src="../images/gummies.jpg" alt="SmartSweets Cola Gummies"></div>
+            <div class="prod-card__body">
+              <span class="prod-card__brand">SmartSweets</span>
+              <span class="prod-card__name">Cola Gummies</span>
+              <div class="prod-card__stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="prod-card__rating-count">(88)</span></div>
+              <div class="prod-card__tags"><span class="tag">Laag in suiker</span><span class="tag">Vegan</span></div>
+              <div class="prod-card__footer">
+                <span class="prod-card__price">€2,99</span>
+                <button class="prod-card__add" data-add-to-cart="28"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="pagination">
+          <button class="page-btn page-btn--active">1</button>
+          <button class="page-btn">2</button>
+          <button class="page-btn">→</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer"></div>
+
+<script src="../js/shop.js"></script>
+<script src="../js/header-template.js"></script>
+<script src="../js/category.js"></script>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smikkie — Lekker snacken, zonder schuldgevoel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+
+<!-- HEADER (injected by JS) -->
+<div id="site-header"></div>
+
+<!-- ==================== HERO ==================== -->
+<section class="hero">
+  <div class="hero__bg-blob"></div>
+  <div class="container">
+    <div class="hero__inner">
+      <div class="hero__left">
+        <h1 class="hero__title">Lekker snacken,<br>zonder schuldgevoel.</h1>
+        <p class="hero__sub">
+          De lekkerste snacks &amp; drankjes 🍫🥤<br>
+          Gezondere alternatieven — stel jouw<br>
+          Smikkie mix samen 💜
+        </p>
+        <div class="hero__actions">
+          <a href="pages/mix.html" class="btn btn--primary">Stel jouw Smikkie mix samen &rsaquo;</a>
+          <a href="pages/favorieten.html" class="btn btn--secondary">Bekijk Smikkie's favorieten</a>
+        </div>
+        <div class="hero__approved">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#7DC242"/><polyline points="6 12 10 16 18 8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span><strong>Smikkie Approved</strong> — alleen snacks die écht lekker zijn</span>
+        </div>
+      </div>
+      <div class="hero__right">
+        <!-- Decorative dashes -->
+        <div class="hero__dash hero__dash--1"></div>
+        <div class="hero__dash hero__dash--2"></div>
+        <!-- Bear mascot -->
+        <div class="hero__bear">
+          <img src="images/bear-mascot-brown.png" alt="Smikkie beer mascot" class="hero__bear-img">
+        </div>
+        <!-- Smikkie Box -->
+        <div class="hero__box">
+          <img src="images/smikkie-box-hero.png" alt="Smikkie box met snacks" class="hero__box-img">
+        </div>
+        <!-- Green grass hill -->
+        <div class="hero__grass"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CATEGORIES ==================== -->
+<section class="section categories fade-in">
+  <div class="container">
+    <h2 class="section-title">Waar heb jij zin in? 😋</h2>
+    <div class="categories__grid">
+      <a href="pages/eiwitrepen.html" class="cat-card">
+        <div class="cat-card__img" style="background:#F0EDF8;">
+          <img src="images/barebells.jpg" alt="Eiwitrepen">
+        </div>
+        <div class="cat-card__label">
+          <span>Eiwitrepen</span>
+          <div class="cat-card__arrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+      </a>
+      <a href="pages/snacks.html" class="cat-card">
+        <div class="cat-card__img" style="background:#F5F5E8;">
+          <img src="images/quest.jpg" alt="Snacks & koekjes">
+        </div>
+        <div class="cat-card__label">
+          <span>Snacks &amp; koekjes</span>
+          <div class="cat-card__arrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+      </a>
+      <a href="pages/drankjes.html" class="cat-card">
+        <div class="cat-card__img" style="background:#E8F4F8;">
+          <img src="images/nocco.png" alt="Drankjes">
+        </div>
+        <div class="cat-card__label">
+          <span>Drankjes</span>
+          <div class="cat-card__arrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+      </a>
+      <a href="pages/treats.html" class="cat-card">
+        <div class="cat-card__img" style="background:#FFF0F0;">
+          <img src="images/gummies.jpg" alt="Treats">
+        </div>
+        <div class="cat-card__label">
+          <span>Treats</span>
+          <div class="cat-card__arrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div style="text-align:center;margin-top:32px;">
+      <a href="pages/alle-snacks.html" class="btn btn--primary">Bekijk alles &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== WHY SMIKKIE ==================== -->
+<section class="section section--purple-light why fade-in">
+  <div class="container">
+    <h2 class="section-title">Waarom Smikkie? 💜</h2>
+    <div class="why__grid">
+      <div class="why-card">
+        <div class="why-card__icon why-card__icon--green">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Gezondere alternatieven</h3>
+        <p>Lekker genieten zonder schuldgevoel.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-card__icon why-card__icon--purple">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        </div>
+        <h3>Alles los te bestellen</h3>
+        <p>Geen dozen, alleen wat jij wilt.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-card__icon why-card__icon--green">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <h3>Snel in huis</h3>
+        <p>Voor 23:59 besteld = morgen genieten.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-card__icon why-card__icon--purple">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="5"/><path d="M8 14s-4 1-4 5h16c0-4-4-5-4-5"/></svg>
+        </div>
+        <h3>Smikkie Approved</h3>
+        <p>Alleen snacks die écht lekker zijn.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== HOW IT WORKS ==================== -->
+<section class="section how fade-in">
+  <div class="container">
+    <h2 class="section-title">Zo werkt Smikkie 🛒</h2>
+    <div class="how__steps">
+      <div class="how-step">
+        <div class="how-step__circle" style="background:#E8F5D0;border-color:#7DC242;">
+          <span class="how-step__num" style="background:#7DC242;">1</span>
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#7DC242" stroke-width="1.8" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        </div>
+        <p>Kies jouw snacks</p>
+      </div>
+      <div class="how-step__arrow">→</div>
+      <div class="how-step">
+        <div class="how-step__circle" style="background:#F0EDF8;border-color:#9B6FD0;">
+          <span class="how-step__num" style="background:#9B6FD0;">2</span>
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#9B6FD0" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+        </div>
+        <p>Mix &amp; match wat<br>jij lekker vindt</p>
+      </div>
+      <div class="how-step__arrow">→</div>
+      <div class="how-step">
+        <div class="how-step__circle" style="background:#EEE8F8;border-color:#7B5DB8;">
+          <span class="how-step__num" style="background:#7B5DB8;">3</span>
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#7B5DB8" stroke-width="1.8" stroke-linecap="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        </div>
+        <p>Wij pakken het<br>voor je in.</p>
+      </div>
+      <div class="how-step__arrow">→</div>
+      <div class="how-step">
+        <div class="how-step__circle" style="background:#FFF0F0;border-color:#E8A87C;">
+          <span class="how-step__num" style="background:#E8A87C;">4</span>
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#E8A87C" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="5"/><path d="M8 14s-4 1-4 5h16c0-4-4-5-4-5"/></svg>
+        </div>
+        <p>Genieten maar 😋</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FAVORITES ==================== -->
+<section class="section favorites fade-in">
+  <div class="container">
+    <h2 class="section-title">Smikkie's favorieten 🍪🍫</h2>
+    <p class="section-subtitle">Dit zijn snacks waar Smikkie niet vanaf kan blijven.</p>
+    <div class="favorites__grid">
+      <a href="pages/product.html?id=1" class="prod-card">
+        <div class="prod-card__img"><img src="images/barebells.jpg" alt="Barebells Chocolate Dough"></div>
+        <div class="prod-card__body">
+          <span class="prod-card__brand">Barebells</span>
+          <span class="prod-card__name">Chocolate Dough</span>
+          <div class="prod-card__footer">
+            <span class="prod-card__price">€2,49</span>
+            <button class="prod-card__add" data-add-to-cart="1" aria-label="Toevoegen">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+          </div>
+        </div>
+      </a>
+      <a href="pages/product.html?id=2" class="prod-card">
+        <div class="prod-card__img"><img src="images/nicks.png" alt="NICK'S Peanut Caramel Bar"></div>
+        <div class="prod-card__body">
+          <span class="prod-card__brand">N!CK'S</span>
+          <span class="prod-card__name">Peanut Caramel Bar</span>
+          <div class="prod-card__footer">
+            <span class="prod-card__price">€2,29</span>
+            <button class="prod-card__add" data-add-to-cart="2" aria-label="Toevoegen">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+          </div>
+        </div>
+      </a>
+      <a href="pages/product.html?id=3" class="prod-card">
+        <div class="prod-card__img"><img src="images/quest.jpg" alt="Quest Chocolate Chip Cookie"></div>
+        <div class="prod-card__body">
+          <span class="prod-card__brand">Quest</span>
+          <span class="prod-card__name">Chocolate Chip Cookie</span>
+          <div class="prod-card__footer">
+            <span class="prod-card__price">€2,99</span>
+            <button class="prod-card__add" data-add-to-cart="3" aria-label="Toevoegen">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+          </div>
+        </div>
+      </a>
+      <a href="pages/product.html?id=4" class="prod-card">
+        <div class="prod-card__img"><img src="images/nocco.png" alt="NOCCO BCAA Passion"></div>
+        <div class="prod-card__body">
+          <span class="prod-card__brand">NOCCO</span>
+          <span class="prod-card__name">BCAA Passion</span>
+          <div class="prod-card__footer">
+            <span class="prod-card__price">€2,49</span>
+            <button class="prod-card__add" data-add-to-cart="4" aria-label="Toevoegen">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+          </div>
+        </div>
+      </a>
+      <a href="pages/product.html?id=5" class="prod-card">
+        <div class="prod-card__img"><img src="images/fanta.png" alt="Fanta zero sugar"></div>
+        <div class="prod-card__body">
+          <span class="prod-card__brand">Fanta</span>
+          <span class="prod-card__name">zero sugar</span>
+          <div class="prod-card__footer">
+            <span class="prod-card__price">€1,89</span>
+            <button class="prod-card__add" data-add-to-cart="5" aria-label="Toevoegen">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </button>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div style="text-align:center;margin-top:32px;">
+      <a href="pages/favorieten.html" class="btn btn--primary">Bekijk alle favorieten &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== MIX CTA ==================== -->
+<section class="section mix-cta fade-in">
+  <div class="container">
+    <div class="mix-cta__inner">
+      <div class="mix-cta__left">
+        <h2 class="mix-cta__title">Jouw mix, jouw moment 💜</h2>
+        <p class="mix-cta__sub">Van eiwitrepen tot snacks en drankjes —<br>stel jouw perfecte Smikkie mix samen.</p>
+        <a href="pages/mix.html" class="btn btn--primary">Start met mixen &rsaquo;</a>
+      </div>
+      <div class="mix-cta__right">
+        <div class="mix-cta__grass"></div>
+        <div class="mix-cta__box">
+          <div class="mix-cta__box-products">
+            <img src="images/barebells.jpg" alt="">
+            <img src="images/nicks.png" alt="">
+            <img src="images/nocco.png" alt="">
+            <img src="images/fanta.png" alt="">
+          </div>
+          <div class="mix-cta__box-label">
+            <span class="mix-cta__box-logo">Smikkie<span style="color:#7DC242">.</span></span>
+            <span class="mix-cta__box-tagline">Lekker snacken,<br>zonder schuldgevoel.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== BOTTOM CTA ==================== -->
+<section class="bottom-cta">
+  <div class="container">
+    <div class="bottom-cta__inner">
+      <div class="bottom-cta__bear">
+        <img src="images/bear-mascot-brown.png" alt="Smikkie beer" class="bottom-cta__bear-img">
+      </div>
+      <div class="bottom-cta__content">
+        <h2>Klaar om te smikkelen? 😍</h2>
+        <p>Stel jouw Smikkie mix samen en geniet<br>zonder schuldgevoel.</p>
+      </div>
+      <a href="pages/mix.html" class="btn btn--green btn--lg">Stel jouw Smikkie mix samen &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER (injected by JS) -->
+<div id="site-footer"></div>
+
+<script src="js/shop.js"></script>
+<script src="js/header-template.js"></script>
+</body>
+</html>
