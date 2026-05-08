@@ -192,6 +192,17 @@
 .sz-dash--1 { width: 22px; height: 6px; transform: rotate(-20deg); }
 .sz-dash--2 { width: 16px; height: 5px; transform: rotate(15deg); margin-left: 6px; }
 
+/* Wide (standalone section) smikkie zegt */
+.smikkie-zegt--wide {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 28px 32px;
+}
+.smikkie-zegt--wide .smikkie-zegt__bear { width: 110px; }
+.smikkie-zegt--wide .smikkie-zegt__content h4 { font-size: 18px; }
+.smikkie-zegt--wide .smikkie-zegt__content p { font-size: 18px; }
+.smikkie-zegt-section { padding: 0 0 8px; }
+
 /* Mobile smikkie zegt */
 .smikkie-zegt--mobile {
   flex-direction: row;
