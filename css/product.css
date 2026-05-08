@@ -13,6 +13,13 @@
   align-items: start;
 }
 
+/* --- GALLERY COL (wraps gallery + smikkie-zegt) --- */
+.gallery-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
 /* --- GALLERY --- */
 .gallery { display: flex; gap: 16px; }
 .gallery__thumbs {
