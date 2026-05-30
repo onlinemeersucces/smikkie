@@ -355,7 +355,7 @@ function _initMobileMenu() {
     searchInput.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' && e.target.value.trim()) {
         const isInPages = window.location.pathname.includes('/pages/');
-        window.location.href = `${isInPages ? '' : 'pages/'}alle-snacks.html?q=${encodeURIComponent(e.target.value)}`;
+        window.location.href = `${isInPages ? '' : 'pages/'}zoeken.html?q=${encodeURIComponent(e.target.value)}`;
       }
     });
   }
@@ -410,7 +410,7 @@ function _initSearch() {
     });
     input.addEventListener('keydown', e => {
       if (e.key === 'Enter' && input.value.trim()) {
-        window.location.href = `${isInPages ? '' : 'pages/'}alle-snacks.html?q=${encodeURIComponent(input.value)}`;
+        window.location.href = `${isInPages ? '' : 'pages/'}zoeken.html?q=${encodeURIComponent(input.value)}`;
       }
     });
   }

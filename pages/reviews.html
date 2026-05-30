@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Klantreviews – Smikkie</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <style>
+    .reviews-hero {
+      background: var(--purple-light);
+      padding: 60px 0;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+    .reviews-hero h1 {
+      font-size: 42px;
+      font-weight: 900;
+      color: var(--purple);
+      letter-spacing: -1px;
+      margin-bottom: 8px;
+    }
+    .reviews-hero p {
+      font-size: 18px;
+      color: var(--gray);
+      margin-bottom: 32px;
+    }
+    .reviews-score {
+      display: inline-flex;
+      align-items: center;
+      gap: 20px;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 24px 40px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+    }
+    .reviews-score__number {
+      font-size: 56px;
+      font-weight: 900;
+      color: var(--dark);
+      line-height: 1;
+    }
+    .reviews-score__stars {
+      font-size: 28px;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .reviews-score__count {
+      font-size: 14px;
+      color: var(--gray);
+    }
+    .reviews-page { padding: 60px 0 80px; }
+    .reviews-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+    /* Sidebar */
+    .reviews-sidebar {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: 100px;
+    }
+    .reviews-sidebar h3 {
+      font-size: 16px;
+      font-weight: 900;
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+    .rating-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+    .rating-bar__stars { font-size: 13px; color: var(--gray); font-weight: 700; white-space: nowrap; }
+    .rating-bar__track {
+      flex: 1;
+      height: 8px;
+      background: var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .rating-bar__fill {
+      height: 100%;
+      background: #f5a623;
+      border-radius: 4px;
+      transition: width 0.3s;
+    }
+    .rating-bar__count { font-size: 12px; color: var(--gray); min-width: 24px; text-align: right; }
+    /* Reviews list */
+    .reviews-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .review-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 24px 28px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }
+    .review-card__header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .review-card__user {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .review-card__avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--purple);
+      color: var(--white);
+      font-size: 18px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .review-card__name {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--dark);
+    }
+    .review-card__date {
+      font-size: 12px;
+      color: var(--gray);
+      margin-top: 2px;
+    }
+    .review-card__stars { font-size: 18px; }
+    .review-card__verified {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #1a7a3e;
+      margin-bottom: 10px;
+    }
+    .review-card__text {
+      font-size: 15px;
+      color: #444;
+      line-height: 1.7;
+    }
+    .review-card__product {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--gray);
+    }
+    .review-card__product a {
+      color: var(--purple);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .review-card__product a:hover { text-decoration: underline; }
+    /* Write review CTA */
+    .write-review-cta {
+      background: var(--purple);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      text-align: center;
+      margin-top: 32px;
+    }
+    .write-review-cta h3 {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .write-review-cta p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 20px;
+    }
+    .btn-white {
+      background: var(--white);
+      color: var(--purple);
+      border: none;
+      padding: 12px 24px;
+      border-radius: var(--radius-xl);
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+    @media (max-width: 900px) {
+      .reviews-layout { grid-template-columns: 1fr; }
+      .reviews-sidebar { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="site-header"></header>
+
+  <main>
+    <section class="reviews-hero">
+      <div class="container">
+        <h1>Wat onze klanten zeggen</h1>
+        <p>Meer dan 2.400 tevreden Smikkie fans gingen je voor.</p>
+        <div class="reviews-score">
+          <div class="reviews-score__number">4.8</div>
+          <div>
+            <span class="reviews-score__stars">⭐⭐⭐⭐⭐</span>
+            <span class="reviews-score__count">Gebaseerd op 2.418 reviews</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reviews-page">
+      <div class="container">
+        <div class="reviews-layout">
+
+          <!-- Sidebar -->
+          <aside class="reviews-sidebar">
+            <h3>Beoordeling</h3>
+            <div class="rating-bar">
+              <span class="rating-bar__stars">5 ★</span>
+              <div class="rating-bar__track"><div class="rating-bar__fill" style="width:78%"></div></div>
+              <span class="rating-bar__count">1.886</span>
+            </div>
+            <div class="rating-bar">
+              <span class="rating-bar__stars">4 ★</span>
+              <div class="rating-bar__track"><div class="rating-bar__fill" style="width:14%"></div></div>
+              <span class="rating-bar__count">338</span>
+            </div>
+            <div class="rating-bar">
+              <span class="rating-bar__stars">3 ★</span>
+              <div class="rating-bar__track"><div class="rating-bar__fill" style="width:5%"></div></div>
+              <span class="rating-bar__count">121</span>
+            </div>
+            <div class="rating-bar">
+              <span class="rating-bar__stars">2 ★</span>
+              <div class="rating-bar__track"><div class="rating-bar__fill" style="width:2%"></div></div>
+              <span class="rating-bar__count">48</span>
+            </div>
+            <div class="rating-bar">
+              <span class="rating-bar__stars">1 ★</span>
+              <div class="rating-bar__track"><div class="rating-bar__fill" style="width:1%"></div></div>
+              <span class="rating-bar__count">25</span>
+            </div>
+
+            <div class="write-review-cta">
+              <h3>Deel jouw ervaring</h3>
+              <p>Heb je een bestelling ontvangen? Laat een review achter!</p>
+              <a href="account.html" class="btn-white">Review schrijven</a>
+            </div>
+          </aside>
+
+          <!-- Reviews list -->
+          <div class="reviews-list">
+
+            <div class="review-card">
+              <div class="review-card__header">
+                <div class="review-card__user">
+                  <div class="review-card__avatar">J</div>
+                  <div>
+                    <div class="review-card__name">Jamie K.</div>
+                    <div class="review-card__date">3 dagen geleden</div>
+                  </div>
+                </div>
+                <span class="review-card__stars">⭐⭐⭐⭐⭐</span>
+              </div>
+              <div class="review-card__verified">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Geverifieerde aankoop
+              </div>
+              <p class="review-card__text">"Echt mijn favoriet! Smaakte naar chocolate chip koekjes 🍪 Heerlijk en de levering was ook super snel. Volgende week meteen weer een bestelling geplaatst!"</p>
+              <div class="review-card__product">Over: <a href="product.html">Barebells Chocolate Dough</a></div>
+            </div>
+
+            <div class="review-card">
+              <div class="review-card__header">
+                <div class="review-card__user">
+                  <div class="review-card__avatar" style="background:#e91e8c;">M</div>
+                  <div>
+                    <div class="review-card__name">Mike V.</div>
+                    <div class="review-card__date">5 dagen geleden</div>
+                  </div>
+                </div>
+                <span class="review-card__stars">⭐⭐⭐⭐⭐</span>
+              </div>
+              <div class="review-card__verified">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Geverifieerde aankoop
+              </div>
+              <p class="review-card__text">"Heerlijke reep en goede voedingswaarden. Ik bestel al maanden bij Smikkie en ben elke keer weer blij. De mix-optie is echt geweldig, zo kun je altijd wat nieuws proberen."</p>
+              <div class="review-card__product">Over: <a href="product.html">N!CK'S Peanut Caramel Bar</a></div>
+            </div>
+
+            <div class="review-card">
+              <div class="review-card__header">
+                <div class="review-card__user">
+                  <div class="review-card__avatar" style="background:#2196f3;">L</div>
+                  <div>
+                    <div class="review-card__name">Lotte S.</div>
+                    <div class="review-card__date">1 week geleden</div>
+                  </div>
+                </div>
+                <span class="review-card__stars">⭐⭐⭐⭐⭐</span>
+              </div>
+              <div class="review-card__verified">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Geverifieerde aankoop
+              </div>
+              <p class="review-card__text">"Altijd in mijn mix, deze mag niet ontbreken. Super lekker en past perfect in mijn dagelijkse routine. Aanrader voor iedereen die gezond wil snacken!"</p>
+              <div class="review-card__product">Over: <a href="product.html">Quest Chocolate Chip Cookie</a></div>
+            </div>
+
+            <div class="review-card">
+              <div class="review-card__header">
+                <div class="review-card__user">
+                  <div class="review-card__avatar" style="background:#4caf50;">T</div>
+                  <div>
+                    <div class="review-card__name">Tom B.</div>
+                    <div class="review-card__date">1 week geleden</div>
+                  </div>
+                </div>
+                <span class="review-card__stars">⭐⭐⭐⭐⭐</span>
+              </div>
+              <div class="review-card__verified">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Geverifieerde aankoop
+              </div>
+              <p class="review-card__text">"Zacht van binnen en echt super lekker. Ik was sceptisch over eiwitrepen maar dit heeft me overtuigd. Smikkie heeft echt de beste selectie!"</p>
+              <div class="review-card__product">Over: <a href="product.html">Barebells Salty Peanut</a></div>
+            </div>
+
+            <div class="review-card">
+              <div class="review-card__header">
+                <div class="review-card__user">
+                  <div class="review-card__avatar" style="background:#ff9800;">S</div>
+                  <div>
+                    <div class="review-card__name">Sara D.</div>
+                    <div class="review-card__date">2 weken geleden</div>
+                  </div>
+                </div>
+                <span class="review-card__stars">⭐⭐⭐⭐⭐</span>
+              </div>
+              <div class="review-card__verified">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Geverifieerde aankoop
+              </div>
+              <p class="review-card__text">"Snelle levering, mooie verpakking en de snacks zijn heerlijk. Ik heb de mix samengesteld met een vriend en we waren allebei super blij. Definitief een vaste klant!"</p>
+              <div class="review-card__product">Over: <a href="product.html">Smikkie Mix Box</a></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="../js/header-template.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      injectHeader();
+      injectFooter();
+    });
+  </script>
+</body>
+</html>

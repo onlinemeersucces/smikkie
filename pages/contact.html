@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Klantenservice & Contact – Smikkie</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/legal.css">
+  <style>
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 32px;
+    }
+    .contact-info {
+      background: var(--gray-light);
+      padding: 32px;
+      border-radius: var(--radius-md);
+    }
+    .contact-info h3 { margin-top: 0; }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .form-group label {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--dark);
+    }
+    .form-group input, .form-group textarea {
+      padding: 12px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      font-family: var(--font);
+      font-size: 15px;
+      transition: border-color var(--transition);
+    }
+    .form-group input:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: var(--purple);
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    .btn-submit {
+      background: var(--purple);
+      color: var(--white);
+      border: none;
+      padding: 14px 24px;
+      border-radius: var(--radius-sm);
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: background var(--transition);
+      margin-top: 8px;
+    }
+    .btn-submit:hover {
+      background: var(--purple-dark);
+    }
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER INJECTED HERE -->
+  <header class="site-header" id="site-header"></header>
+
+  <main>
+    <section class="legal-header">
+      <div class="container">
+        <h1>Klantenservice</h1>
+        <p>We helpen je graag verder!</p>
+      </div>
+    </section>
+
+    <section class="legal-content">
+      <div class="container">
+        <div class="legal-content__inner" style="max-width: 900px;">
+          <div class="legal-text">
+            <h2>Hoe kunnen we je helpen?</h2>
+            <p>Heb je een vraag over je bestelling, een product, of wil je gewoon iets met ons delen? Kijk eerst even bij onze <a href="faq.html">Veelgestelde Vragen</a>. Staat je antwoord er niet tussen? Neem dan contact met ons op via onderstaand formulier of stuur ons een e-mail.</p>
+
+            <div class="contact-grid">
+              <div class="contact-form-wrap">
+                <h3>Stuur een bericht</h3>
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('Bedankt voor je bericht! We nemen zo snel mogelijk contact met je op.');">
+                  <div class="form-group">
+                    <label for="name">Naam</label>
+                    <input type="text" id="name" required placeholder="Jouw naam">
+                  </div>
+                  <div class="form-group">
+                    <label for="email">E-mailadres</label>
+                    <input type="email" id="email" required placeholder="jouw@email.nl">
+                  </div>
+                  <div class="form-group">
+                    <label for="order">Ordernummer (optioneel)</label>
+                    <input type="text" id="order" placeholder="Bijv. #12345">
+                  </div>
+                  <div class="form-group">
+                    <label for="message">Bericht</label>
+                    <textarea id="message" required placeholder="Hoe kunnen we je helpen?"></textarea>
+                  </div>
+                  <button type="submit" class="btn-submit">Verstuur bericht</button>
+                </form>
+              </div>
+
+              <div class="contact-info">
+                <h3>Contactgegevens</h3>
+                <p><strong>E-mail:</strong><br><a href="mailto:hallo@smikkie.nl">hallo@smikkie.nl</a></p>
+                <p>We streven ernaar om e-mails binnen 24 uur te beantwoorden op werkdagen.</p>
+                
+                <h3 style="margin-top: 24px;">Bedrijfsgegevens</h3>
+                <p>Smikkie B.V.<br>
+                Voorbeeldstraat 123<br>
+                1012 AB Amsterdam<br>
+                Nederland</p>
+                <p>KVK: 12345678<br>
+                BTW: NL123456789B01</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER INJECTED HERE -->
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="../js/header-template.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      injectHeader();
+      injectFooter();
+    });
+  </script>
+</body>
+</html>

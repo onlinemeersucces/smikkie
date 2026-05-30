@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mijn Account – Smikkie</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <style>
+    .dashboard-page {
+      background: var(--gray-light);
+      min-height: 80vh;
+      padding: 48px 0 80px;
+    }
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+    /* Sidebar */
+    .dashboard-sidebar {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      position: sticky;
+      top: 100px;
+    }
+    .dashboard-user {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 20px;
+    }
+    .dashboard-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--purple);
+      color: var(--white);
+      font-size: 22px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .dashboard-user-name {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--dark);
+    }
+    .dashboard-user-email {
+      font-size: 13px;
+      color: var(--gray);
+    }
+    .dashboard-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .dashboard-nav-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--dark);
+      text-decoration: none;
+      transition: all var(--transition);
+    }
+    .dashboard-nav-link:hover {
+      background: var(--purple-light);
+      color: var(--purple);
+    }
+    .dashboard-nav-link.active {
+      background: var(--purple);
+      color: var(--white);
+    }
+    .dashboard-nav-link svg { flex-shrink: 0; }
+    .dashboard-nav-link.logout {
+      color: #e53e3e;
+      margin-top: 12px;
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+    }
+    .dashboard-nav-link.logout:hover {
+      background: #fff5f5;
+      color: #c53030;
+    }
+    /* Main content */
+    .dashboard-main {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .dashboard-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      padding: 28px 32px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+    }
+    .dashboard-card h2 {
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--dark);
+      margin-bottom: 20px;
+    }
+    /* Stats row */
+    .dashboard-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .stat-card {
+      background: var(--purple-light);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      text-align: center;
+    }
+    .stat-card__value {
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--purple);
+      display: block;
+    }
+    .stat-card__label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gray);
+      margin-top: 4px;
+    }
+    /* Recent orders */
+    .order-row {
+      display: grid;
+      grid-template-columns: 1fr auto auto auto;
+      gap: 16px;
+      align-items: center;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .order-row:last-child { border-bottom: none; }
+    .order-number { font-weight: 800; color: var(--dark); font-size: 15px; }
+    .order-date { font-size: 13px; color: var(--gray); margin-top: 2px; }
+    .order-status {
+      padding: 4px 12px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .order-status--delivered { background: #e6f9ef; color: #1a7a3e; }
+    .order-status--shipped { background: #fff3e0; color: #e65100; }
+    .order-status--processing { background: var(--purple-light); color: var(--purple); }
+    .order-total { font-weight: 800; color: var(--dark); font-size: 15px; }
+    .order-detail-link {
+      font-size: 13px;
+      color: var(--purple);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .order-detail-link:hover { text-decoration: underline; }
+    /* Address card */
+    .address-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .address-box {
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      position: relative;
+    }
+    .address-box__label {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+    .address-box__text {
+      font-size: 15px;
+      color: var(--dark);
+      line-height: 1.6;
+    }
+    .address-box__edit {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      font-size: 13px;
+      color: var(--purple);
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .address-box__edit:hover { text-decoration: underline; }
+    /* Btn */
+    .btn-purple {
+      background: var(--purple);
+      color: var(--white);
+      border: none;
+      padding: 12px 24px;
+      border-radius: var(--radius-xl);
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background var(--transition);
+    }
+    .btn-purple:hover { background: var(--purple-dark); }
+    @media (max-width: 900px) {
+      .dashboard-grid { grid-template-columns: 1fr; }
+      .dashboard-sidebar { position: static; }
+      .dashboard-stats { grid-template-columns: repeat(2, 1fr); }
+      .address-grid { grid-template-columns: 1fr; }
+      .order-row { grid-template-columns: 1fr auto; }
+      .order-status, .order-detail-link { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="site-header"></header>
+
+  <main>
+    <section class="dashboard-page">
+      <div class="container">
+        <div class="dashboard-grid">
+
+          <!-- SIDEBAR -->
+          <aside class="dashboard-sidebar">
+            <div class="dashboard-user">
+              <div class="dashboard-avatar">S</div>
+              <div>
+                <div class="dashboard-user-name">Smikkie Fan</div>
+                <div class="dashboard-user-email">fan@smikkie.nl</div>
+              </div>
+            </div>
+            <nav class="dashboard-nav">
+              <a href="mijn-account.html" class="dashboard-nav-link active">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                Dashboard
+              </a>
+              <a href="bestellingen.html" class="dashboard-nav-link">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                Mijn bestellingen
+              </a>
+              <a href="wenslijst.html" class="dashboard-nav-link">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                Wenslijst
+              </a>
+              <a href="#" class="dashboard-nav-link">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                Gegevens wijzigen
+              </a>
+              <a href="account.html" class="dashboard-nav-link logout">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                Uitloggen
+              </a>
+            </nav>
+          </aside>
+
+          <!-- MAIN -->
+          <div class="dashboard-main">
+
+            <!-- Stats -->
+            <div class="dashboard-card">
+              <h2>Welkom terug, Smikkie Fan! 👋</h2>
+              <div class="dashboard-stats">
+                <div class="stat-card">
+                  <span class="stat-card__value">7</span>
+                  <span class="stat-card__label">Bestellingen</span>
+                </div>
+                <div class="stat-card">
+                  <span class="stat-card__value">12</span>
+                  <span class="stat-card__label">Favorieten</span>
+                </div>
+                <div class="stat-card">
+                  <span class="stat-card__value">€94</span>
+                  <span class="stat-card__label">Totaal besteed</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recent orders -->
+            <div class="dashboard-card">
+              <h2>Recente bestellingen</h2>
+              <div class="order-row">
+                <div>
+                  <div class="order-number">#SM-2847</div>
+                  <div class="order-date">28 april 2026</div>
+                </div>
+                <span class="order-status order-status--delivered">Bezorgd</span>
+                <span class="order-total">€18,45</span>
+                <a href="bestellingen.html" class="order-detail-link">Bekijk →</a>
+              </div>
+              <div class="order-row">
+                <div>
+                  <div class="order-number">#SM-2791</div>
+                  <div class="order-date">14 april 2026</div>
+                </div>
+                <span class="order-status order-status--delivered">Bezorgd</span>
+                <span class="order-total">€22,90</span>
+                <a href="bestellingen.html" class="order-detail-link">Bekijk →</a>
+              </div>
+              <div class="order-row">
+                <div>
+                  <div class="order-number">#SM-2703</div>
+                  <div class="order-date">2 april 2026</div>
+                </div>
+                <span class="order-status order-status--delivered">Bezorgd</span>
+                <span class="order-total">€15,70</span>
+                <a href="bestellingen.html" class="order-detail-link">Bekijk →</a>
+              </div>
+              <div style="margin-top: 20px;">
+                <a href="bestellingen.html" class="btn-purple">Alle bestellingen bekijken</a>
+              </div>
+            </div>
+
+            <!-- Addresses -->
+            <div class="dashboard-card">
+              <h2>Mijn adressen</h2>
+              <div class="address-grid">
+                <div class="address-box">
+                  <div class="address-box__label">Bezorgadres</div>
+                  <div class="address-box__text">
+                    Smikkie Fan<br>
+                    Voorbeeldstraat 42<br>
+                    1234 AB Amsterdam<br>
+                    Nederland
+                  </div>
+                  <span class="address-box__edit">Wijzigen</span>
+                </div>
+                <div class="address-box">
+                  <div class="address-box__label">Factuuradres</div>
+                  <div class="address-box__text">
+                    Smikkie Fan<br>
+                    Voorbeeldstraat 42<br>
+                    1234 AB Amsterdam<br>
+                    Nederland
+                  </div>
+                  <span class="address-box__edit">Wijzigen</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="../js/header-template.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      injectHeader();
+      injectFooter();
+    });
+  </script>
+</body>
+</html>

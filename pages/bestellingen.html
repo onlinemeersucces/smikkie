@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mijn Bestellingen – Smikkie</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <style>
+    .orders-page {
+      background: var(--gray-light);
+      min-height: 80vh;
+      padding: 48px 0 80px;
+    }
+    .orders-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+    }
+    .orders-header h1 {
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--dark);
+    }
+    .orders-back {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--purple);
+      text-decoration: none;
+    }
+    .orders-back:hover { text-decoration: underline; }
+    .orders-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .order-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+    }
+    .order-card__header {
+      display: grid;
+      grid-template-columns: 1fr auto auto auto;
+      gap: 24px;
+      align-items: center;
+      padding: 20px 28px;
+      border-bottom: 1px solid var(--border);
+    }
+    .order-card__number {
+      font-size: 16px;
+      font-weight: 900;
+      color: var(--dark);
+    }
+    .order-card__date {
+      font-size: 13px;
+      color: var(--gray);
+      margin-top: 3px;
+    }
+    .order-badge {
+      padding: 5px 14px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .order-badge--delivered { background: #e6f9ef; color: #1a7a3e; }
+    .order-badge--shipped { background: #fff3e0; color: #e65100; }
+    .order-badge--processing { background: var(--purple-light); color: var(--purple); }
+    .order-card__total {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--dark);
+    }
+    .order-card__toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--gray);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 700;
+      font-family: var(--font);
+      transition: color var(--transition);
+    }
+    .order-card__toggle:hover { color: var(--purple); }
+    .order-card__items {
+      padding: 20px 28px;
+    }
+    .order-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .order-item:last-child { border-bottom: none; }
+    .order-item__img {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-sm);
+      background: var(--purple-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+    .order-item__name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--dark);
+      flex: 1;
+    }
+    .order-item__brand {
+      font-size: 12px;
+      color: var(--gray);
+      margin-top: 2px;
+    }
+    .order-item__qty {
+      font-size: 14px;
+      color: var(--gray);
+    }
+    .order-item__price {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--dark);
+    }
+    .order-card__footer {
+      padding: 16px 28px;
+      background: var(--gray-light);
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+    .btn-sm-purple {
+      background: var(--purple);
+      color: var(--white);
+      border: none;
+      padding: 10px 20px;
+      border-radius: var(--radius-xl);
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background var(--transition);
+    }
+    .btn-sm-purple:hover { background: var(--purple-dark); }
+    .btn-sm-outline {
+      background: transparent;
+      color: var(--purple);
+      border: 2px solid var(--purple);
+      padding: 8px 18px;
+      border-radius: var(--radius-xl);
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all var(--transition);
+    }
+    .btn-sm-outline:hover { background: var(--purple); color: var(--white); }
+    @media (max-width: 768px) {
+      .order-card__header { grid-template-columns: 1fr auto; }
+      .order-badge, .order-card__total { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="site-header"></header>
+
+  <main>
+    <section class="orders-page">
+      <div class="container">
+        <div class="orders-header">
+          <h1>Mijn bestellingen</h1>
+          <a href="mijn-account.html" class="orders-back">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+            Terug naar dashboard
+          </a>
+        </div>
+
+        <div class="orders-list">
+
+          <!-- Order 1 -->
+          <div class="order-card">
+            <div class="order-card__header">
+              <div>
+                <div class="order-card__number">#SM-2847</div>
+                <div class="order-card__date">28 april 2026 &middot; 3 producten</div>
+              </div>
+              <span class="order-badge order-badge--delivered">Bezorgd</span>
+              <span class="order-card__total">€18,45</span>
+              <button class="order-card__toggle" onclick="toggleOrder(this)">
+                Details
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+            </div>
+            <div class="order-card__items" style="display:none;">
+              <div class="order-item">
+                <div class="order-item__img">🍫</div>
+                <div>
+                  <div class="order-item__name">Chocolate Dough</div>
+                  <div class="order-item__brand">Barebells</div>
+                </div>
+                <span class="order-item__qty">x2</span>
+                <span class="order-item__price">€4,98</span>
+              </div>
+              <div class="order-item">
+                <div class="order-item__img">🥤</div>
+                <div>
+                  <div class="order-item__name">BCAA Passion</div>
+                  <div class="order-item__brand">NOCCO</div>
+                </div>
+                <span class="order-item__qty">x3</span>
+                <span class="order-item__price">€7,47</span>
+              </div>
+              <div class="order-item">
+                <div class="order-item__img">🍪</div>
+                <div>
+                  <div class="order-item__name">Chocolate Chip Cookie</div>
+                  <div class="order-item__brand">Quest</div>
+                </div>
+                <span class="order-item__qty">x2</span>
+                <span class="order-item__price">€5,98</span>
+              </div>
+            </div>
+            <div class="order-card__footer">
+              <a href="alle-snacks.html" class="btn-sm-purple">Opnieuw bestellen</a>
+              <a href="contact.html" class="btn-sm-outline">Hulp nodig?</a>
+            </div>
+          </div>
+
+          <!-- Order 2 -->
+          <div class="order-card">
+            <div class="order-card__header">
+              <div>
+                <div class="order-card__number">#SM-2791</div>
+                <div class="order-card__date">14 april 2026 &middot; 5 producten</div>
+              </div>
+              <span class="order-badge order-badge--delivered">Bezorgd</span>
+              <span class="order-card__total">€22,90</span>
+              <button class="order-card__toggle" onclick="toggleOrder(this)">
+                Details
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+            </div>
+            <div class="order-card__items" style="display:none;">
+              <div class="order-item">
+                <div class="order-item__img">🍫</div>
+                <div>
+                  <div class="order-item__name">Peanut Caramel Bar</div>
+                  <div class="order-item__brand">N!CK'S</div>
+                </div>
+                <span class="order-item__qty">x5</span>
+                <span class="order-item__price">€11,45</span>
+              </div>
+              <div class="order-item">
+                <div class="order-item__img">🥤</div>
+                <div>
+                  <div class="order-item__name">Zero Sugar</div>
+                  <div class="order-item__brand">Fanta</div>
+                </div>
+                <span class="order-item__qty">x3</span>
+                <span class="order-item__price">€5,67</span>
+              </div>
+            </div>
+            <div class="order-card__footer">
+              <a href="alle-snacks.html" class="btn-sm-purple">Opnieuw bestellen</a>
+              <a href="contact.html" class="btn-sm-outline">Hulp nodig?</a>
+            </div>
+          </div>
+
+          <!-- Order 3 -->
+          <div class="order-card">
+            <div class="order-card__header">
+              <div>
+                <div class="order-card__number">#SM-2703</div>
+                <div class="order-card__date">2 april 2026 &middot; 4 producten</div>
+              </div>
+              <span class="order-badge order-badge--delivered">Bezorgd</span>
+              <span class="order-card__total">€15,70</span>
+              <button class="order-card__toggle" onclick="toggleOrder(this)">
+                Details
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+            </div>
+            <div class="order-card__items" style="display:none;"></div>
+            <div class="order-card__footer">
+              <a href="alle-snacks.html" class="btn-sm-purple">Opnieuw bestellen</a>
+              <a href="contact.html" class="btn-sm-outline">Hulp nodig?</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="../js/header-template.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      injectHeader();
+      injectFooter();
+    });
+
+    function toggleOrder(btn) {
+      const card = btn.closest('.order-card');
+      const items = card.querySelector('.order-card__items');
+      const isOpen = items.style.display !== 'none';
+      items.style.display = isOpen ? 'none' : 'block';
+      btn.innerHTML = isOpen
+        ? 'Details <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>'
+        : 'Inklappen <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="18 15 12 9 6 15"/></svg>';
+    }
+  </script>
+</body>
+</html>

@@ -308,20 +308,24 @@ function injectFooter() {
               <h4>Smikkie</h4>
               <ul>
                 <li><a href="${base}pages/mix.html">Stel jouw mix samen</a></li>
-                <li><a href="#">Over Smikkie</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Klantenservice</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="${base}pages/over-ons.html">Over Smikkie</a></li>
+                <li><a href="${base}pages/blog.html">Blog</a></li>
+                <li><a href="${base}pages/contact.html">Klantenservice</a></li>
+                <li><a href="${base}pages/contact.html">Contact</a></li>
+                <li><a href="${base}pages/reviews.html">Reviews</a></li>
               </ul>
             </div>
             <div class="footer__col">
               <h4>Info</h4>
               <ul>
-                <li><a href="#">Verzending & retour</a></li>
-                <li><a href="#">Betaalopties</a></li>
-                <li><a href="#">Privacybeleid</a></li>
-                <li><a href="#">Algemene voorwaarden</a></li>
-                <li><a href="#">Cookiebeleid</a></li>
+                <li><a href="${base}pages/verzending.html">Verzending & retour</a></li>
+                <li><a href="${base}pages/retourbeleid.html">Retourbeleid</a></li>
+                <li><a href="${base}pages/betaalopties.html">Betaalopties</a></li>
+                <li><a href="${base}pages/privacybeleid.html">Privacybeleid</a></li>
+                <li><a href="${base}pages/algemene-voorwaarden.html">Algemene voorwaarden</a></li>
+                <li><a href="${base}pages/cookiebeleid.html">Cookiebeleid</a></li>
+                <li><a href="${base}pages/disclaimer.html">Disclaimer</a></li>
+                <li><a href="${base}pages/faq.html">Veelgestelde vragen</a></li>
               </ul>
             </div>
           </div>

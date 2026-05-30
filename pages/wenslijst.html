@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mijn Wenslijst – Smikkie</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <style>
+    .wishlist-page {
+      background: var(--gray-light);
+      min-height: 80vh;
+      padding: 48px 0 80px;
+    }
+    .wishlist-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 28px;
+    }
+    .wishlist-header h1 {
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--dark);
+    }
+    .wishlist-back {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--purple);
+      text-decoration: none;
+    }
+    .wishlist-back:hover { text-decoration: underline; }
+    .wishlist-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .wishlist-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      position: relative;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .wishlist-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+    .wishlist-card__remove {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 32px;
+      height: 32px;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all var(--transition);
+      z-index: 2;
+    }
+    .wishlist-card__remove:hover {
+      background: #fff0f0;
+      border-color: #e53e3e;
+      color: #e53e3e;
+    }
+    .wishlist-card__img {
+      width: 100%;
+      aspect-ratio: 1;
+      background: var(--purple-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 48px;
+    }
+    .wishlist-card__body {
+      padding: 16px;
+    }
+    .wishlist-card__brand {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .wishlist-card__name {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+    .wishlist-card__price {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--purple);
+      margin-bottom: 12px;
+    }
+    .wishlist-card__add {
+      width: 100%;
+      background: var(--purple);
+      color: var(--white);
+      border: none;
+      padding: 10px;
+      border-radius: var(--radius-sm);
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      font-family: var(--font);
+      transition: background var(--transition);
+    }
+    .wishlist-card__add:hover { background: var(--purple-dark); }
+    .wishlist-empty {
+      text-align: center;
+      padding: 80px 20px;
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+    }
+    .wishlist-empty__icon { font-size: 64px; margin-bottom: 16px; }
+    .wishlist-empty h2 { font-size: 24px; font-weight: 900; color: var(--dark); margin-bottom: 8px; }
+    .wishlist-empty p { font-size: 16px; color: var(--gray); margin-bottom: 24px; }
+    .btn-purple {
+      background: var(--purple);
+      color: var(--white);
+      border: none;
+      padding: 14px 28px;
+      border-radius: var(--radius-xl);
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background var(--transition);
+    }
+    .btn-purple:hover { background: var(--purple-dark); }
+    @media (max-width: 900px) {
+      .wishlist-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .wishlist-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="site-header"></header>
+
+  <main>
+    <section class="wishlist-page">
+      <div class="container">
+        <div class="wishlist-header">
+          <h1>Mijn wenslijst 💜</h1>
+          <a href="mijn-account.html" class="wishlist-back">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+            Terug naar dashboard
+          </a>
+        </div>
+
+        <div class="wishlist-grid" id="wishlist-grid">
+          <!-- Product 1 -->
+          <div class="wishlist-card">
+            <button class="wishlist-card__remove" onclick="removeFromWishlist(this)" title="Verwijderen">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <a href="product.html" class="wishlist-card__img">🍫</a>
+            <div class="wishlist-card__body">
+              <div class="wishlist-card__brand">Barebells</div>
+              <div class="wishlist-card__name">Chocolate Dough</div>
+              <div class="wishlist-card__price">€2,49</div>
+              <button class="wishlist-card__add">Toevoegen aan mix</button>
+            </div>
+          </div>
+          <!-- Product 2 -->
+          <div class="wishlist-card">
+            <button class="wishlist-card__remove" onclick="removeFromWishlist(this)" title="Verwijderen">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <a href="product.html" class="wishlist-card__img">🥤</a>
+            <div class="wishlist-card__body">
+              <div class="wishlist-card__brand">NOCCO</div>
+              <div class="wishlist-card__name">BCAA Passion</div>
+              <div class="wishlist-card__price">€2,49</div>
+              <button class="wishlist-card__add">Toevoegen aan mix</button>
+            </div>
+          </div>
+          <!-- Product 3 -->
+          <div class="wishlist-card">
+            <button class="wishlist-card__remove" onclick="removeFromWishlist(this)" title="Verwijderen">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <a href="product.html" class="wishlist-card__img">🍪</a>
+            <div class="wishlist-card__body">
+              <div class="wishlist-card__brand">Quest</div>
+              <div class="wishlist-card__name">Chocolate Chip Cookie</div>
+              <div class="wishlist-card__price">€2,99</div>
+              <button class="wishlist-card__add">Toevoegen aan mix</button>
+            </div>
+          </div>
+          <!-- Product 4 -->
+          <div class="wishlist-card">
+            <button class="wishlist-card__remove" onclick="removeFromWishlist(this)" title="Verwijderen">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <a href="product.html" class="wishlist-card__img">🍫</a>
+            <div class="wishlist-card__body">
+              <div class="wishlist-card__brand">N!CK'S</div>
+              <div class="wishlist-card__name">Peanut Caramel Bar</div>
+              <div class="wishlist-card__price">€2,29</div>
+              <button class="wishlist-card__add">Toevoegen aan mix</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="../js/header-template.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      injectHeader();
+      injectFooter();
+    });
+
+    function removeFromWishlist(btn) {
+      const card = btn.closest('.wishlist-card');
+      card.style.opacity = '0';
+      card.style.transform = 'scale(0.9)';
+      card.style.transition = 'all 0.3s ease';
+      setTimeout(() => {
+        card.remove();
+        checkEmpty();
+      }, 300);
+    }
+
+    function checkEmpty() {
+      const grid = document.getElementById('wishlist-grid');
+      if (grid.children.length === 0) {
+        grid.outerHTML = `
+          <div class="wishlist-empty">
+            <div class="wishlist-empty__icon">💜</div>
+            <h2>Je wenslijst is leeg</h2>
+            <p>Voeg producten toe aan je wenslijst door op het hartje te klikken op een productpagina.</p>
+            <a href="alle-snacks.html" class="btn-purple">Bekijk alle snacks</a>
+          </div>`;
+      }
+    }
+  </script>
+</body>
+</html>

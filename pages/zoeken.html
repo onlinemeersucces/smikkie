@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zoekresultaten – Smikkie</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/footer.css">
+  <link rel="stylesheet" href="../css/category.css">
+  <style>
+    .search-header {
+      background: var(--purple-light);
+      padding: 48px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .search-header h1 {
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--dark);
+      margin-bottom: 20px;
+    }
+    .search-bar-large {
+      display: flex;
+      gap: 0;
+      max-width: 600px;
+    }
+    .search-bar-large input {
+      flex: 1;
+      padding: 16px 20px;
+      border: 2px solid var(--border);
+      border-right: none;
+      border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+      font-family: var(--font);
+      font-size: 16px;
+      outline: none;
+      transition: border-color var(--transition);
+    }
+    .search-bar-large input:focus { border-color: var(--purple); }
+    .search-bar-large button {
+      background: var(--purple);
+      color: var(--white);
+      border: none;
+      padding: 16px 24px;
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      font-family: var(--font);
+      transition: background var(--transition);
+    }
+    .search-bar-large button:hover { background: var(--purple-dark); }
+    .search-meta {
+      font-size: 14px;
+      color: var(--gray);
+      margin-top: 12px;
+    }
+    .search-meta strong { color: var(--dark); }
+    .search-page { padding: 48px 0 80px; }
+    .search-results-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .product-card {
+      background: var(--white);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      transition: transform var(--transition), box-shadow var(--transition);
+      cursor: pointer;
+    }
+    .product-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+    .product-card__img {
+      aspect-ratio: 1;
+      background: var(--purple-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 56px;
+    }
+    .product-card__body { padding: 16px; }
+    .product-card__brand {
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+    .product-card__name {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+    .product-card__bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .product-card__price {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--purple);
+    }
+    .product-card__add {
+      width: 36px;
+      height: 36px;
+      background: var(--purple);
+      color: var(--white);
+      border: none;
+      border-radius: 50%;
+      font-size: 22px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition);
+    }
+    .product-card__add:hover { background: var(--purple-dark); }
+    .search-empty {
+      text-align: center;
+      padding: 80px 20px;
+      display: none;
+    }
+    .search-empty__icon { font-size: 64px; margin-bottom: 16px; }
+    .search-empty h2 { font-size: 24px; font-weight: 900; color: var(--dark); margin-bottom: 8px; }
+    .search-empty p { font-size: 16px; color: var(--gray); margin-bottom: 24px; }
+    .btn-purple {
+      background: var(--purple);
+      color: var(--white);
+      border: none;
+      padding: 14px 28px;
+      border-radius: var(--radius-xl);
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background var(--transition);
+    }
+    .btn-purple:hover { background: var(--purple-dark); }
+    @media (max-width: 900px) { .search-results-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .search-results-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="site-header"></header>
+
+  <main>
+    <section class="search-header">
+      <div class="container">
+        <h1>Zoeken</h1>
+        <form class="search-bar-large" onsubmit="doSearch(event)">
+          <input type="text" id="search-input" placeholder="Zoek op product, merk of smaak..." autocomplete="off">
+          <button type="submit">Zoeken</button>
+        </form>
+        <p class="search-meta" id="search-meta"></p>
+      </div>
+    </section>
+
+    <section class="search-page">
+      <div class="container">
+        <div class="search-results-grid" id="results-grid">
+          <!-- Products filled by JS -->
+        </div>
+        <div class="search-empty" id="search-empty">
+          <div class="search-empty__icon">🔍</div>
+          <h2>Geen resultaten gevonden</h2>
+          <p>Probeer een andere zoekterm of bekijk ons volledige assortiment.</p>
+          <a href="alle-snacks.html" class="btn-purple">Bekijk alle snacks</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="../js/header-template.js"></script>
+  <script>
+    // Product database
+    const products = [
+      { name: 'Chocolate Dough', brand: 'Barebells', price: '€2,49', emoji: '🍫', category: 'eiwitrepen' },
+      { name: 'Salty Peanut', brand: 'Barebells', price: '€2,49', emoji: '🥜', category: 'eiwitrepen' },
+      { name: 'White Chocolate Almond', brand: 'Barebells', price: '€2,49', emoji: '🍫', category: 'eiwitrepen' },
+      { name: 'Peanut Caramel Bar', brand: 'N!CK\'S', price: '€2,29', emoji: '🍫', category: 'eiwitrepen' },
+      { name: 'Chocolate Chip Cookie', brand: 'Quest', price: '€2,99', emoji: '🍪', category: 'eiwitrepen' },
+      { name: 'BCAA Passion', brand: 'NOCCO', price: '€2,49', emoji: '🥤', category: 'drankjes' },
+      { name: 'BCAA Caribbean', brand: 'NOCCO', price: '€2,49', emoji: '🥤', category: 'drankjes' },
+      { name: 'Zero Sugar', brand: 'Fanta', price: '€1,89', emoji: '🥤', category: 'drankjes' },
+      { name: 'Protein Chips BBQ', brand: 'Quest', price: '€2,79', emoji: '🥔', category: 'snacks' },
+      { name: 'Protein Cookie', brand: 'Lenny & Larry\'s', price: '€2,99', emoji: '🍪', category: 'snacks' },
+      { name: 'Protein Brownie', brand: 'PhD Smart', price: '€2,49', emoji: '🍫', category: 'snacks' },
+      { name: 'Gummy Bears', brand: 'SmartSweets', price: '€3,49', emoji: '🐻', category: 'treats' },
+    ];
+
+    function renderProducts(list) {
+      const grid = document.getElementById('results-grid');
+      const empty = document.getElementById('search-empty');
+      if (list.length === 0) {
+        grid.innerHTML = '';
+        empty.style.display = 'block';
+        return;
+      }
+      empty.style.display = 'none';
+      grid.innerHTML = list.map(p => `
+        <a href="product.html" class="product-card" style="text-decoration:none;color:inherit;">
+          <div class="product-card__img">${p.emoji}</div>
+          <div class="product-card__body">
+            <div class="product-card__brand">${p.brand}</div>
+            <div class="product-card__name">${p.name}</div>
+            <div class="product-card__bottom">
+              <span class="product-card__price">${p.price}</span>
+              <button class="product-card__add" onclick="event.preventDefault()">+</button>
+            </div>
+          </div>
+        </a>
+      `).join('');
+    }
+
+    function doSearch(e) {
+      if (e) e.preventDefault();
+      const q = document.getElementById('search-input').value.trim().toLowerCase();
+      const meta = document.getElementById('search-meta');
+      if (!q) {
+        renderProducts(products);
+        meta.innerHTML = `Alle <strong>${products.length} producten</strong> worden getoond.`;
+        return;
+      }
+      const filtered = products.filter(p =>
+        p.name.toLowerCase().includes(q) ||
+        p.brand.toLowerCase().includes(q) ||
+        p.category.toLowerCase().includes(q)
+      );
+      renderProducts(filtered);
+      meta.innerHTML = filtered.length > 0
+        ? `<strong>${filtered.length} resultaten</strong> gevonden voor "<strong>${q}</strong>"`
+        : `Geen resultaten voor "<strong>${q}</strong>"`;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      injectHeader();
+      injectFooter();
+      // Check URL params for pre-filled search
+      const params = new URLSearchParams(window.location.search);
+      const q = params.get('q') || '';
+      if (q) {
+        document.getElementById('search-input').value = q;
+      }
+      doSearch(null);
+    });
+  </script>
+</body>
+</html>
