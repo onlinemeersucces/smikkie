@@ -203,7 +203,7 @@
     if (!nudge) return;
 
     if (totalQty > 0 && totalQty < 48) {
-      nudge.style.display = 'block';
+      nudge.style.display = 'flex';
       if (totalQty < 12) {
         const needed = 12 - totalQty;
         if (nudgeText) nudgeText.textContent = `Nog ${needed} stuk${needed !== 1 ? 's' : ''} voor 5% korting!`;

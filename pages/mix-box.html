@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="../css/base.css?v=mix1">
   <link rel="stylesheet" href="../css/header.css?v=mix1">
   <link rel="stylesheet" href="../css/footer.css?v=mix1">
-  <link rel="stylesheet" href="../css/mix-box.css?v=13">
+  <link rel="stylesheet" href="../css/mix-box.css?v=14">
 </head>
 <body>
 
@@ -167,20 +167,19 @@
       </div>
     </section>
 
-    <!-- ACTIVE UPSELL NUDGE (shows dynamically) -->
-    <div class="upsell-nudge" id="upsell-nudge" style="display:none">
-      <div class="container">
-        <div class="upsell-nudge__inner">
-          <span class="upsell-nudge__icon">🎁</span>
-          <span id="upsell-nudge-text">Voeg nog 4 stuks toe voor 10% korting!</span>
-          <button class="upsell-nudge__btn" id="upsell-nudge-btn">Verdubbel mijn doos</button>
-        </div>
-      </div>
-    </div>
-
     <!-- MAIN CONTENT: two-column layout -->
     <section class="mix-builder">
       <div class="container">
+
+        <!-- ACTIVE UPSELL NUDGE (shows dynamically) -->
+        <div class="upsell-nudge" id="upsell-nudge" style="display:none">
+          <div class="upsell-nudge__inner">
+            <span class="upsell-nudge__icon">🎁</span>
+            <span id="upsell-nudge-text">Voeg nog 4 stuks toe voor 10% korting!</span>
+            <button class="upsell-nudge__btn" id="upsell-nudge-btn">Verdubbel mijn doos</button>
+          </div>
+        </div>
+
         <div class="mix-builder__layout">
 
           <!-- LEFT: Flavor picker -->
@@ -693,6 +692,6 @@
 
   <script src="../js/header-template.js?v=mix1"></script>
   <script src="../js/shop.js?v=mix1"></script>
-  <script src="../js/mix-box.js?v=13"></script>
+  <script src="../js/mix-box.js?v=14"></script>
 </body>
 </html>

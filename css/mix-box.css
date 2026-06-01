@@ -314,7 +314,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 14px;
-  margin-bottom: 22px;
+  margin-bottom: 24px;
 }
 
 .upsell-nudge__inner {
@@ -322,6 +322,7 @@
   align-items: center;
   gap: 10px;
   flex: 1;
+  width: 100%;
 }
 
 .upsell-nudge__icon {
