@@ -327,6 +327,16 @@
     });
   }
 
+  // Mapping from brand name to product detail page
+  const BRAND_PAGES = {
+    'Barebells': 'barebells.html',
+    'N!CK\'S':   'nicks.html',
+    'Quest':     'quest.html',
+    'NOCCO':     'nocco.html',
+    'Fanta':     'fanta.html',
+    'Smikkie':   'smikkie-bars.html'
+  };
+
   function initFlavorCards() {
     // Read all flavor cards and inject quick-qty buttons
     document.querySelectorAll('.flavor-card').forEach(card => {
@@ -339,6 +349,21 @@
       // Initialize state
       if (!state.items[id]) {
         state.items[id] = { id, name, price, qty: 0, img, brand };
+      }
+
+      // Make product name clickable to brand product page
+      const nameEl = card.querySelector('.flavor-card__name');
+      if (nameEl && BRAND_PAGES[brand] && !nameEl.querySelector('a')) {
+        const flavorSlug = id; // use data-id as smaak param
+        const link = document.createElement('a');
+        link.href = BRAND_PAGES[brand] + '?smaak=' + encodeURIComponent(flavorSlug);
+        link.textContent = nameEl.textContent;
+        link.style.cssText = 'color:inherit;text-decoration:none;font-weight:inherit;';
+        link.addEventListener('mouseenter', () => link.style.textDecoration = 'underline');
+        link.addEventListener('mouseleave', () => link.style.textDecoration = 'none');
+        link.addEventListener('click', e => e.stopPropagation()); // don't trigger card click
+        nameEl.textContent = '';
+        nameEl.appendChild(link);
       }
 
       // Inject quick-qty row if not already present

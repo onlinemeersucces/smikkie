@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barebells Protein Bar – Smikkie</title>
+  <link rel="stylesheet" href="../css/base.css?v=22">
+  <link rel="stylesheet" href="../css/header.css?v=22">
+  <link rel="stylesheet" href="../css/footer.css?v=22">
+  <link rel="stylesheet" href="../css/mix-box.css?v=22">
+  <link rel="stylesheet" href="../css/product.css?v=1">
+</head>
+<body>
+
+  <header class="site-header" id="site-header"></header>
+
+  <!-- SLIDE-IN CART DRAWER (same as mix-box) -->
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-drawer__backdrop" id="cart-backdrop"></div>
+    <div class="cart-drawer__panel">
+      <div class="cart-drawer__header">
+        <h3 class="cart-drawer__title">Jouw winkelwagen <span class="cart-drawer__count" id="drawer-count">0</span></h3>
+        <button class="cart-drawer__close" id="cart-close" aria-label="Sluiten">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="cart-drawer__tier" id="drawer-tier-bar"></div>
+      <div class="cart-drawer__shipping">
+        <div class="shipping-progress">
+          <div class="shipping-progress__label">
+            <span id="shipping-label">Nog <strong id="shipping-amount">€40,00</strong> tot gratis verzending 🚚</span>
+          </div>
+          <div class="shipping-progress__track">
+            <div class="shipping-progress__fill" id="shipping-fill" style="width:0%"></div>
+          </div>
+        </div>
+      </div>
+      <div class="cart-drawer__items" id="drawer-items">
+        <div class="cart-drawer__empty" id="drawer-empty">
+          <div class="cart-drawer__empty-icon">🛒</div>
+          <p>Je winkelwagen is nog leeg.</p>
+        </div>
+      </div>
+      <div class="cart-drawer__discount" id="drawer-discount" style="display:none">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><path d="M12 22V7"/></svg>
+        <span id="drawer-discount-text">Je hebt korting!</span>
+      </div>
+      <div class="cart-drawer__footer">
+        <div class="cart-drawer__totals">
+          <div class="cart-totals-row" id="drawer-original-row" style="display:none">
+            <span>Subtotaal</span>
+            <span id="drawer-original-price" class="price-strike"></span>
+          </div>
+          <div class="cart-totals-row" id="drawer-discount-row" style="display:none">
+            <span id="drawer-discount-label">Korting</span>
+            <span id="drawer-discount-amount" class="price-green"></span>
+          </div>
+          <div class="cart-totals-row cart-totals-row--total">
+            <span>Totaal</span>
+            <span id="drawer-total">€0,00</span>
+          </div>
+        </div>
+        <a href="checkout.html" class="btn-primary btn-full" id="drawer-checkout-btn">
+          Afrekenen
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </a>
+        <a href="winkelwagen.html" class="cart-drawer__view-cart">Bekijk winkelwagen</a>
+      </div>
+    </div>
+  </div>
+
+  <main>
+
+    <!-- PRODUCT HERO -->
+    <section class="pdp-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="../index.html">Home</a> ›
+          <a href="mix-box.html">Alle snacks</a> ›
+          <span>Barebells Protein Bar</span>
+        </nav>
+
+        <div class="pdp-hero__inner">
+          <div class="pdp-hero__img-col">
+            <div class="pdp-hero__img-wrap" id="hero-img-wrap">
+              <img src="../images/barebells.jpg" alt="Barebells Protein Bar" class="pdp-hero__img" id="bp-hero-img">
+            </div>
+            <div class="pdp-hero__thumbs" id="bp-hero-thumbs">
+              <!-- filled by JS -->
+            </div>
+          </div>
+
+          <div class="pdp-hero__info">
+            <span class="pdp-hero__brand-badge">BAREBELLS</span>
+            <h1 class="pdp-hero__title">Barebells <span id="bp-hero-flavor">Protein Bar</span></h1>
+            <p class="pdp-hero__sub" id="hero-sub">Kies hieronder jouw favoriete smaak en voeg toe aan je winkelwagen. Hoe meer je bestelt, hoe meer je bespaart!</p>
+
+            <div class="pdp-hero__macros" id="hero-macros">
+              <div class="pdp-macro">
+                <span class="pdp-macro__val">20g</span>
+                <span class="pdp-macro__label">Eiwit</span>
+              </div>
+              <div class="pdp-macro">
+                <span class="pdp-macro__val">&lt;2g</span>
+                <span class="pdp-macro__label">Suiker</span>
+              </div>
+              <div class="pdp-macro">
+                <span class="pdp-macro__val">55g</span>
+                <span class="pdp-macro__label">Gewicht</span>
+              </div>
+              <div class="pdp-macro">
+                <span class="pdp-macro__val">220</span>
+                <span class="pdp-macro__label">Kcal</span>
+              </div>
+            </div>
+
+            <div class="pdp-hero__price-row">
+              <span class="pdp-hero__price" id="hero-price">€2,49</span>
+              <span class="pdp-hero__price-sub">per reep</span>
+              <span class="pdp-hero__discount-badge">Vanaf 12 stuks 5% korting</span>
+            </div>
+
+            <div class="pdp-hero__perks">
+              <span class="perk">✓ Gratis verzending v.a. €40</span>
+              <span class="perk">✓ Morgen in huis</span>
+              <span class="perk">✓ Geen minimum bestelling</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FLAVOR PICKER -->
+    <section class="pdp-picker">
+      <div class="container">
+
+        <!-- Tabs -->
+        <div class="pdp-tabs">
+          <button class="pdp-tab is-active" data-tab="losse">🍫 Losse repen</button>
+          <button class="pdp-tab" data-tab="dozen">📦 Dozen</button>
+        </div>
+
+        <!-- Tab: Losse repen -->
+        <div class="pdp-tab-panel" id="tab-losse">
+          <div class="pdp-picker__header">
+            <h2 class="pdp-picker__title">Kies jouw smaken</h2>
+            <p class="pdp-picker__sub">Hoe meer je van één smaak bestelt, hoe meer je bespaart.</p>
+          </div>
+
+          <!-- Staffel info bar -->
+          <div class="pdp-staffel-bar">
+            <div class="pdp-staffel-bar__item">
+              <span class="pdp-staffel-bar__qty">1–11</span>
+              <span class="pdp-staffel-bar__label">Normaal tarief</span>
+            </div>
+            <div class="pdp-staffel-bar__item">
+              <span class="pdp-staffel-bar__qty pdp-staffel-bar__qty--green">12+</span>
+              <span class="pdp-staffel-bar__label">5% korting</span>
+            </div>
+            <div class="pdp-staffel-bar__item">
+              <span class="pdp-staffel-bar__qty pdp-staffel-bar__qty--green">24+</span>
+              <span class="pdp-staffel-bar__label">10% korting</span>
+            </div>
+            <div class="pdp-staffel-bar__item">
+              <span class="pdp-staffel-bar__qty pdp-staffel-bar__qty--green">36+</span>
+              <span class="pdp-staffel-bar__label">15% korting</span>
+            </div>
+            <div class="pdp-staffel-bar__item">
+              <span class="pdp-staffel-bar__qty pdp-staffel-bar__qty--gold">48+</span>
+              <span class="pdp-staffel-bar__label">20% korting</span>
+            </div>
+          </div>
+
+          <!-- Flavor rows -->
+          <div class="pdp-flavor-list" id="bp-flavor-list">
+            <!-- filled by JS -->
+          </div>
+
+          <!-- Cart summary bar -->
+          <div class="pdp-cart-bar" id="bp-cart-bar" style="display:none">
+            <div class="pdp-cart-bar__left">
+              <span class="pdp-cart-bar__count" id="bp-cart-count">0 stuks</span>
+              <span class="pdp-cart-bar__total" id="bp-cart-total">€0,00</span>
+              <span class="pdp-cart-bar__discount" id="bp-cart-discount"></span>
+            </div>
+            <button class="btn-primary pdp-cart-bar__btn" id="bp-cart-bar-btn">
+              🛒 Toevoegen aan winkelwagen
+            </button>
+          </div>
+        </div>
+
+        <!-- Tab: Dozen -->
+        <div class="pdp-tab-panel" id="tab-dozen" style="display:none">
+          <div class="pdp-picker__header">
+            <h2 class="pdp-picker__title">Bestel een complete doos</h2>
+            <p class="pdp-picker__sub">Kies een smaak en een doosgrootte. Elke doos bevat 12 repen van dezelfde smaak.</p>
+          </div>
+
+          <div class="pdp-dozen-list" id="bp-dozen-list">
+            <!-- filled by JS -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="../js/header-template.js?v=22"></script>
+  <script src="../js/shop.js?v=22"></script>
+  <script src="../js/brand-picker.js?v=1"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  window.BrandPicker.init([
+    { id: 'bb-choc-dough',    name: 'Chocolate Dough',        price: 2.49, img: '../images/barebells.jpg',  macros: { eiwit: '20g', suiker: '1.2g', kcal: '218' } },
+    { id: 'bb-salty-peanut', name: 'Salty Peanut',           price: 2.49, img: '../images/barebells2.jpg', macros: { eiwit: '20g', suiker: '1.4g', kcal: '215' } },
+    { id: 'bb-cookies-cream',name: 'Cookies & Cream',        price: 2.49, img: '../images/barebells.jpg',  macros: { eiwit: '20g', suiker: '1.0g', kcal: '210' } },
+    { id: 'bb-caramel-cashew',name: 'Caramel Cashew',        price: 2.49, img: '../images/barebells.jpg',  macros: { eiwit: '20g', suiker: '1.3g', kcal: '222' } },
+    { id: 'bb-white-choc',   name: 'White Chocolate Almond', price: 2.49, img: '../images/barebells.jpg',  macros: { eiwit: '20g', suiker: '1.1g', kcal: '216' } },
+    { id: 'bb-hazelnut',     name: 'Hazelnut Nougat',        price: 2.49, img: '../images/barebells.jpg',  macros: { eiwit: '20g', suiker: '1.5g', kcal: '220' } }
+  ], { brandName: 'Barebells', brand: 'BAREBELLS' });
+});
+</script>
+</body>
+</html>
