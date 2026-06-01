@@ -292,7 +292,7 @@
 
       // Initialize state
       if (!state.items[id]) {
-        state.items[id] = { name, price, qty: 0, img, brand };
+        state.items[id] = { id, name, price, qty: 0, img, brand };
       }
 
       // Inject quick-qty row if not already present
