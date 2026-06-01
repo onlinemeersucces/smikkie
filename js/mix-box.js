@@ -135,23 +135,7 @@
         </div>`;
       });
       itemsEl.innerHTML = html;
-      // Attach events to sidebar qty buttons — update state directly to avoid double-firing
-      itemsEl.querySelectorAll('.summary-qty-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          const id = btn.dataset.id;
-          const action = btn.dataset.action;
-          if (!state.items[id]) return;
-          if (action === 'inc') {
-            state.items[id].qty++;
-          } else if (action === 'dec' && state.items[id].qty > 0) {
-            state.items[id].qty--;
-          }
-          updateQtyDisplay(id);
-          updateFlavorCardState(id);
-          renderAll();
-        });
-      });
+      // Events handled via delegation on itemsEl (set up once in initSummaryQtyDelegation)
     }
 
     // Update sidebar progress bar
@@ -666,6 +650,28 @@
 
   /* ---- INIT ---- */
 
+  /* ---- SIDEBAR QTY DELEGATION (survives innerHTML re-renders) ---- */
+  function initSummaryQtyDelegation() {
+    const itemsEl = document.getElementById('summary-items');
+    if (!itemsEl) return;
+    itemsEl.addEventListener('click', (e) => {
+      const btn = e.target.closest('.summary-qty-btn');
+      if (!btn) return;
+      e.stopPropagation();
+      const id = btn.dataset.id;
+      const action = btn.dataset.action;
+      if (!state.items[id]) return;
+      if (action === 'inc') {
+        state.items[id].qty++;
+      } else if (action === 'dec' && state.items[id].qty > 0) {
+        state.items[id].qty--;
+      }
+      updateQtyDisplay(id);
+      updateFlavorCardState(id);
+      renderAll();
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', () => {
     initFlavorCards();
     initBoxSizes();
@@ -676,6 +682,7 @@
     initUpsellButton();
     initCartDrawer();
     initVolumeStepClicks();
+    initSummaryQtyDelegation();
     renderAll();
   });
 
