@@ -146,9 +146,10 @@ function _renderCartItems() {
         <img src="${resolveImgPath(item.img)}" alt="${item.fullName || item.name}" onerror="this.src='${resolveImgPath('barebells.jpg')}'">
       </div>
       <div class="cart-item__info">
-        <div class="cart-item__brand">${item.brand || ''}</div>
-        <div class="cart-item__name">${item.name}</div>
-        <div class="cart-item__price">€${(item.price * item.qty).toFixed(2).replace('.', ',')}</div>
+        <span class="cart-item__brand">${item.brand || ''}</span>
+        <span class="cart-item__name">${item.name}</span>
+        <span class="cart-item__unit">${item.qty}× €${item.price.toFixed(2).replace('.', ',')}</span>
+        <span class="cart-item__price">€${(item.price * item.qty).toFixed(2).replace('.', ',')}</span>
       </div>
       <div class="cart-item__actions">
         <div class="cart-item__qty-ctrl">
@@ -170,17 +171,31 @@ function _renderCartItems() {
   if (sv) sv.textContent = fmt(total);
   if (tv) tv.textContent = fmt(total);
 
-  const freeEl = document.getElementById('cart-free-shipping');
-  if (freeEl) {
+  // Update header count
+  const hCount = document.getElementById('cart-header-count');
+  if (hCount) hCount.textContent = _getCartCount() + ' items';
+
+  // Update shipping progress bar
+  const shippingFill = document.getElementById('cart-shipping-fill');
+  const shippingText = document.getElementById('cart-shipping-text');
+  if (shippingFill && shippingText) {
+    const pct = Math.min(100, (total / 40) * 100);
+    shippingFill.style.width = pct + '%';
     if (total >= 40) {
-      freeEl.textContent = '🎉 Gratis verzending!';
-      freeEl.style.color = 'var(--green-dark)';
+      shippingText.textContent = '🎉 Gratis verzending!';
+      shippingText.style.color = '#2d8a55';
     } else {
-      freeEl.textContent = `Nog €${(40 - total).toFixed(2).replace('.', ',')} voor gratis verzending`;
-      freeEl.style.color = 'var(--gray)';
+      const remaining = (40 - total).toFixed(2).replace('.', ',');
+      shippingText.textContent = `📦 Nog €${remaining} voor gratis verzending`;
+      shippingText.style.color = '#2d8a55';
     }
   }
+
+  // Discount row (placeholder — can be extended with coupon logic)
+  const discRow = document.getElementById('cart-discount-row');
+  if (discRow) discRow.style.display = 'none';
 }
+// (end _renderCartItems)
 
 /* =============================================
    CART SIDEBAR
@@ -193,25 +208,31 @@ function _initCartSidebar() {
   sidebar.id = 'cart-sidebar';
   sidebar.innerHTML = `
     <div class="cart-header">
-      <div>
-        <h3>Jouw Smikkie mix 💜</h3>
-        <span class="cart-header__count">${_getCartCount()} items</span>
+      <div class="cart-header__left">
+        <h3>Jouw winkelwagen 💜</h3>
+        <span class="cart-header__count" id="cart-header-count">${_getCartCount()} items</span>
       </div>
       <button class="cart-close-btn" id="cart-close-btn">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
+    <div class="cart-shipping-bar" id="cart-shipping-bar">
+      <div class="cart-shipping-bar__text" id="cart-shipping-text">📦 Nog €40,00 voor gratis verzending</div>
+      <div class="cart-shipping-bar__track">
+        <div class="cart-shipping-bar__fill" id="cart-shipping-fill" style="width:0%"></div>
+      </div>
+    </div>
     <div class="cart-items" id="cart-items-list"></div>
     <div class="cart-footer">
       <div class="cart-subtotal"><span>Subtotaal</span><span id="cart-subtotal-val">€0,00</span></div>
+      <div class="cart-discount-row" id="cart-discount-row" style="display:none"><span id="cart-discount-label">Korting</span><span id="cart-discount-val">-€0,00</span></div>
       <div class="cart-total"><span>Totaal</span><span id="cart-total-val">€0,00</span></div>
-      <div class="cart-free-shipping" id="cart-free-shipping">Nog €40,00 voor gratis verzending</div>
-      <a href="${cartPageUrl}" class="cart-checkout-btn">Naar winkelwagen →</a>
+      <a href="${cartPageUrl}" class="cart-checkout-btn">🛒 Afrekenen</a>
       <button class="cart-continue-btn" id="cart-continue-btn">Verder winkelen</button>
       <div class="cart-trust">
         <span>🔒 Veilig betalen</span>
         <span>📦 Gratis v.a. €40</span>
-        <span>↩ Retour 14 dagen</span>
+        <span>↩ 14 dagen retour</span>
       </div>
     </div>
   `;
