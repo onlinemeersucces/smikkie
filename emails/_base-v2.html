@@ -1,0 +1,48 @@
+<!--
+  SMIKKIE EMAIL BASE TEMPLATE v32
+  ================================
+  - Fluid layout: 600px desktop, 100% mobiel
+  - Inline CSS + <style> media queries (Gmail/Apple Mail/Outlook)
+  - WooCommerce-compatibele variabelen: {order_number}, {first_name}, etc.
+  - MSO conditionals voor Outlook
+  - Getest op: Gmail app (Android/iOS), Apple Mail, Outlook 2016+, Samsung Mail
+-->
+<!DOCTYPE html>
+<html lang="nl" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="x-apple-disable-message-reformatting">
+  <title>Smikkie</title>
+  <!--[if mso]>
+  <noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
+  <![endif]-->
+  <style>
+    /* Reset */
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+    body { margin: 0 !important; padding: 0 !important; width: 100% !important; }
+
+    /* Mobile media queries */
+    @media only screen and (max-width: 620px) {
+      .email-wrapper { width: 100% !important; }
+      .email-container { width: 100% !important; max-width: 100% !important; }
+      .fluid { max-width: 100% !important; width: 100% !important; }
+      .stack-col { display: block !important; width: 100% !important; }
+      .hide-mobile { display: none !important; }
+      .show-mobile { display: block !important; }
+      .center-mobile { text-align: center !important; }
+      .full-width-btn a { display: block !important; width: auto !important; }
+      .pad-mobile { padding: 24px 20px !important; }
+      .pad-mobile-sm { padding: 16px 20px !important; }
+      .font-mobile-lg { font-size: 22px !important; line-height: 1.3 !important; }
+      .font-mobile-md { font-size: 15px !important; }
+      .font-mobile-sm { font-size: 13px !important; }
+      .trust-bar td { display: block !important; width: 100% !important; padding: 4px 0 !important; text-align: center !important; }
+      .order-row td { display: block !important; width: 100% !important; }
+      .order-row td:last-child { text-align: left !important; padding-top: 0 !important; }
+    }
+  </style>
+</head>
