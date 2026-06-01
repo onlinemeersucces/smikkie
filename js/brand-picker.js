@@ -182,18 +182,18 @@ function bpRenderAll() {
   bpRenderFlavorList();
   bpUpdateCartBar();
   bpUpdateStaffelBar();
+  bpRenderSummary();
 }
 
 /* ---- ADD TO CART ---- */
 function bpAddToCart() {
-  const { pct } = bpCalcTotal();
   let added = 0;
   bpState.flavors.forEach(f => {
     const qty = bpState.qtys[f.id] || 0;
     if (qty > 0 && window.SmikkieShop) {
       window.SmikkieShop.addToCart({
         id: f.id,
-        name: f.brandName + ' ' + f.name,
+        name: (f.brandName ? f.brandName + ' ' : '') + f.name,
         brand: f.brand,
         price: f.price,
         img: f.img
@@ -202,14 +202,47 @@ function bpAddToCart() {
     }
   });
 
-  if (added > 0) {
-    // Open cart sidebar
-    const cartSidebar = document.getElementById('cart-sidebar');
-    if (cartSidebar) {
-      cartSidebar.classList.add('is-open');
-      document.body.style.overflow = 'hidden';
-    }
+  if (added > 0 && window.SmikkieShop && window.SmikkieShop.openCart) {
+    window.SmikkieShop.openCart();
   }
+}
+
+/* ---- RENDER SELECTION SUMMARY ---- */
+function bpRenderSummary() {
+  const el = document.getElementById('bp-selection-summary');
+  if (!el) return;
+
+  const selected = bpState.flavors.filter(f => (bpState.qtys[f.id] || 0) > 0);
+  if (selected.length === 0) {
+    el.style.display = 'none';
+    return;
+  }
+
+  const { gross, discount, net, pct } = bpCalcTotal();
+  const totalQty = bpTotalQty();
+
+  el.style.display = 'block';
+  el.innerHTML = `
+    <div class="bp-summary">
+      <div class="bp-summary__title">Jouw selectie (${totalQty} stuks)</div>
+      <ul class="bp-summary__list">
+        ${selected.map(f => {
+          const qty = bpState.qtys[f.id];
+          return `<li class="bp-summary__item">
+            <img src="${f.img}" alt="${f.name}" class="bp-summary__img" onerror="this.src='../images/barebells.jpg'">
+            <span class="bp-summary__name">${f.name}</span>
+            <span class="bp-summary__qty">${qty}×</span>
+            <span class="bp-summary__price">${bpFmt(f.price * qty)}</span>
+          </li>`;
+        }).join('')}
+      </ul>
+      <div class="bp-summary__totals">
+        ${pct > 0 ? `<div class="bp-summary__row"><span>Subtotaal</span><span>${bpFmt(gross)}</span></div>` : ''}
+        ${pct > 0 ? `<div class="bp-summary__row bp-summary__row--discount"><span>Korting (${pct}%)</span><span>-${bpFmt(discount)}</span></div>` : ''}
+        <div class="bp-summary__row bp-summary__row--total"><span>Totaal</span><span>${bpFmt(net)}</span></div>
+      </div>
+    </div>
+  `;
 }
 
 /* ---- EVENTS ---- */
