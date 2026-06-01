@@ -117,18 +117,45 @@
     if (emptyEl) emptyEl.style.display = items.length ? 'none' : 'block';
     if (pricingEl) pricingEl.style.display = items.length ? 'block' : 'none';
 
-    // Render item list
+    // Render item list with image + qty controls
     if (itemsEl) {
       let html = emptyEl ? emptyEl.outerHTML : '';
       items.forEach(item => {
         html += `<div class="summary-item">
-          <span class="summary-item__name">${item.name}</span>
-          <span class="summary-item__qty">x${item.qty}</span>
-          <span class="summary-item__price">${fmt(item.qty * item.price)}</span>
+          <img src="${item.img}" alt="${item.name}" class="summary-item__img" onerror="this.style.display='none'">
+          <div class="summary-item__info">
+            <span class="summary-item__name">${item.name}</span>
+            <span class="summary-item__price">${fmt(item.qty * item.price)}</span>
+          </div>
+          <div class="summary-item__qty-ctrl">
+            <button class="summary-qty-btn" data-id="${item.id}" data-action="dec">−</button>
+            <span class="summary-qty-val">${item.qty}</span>
+            <button class="summary-qty-btn" data-id="${item.id}" data-action="inc">+</button>
+          </div>
         </div>`;
       });
       itemsEl.innerHTML = html;
+      // Attach events to sidebar qty buttons
+      itemsEl.querySelectorAll('.summary-qty-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.dataset.id;
+          const action = btn.dataset.action;
+          const card = document.querySelector(`.flavor-card[data-id="${id}"]`);
+          if (card) {
+            const trigger = card.querySelector(action === 'inc' ? '.qty-btn--plus' : '.qty-btn--minus');
+            if (trigger) trigger.click();
+          }
+        });
+      });
     }
+
+    // Update sidebar progress bar
+    const sidebarFill = document.getElementById('sidebar-fill');
+    const sidebarCount = document.getElementById('sidebar-count');
+    const sidebarMax = document.getElementById('sidebar-max');
+    if (sidebarFill) sidebarFill.style.width = Math.min(100, (totalQty / state.boxSize) * 100) + '%';
+    if (sidebarCount) sidebarCount.textContent = totalQty;
+    if (sidebarMax) sidebarMax.textContent = state.boxSize;
 
     // Pricing
     if (tier.discount > 0) {
