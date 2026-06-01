@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/header.css">
   <link rel="stylesheet" href="../css/footer.css">
-  <link rel="stylesheet" href="../css/product.css">
+  <link rel="stylesheet" href="../css/product.css?v=2">
 </head>
 <body>
 
@@ -142,13 +142,76 @@
           Heerlijke eiwitreep met chocolade smaak 🍫<br>
           Perfect als snack zonder schuldgevoel 💜
         </p>
-        <div class="product-info__price">€2,49</div>
+        <!-- FLAVOR SELECTOR -->
+        <div class="flavor-selector">
+          <div class="flavor-selector__label">Kies jouw smaak <span class="flavor-selector__count" id="flavor-selected-count">1 geselecteerd</span></div>
+          <div class="flavor-selector__grid" id="flavor-selector-grid">
+            <button class="flavor-chip flavor-chip--active" data-flavor="chocolate-dough" data-price="2.49" data-img="../images/barebells.jpg">
+              <img src="../images/barebells.jpg" alt="Chocolate Dough" class="flavor-chip__img">
+              <span class="flavor-chip__name">Chocolate Dough</span>
+              <span class="flavor-chip__check">✓</span>
+            </button>
+            <button class="flavor-chip" data-flavor="salty-peanut" data-price="2.49" data-img="../images/barebells.jpg">
+              <img src="../images/barebells.jpg" alt="Salty Peanut" class="flavor-chip__img">
+              <span class="flavor-chip__name">Salty Peanut</span>
+              <span class="flavor-chip__check">✓</span>
+            </button>
+            <button class="flavor-chip" data-flavor="caramel-cashew" data-price="2.49" data-img="../images/barebells.jpg">
+              <img src="../images/barebells.jpg" alt="Caramel Cashew" class="flavor-chip__img">
+              <span class="flavor-chip__name">Caramel Cashew</span>
+              <span class="flavor-chip__check">✓</span>
+            </button>
+            <button class="flavor-chip" data-flavor="cookies-cream" data-price="2.49" data-img="../images/barebells.jpg">
+              <img src="../images/barebells.jpg" alt="Cookies &amp; Cream" class="flavor-chip__img">
+              <span class="flavor-chip__name">Cookies &amp; Cream</span>
+              <span class="flavor-chip__check">✓</span>
+            </button>
+            <button class="flavor-chip" data-flavor="peanut-butter" data-price="2.49" data-img="../images/barebells.jpg">
+              <img src="../images/barebells.jpg" alt="Peanut Butter" class="flavor-chip__img">
+              <span class="flavor-chip__name">Peanut Butter</span>
+              <span class="flavor-chip__check">✓</span>
+            </button>
+            <button class="flavor-chip" data-flavor="white-choc" data-price="2.49" data-img="../images/barebells.jpg">
+              <img src="../images/barebells.jpg" alt="White Chocolate" class="flavor-chip__img">
+              <span class="flavor-chip__name">White Chocolate</span>
+              <span class="flavor-chip__check">✓</span>
+            </button>
+            <button class="flavor-chip" data-flavor="hazelnut" data-price="2.49" data-img="../images/barebells.jpg">
+              <img src="../images/barebells.jpg" alt="Hazelnut" class="flavor-chip__img">
+              <span class="flavor-chip__name">Hazelnut</span>
+              <span class="flavor-chip__check">✓</span>
+            </button>
+            <button class="flavor-chip" data-flavor="strawberry" data-price="2.49" data-img="../images/barebells.jpg">
+              <img src="../images/barebells.jpg" alt="Strawberry" class="flavor-chip__img">
+              <span class="flavor-chip__name">Strawberry</span>
+              <span class="flavor-chip__check">✓</span>
+            </button>
+            <button class="flavor-chip" data-flavor="banana" data-price="2.49" data-img="../images/barebells.jpg">
+              <img src="../images/barebells.jpg" alt="Banana" class="flavor-chip__img">
+              <span class="flavor-chip__name">Banana</span>
+              <span class="flavor-chip__check">✓</span>
+            </button>
+            <button class="flavor-chip" data-flavor="vanilla" data-price="2.49" data-img="../images/barebells.jpg">
+              <img src="../images/barebells.jpg" alt="Vanilla" class="flavor-chip__img">
+              <span class="flavor-chip__name">Vanilla</span>
+              <span class="flavor-chip__check">✓</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- MULTI-FLAVOR QUANTITIES (shown when 2+ flavors selected) -->
+        <div class="flavor-quantities" id="flavor-quantities" style="display:none">
+          <div class="flavor-quantities__label">Hoeveel per smaak?</div>
+          <div class="flavor-quantities__list" id="flavor-qty-list"></div>
+        </div>
+
+        <div class="product-info__price" id="pdp-price">€2,49</div>
         <div class="product-info__stock">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#7DC242"/><polyline points="6 12 10 16 18 8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           Op voorraad – morgen in huis
         </div>
         <div class="product-info__actions">
-          <div class="qty-ctrl">
+          <div class="qty-ctrl" id="single-qty-ctrl">
             <button class="qty-btn" id="qty-minus-d">−</button>
             <span class="qty-val" id="qty-val-d">1</span>
             <button class="qty-btn" id="qty-plus-d">+</button>
@@ -156,6 +219,43 @@
           <button class="btn btn--primary product-info__add-btn" id="add-to-cart-d" data-product-id="1">
             Voeg toe aan jouw Smikkie mix 💜
           </button>
+        </div>
+
+        <!-- BOX UPSELL (shown when total qty >= 6) -->
+        <div class="box-upsell" id="box-upsell" style="display:none">
+          <div class="box-upsell__header">
+            <span class="box-upsell__icon">📦</span>
+            <div>
+              <strong class="box-upsell__title">Maak er een doos van!</strong>
+              <span class="box-upsell__sub">Hoe meer dozen, hoe meer korting</span>
+            </div>
+          </div>
+          <div class="box-upsell__options">
+            <button class="box-upsell__option" data-qty="12" data-discount="0">
+              <span class="box-upsell__option-qty">1 doos</span>
+              <span class="box-upsell__option-stuks">12 stuks</span>
+              <span class="box-upsell__option-price">€29,88</span>
+            </button>
+            <button class="box-upsell__option" data-qty="24" data-discount="5">
+              <span class="box-upsell__option-badge">5% korting</span>
+              <span class="box-upsell__option-qty">2 dozen</span>
+              <span class="box-upsell__option-stuks">24 stuks</span>
+              <span class="box-upsell__option-price">€56,87</span>
+            </button>
+            <button class="box-upsell__option" data-qty="36" data-discount="10">
+              <span class="box-upsell__option-badge">10% korting</span>
+              <span class="box-upsell__option-qty">3 dozen</span>
+              <span class="box-upsell__option-stuks">36 stuks</span>
+              <span class="box-upsell__option-price">€80,68</span>
+            </button>
+            <button class="box-upsell__option" data-qty="48" data-discount="20">
+              <span class="box-upsell__option-badge box-upsell__option-badge--gold">20% korting</span>
+              <span class="box-upsell__option-qty">4 dozen</span>
+              <span class="box-upsell__option-stuks">48 stuks</span>
+              <span class="box-upsell__option-price">€95,62</span>
+            </button>
+          </div>
+          <a href="mix-box.html" class="box-upsell__link">Of stel een mix samen met meerdere merken →</a>
         </div>
         <!-- Trust badges -->
         <div class="product-info__trust">
@@ -628,6 +728,7 @@
 
 <script src="../js/shop.js"></script>
 <script src="../js/header-template.js"></script>
-<script src="../js/product.js"></script>
+  <script src="../js/product.js"></script>
+  <script src="../js/product-flavor.js"></script>
 </body>
 </html>

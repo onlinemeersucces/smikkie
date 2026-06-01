@@ -178,6 +178,14 @@
   border-bottom: 1px solid #f0f0f0;
 }
 
+.volume-upsell__title {
+  text-align: center;
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--dark);
+  margin: 0 0 28px;
+}
+
 .volume-upsell .container > p {
   text-align: center;
   font-size: 19px;
@@ -544,8 +552,8 @@
 /* ---- FLAVOR GRID ---- */
 .flavor-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
 }
 
 /* ---- FLAVOR CARD ---- */
@@ -575,16 +583,16 @@
 .flavor-card__img-wrap {
   position: relative;
   background: #f8f8f8;
-  padding: 18px 18px 12px;
+  padding: 22px 22px 14px;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 120px;
+  min-height: 150px;
 }
 
 .flavor-card__img {
   width: 100%;
-  height: 100px;
+  height: 130px;
   object-fit: contain;
   display: block;
 }
@@ -715,55 +723,78 @@
   border-radius: 20px;
 }
 
-/* Discount tier */
+/* Discount tier — progress bar style */
 .discount-tier {
+  padding: 16px 20px 14px;
   border-bottom: 1px solid #f0f0f0;
 }
 
-.discount-tier__track {
+.discount-tier__bar {
+  height: 8px;
+  background: #eee;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.discount-tier__fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--purple), #9b59b6);
+  border-radius: 10px;
+  transition: width .4s ease;
+}
+
+.discount-tier__steps {
   display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
 
-.discount-tier__segment {
-  flex: 1;
-  padding: 12px 8px;
-  text-align: center;
-  font-size: 11px;
-  font-weight: 700;
-  color: #ccc;
-  border-right: 1px solid #f0f0f0;
-  transition: all .25s;
+.discount-tier__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  opacity: .35;
+  transition: opacity .25s;
 }
 
-.discount-tier__segment:last-child {
-  border-right: none;
+.discount-tier__step.is-active {
+  opacity: 1;
 }
 
-.discount-tier__segment.is-active {
-  background: #f2eeff;
-  color: var(--purple);
+.discount-tier__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ddd;
+  transition: background .25s;
 }
 
-.discount-tier__segment span {
-  display: block;
-  font-size: 18px;
+.discount-tier__step.is-active .discount-tier__dot {
+  background: var(--purple);
+}
+
+.discount-tier__pct {
+  font-size: 13px;
   font-weight: 900;
-  line-height: 1.2;
-  margin-bottom: 2px;
+  color: var(--dark);
 }
 
-.discount-tier__segment small {
+.discount-tier__step small {
   font-size: 10px;
-  opacity: .7;
+  color: #999;
+  font-weight: 600;
 }
 
 .discount-tier__label {
-  padding: 9px 16px;
   text-align: center;
   font-size: 12px;
   font-weight: 700;
   color: var(--purple);
   background: #faf8ff;
+  padding: 7px 12px;
+  border-radius: 8px;
 }
 
 /* Summary items */

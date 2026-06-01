@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="../css/base.css?v=mix1">
   <link rel="stylesheet" href="../css/header.css?v=mix1">
   <link rel="stylesheet" href="../css/footer.css?v=mix1">
-  <link rel="stylesheet" href="../css/mix-box.css?v=4">
+  <link rel="stylesheet" href="../css/mix-box.css?v=7">
 </head>
 <body>
 
@@ -125,6 +125,7 @@
     <!-- UPSELL VOLUME BANNER -->
     <section class="volume-upsell">
       <div class="container">
+        <p class="volume-upsell__title">Hoe meer je bestelt, hoe meer je bespaart</p>
         <div class="volume-steps">
           <div class="volume-step" id="vstep-1" data-qty="12">
             <div class="volume-step__icon">📦</div>
@@ -136,16 +137,26 @@
           </div>
           <div class="volume-step__arrow">→</div>
           <div class="volume-step" id="vstep-2" data-qty="24">
-            <div class="volume-step__badge">10% korting</div>
+            <div class="volume-step__badge">5% korting</div>
             <div class="volume-step__icon">📦📦</div>
             <div class="volume-step__info">
               <strong>2 dozen</strong>
               <span>24 stuks</span>
             </div>
+            <div class="volume-step__price volume-step__price--green">Bespaar 5%</div>
+          </div>
+          <div class="volume-step__arrow">→</div>
+          <div class="volume-step" id="vstep-3" data-qty="36">
+            <div class="volume-step__badge">10% korting</div>
+            <div class="volume-step__icon">📦📦📦</div>
+            <div class="volume-step__info">
+              <strong>3 dozen</strong>
+              <span>36 stuks</span>
+            </div>
             <div class="volume-step__price volume-step__price--green">Bespaar 10%</div>
           </div>
           <div class="volume-step__arrow">→</div>
-          <div class="volume-step" id="vstep-3" data-qty="48">
+          <div class="volume-step" id="vstep-4" data-qty="48">
             <div class="volume-step__badge volume-step__badge--gold">20% korting</div>
             <div class="volume-step__icon">📦📦📦📦</div>
             <div class="volume-step__info">
@@ -422,13 +433,19 @@
                     <span class="box-size__sub">1 doos</span>
                   </button>
                   <button class="box-size" data-size="24">
-                    <span class="box-size__badge">-10%</span>
+                    <span class="box-size__badge">5% korting</span>
                     <span class="box-size__num">24</span>
                     <span class="box-size__label">stuks</span>
                     <span class="box-size__sub">2 dozen</span>
                   </button>
+                  <button class="box-size" data-size="36">
+                    <span class="box-size__badge">10% korting</span>
+                    <span class="box-size__num">36</span>
+                    <span class="box-size__label">stuks</span>
+                    <span class="box-size__sub">3 dozen</span>
+                  </button>
                   <button class="box-size" data-size="48">
-                    <span class="box-size__badge box-size__badge--gold">-20%</span>
+                    <span class="box-size__badge box-size__badge--gold">20% korting</span>
                     <span class="box-size__num">48</span>
                     <span class="box-size__label">stuks</span>
                     <span class="box-size__sub">4 dozen</span>
@@ -582,18 +599,29 @@
 
               <!-- Discount tier indicator -->
               <div class="discount-tier" id="discount-tier">
-                <div class="discount-tier__track">
-                  <div class="discount-tier__segment" id="tier-seg-1">
-                    <span>0%</span>
-                    <small>1-23 st.</small>
+                <div class="discount-tier__bar">
+                  <div class="discount-tier__fill" id="tier-fill" style="width:0%"></div>
+                </div>
+                <div class="discount-tier__steps">
+                  <div class="discount-tier__step" id="tier-seg-1">
+                    <div class="discount-tier__dot"></div>
+                    <span class="discount-tier__pct">0%</span>
+                    <small>1 doos</small>
                   </div>
-                  <div class="discount-tier__segment" id="tier-seg-2">
-                    <span>10%</span>
-                    <small>24-47 st.</small>
+                  <div class="discount-tier__step" id="tier-seg-2">
+                    <div class="discount-tier__dot"></div>
+                    <span class="discount-tier__pct">5%</span>
+                    <small>2 dozen</small>
                   </div>
-                  <div class="discount-tier__segment" id="tier-seg-3">
-                    <span>20%</span>
-                    <small>48+ st.</small>
+                  <div class="discount-tier__step" id="tier-seg-3">
+                    <div class="discount-tier__dot"></div>
+                    <span class="discount-tier__pct">10%</span>
+                    <small>3 dozen</small>
+                  </div>
+                  <div class="discount-tier__step" id="tier-seg-4">
+                    <div class="discount-tier__dot"></div>
+                    <span class="discount-tier__pct">20%</span>
+                    <small>4 dozen</small>
                   </div>
                 </div>
                 <div class="discount-tier__label" id="discount-tier-label">Voeg meer toe voor korting!</div>
