@@ -7,301 +7,482 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/base.css">
-  <link rel="stylesheet" href="../css/header.css">
-  <link rel="stylesheet" href="../css/footer.css">
-  <link rel="stylesheet" href="../css/category.css">
+  <link rel="stylesheet" href="../css/base.css?v=24">
+  <link rel="stylesheet" href="../css/header.css?v=24">
+  <link rel="stylesheet" href="../css/footer.css?v=24">
+  <link rel="stylesheet" href="../css/mix-box.css?v=24">
 </head>
 <body>
 
 <div id="site-header"></div>
 
-<!-- HERO BANNER -->
-<section class="cat-hero" style="background: linear-gradient(135deg, #EDE8F8 0%, #F5F0FF 100%);">
+<!-- CART DRAWER (mix-box stijl, voor deze pagina) -->
+<div id="cart-backdrop" class="cart-backdrop"></div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb desktop-only">
   <div class="container">
-    <div class="cat-hero__inner">
-      <div class="cat-hero__text">
-        <nav class="breadcrumb__nav" style="margin-bottom:12px;">
-          <a href="../index.html">Home</a>
-          <span class="sep">›</span>
-          <span class="current">Eiwitrepen</span>
-        </nav>
-        <h1 class="cat-hero__title">Eiwitrepen 💪</h1>
-        <p class="cat-hero__sub">Hoog in eiwit, laag in suiker — de perfecte snack zonder schuldgevoel. Kies jouw favoriet en voeg toe aan jouw Smikkie mix.</p>
-        <div class="cat-hero__stats">
-          <div class="cat-stat">
-            <strong>12</strong>
-            <span>producten</span>
-          </div>
-          <div class="cat-stat">
-            <strong>20g+</strong>
-            <span>eiwit per reep</span>
-          </div>
-          <div class="cat-stat">
-            <strong>Vanaf €1,99</strong>
-            <span>per stuk</span>
-          </div>
+    <nav class="breadcrumb__nav">
+      <a href="../index.html">Home</a>
+      <span class="sep">›</span>
+      <span class="current">Eiwitrepen</span>
+    </nav>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="mix-hero" style="background: linear-gradient(135deg, #EDE8F8 0%, #F5F0FF 100%);">
+  <div class="container">
+    <div class="mix-hero__inner">
+      <div class="mix-hero__text">
+        <h1 class="mix-hero__title">Eiwitrepen 💪<br><span style="color:var(--purple);">Stel jouw mix samen</span></h1>
+        <p class="mix-hero__sub">Hoog in eiwit, laag in suiker. Kies jouw favoriete smaken en profiteer van volumekorting vanaf 1 doos (12 stuks).</p>
+        <div class="mix-hero__stats">
+          <div class="mix-hero__stat"><strong>20g+</strong><span>eiwit per reep</span></div>
+          <div class="mix-hero__stat"><strong>Vanaf €1,99</strong><span>per stuk</span></div>
+          <div class="mix-hero__stat"><strong>Tot 20%</strong><span>volumekorting</span></div>
         </div>
       </div>
-      <div class="cat-hero__img">
+      <div class="mix-hero__img">
         <img src="../images/barebells.jpg" alt="Eiwitrepen">
       </div>
     </div>
   </div>
 </section>
 
-<!-- FILTER + PRODUCTS -->
-<section class="cat-section">
+<!-- VOLUME UPSELL LADDER -->
+<section class="volume-upsell">
   <div class="container">
-    <div class="cat-layout">
-
-      <!-- SIDEBAR FILTERS -->
-      <aside class="cat-filters">
-        <div class="filter-group">
-          <h3 class="filter-group__title">Merk</h3>
-          <label class="filter-check"><input type="checkbox" checked> <span>Barebells</span> <em>4</em></label>
-          <label class="filter-check"><input type="checkbox"> <span>N!CK'S</span> <em>3</em></label>
-          <label class="filter-check"><input type="checkbox"> <span>Quest</span> <em>2</em></label>
-          <label class="filter-check"><input type="checkbox"> <span>Grenade</span> <em>2</em></label>
-          <label class="filter-check"><input type="checkbox"> <span>PhD Smart</span> <em>1</em></label>
-        </div>
-        <div class="filter-group">
-          <h3 class="filter-group__title">Smaak</h3>
-          <label class="filter-check"><input type="checkbox"> <span>Chocolade</span> <em>5</em></label>
-          <label class="filter-check"><input type="checkbox"> <span>Peanut Butter</span> <em>3</em></label>
-          <label class="filter-check"><input type="checkbox"> <span>Caramel</span> <em>2</em></label>
-          <label class="filter-check"><input type="checkbox"> <span>Vanilla</span> <em>2</em></label>
-        </div>
-        <div class="filter-group">
-          <h3 class="filter-group__title">Prijs</h3>
-          <div class="filter-range">
-            <div class="filter-range__labels">
-              <span>€1,99</span>
-              <span>€3,99</span>
-            </div>
-            <input type="range" min="199" max="399" value="399" class="filter-range__input" id="price-range">
-            <div class="filter-range__value">Tot <strong id="price-val">€3,99</strong></div>
-          </div>
-        </div>
-        <div class="filter-group">
-          <h3 class="filter-group__title">Kenmerken</h3>
-          <label class="filter-check"><input type="checkbox"> <span>Hoog in eiwit (20g+)</span></label>
-          <label class="filter-check"><input type="checkbox"> <span>Laag in suiker</span></label>
-          <label class="filter-check"><input type="checkbox"> <span>Glutenvrij</span></label>
-          <label class="filter-check"><input type="checkbox"> <span>Vegan</span></label>
-        </div>
-        <button class="btn btn--primary btn--full" style="margin-top:8px;">Filters toepassen</button>
-        <button class="btn btn--ghost btn--full" style="margin-top:8px;" id="reset-filters">Filters wissen</button>
-      </aside>
-
-      <!-- PRODUCTS GRID -->
-      <div class="cat-main">
-        <div class="cat-main__header">
-          <span class="cat-main__count">12 producten</span>
-          <div class="cat-main__sort">
-            <label>Sorteren op:</label>
-            <select class="sort-select" id="sort-select">
-              <option value="popular">Populairste</option>
-              <option value="price-asc">Prijs: laag → hoog</option>
-              <option value="price-desc">Prijs: hoog → laag</option>
-              <option value="newest">Nieuwste</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="products-grid" id="products-grid">
-          <!-- Product 1 -->
-          <a href="product.html?id=1" class="prod-card prod-card--lg">
-            <div class="prod-card__badge">Bestseller</div>
-            <div class="prod-card__img"><img src="../images/barebells.jpg" alt="Barebells Chocolate Dough"></div>
-            <div class="prod-card__body">
-              <span class="prod-card__brand">Barebells</span>
-              <span class="prod-card__name">Chocolate Dough</span>
-              <div class="prod-card__stars">
-                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-                <span class="prod-card__rating-count">(128)</span>
-              </div>
-              <div class="prod-card__tags">
-                <span class="tag">20g eiwit</span>
-                <span class="tag">Laag in suiker</span>
-              </div>
-              <div class="prod-card__footer">
-                <span class="prod-card__price">€2,49</span>
-                <button class="prod-card__add" data-add-to-cart="1">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                </button>
-              </div>
-            </div>
-          </a>
-          <!-- Product 2 -->
-          <a href="product.html?id=7" class="prod-card prod-card--lg">
-            <div class="prod-card__img"><img src="../images/barebells.jpg" alt="Barebells Cookies & Cream"></div>
-            <div class="prod-card__body">
-              <span class="prod-card__brand">Barebells</span>
-              <span class="prod-card__name">Cookies &amp; Cream</span>
-              <div class="prod-card__stars">
-                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-                <span class="prod-card__rating-count">(94)</span>
-              </div>
-              <div class="prod-card__tags">
-                <span class="tag">20g eiwit</span>
-              </div>
-              <div class="prod-card__footer">
-                <span class="prod-card__price">€2,49</span>
-                <button class="prod-card__add" data-add-to-cart="7">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                </button>
-              </div>
-            </div>
-          </a>
-          <!-- Product 3 -->
-          <a href="product.html?id=2" class="prod-card prod-card--lg">
-            <div class="prod-card__badge prod-card__badge--green">Nieuw</div>
-            <div class="prod-card__img"><img src="../images/nicks.png" alt="NICK'S Peanut Caramel Bar"></div>
-            <div class="prod-card__body">
-              <span class="prod-card__brand">N!CK'S</span>
-              <span class="prod-card__name">Peanut Caramel Bar</span>
-              <div class="prod-card__stars">
-                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star star--half">★</span>
-                <span class="prod-card__rating-count">(67)</span>
-              </div>
-              <div class="prod-card__tags">
-                <span class="tag">15g eiwit</span>
-                <span class="tag">Vegan</span>
-              </div>
-              <div class="prod-card__footer">
-                <span class="prod-card__price">€2,29</span>
-                <button class="prod-card__add" data-add-to-cart="2">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                </button>
-              </div>
-            </div>
-          </a>
-          <!-- Product 4 -->
-          <a href="product.html?id=8" class="prod-card prod-card--lg">
-            <div class="prod-card__img"><img src="../images/barebells.jpg" alt="Barebells Salty Peanut"></div>
-            <div class="prod-card__body">
-              <span class="prod-card__brand">Barebells</span>
-              <span class="prod-card__name">Salty Peanut</span>
-              <div class="prod-card__stars">
-                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-                <span class="prod-card__rating-count">(82)</span>
-              </div>
-              <div class="prod-card__tags">
-                <span class="tag">20g eiwit</span>
-              </div>
-              <div class="prod-card__footer">
-                <span class="prod-card__price">€2,49</span>
-                <button class="prod-card__add" data-add-to-cart="8">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                </button>
-              </div>
-            </div>
-          </a>
-          <!-- Product 5 -->
-          <a href="product.html?id=9" class="prod-card prod-card--lg">
-            <div class="prod-card__img"><img src="../images/nicks.png" alt="N!CK'S Hazelnut Nougat"></div>
-            <div class="prod-card__body">
-              <span class="prod-card__brand">N!CK'S</span>
-              <span class="prod-card__name">Hazelnut Nougat</span>
-              <div class="prod-card__stars">
-                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-                <span class="prod-card__rating-count">(45)</span>
-              </div>
-              <div class="prod-card__tags">
-                <span class="tag">15g eiwit</span>
-                <span class="tag">Vegan</span>
-              </div>
-              <div class="prod-card__footer">
-                <span class="prod-card__price">€2,29</span>
-                <button class="prod-card__add" data-add-to-cart="9">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                </button>
-              </div>
-            </div>
-          </a>
-          <!-- Product 6 -->
-          <a href="product.html?id=10" class="prod-card prod-card--lg">
-            <div class="prod-card__img"><img src="../images/barebells.jpg" alt="Barebells Caramel Cashew"></div>
-            <div class="prod-card__body">
-              <span class="prod-card__brand">Barebells</span>
-              <span class="prod-card__name">Caramel Cashew</span>
-              <div class="prod-card__stars">
-                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-                <span class="prod-card__rating-count">(61)</span>
-              </div>
-              <div class="prod-card__tags">
-                <span class="tag">20g eiwit</span>
-              </div>
-              <div class="prod-card__footer">
-                <span class="prod-card__price">€2,49</span>
-                <button class="prod-card__add" data-add-to-cart="10">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                </button>
-              </div>
-            </div>
-          </a>
-          <!-- Product 7 -->
-          <a href="product.html?id=11" class="prod-card prod-card--lg">
-            <div class="prod-card__img"><img src="../images/nicks.png" alt="N!CK'S Chocolate Fudge"></div>
-            <div class="prod-card__body">
-              <span class="prod-card__brand">N!CK'S</span>
-              <span class="prod-card__name">Chocolate Fudge</span>
-              <div class="prod-card__stars">
-                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-                <span class="prod-card__rating-count">(38)</span>
-              </div>
-              <div class="prod-card__tags">
-                <span class="tag">15g eiwit</span>
-                <span class="tag">Vegan</span>
-              </div>
-              <div class="prod-card__footer">
-                <span class="prod-card__price">€2,29</span>
-                <button class="prod-card__add" data-add-to-cart="11">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                </button>
-              </div>
-            </div>
-          </a>
-          <!-- Product 8 -->
-          <a href="product.html?id=12" class="prod-card prod-card--lg">
-            <div class="prod-card__img"><img src="../images/barebells.jpg" alt="Barebells White Chocolate Almond"></div>
-            <div class="prod-card__body">
-              <span class="prod-card__brand">Barebells</span>
-              <span class="prod-card__name">White Choc Almond</span>
-              <div class="prod-card__stars">
-                <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-                <span class="prod-card__rating-count">(53)</span>
-              </div>
-              <div class="prod-card__tags">
-                <span class="tag">20g eiwit</span>
-              </div>
-              <div class="prod-card__footer">
-                <span class="prod-card__price">€2,49</span>
-                <button class="prod-card__add" data-add-to-cart="12">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-                </button>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <!-- PAGINATION -->
-        <div class="pagination">
-          <button class="page-btn page-btn--active">1</button>
-          <button class="page-btn">2</button>
-          <button class="page-btn">→</button>
-        </div>
+    <div class="volume-upsell__inner">
+      <div class="volume-step" data-qty="12">
+        <div class="volume-step__qty">12 stuks</div>
+        <div class="volume-step__label">1 doos</div>
+        <div class="volume-step__discount">5% korting</div>
       </div>
-
+      <div class="volume-step__arrow">›</div>
+      <div class="volume-step" data-qty="24">
+        <div class="volume-step__qty">24 stuks</div>
+        <div class="volume-step__label">2 dozen</div>
+        <div class="volume-step__discount">10% korting</div>
+      </div>
+      <div class="volume-step__arrow">›</div>
+      <div class="volume-step" data-qty="36">
+        <div class="volume-step__qty">36 stuks</div>
+        <div class="volume-step__label">3 dozen</div>
+        <div class="volume-step__discount">15% korting</div>
+      </div>
+      <div class="volume-step__arrow">›</div>
+      <div class="volume-step" data-qty="48">
+        <div class="volume-step__qty">48 stuks</div>
+        <div class="volume-step__label">4 dozen</div>
+        <div class="volume-step__discount">20% korting</div>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- UPSELL NUDGE BAR -->
+<div id="upsell-nudge" class="upsell-nudge" style="display:none">
+  <span id="upsell-nudge-text"></span>
+  <button id="upsell-nudge-btn" class="upsell-nudge__btn"></button>
+</div>
+
+<!-- MIX BUILDER -->
+<section class="mix-builder">
+  <div class="container">
+    <div class="mix-builder__layout">
+
+      <!-- LINKER KOLOM: Picker -->
+      <div class="mix-builder__main">
+
+        <!-- TABS -->
+        <div class="mix-tabs">
+          <button class="mix-tab mix-tab--active" data-tab="losse">🍫 Losse repen</button>
+          <button class="mix-tab" data-tab="dozen">📦 Dozen</button>
+        </div>
+
+        <!-- TAB: Losse repen -->
+        <div class="mix-tab-content" id="tab-losse">
+
+          <!-- Picker header -->
+          <div class="picker-header">
+            <div class="picker-header__left">
+              <span class="picker-header__count"><span id="picker-count">0</span> / <span id="picker-max">12</span> stuks</span>
+            </div>
+            <div class="picker-header__progress">
+              <div class="picker-header__track">
+                <div class="picker-header__fill" id="picker-fill" style="width:0%"></div>
+              </div>
+            </div>
+            <!-- Box size selector -->
+            <div class="box-size-selector">
+              <button class="box-size box-size--active" data-size="12">12</button>
+              <button class="box-size" data-size="24">24</button>
+              <button class="box-size" data-size="36">36</button>
+              <button class="box-size" data-size="48">48</button>
+            </div>
+          </div>
+
+          <!-- Staffel balk -->
+          <div id="tier-bar" class="tier-bar"></div>
+
+          <!-- Merk filters -->
+          <div class="flavor-filters">
+            <button class="flavor-filter flavor-filter--active" data-filter="all">Alle merken</button>
+            <button class="flavor-filter" data-filter="Barebells">Barebells</button>
+            <button class="flavor-filter" data-filter="N!CK'S">N!CK'S</button>
+            <button class="flavor-filter" data-filter="Quest">Quest</button>
+          </div>
+
+          <!-- Flavor grid -->
+          <div class="flavor-grid" id="flavor-grid">
+
+            <!-- Barebells Chocolate Dough -->
+            <div class="flavor-card"
+                 data-id="bb-choc-dough"
+                 data-name="Chocolate Dough"
+                 data-brand="Barebells"
+                 data-price="2.49"
+                 data-img="../images/barebells.jpg"
+                 data-cat="chocolade">
+              <div class="flavor-card__img">
+                <img src="../images/barebells.jpg" alt="Barebells Chocolate Dough" onerror="this.src='../images/barebells.jpg'">
+              </div>
+              <div class="flavor-card__body">
+                <span class="flavor-card__brand">Barebells</span>
+                <span class="flavor-card__name">Chocolate Dough</span>
+                <span class="flavor-card__macros">20g eiwit · 2g suiker · 200 kcal</span>
+                <span class="flavor-card__price">€2,49 / stuk</span>
+              </div>
+              <div class="flavor-card__qty">
+                <button class="qty-btn qty-btn--minus" data-id="bb-choc-dough">−</button>
+                <span class="qty-val" id="qty-bb-choc-dough">0</span>
+                <button class="qty-btn qty-btn--plus" data-id="bb-choc-dough">+</button>
+              </div>
+            </div>
+
+            <!-- Barebells Cookies & Cream -->
+            <div class="flavor-card"
+                 data-id="bb-cookies-cream"
+                 data-name="Cookies & Cream"
+                 data-brand="Barebells"
+                 data-price="2.49"
+                 data-img="../images/barebells.jpg"
+                 data-cat="chocolade">
+              <div class="flavor-card__img">
+                <img src="../images/barebells.jpg" alt="Barebells Cookies & Cream" onerror="this.src='../images/barebells.jpg'">
+              </div>
+              <div class="flavor-card__body">
+                <span class="flavor-card__brand">Barebells</span>
+                <span class="flavor-card__name">Cookies &amp; Cream</span>
+                <span class="flavor-card__macros">20g eiwit · 2g suiker · 198 kcal</span>
+                <span class="flavor-card__price">€2,49 / stuk</span>
+              </div>
+              <div class="flavor-card__qty">
+                <button class="qty-btn qty-btn--minus" data-id="bb-cookies-cream">−</button>
+                <span class="qty-val" id="qty-bb-cookies-cream">0</span>
+                <button class="qty-btn qty-btn--plus" data-id="bb-cookies-cream">+</button>
+              </div>
+            </div>
+
+            <!-- Barebells Caramel Cashew -->
+            <div class="flavor-card"
+                 data-id="bb-caramel-cashew"
+                 data-name="Caramel Cashew"
+                 data-brand="Barebells"
+                 data-price="2.49"
+                 data-img="../images/barebells.jpg"
+                 data-cat="caramel">
+              <div class="flavor-card__img">
+                <img src="../images/barebells.jpg" alt="Barebells Caramel Cashew" onerror="this.src='../images/barebells.jpg'">
+              </div>
+              <div class="flavor-card__body">
+                <span class="flavor-card__brand">Barebells</span>
+                <span class="flavor-card__name">Caramel Cashew</span>
+                <span class="flavor-card__macros">20g eiwit · 2g suiker · 196 kcal</span>
+                <span class="flavor-card__price">€2,49 / stuk</span>
+              </div>
+              <div class="flavor-card__qty">
+                <button class="qty-btn qty-btn--minus" data-id="bb-caramel-cashew">−</button>
+                <span class="qty-val" id="qty-bb-caramel-cashew">0</span>
+                <button class="qty-btn qty-btn--plus" data-id="bb-caramel-cashew">+</button>
+              </div>
+            </div>
+
+            <!-- Barebells White Chocolate Almond -->
+            <div class="flavor-card"
+                 data-id="bb-white-choc"
+                 data-name="White Chocolate Almond"
+                 data-brand="Barebells"
+                 data-price="2.49"
+                 data-img="../images/barebells.jpg"
+                 data-cat="chocolade">
+              <div class="flavor-card__img">
+                <img src="../images/barebells.jpg" alt="Barebells White Chocolate Almond" onerror="this.src='../images/barebells.jpg'">
+              </div>
+              <div class="flavor-card__body">
+                <span class="flavor-card__brand">Barebells</span>
+                <span class="flavor-card__name">White Chocolate Almond</span>
+                <span class="flavor-card__macros">20g eiwit · 2g suiker · 199 kcal</span>
+                <span class="flavor-card__price">€2,49 / stuk</span>
+              </div>
+              <div class="flavor-card__qty">
+                <button class="qty-btn qty-btn--minus" data-id="bb-white-choc">−</button>
+                <span class="qty-val" id="qty-bb-white-choc">0</span>
+                <button class="qty-btn qty-btn--plus" data-id="bb-white-choc">+</button>
+              </div>
+            </div>
+
+            <!-- N!CK'S Peanut Caramel -->
+            <div class="flavor-card"
+                 data-id="nicks-peanut-caramel"
+                 data-name="Peanut Caramel Bar"
+                 data-brand="N!CK'S"
+                 data-price="2.29"
+                 data-img="../images/nicks.png"
+                 data-cat="pindakaas">
+              <div class="flavor-card__img">
+                <img src="../images/nicks.png" alt="N!CK'S Peanut Caramel Bar" onerror="this.src='../images/barebells.jpg'">
+              </div>
+              <div class="flavor-card__body">
+                <span class="flavor-card__brand">N!CK'S</span>
+                <span class="flavor-card__name">Peanut Caramel Bar</span>
+                <span class="flavor-card__macros">15g eiwit · 1g suiker · 185 kcal</span>
+                <span class="flavor-card__price">€2,29 / stuk</span>
+              </div>
+              <div class="flavor-card__qty">
+                <button class="qty-btn qty-btn--minus" data-id="nicks-peanut-caramel">−</button>
+                <span class="qty-val" id="qty-nicks-peanut-caramel">0</span>
+                <button class="qty-btn qty-btn--plus" data-id="nicks-peanut-caramel">+</button>
+              </div>
+            </div>
+
+            <!-- N!CK'S Chocolate Peanut Cups -->
+            <div class="flavor-card"
+                 data-id="nicks-choc-peanut"
+                 data-name="Chocolate Peanut Cups"
+                 data-brand="N!CK'S"
+                 data-price="2.49"
+                 data-img="../images/nicks.png"
+                 data-cat="chocolade">
+              <div class="flavor-card__img">
+                <img src="../images/nicks.png" alt="N!CK'S Chocolate Peanut Cups" onerror="this.src='../images/barebells.jpg'">
+              </div>
+              <div class="flavor-card__body">
+                <span class="flavor-card__brand">N!CK'S</span>
+                <span class="flavor-card__name">Chocolate Peanut Cups</span>
+                <span class="flavor-card__macros">12g eiwit · 1g suiker · 175 kcal</span>
+                <span class="flavor-card__price">€2,49 / stuk</span>
+              </div>
+              <div class="flavor-card__qty">
+                <button class="qty-btn qty-btn--minus" data-id="nicks-choc-peanut">−</button>
+                <span class="qty-val" id="qty-nicks-choc-peanut">0</span>
+                <button class="qty-btn qty-btn--plus" data-id="nicks-choc-peanut">+</button>
+              </div>
+            </div>
+
+            <!-- Quest Chocolate Chip Cookie -->
+            <div class="flavor-card"
+                 data-id="quest-choc-chip"
+                 data-name="Chocolate Chip Cookie"
+                 data-brand="Quest"
+                 data-price="2.99"
+                 data-img="../images/quest.jpg"
+                 data-cat="koekje">
+              <div class="flavor-card__img">
+                <img src="../images/quest.jpg" alt="Quest Chocolate Chip Cookie" onerror="this.src='../images/barebells.jpg'">
+              </div>
+              <div class="flavor-card__body">
+                <span class="flavor-card__brand">Quest</span>
+                <span class="flavor-card__name">Chocolate Chip Cookie</span>
+                <span class="flavor-card__macros">21g eiwit · 1g suiker · 190 kcal</span>
+                <span class="flavor-card__price">€2,99 / stuk</span>
+              </div>
+              <div class="flavor-card__qty">
+                <button class="qty-btn qty-btn--minus" data-id="quest-choc-chip">−</button>
+                <span class="qty-val" id="qty-quest-choc-chip">0</span>
+                <button class="qty-btn qty-btn--plus" data-id="quest-choc-chip">+</button>
+              </div>
+            </div>
+
+            <!-- Quest Double Chocolate Chip -->
+            <div class="flavor-card"
+                 data-id="quest-dbl-choc"
+                 data-name="Double Chocolate Chip"
+                 data-brand="Quest"
+                 data-price="2.99"
+                 data-img="../images/quest.jpg"
+                 data-cat="chocolade">
+              <div class="flavor-card__img">
+                <img src="../images/quest.jpg" alt="Quest Double Chocolate Chip" onerror="this.src='../images/barebells.jpg'">
+              </div>
+              <div class="flavor-card__body">
+                <span class="flavor-card__brand">Quest</span>
+                <span class="flavor-card__name">Double Chocolate Chip</span>
+                <span class="flavor-card__macros">21g eiwit · 1g suiker · 195 kcal</span>
+                <span class="flavor-card__price">€2,99 / stuk</span>
+              </div>
+              <div class="flavor-card__qty">
+                <button class="qty-btn qty-btn--minus" data-id="quest-dbl-choc">−</button>
+                <span class="qty-val" id="qty-quest-dbl-choc">0</span>
+                <button class="qty-btn qty-btn--plus" data-id="quest-dbl-choc">+</button>
+              </div>
+            </div>
+
+          </div><!-- /flavor-grid -->
+        </div><!-- /tab-losse -->
+
+        <!-- TAB: Dozen -->
+        <div class="mix-tab-content" id="tab-dozen" style="display:none">
+          <div class="dozen-grid">
+
+            <!-- Barebells doos -->
+            <div class="dozen-product">
+              <div class="dozen-product__header">
+                <img src="../images/barebells.jpg" alt="Barebells" onerror="this.src='../images/barebells.jpg'">
+                <div>
+                  <span class="dozen-product__brand">Barebells</span>
+                  <span class="dozen-product__name">Eiwitreep Mix</span>
+                  <span class="dozen-product__sub">12 repen per doos · €2,49/stuk</span>
+                </div>
+              </div>
+              <div class="bundle-selector" data-product="bb-doos" data-unit-price="2.49" data-box-size="12">
+                <div class="bundle-option bundle-option--active" data-qty="1">
+                  <span class="bundle-option__qty">1 doos</span>
+                  <span class="bundle-option__items">12 stuks</span>
+                  <span class="bundle-option__price">€29,87 <em>5% korting</em></span>
+                </div>
+                <div class="bundle-option" data-qty="2">
+                  <span class="bundle-option__qty">2 dozen</span>
+                  <span class="bundle-option__items">24 stuks</span>
+                  <span class="bundle-option__price">€53,78 <em>10% korting</em></span>
+                </div>
+                <div class="bundle-option" data-qty="3">
+                  <span class="bundle-option__qty">3 dozen</span>
+                  <span class="bundle-option__items">36 stuks</span>
+                  <span class="bundle-option__price">€76,19 <em>15% korting</em></span>
+                </div>
+                <div class="bundle-option" data-qty="4">
+                  <span class="bundle-option__qty">4 dozen</span>
+                  <span class="bundle-option__items">48 stuks</span>
+                  <span class="bundle-option__price">€95,62 <em>20% korting</em></span>
+                </div>
+              </div>
+              <button class="btn btn--primary btn-add-dozen" data-product="bb-doos">
+                🛒 Toevoegen aan winkelwagen
+              </button>
+            </div>
+
+            <!-- Quest doos -->
+            <div class="dozen-product">
+              <div class="dozen-product__header">
+                <img src="../images/quest.jpg" alt="Quest" onerror="this.src='../images/barebells.jpg'">
+                <div>
+                  <span class="dozen-product__brand">Quest</span>
+                  <span class="dozen-product__name">Protein Bar Mix</span>
+                  <span class="dozen-product__sub">12 repen per doos · €2,99/stuk</span>
+                </div>
+              </div>
+              <div class="bundle-selector" data-product="quest-doos" data-unit-price="2.99" data-box-size="12">
+                <div class="bundle-option bundle-option--active" data-qty="1">
+                  <span class="bundle-option__qty">1 doos</span>
+                  <span class="bundle-option__items">12 stuks</span>
+                  <span class="bundle-option__price">€34,07 <em>5% korting</em></span>
+                </div>
+                <div class="bundle-option" data-qty="2">
+                  <span class="bundle-option__qty">2 dozen</span>
+                  <span class="bundle-option__items">24 stuks</span>
+                  <span class="bundle-option__price">€64,58 <em>10% korting</em></span>
+                </div>
+              </div>
+              <button class="btn btn--primary btn-add-dozen" data-product="quest-doos">
+                🛒 Toevoegen aan winkelwagen
+              </button>
+            </div>
+
+          </div>
+        </div><!-- /tab-dozen -->
+
+      </div><!-- /mix-builder__main -->
+
+      <!-- RECHTER KOLOM: Samenvatting -->
+      <aside class="mix-builder__sidebar">
+        <div class="mix-summary">
+          <div class="mix-summary__header">
+            <h3>Jouw selectie</h3>
+            <span class="mix-summary__count" id="summary-count">0 stuks</span>
+          </div>
+
+          <div id="summary-empty" class="mix-summary__empty">
+            <div class="mix-summary__empty-icon">🛒</div>
+            <p>Voeg smaken toe om te beginnen!</p>
+          </div>
+
+          <div id="summary-pricing" style="display:none">
+            <div id="summary-items" class="mix-summary__items"></div>
+
+            <div class="mix-summary__pricing">
+              <div class="mix-summary__row" id="sum-original-row" style="display:none">
+                <span>Subtotaal</span>
+                <span id="sum-original"></span>
+              </div>
+              <div class="mix-summary__row mix-summary__row--discount" id="sum-discount-row" style="display:none">
+                <span id="sum-discount-label">Volumekorting</span>
+                <span id="sum-discount-amount"></span>
+              </div>
+              <div class="mix-summary__row mix-summary__row--total">
+                <span>Totaal</span>
+                <span id="sum-total">€0,00</span>
+              </div>
+            </div>
+
+            <button class="btn btn--primary btn--full" id="btn-add-to-cart" disabled>
+              🛒 Toevoegen aan winkelwagen
+            </button>
+          </div>
+
+          <!-- Trust badges -->
+          <div class="mix-summary__trust">
+            <span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              Veilig betalen
+            </span>
+            <span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              Gratis v.a. €40
+            </span>
+            <span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.5"/></svg>
+              14 dagen retour
+            </span>
+          </div>
+        </div>
+      </aside>
+
+    </div><!-- /mix-builder__layout -->
+  </div><!-- /container -->
+</section>
+
 <div id="site-footer"></div>
 
-<script src="../js/shop.js"></script>
-<script src="../js/header-template.js"></script>
-<script src="../js/category.js"></script>
+<!-- CATEGORIE CONFIGURATIE -->
+<script>
+window.CATEGORY_CONFIG = {
+  doosGrootte: 12,
+  staffelTiers: [
+    { minQty: 12, discount: 0.05, label: '5% korting'  },
+    { minQty: 24, discount: 0.10, label: '10% korting' },
+    { minQty: 36, discount: 0.15, label: '15% korting' },
+    { minQty: 48, discount: 0.20, label: '20% korting' },
+  ],
+  snelkeuze: [3, 6, 9, 12, 24, 36, 48],
+  boxSizes:   [12, 24, 36, 48],
+};
+</script>
+
+<script src="../js/shop.js?v=30"></script>
+<script src="../js/header-template.js?v=23"></script>
+<script src="../js/category-mixbox.js?v=1"></script>
+
 </body>
 </html>

@@ -7,212 +7,366 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/base.css">
-  <link rel="stylesheet" href="../css/header.css">
-  <link rel="stylesheet" href="../css/footer.css">
-  <link rel="stylesheet" href="../css/category.css">
+  <link rel="stylesheet" href="../css/base.css?v=24">
+  <link rel="stylesheet" href="../css/header.css?v=24">
+  <link rel="stylesheet" href="../css/footer.css?v=24">
+  <link rel="stylesheet" href="../css/mix-box.css?v=24">
 </head>
 <body>
 
 <div id="site-header"></div>
 
-<section class="cat-hero" style="background: linear-gradient(135deg, #E8F5E9 0%, #F1F8E9 100%);">
+<!-- BREADCRUMB -->
+<div class="breadcrumb desktop-only">
   <div class="container">
-    <div class="cat-hero__inner">
-      <div class="cat-hero__text">
-        <nav class="breadcrumb__nav" style="margin-bottom:12px;">
-          <a href="../index.html">Home</a>
-          <span class="sep">›</span>
-          <span class="current">Drankjes</span>
-        </nav>
-        <h1 class="cat-hero__title">Drankjes 🥤</h1>
-        <p class="cat-hero__sub">Van BCAA-drankjes tot zero sugar frisdrank — verfrissend, lekker en zonder schuldgevoel.</p>
-        <div class="cat-hero__stats">
-          <div class="cat-stat"><strong>10</strong><span>producten</span></div>
-          <div class="cat-stat"><strong>Zero sugar</strong><span>opties</span></div>
-          <div class="cat-stat"><strong>Vanaf €1,89</strong><span>per stuk</span></div>
+    <nav class="breadcrumb__nav">
+      <a href="../index.html">Home</a>
+      <span class="sep">›</span>
+      <span class="current">Drankjes</span>
+    </nav>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="mix-hero" style="background: linear-gradient(135deg, #E8F5E9 0%, #F1FBF2 100%);">
+  <div class="container">
+    <div class="mix-hero__inner">
+      <div class="mix-hero__text">
+        <h1 class="mix-hero__title">Drankjes 🥤<br><span style="color:var(--purple);">Stel jouw mix samen</span></h1>
+        <p class="mix-hero__sub">BCAA, energie en frisdrank zonder suiker. Kies jouw favoriete smaken en profiteer van volumekorting vanaf 1 tray (6 blikjes).</p>
+        <div class="mix-hero__stats">
+          <div class="mix-hero__stat"><strong>0g</strong><span>suiker</span></div>
+          <div class="mix-hero__stat"><strong>Vanaf €1,89</strong><span>per blikje</span></div>
+          <div class="mix-hero__stat"><strong>Tot 20%</strong><span>volumekorting</span></div>
         </div>
       </div>
-      <div class="cat-hero__img">
-        <img src="../images/nocco.png" alt="Drankjes">
+      <div class="mix-hero__img">
+        <img src="../images/nocco.png" alt="Drankjes" onerror="this.src='../images/barebells.jpg'">
       </div>
     </div>
   </div>
 </section>
 
-<section class="cat-section">
+<!-- VOLUME UPSELL LADDER -->
+<section class="volume-upsell">
   <div class="container">
-    <div class="cat-layout">
-      <aside class="cat-filters">
-        <div class="filter-group">
-          <h3 class="filter-group__title">Merk</h3>
-          <label class="filter-check"><input type="checkbox" checked> <span>NOCCO</span> <em>4</em></label>
-          <label class="filter-check"><input type="checkbox"> <span>Fanta</span> <em>3</em></label>
-          <label class="filter-check"><input type="checkbox"> <span>Monster</span> <em>2</em></label>
-          <label class="filter-check"><input type="checkbox"> <span>Reign</span> <em>1</em></label>
-        </div>
-        <div class="filter-group">
-          <h3 class="filter-group__title">Type</h3>
-          <label class="filter-check"><input type="checkbox"> <span>BCAA Drankje</span> <em>4</em></label>
-          <label class="filter-check"><input type="checkbox"> <span>Energy drink</span> <em>3</em></label>
-          <label class="filter-check"><input type="checkbox"> <span>Frisdrank</span> <em>3</em></label>
-        </div>
-        <div class="filter-group">
-          <h3 class="filter-group__title">Prijs</h3>
-          <div class="filter-range">
-            <div class="filter-range__labels"><span>€1,89</span><span>€3,49</span></div>
-            <input type="range" min="189" max="349" value="349" class="filter-range__input" id="price-range">
-            <div class="filter-range__value">Tot <strong id="price-val">€3,49</strong></div>
-          </div>
-        </div>
-        <div class="filter-group">
-          <h3 class="filter-group__title">Kenmerken</h3>
-          <label class="filter-check"><input type="checkbox"> <span>Zero sugar</span></label>
-          <label class="filter-check"><input type="checkbox"> <span>BCAA</span></label>
-          <label class="filter-check"><input type="checkbox"> <span>Cafeïnevrij</span></label>
-          <label class="filter-check"><input type="checkbox"> <span>Vegan</span></label>
-        </div>
-        <button class="btn btn--primary btn--full" style="margin-top:8px;">Filters toepassen</button>
-        <button class="btn btn--ghost btn--full" style="margin-top:8px;" id="reset-filters">Filters wissen</button>
-      </aside>
-
-      <div class="cat-main">
-        <div class="cat-main__header">
-          <span class="cat-main__count">10 producten</span>
-          <div class="cat-main__sort">
-            <label>Sorteren op:</label>
-            <select class="sort-select" id="sort-select">
-              <option value="popular">Populairste</option>
-              <option value="price-asc">Prijs: laag → hoog</option>
-              <option value="price-desc">Prijs: hoog → laag</option>
-              <option value="newest">Nieuwste</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="products-grid" id="products-grid">
-          <a href="product.html?id=4" class="prod-card prod-card--lg">
-            <div class="prod-card__badge">Bestseller</div>
-            <div class="prod-card__img"><img src="../images/nocco.png" alt="NOCCO BCAA Passion"></div>
-            <div class="prod-card__body">
-              <span class="prod-card__brand">NOCCO</span>
-              <span class="prod-card__name">BCAA Passion</span>
-              <div class="prod-card__stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="prod-card__rating-count">(214)</span></div>
-              <div class="prod-card__tags"><span class="tag">BCAA</span><span class="tag">Zero sugar</span></div>
-              <div class="prod-card__footer">
-                <span class="prod-card__price">€2,49</span>
-                <button class="prod-card__add" data-add-to-cart="4"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-              </div>
-            </div>
-          </a>
-          <a href="product.html?id=5" class="prod-card prod-card--lg">
-            <div class="prod-card__badge prod-card__badge--green">Nieuw</div>
-            <div class="prod-card__img"><img src="../images/fanta.png" alt="Fanta Zero Sugar"></div>
-            <div class="prod-card__body">
-              <span class="prod-card__brand">Fanta</span>
-              <span class="prod-card__name">Zero Sugar</span>
-              <div class="prod-card__stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="prod-card__rating-count">(89)</span></div>
-              <div class="prod-card__tags"><span class="tag">Zero sugar</span></div>
-              <div class="prod-card__footer">
-                <span class="prod-card__price">€1,89</span>
-                <button class="prod-card__add" data-add-to-cart="5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-              </div>
-            </div>
-          </a>
-          <a href="product.html?id=13" class="prod-card prod-card--lg">
-            <div class="prod-card__img"><img src="../images/nocco.png" alt="NOCCO BCAA Caribbean"></div>
-            <div class="prod-card__body">
-              <span class="prod-card__brand">NOCCO</span>
-              <span class="prod-card__name">BCAA Caribbean</span>
-              <div class="prod-card__stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="prod-card__rating-count">(156)</span></div>
-              <div class="prod-card__tags"><span class="tag">BCAA</span><span class="tag">Zero sugar</span></div>
-              <div class="prod-card__footer">
-                <span class="prod-card__price">€2,49</span>
-                <button class="prod-card__add" data-add-to-cart="13"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-              </div>
-            </div>
-          </a>
-          <a href="product.html?id=14" class="prod-card prod-card--lg">
-            <div class="prod-card__img"><img src="../images/nocco.png" alt="NOCCO BCAA Limon"></div>
-            <div class="prod-card__body">
-              <span class="prod-card__brand">NOCCO</span>
-              <span class="prod-card__name">BCAA Limon</span>
-              <div class="prod-card__stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="prod-card__rating-count">(102)</span></div>
-              <div class="prod-card__tags"><span class="tag">BCAA</span><span class="tag">Zero sugar</span></div>
-              <div class="prod-card__footer">
-                <span class="prod-card__price">€2,49</span>
-                <button class="prod-card__add" data-add-to-cart="14"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-              </div>
-            </div>
-          </a>
-          <a href="product.html?id=15" class="prod-card prod-card--lg">
-            <div class="prod-card__img"><img src="../images/fanta.png" alt="Fanta Zero Tropical"></div>
-            <div class="prod-card__body">
-              <span class="prod-card__brand">Fanta</span>
-              <span class="prod-card__name">Zero Tropical</span>
-              <div class="prod-card__stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="prod-card__rating-count">(44)</span></div>
-              <div class="prod-card__tags"><span class="tag">Zero sugar</span></div>
-              <div class="prod-card__footer">
-                <span class="prod-card__price">€1,89</span>
-                <button class="prod-card__add" data-add-to-cart="15"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-              </div>
-            </div>
-          </a>
-          <a href="product.html?id=16" class="prod-card prod-card--lg">
-            <div class="prod-card__img"><img src="../images/nocco.png" alt="NOCCO BCAA Pear"></div>
-            <div class="prod-card__body">
-              <span class="prod-card__brand">NOCCO</span>
-              <span class="prod-card__name">BCAA Pear</span>
-              <div class="prod-card__stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="prod-card__rating-count">(78)</span></div>
-              <div class="prod-card__tags"><span class="tag">BCAA</span><span class="tag">Zero sugar</span></div>
-              <div class="prod-card__footer">
-                <span class="prod-card__price">€2,49</span>
-                <button class="prod-card__add" data-add-to-cart="16"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-              </div>
-            </div>
-          </a>
-          <a href="product.html?id=17" class="prod-card prod-card--lg">
-            <div class="prod-card__img"><img src="../images/fanta.png" alt="Fanta Zero Orange"></div>
-            <div class="prod-card__body">
-              <span class="prod-card__brand">Fanta</span>
-              <span class="prod-card__name">Zero Orange</span>
-              <div class="prod-card__stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="prod-card__rating-count">(67)</span></div>
-              <div class="prod-card__tags"><span class="tag">Zero sugar</span></div>
-              <div class="prod-card__footer">
-                <span class="prod-card__price">€1,89</span>
-                <button class="prod-card__add" data-add-to-cart="17"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-              </div>
-            </div>
-          </a>
-          <a href="product.html?id=18" class="prod-card prod-card--lg">
-            <div class="prod-card__img"><img src="../images/nocco.png" alt="NOCCO BCAA Mango"></div>
-            <div class="prod-card__body">
-              <span class="prod-card__brand">NOCCO</span>
-              <span class="prod-card__name">BCAA Mango</span>
-              <div class="prod-card__stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="prod-card__rating-count">(91)</span></div>
-              <div class="prod-card__tags"><span class="tag">BCAA</span><span class="tag">Zero sugar</span></div>
-              <div class="prod-card__footer">
-                <span class="prod-card__price">€2,49</span>
-                <button class="prod-card__add" data-add-to-cart="18"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="pagination">
-          <button class="page-btn page-btn--active">1</button>
-          <button class="page-btn">2</button>
-          <button class="page-btn">→</button>
-        </div>
+    <div class="volume-upsell__inner">
+      <div class="volume-step" data-qty="6">
+        <div class="volume-step__qty">6 blikjes</div>
+        <div class="volume-step__label">1 tray</div>
+        <div class="volume-step__discount">5% korting</div>
+      </div>
+      <div class="volume-step__arrow">›</div>
+      <div class="volume-step" data-qty="12">
+        <div class="volume-step__qty">12 blikjes</div>
+        <div class="volume-step__label">2 trays</div>
+        <div class="volume-step__discount">10% korting</div>
+      </div>
+      <div class="volume-step__arrow">›</div>
+      <div class="volume-step" data-qty="18">
+        <div class="volume-step__qty">18 blikjes</div>
+        <div class="volume-step__label">3 trays</div>
+        <div class="volume-step__discount">15% korting</div>
+      </div>
+      <div class="volume-step__arrow">›</div>
+      <div class="volume-step" data-qty="24">
+        <div class="volume-step__qty">24 blikjes</div>
+        <div class="volume-step__label">4 trays</div>
+        <div class="volume-step__discount">20% korting</div>
       </div>
     </div>
   </div>
+</section>
+
+<!-- UPSELL NUDGE BAR -->
+<div id="upsell-nudge" class="upsell-nudge" style="display:none">
+  <span id="upsell-nudge-text"></span>
+  <button id="upsell-nudge-btn" class="upsell-nudge__btn"></button>
+</div>
+
+<!-- MIX BUILDER -->
+<section class="mix-builder">
+  <div class="container">
+    <div class="mix-builder__layout">
+
+      <!-- LINKER KOLOM: Picker -->
+      <div class="mix-builder__main">
+
+        <!-- TABS -->
+        <div class="mix-tabs">
+          <button class="mix-tab mix-tab--active" data-tab="losse">🥤 Losse blikjes</button>
+          <button class="mix-tab" data-tab="dozen">📦 Trays</button>
+        </div>
+
+        <!-- TAB: Losse blikjes -->
+        <div class="mix-tab-content" id="tab-losse">
+
+          <!-- Picker header -->
+          <div class="picker-header">
+            <div class="picker-header__left">
+              <span class="picker-header__count"><span id="picker-count">0</span> / <span id="picker-max">6</span> blikjes</span>
+            </div>
+            <div class="picker-header__progress">
+              <div class="picker-header__track">
+                <div class="picker-header__fill" id="picker-fill" style="width:0%"></div>
+              </div>
+            </div>
+            <div class="box-size-selector">
+              <button class="box-size box-size--active" data-size="6">6</button>
+              <button class="box-size" data-size="12">12</button>
+              <button class="box-size" data-size="18">18</button>
+              <button class="box-size" data-size="24">24</button>
+            </div>
+          </div>
+
+          <!-- Staffel balk -->
+          <div id="tier-bar" class="tier-bar"></div>
+
+          <!-- Merk filters -->
+          <div class="flavor-filters">
+            <button class="flavor-filter flavor-filter--active" data-filter="all">Alle merken</button>
+            <button class="flavor-filter" data-filter="NOCCO">NOCCO</button>
+            <button class="flavor-filter" data-filter="Fanta">Fanta</button>
+          </div>
+
+          <!-- Flavor grid -->
+          <div class="flavor-grid" id="flavor-grid">
+
+            <div class="flavor-card" data-id="nocco-passion" data-name="BCAA Passion" data-brand="NOCCO" data-price="2.49" data-img="../images/nocco.png" data-cat="bcaa">
+              <div class="flavor-card__img"><img src="../images/nocco.png" alt="NOCCO BCAA Passion" onerror="this.src='../images/barebells.jpg'"></div>
+              <div class="flavor-card__body">
+                <span class="flavor-card__brand">NOCCO</span>
+                <span class="flavor-card__name">BCAA Passion</span>
+                <span class="flavor-card__macros">180mg cafeïne · 8g BCAA · 0g suiker</span>
+                <span class="flavor-card__price">€2,49 / blikje</span>
+              </div>
+              <div class="flavor-card__qty">
+                <button class="qty-btn qty-btn--minus" data-id="nocco-passion">−</button>
+                <span class="qty-val" id="qty-nocco-passion">0</span>
+                <button class="qty-btn qty-btn--plus" data-id="nocco-passion">+</button>
+              </div>
+            </div>
+
+            <div class="flavor-card" data-id="nocco-caribbean" data-name="BCAA Caribbean" data-brand="NOCCO" data-price="2.49" data-img="../images/nocco.png" data-cat="bcaa">
+              <div class="flavor-card__img"><img src="../images/nocco.png" alt="NOCCO BCAA Caribbean" onerror="this.src='../images/barebells.jpg'"></div>
+              <div class="flavor-card__body">
+                <span class="flavor-card__brand">NOCCO</span>
+                <span class="flavor-card__name">BCAA Caribbean</span>
+                <span class="flavor-card__macros">180mg cafeïne · 8g BCAA · 0g suiker</span>
+                <span class="flavor-card__price">€2,49 / blikje</span>
+              </div>
+              <div class="flavor-card__qty">
+                <button class="qty-btn qty-btn--minus" data-id="nocco-caribbean">−</button>
+                <span class="qty-val" id="qty-nocco-caribbean">0</span>
+                <button class="qty-btn qty-btn--plus" data-id="nocco-caribbean">+</button>
+              </div>
+            </div>
+
+            <div class="flavor-card" data-id="nocco-mango" data-name="BCAA Mango" data-brand="NOCCO" data-price="2.49" data-img="../images/nocco.png" data-cat="bcaa">
+              <div class="flavor-card__img"><img src="../images/nocco.png" alt="NOCCO BCAA Mango" onerror="this.src='../images/barebells.jpg'"></div>
+              <div class="flavor-card__body">
+                <span class="flavor-card__brand">NOCCO</span>
+                <span class="flavor-card__name">BCAA Mango</span>
+                <span class="flavor-card__macros">180mg cafeïne · 8g BCAA · 0g suiker</span>
+                <span class="flavor-card__price">€2,49 / blikje</span>
+              </div>
+              <div class="flavor-card__qty">
+                <button class="qty-btn qty-btn--minus" data-id="nocco-mango">−</button>
+                <span class="qty-val" id="qty-nocco-mango">0</span>
+                <button class="qty-btn qty-btn--plus" data-id="nocco-mango">+</button>
+              </div>
+            </div>
+
+            <div class="flavor-card" data-id="nocco-apple" data-name="BCAA Apple" data-brand="NOCCO" data-price="2.49" data-img="../images/nocco.png" data-cat="bcaa">
+              <div class="flavor-card__img"><img src="../images/nocco.png" alt="NOCCO BCAA Apple" onerror="this.src='../images/barebells.jpg'"></div>
+              <div class="flavor-card__body">
+                <span class="flavor-card__brand">NOCCO</span>
+                <span class="flavor-card__name">BCAA Apple</span>
+                <span class="flavor-card__macros">180mg cafeïne · 8g BCAA · 0g suiker</span>
+                <span class="flavor-card__price">€2,49 / blikje</span>
+              </div>
+              <div class="flavor-card__qty">
+                <button class="qty-btn qty-btn--minus" data-id="nocco-apple">−</button>
+                <span class="qty-val" id="qty-nocco-apple">0</span>
+                <button class="qty-btn qty-btn--plus" data-id="nocco-apple">+</button>
+              </div>
+            </div>
+
+            <div class="flavor-card" data-id="fanta-orange" data-name="Zero Orange" data-brand="Fanta" data-price="1.89" data-img="../images/fanta.png" data-cat="frisdrank">
+              <div class="flavor-card__img"><img src="../images/fanta.png" alt="Fanta Zero Orange" onerror="this.src='../images/barebells.jpg'"></div>
+              <div class="flavor-card__body">
+                <span class="flavor-card__brand">Fanta</span>
+                <span class="flavor-card__name">Zero Orange</span>
+                <span class="flavor-card__macros">0g suiker · 0 kcal · 330ml</span>
+                <span class="flavor-card__price">€1,89 / blikje</span>
+              </div>
+              <div class="flavor-card__qty">
+                <button class="qty-btn qty-btn--minus" data-id="fanta-orange">−</button>
+                <span class="qty-val" id="qty-fanta-orange">0</span>
+                <button class="qty-btn qty-btn--plus" data-id="fanta-orange">+</button>
+              </div>
+            </div>
+
+            <div class="flavor-card" data-id="fanta-lemon" data-name="Zero Lemon" data-brand="Fanta" data-price="1.89" data-img="../images/fanta.png" data-cat="frisdrank">
+              <div class="flavor-card__img"><img src="../images/fanta.png" alt="Fanta Zero Lemon" onerror="this.src='../images/barebells.jpg'"></div>
+              <div class="flavor-card__body">
+                <span class="flavor-card__brand">Fanta</span>
+                <span class="flavor-card__name">Zero Lemon</span>
+                <span class="flavor-card__macros">0g suiker · 0 kcal · 330ml</span>
+                <span class="flavor-card__price">€1,89 / blikje</span>
+              </div>
+              <div class="flavor-card__qty">
+                <button class="qty-btn qty-btn--minus" data-id="fanta-lemon">−</button>
+                <span class="qty-val" id="qty-fanta-lemon">0</span>
+                <button class="qty-btn qty-btn--plus" data-id="fanta-lemon">+</button>
+              </div>
+            </div>
+
+          </div><!-- /flavor-grid -->
+        </div><!-- /tab-losse -->
+
+        <!-- TAB: Trays -->
+        <div class="mix-tab-content" id="tab-dozen" style="display:none">
+          <div class="dozen-grid">
+
+            <div class="dozen-product">
+              <div class="dozen-product__header">
+                <img src="../images/nocco.png" alt="NOCCO" onerror="this.src='../images/barebells.jpg'">
+                <div>
+                  <span class="dozen-product__brand">NOCCO</span>
+                  <span class="dozen-product__name">BCAA Mix Tray</span>
+                  <span class="dozen-product__sub">6 blikjes per tray · €2,49/stuk</span>
+                </div>
+              </div>
+              <div class="bundle-selector" data-product="nocco-tray" data-unit-price="2.49" data-box-size="6">
+                <div class="bundle-option bundle-option--active" data-qty="1">
+                  <span class="bundle-option__qty">1 tray</span>
+                  <span class="bundle-option__items">6 blikjes</span>
+                  <span class="bundle-option__price">€14,19 <em>5% korting</em></span>
+                </div>
+                <div class="bundle-option" data-qty="2">
+                  <span class="bundle-option__qty">2 trays</span>
+                  <span class="bundle-option__items">12 blikjes</span>
+                  <span class="bundle-option__price">€26,89 <em>10% korting</em></span>
+                </div>
+                <div class="bundle-option" data-qty="3">
+                  <span class="bundle-option__qty">3 trays</span>
+                  <span class="bundle-option__items">18 blikjes</span>
+                  <span class="bundle-option__price">€38,08 <em>15% korting</em></span>
+                </div>
+                <div class="bundle-option" data-qty="4">
+                  <span class="bundle-option__qty">4 trays</span>
+                  <span class="bundle-option__items">24 blikjes</span>
+                  <span class="bundle-option__price">€47,81 <em>20% korting</em></span>
+                </div>
+              </div>
+              <button class="btn btn--primary btn-add-dozen" data-product="nocco-tray">
+                🛒 Toevoegen aan winkelwagen
+              </button>
+            </div>
+
+            <div class="dozen-product">
+              <div class="dozen-product__header">
+                <img src="../images/fanta.png" alt="Fanta" onerror="this.src='../images/barebells.jpg'">
+                <div>
+                  <span class="dozen-product__brand">Fanta</span>
+                  <span class="dozen-product__name">Zero Mix Tray</span>
+                  <span class="dozen-product__sub">6 blikjes per tray · €1,89/stuk</span>
+                </div>
+              </div>
+              <div class="bundle-selector" data-product="fanta-tray" data-unit-price="1.89" data-box-size="6">
+                <div class="bundle-option bundle-option--active" data-qty="1">
+                  <span class="bundle-option__qty">1 tray</span>
+                  <span class="bundle-option__items">6 blikjes</span>
+                  <span class="bundle-option__price">€10,77 <em>5% korting</em></span>
+                </div>
+                <div class="bundle-option" data-qty="2">
+                  <span class="bundle-option__qty">2 trays</span>
+                  <span class="bundle-option__items">12 blikjes</span>
+                  <span class="bundle-option__price">€20,41 <em>10% korting</em></span>
+                </div>
+              </div>
+              <button class="btn btn--primary btn-add-dozen" data-product="fanta-tray">
+                🛒 Toevoegen aan winkelwagen
+              </button>
+            </div>
+
+          </div>
+        </div><!-- /tab-dozen -->
+
+      </div><!-- /mix-builder__main -->
+
+      <!-- RECHTER KOLOM: Samenvatting -->
+      <aside class="mix-builder__sidebar">
+        <div class="mix-summary">
+          <div class="mix-summary__header">
+            <h3>Jouw selectie</h3>
+            <span class="mix-summary__count" id="summary-count">0 blikjes</span>
+          </div>
+
+          <div id="summary-empty" class="mix-summary__empty">
+            <div class="mix-summary__empty-icon">🥤</div>
+            <p>Voeg drankjes toe om te beginnen!</p>
+          </div>
+
+          <div id="summary-pricing" style="display:none">
+            <div id="summary-items" class="mix-summary__items"></div>
+            <div class="mix-summary__pricing">
+              <div class="mix-summary__row" id="sum-original-row" style="display:none">
+                <span>Subtotaal</span><span id="sum-original"></span>
+              </div>
+              <div class="mix-summary__row mix-summary__row--discount" id="sum-discount-row" style="display:none">
+                <span id="sum-discount-label">Volumekorting</span><span id="sum-discount-amount"></span>
+              </div>
+              <div class="mix-summary__row mix-summary__row--total">
+                <span>Totaal</span><span id="sum-total">€0,00</span>
+              </div>
+            </div>
+            <button class="btn btn--primary btn--full" id="btn-add-to-cart" disabled>
+              🛒 Toevoegen aan winkelwagen
+            </button>
+          </div>
+
+          <div class="mix-summary__trust">
+            <span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              Veilig betalen
+            </span>
+            <span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              Gratis v.a. €40
+            </span>
+            <span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.5"/></svg>
+              14 dagen retour
+            </span>
+          </div>
+        </div>
+      </aside>
+
+    </div><!-- /mix-builder__layout -->
+  </div><!-- /container -->
 </section>
 
 <div id="site-footer"></div>
 
-<script src="../js/shop.js"></script>
-<script src="../js/header-template.js"></script>
-<script src="../js/category.js"></script>
+<script>
+window.CATEGORY_CONFIG = {
+  doosGrootte: 6,
+  staffelTiers: [
+    { minQty:  6, discount: 0.05, label: '5% korting'  },
+    { minQty: 12, discount: 0.10, label: '10% korting' },
+    { minQty: 18, discount: 0.15, label: '15% korting' },
+    { minQty: 24, discount: 0.20, label: '20% korting' },
+  ],
+  snelkeuze: [1, 2, 3, 6, 12, 18, 24],
+  boxSizes:   [6, 12, 18, 24],
+};
+</script>
+
+<script src="../js/shop.js?v=30"></script>
+<script src="../js/header-template.js?v=23"></script>
+<script src="../js/category-mixbox.js?v=1"></script>
+
 </body>
 </html>
