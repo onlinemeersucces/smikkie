@@ -3,169 +3,163 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Barebells Protein Bar – Smikkie</title>
-  <link rel="stylesheet" href="../css/base.css?v=22">
-  <link rel="stylesheet" href="../css/header.css?v=22">
-  <link rel="stylesheet" href="../css/footer.css?v=22">
-  <link rel="stylesheet" href="../css/mix-box.css?v=22">
-  <link rel="stylesheet" href="../css/product.css?v=1">
+  <title>Barebells Eiwitrepen – Alle smaken – Smikkie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/base.css?v=23">
+  <link rel="stylesheet" href="../css/header.css?v=23">
+  <link rel="stylesheet" href="../css/footer.css?v=23">
+  <link rel="stylesheet" href="../css/product.css?v=23">
 </head>
 <body>
 
-  <header class="site-header" id="site-header"></header>
+<!-- HEADER -->
+<div id="site-header"></div>
 
-  <!-- SLIDE-IN CART DRAWER (same as mix-box) -->
-  <div class="cart-drawer" id="cart-drawer">
-    <div class="cart-drawer__backdrop" id="cart-backdrop"></div>
-    <div class="cart-drawer__panel">
-      <div class="cart-drawer__header">
-        <h3 class="cart-drawer__title">Jouw winkelwagen <span class="cart-drawer__count" id="drawer-count">0</span></h3>
-        <button class="cart-drawer__close" id="cart-close" aria-label="Sluiten">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
-      </div>
-      <div class="cart-drawer__tier" id="drawer-tier-bar"></div>
-      <div class="cart-drawer__shipping">
-        <div class="shipping-progress">
-          <div class="shipping-progress__label">
-            <span id="shipping-label">Nog <strong id="shipping-amount">€40,00</strong> tot gratis verzending 🚚</span>
-          </div>
-          <div class="shipping-progress__track">
-            <div class="shipping-progress__fill" id="shipping-fill" style="width:0%"></div>
-          </div>
-        </div>
-      </div>
-      <div class="cart-drawer__items" id="drawer-items">
-        <div class="cart-drawer__empty" id="drawer-empty">
-          <div class="cart-drawer__empty-icon">🛒</div>
-          <p>Je winkelwagen is nog leeg.</p>
-        </div>
-      </div>
-      <div class="cart-drawer__discount" id="drawer-discount" style="display:none">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><path d="M12 22V7"/></svg>
-        <span id="drawer-discount-text">Je hebt korting!</span>
-      </div>
-      <div class="cart-drawer__footer">
-        <div class="cart-drawer__totals">
-          <div class="cart-totals-row" id="drawer-original-row" style="display:none">
-            <span>Subtotaal</span>
-            <span id="drawer-original-price" class="price-strike"></span>
-          </div>
-          <div class="cart-totals-row" id="drawer-discount-row" style="display:none">
-            <span id="drawer-discount-label">Korting</span>
-            <span id="drawer-discount-amount" class="price-green"></span>
-          </div>
-          <div class="cart-totals-row cart-totals-row--total">
-            <span>Totaal</span>
-            <span id="drawer-total">€0,00</span>
-          </div>
-        </div>
-        <a href="checkout.html" class="btn-primary btn-full" id="drawer-checkout-btn">
-          Afrekenen
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-        </a>
-        <a href="winkelwagen.html" class="cart-drawer__view-cart">Bekijk winkelwagen</a>
-      </div>
-    </div>
+<!-- BREADCRUMB (desktop only) -->
+<div class="breadcrumb desktop-only">
+  <div class="container">
+    <nav class="breadcrumb__nav">
+      <a href="../index.html">Home</a>
+      <span class="sep">›</span>
+      <a href="eiwitrepen.html">Eiwitrepen</a>
+      <span class="sep">›</span>
+      <span class="current">Barebells</span>
+    </nav>
   </div>
+</div>
 
-  <main>
+<!-- ==================== PRODUCT DETAIL ==================== -->
+<section class="product-section">
+  <div class="container">
 
-    <!-- PRODUCT HERO -->
-    <section class="pdp-hero">
-      <div class="container">
-        <nav class="breadcrumb" aria-label="Breadcrumb">
-          <a href="../index.html">Home</a> ›
-          <a href="mix-box.html">Alle snacks</a> ›
-          <span>Barebells Protein Bar</span>
-        </nav>
-
-        <div class="pdp-hero__inner">
-          <div class="pdp-hero__img-col">
-            <div class="pdp-hero__img-wrap" id="hero-img-wrap">
-              <img src="../images/barebells.jpg" alt="Barebells Protein Bar" class="pdp-hero__img" id="bp-hero-img">
-            </div>
-            <div class="pdp-hero__thumbs" id="bp-hero-thumbs">
-              <!-- filled by JS -->
-            </div>
+    <!-- DESKTOP LAYOUT -->
+    <div class="product-desktop desktop-only">
+      <!-- LEFT: Gallery + Smikkie zegt -->
+      <div class="gallery-col">
+        <div class="gallery">
+          <div class="gallery__thumbs">
+            <button class="gallery__thumb gallery__thumb--active" data-img="barebells.jpg">
+              <img src="../images/barebells.jpg" alt="Barebells Chocolate Dough">
+            </button>
+            <button class="gallery__thumb" data-img="barebells.jpg">
+              <img src="../images/barebells.jpg" alt="Barebells binnenkant">
+            </button>
+            <button class="gallery__thumb" data-img="barebells.jpg">
+              <img src="../images/barebells.jpg" alt="Barebells detail">
+            </button>
+            <button class="gallery__thumb" data-img="barebells.jpg">
+              <img src="../images/barebells.jpg" alt="Barebells voedingswaarden">
+            </button>
           </div>
-
-          <div class="pdp-hero__info">
-            <span class="pdp-hero__brand-badge">BAREBELLS</span>
-            <h1 class="pdp-hero__title">Barebells <span id="bp-hero-flavor">Protein Bar</span></h1>
-            <p class="pdp-hero__sub" id="hero-sub">Kies hieronder jouw favoriete smaak en voeg toe aan je winkelwagen. Hoe meer je bestelt, hoe meer je bespaart!</p>
-
-            <div class="pdp-hero__macros" id="hero-macros">
-              <div class="pdp-macro">
-                <span class="pdp-macro__val">20g</span>
-                <span class="pdp-macro__label">Eiwit</span>
+          <div class="gallery__main">
+            <div class="gallery__img-wrap">
+              <img src="../images/barebells.jpg" alt="Barebells" id="gallery-main-img">
+              <div class="gallery__approved">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="approved-badge">
+                  <circle cx="50" cy="50" r="48" fill="#3D1F6E" stroke="#7DC242" stroke-width="4"/>
+                  <circle cx="50" cy="50" r="38" fill="none" stroke="#7DC242" stroke-width="1.5" stroke-dasharray="4 3"/>
+                  <text x="50" y="28" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" font-weight="900" fill="white" letter-spacing="1">SMIKKIE</text>
+                  <circle cx="50" cy="52" r="16" fill="#A0673A"/>
+                  <circle cx="40" cy="40" r="7" fill="#A0673A"/><circle cx="40" cy="40" r="4.5" fill="#C4845A"/>
+                  <circle cx="60" cy="40" r="7" fill="#A0673A"/><circle cx="60" cy="40" r="4.5" fill="#C4845A"/>
+                  <ellipse cx="50" cy="57" rx="11" ry="9" fill="#C4845A"/>
+                  <circle cx="44" cy="47" r="4" fill="white"/><circle cx="56" cy="47" r="4" fill="white"/>
+                  <circle cx="45" cy="48" r="2.5" fill="#1a1a2e"/><circle cx="57" cy="48" r="2.5" fill="#1a1a2e"/>
+                  <ellipse cx="50" cy="54" rx="3.5" ry="2.5" fill="#1a1a2e"/>
+                  <path d="M45 60 Q50 65 55 60" fill="none" stroke="#1a1a2e" stroke-width="1.5" stroke-linecap="round"/>
+                  <text x="50" y="80" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" font-weight="900" fill="white" letter-spacing="1">APPROVED</text>
+                </svg>
               </div>
-              <div class="pdp-macro">
-                <span class="pdp-macro__val">&lt;2g</span>
-                <span class="pdp-macro__label">Suiker</span>
-              </div>
-              <div class="pdp-macro">
-                <span class="pdp-macro__val">55g</span>
-                <span class="pdp-macro__label">Gewicht</span>
-              </div>
-              <div class="pdp-macro">
-                <span class="pdp-macro__val">220</span>
-                <span class="pdp-macro__label">Kcal</span>
-              </div>
-            </div>
-
-            <div class="pdp-hero__price-row">
-              <span class="pdp-hero__price" id="hero-price">€2,49</span>
-              <span class="pdp-hero__price-sub">per reep</span>
-              <span class="pdp-hero__discount-badge">Vanaf 12 stuks 5% korting</span>
-            </div>
-
-            <div class="pdp-hero__perks">
-              <span class="perk">✓ Gratis verzending v.a. €40</span>
-              <span class="perk">✓ Morgen in huis</span>
-              <span class="perk">✓ Geen minimum bestelling</span>
+              <button class="gallery__nav gallery__nav--prev" id="gallery-prev">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+              <button class="gallery__nav gallery__nav--next" id="gallery-next">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+        <!-- Smikkie zegt -->
+        <div class="smikkie-zegt" style="margin-top:16px;">
+          <div class="smikkie-zegt__bear">
+            <svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="60" cy="105" rx="36" ry="38" fill="#7B4F2E"/>
+              <ellipse cx="60" cy="115" rx="34" ry="30" fill="#5B2D8E"/>
+              <path d="M43 95 Q60 105 77 95" fill="none" stroke="#4a2278" stroke-width="2"/>
+              <line x1="60" y1="98" x2="60" y2="138" stroke="#4a2278" stroke-width="1.5"/>
+              <ellipse cx="28" cy="112" rx="12" ry="18" fill="#5B2D8E" transform="rotate(-15 28 112)"/>
+              <ellipse cx="92" cy="112" rx="12" ry="18" fill="#5B2D8E" transform="rotate(15 92 112)"/>
+              <ellipse cx="22" cy="126" rx="10" ry="7" fill="#7B4F2E"/>
+              <ellipse cx="98" cy="126" rx="10" ry="7" fill="#7B4F2E"/>
+              <ellipse cx="107" cy="120" rx="4" ry="6" fill="#7B4F2E" transform="rotate(-20 107 120)"/>
+              <path d="M78 85 C78 82 82 80 84 83 C86 80 90 82 90 85 C90 88 84 93 84 93 C84 93 78 88 78 85Z" fill="#E8A87C"/>
+              <circle cx="60" cy="58" r="32" fill="#A0673A"/>
+              <circle cx="35" cy="32" r="11" fill="#A0673A"/><circle cx="35" cy="32" r="7" fill="#C4845A"/>
+              <circle cx="85" cy="32" r="11" fill="#A0673A"/><circle cx="85" cy="32" r="7" fill="#C4845A"/>
+              <ellipse cx="60" cy="66" rx="20" ry="16" fill="#C4845A"/>
+              <circle cx="50" cy="50" r="5.5" fill="white"/><circle cx="70" cy="50" r="5.5" fill="white"/>
+              <circle cx="51.5" cy="51" r="3.5" fill="#1a1a2e"/><circle cx="71.5" cy="51" r="3.5" fill="#1a1a2e"/>
+              <circle cx="53" cy="49.5" r="1.3" fill="white"/><circle cx="73" cy="49.5" r="1.3" fill="white"/>
+              <ellipse cx="60" cy="63" rx="5" ry="4" fill="#1a1a2e"/>
+              <path d="M53 72 Q60 78 67 72" fill="none" stroke="#1a1a2e" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="44" cy="62" r="5" fill="#E8A87C" opacity="0.5"/>
+              <circle cx="76" cy="62" r="5" fill="#E8A87C" opacity="0.5"/>
+            </svg>
+          </div>
+          <div class="smikkie-zegt__content">
+            <h4>Smikkie zegt:</h4>
+            <p>"Deze gaat hard...<br>echt eentje die je<br>moet proberen 🤤"</p>
+          </div>
+          <div class="smikkie-zegt__dashes">
+            <div class="sz-dash sz-dash--1"></div>
+            <div class="sz-dash sz-dash--2"></div>
+          </div>
+        </div>
+      </div><!-- /gallery-col -->
 
-    <!-- FLAVOR PICKER -->
-    <section class="pdp-picker">
-      <div class="container">
+      <!-- RIGHT: Product Info + Flavor Picker -->
+      <div class="product-info">
+        <h1 class="product-info__title">Barebells<br><span id="bp-hero-flavor" style="color:var(--purple);">Chocolate Dough</span></h1>
+        <div class="product-info__stars">
+          <div class="stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <span class="product-info__reviews">128 reviews</span>
+        </div>
+        <p class="product-info__desc">
+          Heerlijke eiwitreep met chocolade smaak 🍫<br>
+          Perfect als snack zonder schuldgevoel 💜
+        </p>
 
-        <!-- Tabs -->
-        <div class="pdp-tabs">
+        <!-- TABS -->
+        <div class="pdp-tabs" style="margin-top:20px;">
           <button class="pdp-tab is-active" data-tab="losse">🍫 Losse repen</button>
           <button class="pdp-tab" data-tab="dozen">📦 Dozen</button>
         </div>
 
-        <!-- Tab: Losse repen -->
-        <div class="pdp-tab-panel" id="tab-losse">
-          <div class="pdp-picker__header">
-            <h2 class="pdp-picker__title">Kies jouw smaken</h2>
-            <p class="pdp-picker__sub">Hoe meer je van één smaak bestelt, hoe meer je bespaart.</p>
-          </div>
-
-          <!-- Staffel info bar -->
-          <div class="pdp-staffel-bar">
-            <div class="pdp-staffel-bar__item">
+        <!-- TAB: Losse repen -->
+        <div class="pdp-tab-panel" id="bp-tab-losse">
+          <!-- Staffel bar -->
+          <div class="pdp-staffel-bar" id="bp-staffel-bar">
+            <div class="pdp-staffel-bar__item" data-min="1" data-max="11">
               <span class="pdp-staffel-bar__qty">1–11</span>
               <span class="pdp-staffel-bar__label">Normaal tarief</span>
             </div>
-            <div class="pdp-staffel-bar__item">
+            <div class="pdp-staffel-bar__item" data-min="12" data-max="23">
               <span class="pdp-staffel-bar__qty pdp-staffel-bar__qty--green">12+</span>
               <span class="pdp-staffel-bar__label">5% korting</span>
             </div>
-            <div class="pdp-staffel-bar__item">
+            <div class="pdp-staffel-bar__item" data-min="24" data-max="35">
               <span class="pdp-staffel-bar__qty pdp-staffel-bar__qty--green">24+</span>
               <span class="pdp-staffel-bar__label">10% korting</span>
             </div>
-            <div class="pdp-staffel-bar__item">
+            <div class="pdp-staffel-bar__item" data-min="36" data-max="47">
               <span class="pdp-staffel-bar__qty pdp-staffel-bar__qty--green">36+</span>
               <span class="pdp-staffel-bar__label">15% korting</span>
             </div>
-            <div class="pdp-staffel-bar__item">
+            <div class="pdp-staffel-bar__item" data-min="48" data-max="9999">
               <span class="pdp-staffel-bar__qty pdp-staffel-bar__qty--gold">48+</span>
               <span class="pdp-staffel-bar__label">20% korting</span>
             </div>
@@ -173,54 +167,478 @@
 
           <!-- Flavor rows -->
           <div class="pdp-flavor-list" id="bp-flavor-list">
-            <!-- filled by JS -->
+            <!-- Rendered by brand-picker.js -->
           </div>
 
-          <!-- Cart summary bar -->
+          <!-- Cart bar -->
           <div class="pdp-cart-bar" id="bp-cart-bar" style="display:none">
             <div class="pdp-cart-bar__left">
               <span class="pdp-cart-bar__count" id="bp-cart-count">0 stuks</span>
               <span class="pdp-cart-bar__total" id="bp-cart-total">€0,00</span>
               <span class="pdp-cart-bar__discount" id="bp-cart-discount"></span>
             </div>
-            <button class="btn-primary pdp-cart-bar__btn" id="bp-cart-bar-btn">
+            <button class="btn btn--primary pdp-cart-bar__btn" id="bp-cart-bar-btn">
               🛒 Toevoegen aan winkelwagen
             </button>
           </div>
         </div>
 
-        <!-- Tab: Dozen -->
-        <div class="pdp-tab-panel" id="tab-dozen" style="display:none">
-          <div class="pdp-picker__header">
-            <h2 class="pdp-picker__title">Bestel een complete doos</h2>
-            <p class="pdp-picker__sub">Kies een smaak en een doosgrootte. Elke doos bevat 12 repen van dezelfde smaak.</p>
-          </div>
-
+        <!-- TAB: Dozen -->
+        <div class="pdp-tab-panel" id="bp-tab-dozen" style="display:none">
           <div class="pdp-dozen-list" id="bp-dozen-list">
-            <!-- filled by JS -->
+            <!-- Rendered by brand-picker.js -->
           </div>
         </div>
 
+        <!-- Trust badges -->
+        <div class="product-info__trust" style="margin-top:24px;">
+          <div class="trust-badge">
+            <div class="trust-badge__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="5"/><path d="M8 14s-4 1-4 5h16c0-4-4-5-4-5"/></svg>
+            </div>
+            <div>
+              <strong>Smikkie Approved</strong>
+              <span>alleen snacks die écht lekker zijn</span>
+            </div>
+          </div>
+          <div class="trust-badge">
+            <div class="trust-badge__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <div>
+              <strong>Morgen in huis</strong>
+              <span>Voor 23:59 besteld</span>
+            </div>
+          </div>
+          <div class="trust-badge">
+            <div class="trust-badge__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            </div>
+            <div>
+              <strong>Alles los te bestellen</strong>
+              <span>Mix &amp; match wat jij lekker vindt</span>
+            </div>
+          </div>
+        </div>
       </div>
-    </section>
+    </div><!-- /product-desktop -->
 
-  </main>
+    <!-- MOBILE LAYOUT -->
+    <div class="product-mobile mobile-only">
+      <!-- Image Slider -->
+      <div class="mobile-slider">
+        <div class="mobile-slider__track" id="mobile-slider-track">
+          <div class="mobile-slider__slide"><img src="../images/barebells.jpg" alt="Barebells Chocolate Dough"></div>
+          <div class="mobile-slider__slide"><img src="../images/barebells.jpg" alt="Barebells binnenkant"></div>
+          <div class="mobile-slider__slide"><img src="../images/barebells.jpg" alt="Barebells detail"></div>
+          <div class="mobile-slider__slide"><img src="../images/barebells.jpg" alt="Barebells voedingswaarden"></div>
+        </div>
+        <div class="mobile-slider__approved">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="approved-badge">
+            <circle cx="50" cy="50" r="48" fill="#3D1F6E" stroke="#7DC242" stroke-width="4"/>
+            <circle cx="50" cy="50" r="38" fill="none" stroke="#7DC242" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <text x="50" y="28" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" font-weight="900" fill="white" letter-spacing="1">SMIKKIE</text>
+            <circle cx="50" cy="52" r="16" fill="#A0673A"/>
+            <circle cx="40" cy="40" r="7" fill="#A0673A"/><circle cx="40" cy="40" r="4.5" fill="#C4845A"/>
+            <circle cx="60" cy="40" r="7" fill="#A0673A"/><circle cx="60" cy="40" r="4.5" fill="#C4845A"/>
+            <ellipse cx="50" cy="57" rx="11" ry="9" fill="#C4845A"/>
+            <circle cx="44" cy="47" r="4" fill="white"/><circle cx="56" cy="47" r="4" fill="white"/>
+            <circle cx="45" cy="48" r="2.5" fill="#1a1a2e"/><circle cx="57" cy="48" r="2.5" fill="#1a1a2e"/>
+            <ellipse cx="50" cy="54" rx="3.5" ry="2.5" fill="#1a1a2e"/>
+            <path d="M45 60 Q50 65 55 60" fill="none" stroke="#1a1a2e" stroke-width="1.5" stroke-linecap="round"/>
+            <text x="50" y="80" text-anchor="middle" font-family="Nunito,sans-serif" font-size="9" font-weight="900" fill="white" letter-spacing="1">APPROVED</text>
+          </svg>
+        </div>
+        <div class="mobile-slider__dots" id="mobile-dots">
+          <span class="mobile-dot mobile-dot--active"></span>
+          <span class="mobile-dot"></span>
+          <span class="mobile-dot"></span>
+          <span class="mobile-dot"></span>
+        </div>
+      </div>
+      <div class="mobile-slider__dots-outer" id="mobile-dots-outer">
+        <span class="mobile-dot-outer mobile-dot-outer--active"></span>
+        <span class="mobile-dot-outer"></span>
+        <span class="mobile-dot-outer"></span>
+        <span class="mobile-dot-outer"></span>
+      </div>
 
-  <footer class="site-footer" id="site-footer"></footer>
+      <!-- Mobile product info -->
+      <div class="mobile-product-info">
+        <h1 class="mobile-product-info__title">Barebells <span id="bp-hero-flavor-m" style="color:var(--purple);">Chocolate Dough</span></h1>
+        <div class="mobile-product-info__stars">
+          <div class="stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <span>128 reviews</span>
+        </div>
 
-  <script src="../js/header-template.js?v=22"></script>
-  <script src="../js/shop.js?v=22"></script>
-  <script src="../js/brand-picker.js?v=1"></script>
+        <!-- TABS MOBILE -->
+        <div class="pdp-tabs" style="margin-top:16px;">
+          <button class="pdp-tab is-active" data-tab="losse-m">🍫 Losse repen</button>
+          <button class="pdp-tab" data-tab="dozen-m">📦 Dozen</button>
+        </div>
+
+        <div class="pdp-tab-panel" id="bp-tab-losse-m">
+          <!-- Staffel bar mobile (scrollable) -->
+          <div class="pdp-staffel-bar pdp-staffel-bar--scroll" id="bp-staffel-bar-m">
+            <div class="pdp-staffel-bar__item" data-min="1" data-max="11">
+              <span class="pdp-staffel-bar__qty">1–11</span>
+              <span class="pdp-staffel-bar__label">Normaal</span>
+            </div>
+            <div class="pdp-staffel-bar__item" data-min="12" data-max="23">
+              <span class="pdp-staffel-bar__qty pdp-staffel-bar__qty--green">12+</span>
+              <span class="pdp-staffel-bar__label">5% korting</span>
+            </div>
+            <div class="pdp-staffel-bar__item" data-min="24" data-max="35">
+              <span class="pdp-staffel-bar__qty pdp-staffel-bar__qty--green">24+</span>
+              <span class="pdp-staffel-bar__label">10% korting</span>
+            </div>
+            <div class="pdp-staffel-bar__item" data-min="36" data-max="47">
+              <span class="pdp-staffel-bar__qty pdp-staffel-bar__qty--green">36+</span>
+              <span class="pdp-staffel-bar__label">15% korting</span>
+            </div>
+            <div class="pdp-staffel-bar__item" data-min="48" data-max="9999">
+              <span class="pdp-staffel-bar__qty pdp-staffel-bar__qty--gold">48+</span>
+              <span class="pdp-staffel-bar__label">20% korting</span>
+            </div>
+          </div>
+          <div class="pdp-flavor-list" id="bp-flavor-list-m"></div>
+          <div class="pdp-cart-bar" id="bp-cart-bar-m" style="display:none">
+            <div class="pdp-cart-bar__left">
+              <span class="pdp-cart-bar__count" id="bp-cart-count-m">0 stuks</span>
+              <span class="pdp-cart-bar__total" id="bp-cart-total-m">€0,00</span>
+            </div>
+            <button class="btn btn--primary pdp-cart-bar__btn" id="bp-cart-bar-btn-m">🛒 Voeg toe</button>
+          </div>
+        </div>
+
+        <div class="pdp-tab-panel" id="bp-tab-dozen-m" style="display:none">
+          <div class="pdp-dozen-list" id="bp-dozen-list-m"></div>
+        </div>
+
+        <!-- Trust badges scrollable -->
+        <div class="mobile-trust-scroll">
+          <div class="mobile-trust-badge">
+            <div class="mobile-trust-badge__icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="5"/><path d="M8 14s-4 1-4 5h16c0-4-4-5-4-5"/></svg>
+            </div>
+            <div><strong>Smikkie Approved</strong><span>alleen snacks die écht lekker zijn</span></div>
+          </div>
+          <div class="mobile-trust-badge">
+            <div class="mobile-trust-badge__icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            </div>
+            <div><strong>Alles los te bestellen</strong><span>Mix &amp; match wat jij lekker vindt</span></div>
+          </div>
+          <div class="mobile-trust-badge">
+            <div class="mobile-trust-badge__icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <div><strong>Morgen in huis</strong><span>Voor 23:59 besteld</span></div>
+          </div>
+        </div>
+
+        <!-- Smikkie zegt mobile -->
+        <div class="smikkie-zegt smikkie-zegt--mobile">
+          <div class="smikkie-zegt__bear">
+            <svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="60" cy="105" rx="36" ry="38" fill="#7B4F2E"/>
+              <ellipse cx="60" cy="115" rx="34" ry="30" fill="#5B2D8E"/>
+              <path d="M43 95 Q60 105 77 95" fill="none" stroke="#4a2278" stroke-width="2"/>
+              <line x1="60" y1="98" x2="60" y2="138" stroke="#4a2278" stroke-width="1.5"/>
+              <ellipse cx="28" cy="112" rx="12" ry="18" fill="#5B2D8E" transform="rotate(-15 28 112)"/>
+              <ellipse cx="92" cy="112" rx="12" ry="18" fill="#5B2D8E" transform="rotate(15 92 112)"/>
+              <ellipse cx="22" cy="126" rx="10" ry="7" fill="#7B4F2E"/>
+              <ellipse cx="98" cy="126" rx="10" ry="7" fill="#7B4F2E"/>
+              <ellipse cx="107" cy="120" rx="4" ry="6" fill="#7B4F2E" transform="rotate(-20 107 120)"/>
+              <path d="M78 85 C78 82 82 80 84 83 C86 80 90 82 90 85 C90 88 84 93 84 93 C84 93 78 88 78 85Z" fill="#E8A87C"/>
+              <circle cx="60" cy="58" r="32" fill="#A0673A"/>
+              <circle cx="35" cy="32" r="11" fill="#A0673A"/><circle cx="35" cy="32" r="7" fill="#C4845A"/>
+              <circle cx="85" cy="32" r="11" fill="#A0673A"/><circle cx="85" cy="32" r="7" fill="#C4845A"/>
+              <ellipse cx="60" cy="66" rx="20" ry="16" fill="#C4845A"/>
+              <circle cx="50" cy="50" r="5.5" fill="white"/><circle cx="70" cy="50" r="5.5" fill="white"/>
+              <circle cx="51.5" cy="51" r="3.5" fill="#1a1a2e"/><circle cx="71.5" cy="51" r="3.5" fill="#1a1a2e"/>
+              <circle cx="53" cy="49.5" r="1.3" fill="white"/><circle cx="73" cy="49.5" r="1.3" fill="white"/>
+              <ellipse cx="60" cy="63" rx="5" ry="4" fill="#1a1a2e"/>
+              <path d="M53 72 Q60 78 67 72" fill="none" stroke="#1a1a2e" stroke-width="1.8" stroke-linecap="round"/>
+              <circle cx="44" cy="62" r="5" fill="#E8A87C" opacity="0.5"/>
+              <circle cx="76" cy="62" r="5" fill="#E8A87C" opacity="0.5"/>
+            </svg>
+          </div>
+          <div class="smikkie-zegt__content">
+            <h4>Smikkie zegt:</h4>
+            <p>"Deze gaat hard...<br>echt eentje die je<br>moet proberen 🤤"</p>
+          </div>
+          <div class="smikkie-zegt__dashes">
+            <div class="sz-dash sz-dash--1"></div>
+            <div class="sz-dash sz-dash--2"></div>
+          </div>
+        </div>
+
+        <!-- Accordions (mobile) -->
+        <div class="accordions">
+          <div class="accordion accordion--open">
+            <button class="accordion__btn">
+              <span>Over dit product</span>
+              <svg class="accordion__chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="accordion__body">
+              <p>Heerlijke eiwitreep met chocolade smaak 🍫<br>Perfect als snack zonder schuldgevoel 💜</p>
+            </div>
+          </div>
+          <div class="accordion">
+            <button class="accordion__btn">
+              <span>Voedingswaarden</span>
+              <svg class="accordion__chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="accordion__body">
+              <table class="nutrition-table">
+                <thead><tr><th>Voedingswaarden</th><th>Per 100g</th></tr></thead>
+                <tbody>
+                  <tr><td>Energie</td><td>1598 kJ / 383 kcal</td></tr>
+                  <tr><td>Vetten</td><td>17 g</td></tr>
+                  <tr class="sub"><td>– waarvan verzadigd</td><td>7,6 g</td></tr>
+                  <tr><td>Koolhydraten</td><td>32 g</td></tr>
+                  <tr class="sub"><td>– waarvan suikers</td><td>3,4 g</td></tr>
+                  <tr><td>Vezels</td><td>1,6 g</td></tr>
+                  <tr><td>Eiwitten</td><td>29 g</td></tr>
+                  <tr><td>Zout</td><td>0,39 g</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="accordion">
+            <button class="accordion__btn">
+              <span>Ingrediënten</span>
+              <svg class="accordion__chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="accordion__body">
+              <p style="font-size:13px;line-height:1.6;color:#555;">Melkeiwit, cacaoboter, maltitol, zoetstof (sucralose), cacaopoeder, vanillearoma. Kan sporen bevatten van gluten, noten en soja.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /product-mobile -->
+
+  </div><!-- /container -->
+</section>
+
+<!-- ==================== WHY TRY + NUTRITION (desktop) ==================== -->
+<section class="why-nutrition desktop-only">
+  <div class="container">
+    <div class="why-nutrition__grid">
+      <div class="why-try">
+        <h3>Waarom je deze wil proberen 👇</h3>
+        <div class="why-try__list">
+          <div class="why-try__item">
+            <div class="why-try__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12l3 3 5-5"/></svg>
+            </div>
+            <div><strong>Hoog in eiwitten</strong><span>20 gram eiwitten per reep.</span></div>
+          </div>
+          <div class="why-try__item">
+            <div class="why-try__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div><strong>Laag in suiker</strong><span>Slechts 1,7 gram suiker.</span></div>
+          </div>
+          <div class="why-try__item">
+            <div class="why-try__icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+            </div>
+            <div><strong>Super smaak</strong><span>Zachte textuur en heerlijke smaak.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="nutrition-wrap">
+        <table class="nutrition-table">
+          <thead><tr><th>Voedingswaarden</th><th>Per 100 gram</th></tr></thead>
+          <tbody>
+            <tr><td>Energie</td><td>1598 kJ / 383 kcal</td></tr>
+            <tr><td>Vetten</td><td>17 g</td></tr>
+            <tr class="sub"><td>– waarvan verzadigd</td><td>7,6 g</td></tr>
+            <tr><td>Koolhydraten</td><td>32 g</td></tr>
+            <tr class="sub"><td>– waarvan suikers</td><td>3,4 g</td></tr>
+            <tr><td>Vezels</td><td>1,6 g</td></tr>
+            <tr><td>Eiwitten</td><td>29 g</td></tr>
+            <tr><td>Zout</td><td>0,39 g</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== RELATED PRODUCTS ==================== -->
+<section class="section related">
+  <div class="container">
+    <div class="related__header">
+      <h2 class="section-title" style="text-align:left;">Past goed bij jouw mix 🍪🍫</h2>
+      <a href="alle-snacks.html" class="btn btn--ghost btn--sm">Bekijk alles</a>
+    </div>
+    <div class="related__slider-wrap">
+      <button class="related__nav related__nav--prev" id="related-prev">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="related__slider" id="related-slider">
+        <a href="product.html?id=2" class="prod-card">
+          <div class="prod-card__img"><img src="../images/nicks.png" alt="N!CK'S Peanut Caramel Bar"></div>
+          <div class="prod-card__body">
+            <span class="prod-card__brand">N!CK'S</span>
+            <span class="prod-card__name">Peanut Caramel Bar</span>
+            <div class="prod-card__footer">
+              <span class="prod-card__price">€2,29</span>
+              <button class="prod-card__add" data-add-to-cart="2">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+            </div>
+          </div>
+        </a>
+        <a href="product.html?id=4" class="prod-card">
+          <div class="prod-card__img"><img src="../images/nocco.png" alt="NOCCO BCAA Passion"></div>
+          <div class="prod-card__body">
+            <span class="prod-card__brand">NOCCO</span>
+            <span class="prod-card__name">BCAA Passion</span>
+            <div class="prod-card__footer">
+              <span class="prod-card__price">€2,49</span>
+              <button class="prod-card__add" data-add-to-cart="4">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+            </div>
+          </div>
+        </a>
+        <a href="product.html?id=3" class="prod-card">
+          <div class="prod-card__img"><img src="../images/quest.jpg" alt="Quest Chocolate Chip Cookie"></div>
+          <div class="prod-card__body">
+            <span class="prod-card__brand">Quest</span>
+            <span class="prod-card__name">Chocolate Chip Cookie</span>
+            <div class="prod-card__footer">
+              <span class="prod-card__price">€2,99</span>
+              <button class="prod-card__add" data-add-to-cart="3">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+            </div>
+          </div>
+        </a>
+        <a href="mix-box.html" class="prod-card">
+          <div class="prod-card__img" style="background:linear-gradient(135deg,#f3f0ff,#e8e0ff);display:flex;align-items:center;justify-content:center;font-size:40px;">📦</div>
+          <div class="prod-card__body">
+            <span class="prod-card__brand">Smikkie</span>
+            <span class="prod-card__name">Stel jouw mix samen</span>
+            <div class="prod-card__footer">
+              <span class="prod-card__price">Vanaf €2,49</span>
+              <button class="prod-card__add" style="background:var(--purple);">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+            </div>
+          </div>
+        </a>
+      </div>
+      <button class="related__nav related__nav--next" id="related-next">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== USP BANNER (desktop) ==================== -->
+<section class="usp-banner desktop-only">
+  <div class="container">
+    <div class="usp-banner__grid">
+      <div class="usp-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12l3 3 5-5"/></svg>
+        <div><strong>Jouw mix, jouw keuze</strong><span>Stel zelf samen wat jij lekker vindt.</span></div>
+      </div>
+      <div class="usp-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <div><strong>Lekker snacken,</strong><span>zonder schuldgevoel.</span></div>
+      </div>
+      <div class="usp-item">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="5"/><path d="M8 14s-4 1-4 5h16c0-4-4-5-4-5"/></svg>
+        <div><strong>Smikkie Approved</strong><span>Alleen snacks die écht lekker zijn.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== REVIEWS ==================== -->
+<section class="section reviews desktop-only">
+  <div class="container">
+    <h2 class="section-title">Wat anderen zeggen 🍪🍫</h2>
+    <div class="reviews__slider-wrap">
+      <button class="related__nav related__nav--prev" id="reviews-prev">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="reviews__slider" id="reviews-slider">
+        <div class="review-card">
+          <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p>"Echt mijn favoriet! Smaakt naar chocolate chip koekjes 😍"</p>
+          <span>Sanne, 2 dagen geleden</span>
+        </div>
+        <div class="review-card">
+          <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p>"Heerlijke reep en goede voedingswaarden."</p>
+          <span>Mike, 5 dagen geleden</span>
+        </div>
+        <div class="review-card">
+          <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p>"Altijd in mijn mix, deze mag niet ontbreken!"</p>
+          <span>Lotte, 1 week geleden</span>
+        </div>
+        <div class="review-card">
+          <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+          <p>"Zacht van binnen en echt super lekker."</p>
+          <span>Tom, 1 week geleden</span>
+        </div>
+      </div>
+      <button class="related__nav related__nav--next" id="reviews-next">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== STICKY BAR ==================== -->
+<div class="sticky-bar" id="sticky-bar">
+  <div class="sticky-bar__inner">
+    <img src="../images/barebells.jpg" alt="Barebells" class="sticky-bar__img desktop-only" id="sticky-img">
+    <div class="sticky-bar__info">
+      <span class="sticky-bar__name">Barebells – <span id="sticky-flavor-name">Chocolate Dough</span></span>
+      <span class="sticky-bar__price" id="sticky-price">€2,49</span>
+    </div>
+    <div class="sticky-bar__actions">
+      <button class="btn btn--green sticky-bar__btn" id="bp-sticky-add-btn">
+        <span class="desktop-only">Voeg toe aan winkelwagen 💜</span>
+        <span class="mobile-only">+ Voeg toe 💜</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div id="site-footer"></div>
+
+<script src="../js/shop.js?v=23"></script>
+<script src="../js/header-template.js?v=23"></script>
+<script src="../js/product.js?v=23"></script>
+<script src="../js/brand-picker.js?v=23"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+  // Determine which flavor to highlight from URL param
+  const urlParams = new URLSearchParams(window.location.search);
+  const highlightId = urlParams.get('smaak') || 'bb-choc-dough';
+
   window.BrandPicker.init([
-    { id: 'bb-choc-dough',    name: 'Chocolate Dough',        price: 2.49, img: '../images/barebells.jpg',  macros: { eiwit: '20g', suiker: '1.2g', kcal: '218' } },
-    { id: 'bb-salty-peanut', name: 'Salty Peanut',           price: 2.49, img: '../images/barebells2.jpg', macros: { eiwit: '20g', suiker: '1.4g', kcal: '215' } },
-    { id: 'bb-cookies-cream',name: 'Cookies & Cream',        price: 2.49, img: '../images/barebells.jpg',  macros: { eiwit: '20g', suiker: '1.0g', kcal: '210' } },
-    { id: 'bb-caramel-cashew',name: 'Caramel Cashew',        price: 2.49, img: '../images/barebells.jpg',  macros: { eiwit: '20g', suiker: '1.3g', kcal: '222' } },
-    { id: 'bb-white-choc',   name: 'White Chocolate Almond', price: 2.49, img: '../images/barebells.jpg',  macros: { eiwit: '20g', suiker: '1.1g', kcal: '216' } },
-    { id: 'bb-hazelnut',     name: 'Hazelnut Nougat',        price: 2.49, img: '../images/barebells.jpg',  macros: { eiwit: '20g', suiker: '1.5g', kcal: '220' } }
-  ], { brandName: 'Barebells', brand: 'BAREBELLS' });
+    { id: 'bb-choc-dough',     name: 'Chocolate Dough',        price: 2.49, img: '../images/barebells.jpg',  macros: { eiwit: '20g', suiker: '1.2g', kcal: '218' } },
+    { id: 'bb-salty-peanut',   name: 'Salty Peanut',           price: 2.49, img: '../images/barebells.jpg',  macros: { eiwit: '20g', suiker: '1.4g', kcal: '215' } },
+    { id: 'bb-cookies-cream',  name: 'Cookies & Cream',        price: 2.49, img: '../images/barebells.jpg',  macros: { eiwit: '20g', suiker: '1.0g', kcal: '210' } },
+    { id: 'bb-caramel-cashew', name: 'Caramel Cashew',         price: 2.49, img: '../images/barebells.jpg',  macros: { eiwit: '20g', suiker: '1.3g', kcal: '222' } },
+    { id: 'bb-white-choc',     name: 'White Chocolate Almond', price: 2.49, img: '../images/barebells.jpg',  macros: { eiwit: '20g', suiker: '1.1g', kcal: '216' } },
+    { id: 'bb-hazelnut',       name: 'Hazelnut Nougat',        price: 2.49, img: '../images/barebells.jpg',  macros: { eiwit: '20g', suiker: '1.5g', kcal: '220' } },
+    { id: 'bb-peanut-butter',  name: 'Peanut Butter',          price: 2.49, img: '../images/barebells.jpg',  macros: { eiwit: '20g', suiker: '1.3g', kcal: '219' } },
+    { id: 'bb-strawberry',     name: 'Strawberry',             price: 2.49, img: '../images/barebells.jpg',  macros: { eiwit: '20g', suiker: '1.6g', kcal: '213' } }
+  ], { brandName: 'Barebells', brand: 'BAREBELLS', highlightId: highlightId });
 });
 </script>
 </body>
