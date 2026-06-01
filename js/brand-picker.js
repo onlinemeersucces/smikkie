@@ -15,13 +15,13 @@ const BP_TIERS = [
 ];
 
 const BP_QUICK_OPTS = [
-  { qty: 3,  label: '3×',      discount: '1.25%' },
-  { qty: 6,  label: '6×',      discount: '2.5%' },
-  { qty: 9,  label: '9×',      discount: '3.75%' },
-  { qty: 12, label: '1 doos',  discount: '5%' },
-  { qty: 24, label: '2 dozen', discount: '10%' },
-  { qty: 36, label: '3 dozen', discount: '15%' },
-  { qty: 48, label: '4 dozen', discount: '20%' }
+  { qty: 3,  label: '3',  discount: '1.25%' },
+  { qty: 6,  label: '6',  discount: '2.5%' },
+  { qty: 9,  label: '9',  discount: '3.75%' },
+  { qty: 12, label: '12', discount: '5%' },
+  { qty: 24, label: '24', discount: '10%' },
+  { qty: 36, label: '36', discount: '15%' },
+  { qty: 48, label: '48', discount: '20%' }
 ];
 
 /* ---- STATE ---- */
