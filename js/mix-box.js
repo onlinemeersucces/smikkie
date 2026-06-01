@@ -9,6 +9,7 @@
   /* ---- CONFIG ---- */
   const FREE_SHIPPING_THRESHOLD = 40.00;
   const BOX_SIZES = [12, 24, 36, 48];
+  // Discount tiers: 1-11 = normaal, 12-23 = 5%, 24-35 = 10%, 36-47 = 15%, 48+ = 20%
   const DISCOUNT_TIERS = [
     { minQty: 48, discount: 0.20, label: '20% korting' },
     { minQty: 36, discount: 0.15, label: '15% korting' },
@@ -81,8 +82,8 @@
     }
     let html = '';
     items.forEach(item => {
-      for (let i = 0; i < Math.min(item.qty, 4); i++) {
-        html += `<img src="${item.img}" alt="${item.name}" class="box-preview__item-dot" onerror="this.style.display='none'">`;
+      for (let i = 0; i < Math.min(item.qty, 3); i++) {
+        html += `<img src="${item.img}" alt="${item.name}" class="box-preview__dot" onerror="this.style.display='none'">`;
       }
     });
     container.innerHTML = html;
