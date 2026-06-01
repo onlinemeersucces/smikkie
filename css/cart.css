@@ -552,3 +552,9 @@
   0%, 100% { opacity: 1; }
   50% { opacity: 0.4; }
 }
+
+/* Utility classes needed by cart-page */
+.btn--full { width: 100%; justify-content: center; }
+.price-green { color: var(--green) !important; font-weight: 700; }
+.price-strike { text-decoration: line-through; color: var(--gray); }
+.text-green { color: var(--green) !important; }
