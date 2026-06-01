@@ -3,109 +3,226 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quest Double Chocolate Chip – Smikkie</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <title>Quest Double Chocolate Chunk | Smikkie</title>
+  <meta name="description" content="Bestel Quest Double Chocolate Chunk bij Smikkie. Lekker snacken zonder schuldgevoel.">
   <link rel="stylesheet" href="../css/base.css?v=32">
   <link rel="stylesheet" href="../css/header.css?v=32">
   <link rel="stylesheet" href="../css/footer.css?v=32">
   <link rel="stylesheet" href="../css/product.css?v=32">
+  <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <div id="site-header"></div>
-<div class="breadcrumb desktop-only">
-  <div class="container">
-    <nav class="breadcrumb__nav">
-      <a href="../index.html">Home</a>
-      <span class="sep">›</span>
-      <a href="snacks-koekjes.html">Snacks & koekjes</a>
-      <span class="sep">›</span>
-      <span class="current">Quest Double Chocolate Chip</span>
-    </nav>
-  </div>
-</div>
-<section class="product-section">
-  <div class="container">
-    <div class="product-desktop desktop-only">
-      <div class="gallery-col">
-        <div class="gallery">
-          <div class="gallery__thumbs">
-            <button class="gallery__thumb gallery__thumb--active" data-img="quest.jpg">
-              <img src="../images/quest.jpg" alt="Quest Double Chocolate Chip">
-            </button>
+<!-- BREADCRUMB -->
+<nav class="breadcrumb container" aria-label="Breadcrumb">
+  <a href="../index.html">Home</a>
+  <span class="breadcrumb__sep">›</span>
+  <a href="../pages/eiwitrepen.html">Eiwitrepen</a>
+  <span class="breadcrumb__sep">›</span>
+  <span>Quest Double Chocolate Chunk</span>
+</nav>
+<!-- PRODUCT HERO -->
+<section class="product-hero section">
+  <div class="container product-hero__inner">
+    <!-- LEFT: Gallery + Trust -->
+    <div class="gallery-col">
+      <div class="gallery-main">
+        <img src="../images/quest.jpg" alt="Quest Double Chocolate Chunk" class="gallery-main__img" id="bp-main-img">
+        <!-- Smikkie zegt badge -->
+        <div class="smikkie-zegt">
+          <div class="smikkie-zegt__avatar">
+            <svg width="52" height="52" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="50" r="50" fill="#F3E8FF"/>
+              <circle cx="50" cy="38" r="18" fill="#7C3AED"/>
+              <ellipse cx="50" cy="78" rx="26" ry="18" fill="#7C3AED"/>
+              <circle cx="43" cy="35" r="3" fill="white"/>
+              <circle cx="57" cy="35" r="3" fill="white"/>
+              <path d="M43 44 Q50 50 57 44" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+              <circle cx="24" cy="62" r="5" fill="#E8A87C" opacity="0.5"/>
+              <circle cx="76" cy="62" r="5" fill="#E8A87C" opacity="0.5"/>
+            </svg>
           </div>
-          <div class="gallery__main">
-            <div class="gallery__img-wrap">
-              <img src="../images/quest.jpg" alt="Quest Double Chocolate Chip" id="gallery-main-img">
-            </div>
+          <div class="smikkie-zegt__content">
+            <h4>Smikkie zegt:</h4>
+            <p>"Voor de echte chocolade-addict. Dubbel lekker, dubbel goed 🍫"</p>
+          </div>
+          <div class="smikkie-zegt__dashes">
+            <div class="sz-dash sz-dash--1"></div>
+            <div class="sz-dash sz-dash--2"></div>
           </div>
         </div>
-        <div class="smikkie-zegt">
-          <div class="smikkie-zegt__badge">Smikkie zegt</div>
-          <p class="smikkie-zegt__text">"Quest Double Chocolate Chip is voor de echte chocoladeliefhebber. Dubbel zoveel ..."</p>
+        <!-- Trust badges -->
+        <div class="product-info__trust" style="margin-top:16px;">
+          <div class="trust-badge">
+            <div class="trust-badge__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="8" r="5"/><path d="M8 14s-4 1-4 5h16c0-4-4-5-4-5"/></svg>
+            </div>
+            <div><strong>Smikkie Approved</strong><span>alleen snacks die écht lekker zijn</span></div>
+          </div>
+          <div class="trust-badge">
+            <div class="trust-badge__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            </div>
+            <div><strong>Morgen in huis</strong><span>Voor 23:59 besteld</span></div>
+          </div>
+          <div class="trust-badge">
+            <div class="trust-badge__icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+            </div>
+            <div><strong>Alles los te bestellen</strong><span>Mix &amp; match wat jij lekker vindt</span></div>
+          </div>
         </div>
       </div>
-      <div class="product-info-col">
-        <div class="product-brand-badge">Quest</div>
-        <h1 class="product-title">Quest Double Chocolate Chip</h1>
-        <div class="product-rating">
-          <span class="stars">★★★★★</span>
-          <span class="rating-count">4.8 (124 reviews)</span>
+    </div><!-- /gallery-col -->
+
+    <!-- RIGHT: Product Info + Flavor Picker -->
+    <div class="product-info">
+      <h1 class="product-info__title">Quest<br><span id="bp-hero-flavor" style="color:var(--purple);">Double Chocolate Chunk</span></h1>
+      <div class="product-info__stars">
+        <div class="stars">
+          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
         </div>
-        <div class="product-price-row">
-          <span class="product-price">€2,99</span>
-          <span class="product-price-sub">per stuk</span>
-        </div>
-        <p class="product-desc">Quest Double Chocolate Chip is voor de echte chocoladeliefhebber. Dubbel zoveel chocolade, 21g eiwit en slechts 1g suiker.</p>
-        <div class="product-macros">
-          <div class="macro-pill"><span class="macro-val">21g</span><span class="macro-label">Eiwit</span></div>
-          <div class="macro-pill"><span class="macro-val">1g</span><span class="macro-label">Suiker</span></div>
-          <div class="macro-pill"><span class="macro-val">185</span><span class="macro-label">Kcal</span></div>
-        </div>
-        <div class="product-qty-row">
-          <div class="qty-ctrl">
-            <button class="qty-btn" id="qty-minus">−</button>
-            <span class="qty-val" id="qty-val">1</span>
-            <button class="qty-btn" id="qty-plus">+</button>
+        <span class="product-info__reviews">112 reviews</span>
+      </div>
+      <p class="product-info__desc">Dubbele chocolade voor de echte chocoholic 🍫🍫<br>21g eiwit, 1g suiker. Intense chocoladesmaak zonder de calorieën.</p>
+
+      <!-- TABS -->
+      <div class="pdp-tabs" style="margin-top:20px;">
+        <button class="pdp-tab is-active" data-tab="losse">🛒 Losse stuks</button>
+        <button class="pdp-tab" data-tab="dozen">📦 Dozen</button>
+      </div>
+
+      <!-- TAB: Losse stuks -->
+      <div class="pdp-tab-panel" id="bp-tab-losse">
+        <!-- Staffel bar -->
+        <div class="pdp-staffel-bar" id="bp-staffel-bar">
+          <div class="pdp-staffel-bar__item" data-min="1" data-max="11">
+            <span class="pdp-staffel-bar__qty">1–11</span>
+            <span class="pdp-staffel-bar__label">Normaal tarief</span>
           </div>
-          <button class="btn btn--primary btn--lg product-add-btn" id="add-to-cart-btn" data-id="9" data-name="Quest Double Chocolate Chip" data-price="2,99" data-brand="Quest" data-img="../images/quest.jpg">
-            Voeg toe aan mix
+          <div class="pdp-staffel-bar__item" data-min="12" data-max="23">
+            <span class="pdp-staffel-bar__qty pdp-staffel-bar__qty--green">12+</span>
+            <span class="pdp-staffel-bar__label">5% korting</span>
+          </div>
+          <div class="pdp-staffel-bar__item" data-min="24" data-max="35">
+            <span class="pdp-staffel-bar__qty pdp-staffel-bar__qty--green">24+</span>
+            <span class="pdp-staffel-bar__label">10% korting</span>
+          </div>
+          <div class="pdp-staffel-bar__item" data-min="36" data-max="47">
+            <span class="pdp-staffel-bar__qty pdp-staffel-bar__qty--green">36+</span>
+            <span class="pdp-staffel-bar__label">15% korting</span>
+          </div>
+          <div class="pdp-staffel-bar__item" data-min="48" data-max="9999">
+            <span class="pdp-staffel-bar__qty pdp-staffel-bar__qty--gold">48+</span>
+            <span class="pdp-staffel-bar__label">20% korting</span>
+          </div>
+        </div>
+        <!-- Flavor rows -->
+        <div class="pdp-flavor-list" id="bp-flavor-list">
+          <!-- Rendered by brand-picker.js -->
+        </div>
+        <!-- Selection summary -->
+        <div id="bp-selection-summary" style="display:none"></div>
+        <div class="pdp-cart-bar" id="bp-cart-bar" style="display:none">
+          <div class="pdp-cart-bar__left">
+            <span class="pdp-cart-bar__count" id="bp-cart-count">0 stuks</span>
+            <span class="pdp-cart-bar__total" id="bp-cart-total">€0,00</span>
+          </div>
+          <button class="btn btn--green pdp-cart-bar__btn" id="bp-add-btn">
+            Voeg toe aan winkelwagen 💜
           </button>
         </div>
-        <div class="product-usps">
-          <div class="product-usp"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg><span>Gratis verzending v.a. €40</span></div>
-          <div class="product-usp"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><span>Voor 23:59 besteld = morgen in huis</span></div>
-          <div class="product-usp"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg><span>14 dagen bedenktijd</span></div>
+      </div>
+
+      <!-- TAB: Dozen -->
+      <div class="pdp-tab-panel" id="bp-tab-dozen" style="display:none">
+        <div class="pdp-dozen-list">
+          <div class="pdp-dozen-option" data-id="quest-doos-12" data-price="33.99" data-qty="12 stuks"><div class="pdp-dozen-option__info"><strong>Doos 12 stuks – Mix naar keuze</strong><span class="pdp-dozen-option__qty">12 stuks</span></div><div class="pdp-dozen-option__price">€33.99</div></div>
+<div class="pdp-dozen-option" data-id="quest-doos-24" data-price="63.99" data-qty="24 stuks"><div class="pdp-dozen-option__info"><strong>Doos 24 stuks – Mix naar keuze</strong><span class="pdp-dozen-option__qty">24 stuks</span></div><div class="pdp-dozen-option__price">€63.99</div></div>
+<div class="pdp-dozen-option" data-id="quest-doos-48" data-price="114.99" data-qty="48 stuks"><div class="pdp-dozen-option__info"><strong>Doos 48 stuks – Mix naar keuze</strong><span class="pdp-dozen-option__qty">48 stuks</span></div><div class="pdp-dozen-option__price">€114.99</div></div>
         </div>
-        <div class="product-discount-hint">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
-          Bestel 12+ stuks en bespaar 5%. Bestel 24+ stuks en bespaar 10%.
+        <div class="pdp-cart-bar" id="bp-dozen-cart-bar" style="display:none">
+          <div class="pdp-cart-bar__left">
+            <span class="pdp-cart-bar__count" id="bp-dozen-count">0 dozen</span>
+            <span class="pdp-cart-bar__total" id="bp-dozen-total">€0,00</span>
+          </div>
+          <button class="btn btn--green pdp-cart-bar__btn" id="bp-dozen-add-btn">
+            Voeg dozen toe aan winkelwagen 💜
+          </button>
         </div>
       </div>
+    </div><!-- /product-info -->
+  </div>
+</section>
+
+<!-- RELATED PRODUCTS -->
+<section class="section related">
+  <div class="container">
+    <h2 class="section-title">Anderen kochten ook</h2>
+    <div class="related__grid">
+      <a href="../pages/quest-chocolate-chip-cookie.html" class="related-card"><div class="related-card__img-wrap"><img src="../images/quest.jpg" alt="Quest Chocolate Chip Cookie" class="related-card__img"></div><div class="related-card__info"><strong>Quest Chocolate Chip Cookie</strong><span>€2,99</span></div></a>
+<a href="../pages/barebells-chocolate-dough.html" class="related-card"><div class="related-card__img-wrap"><img src="../images/barebells.jpg" alt="Barebells Chocolate Dough" class="related-card__img"></div><div class="related-card__info"><strong>Barebells Chocolate Dough</strong><span>€2,49</span></div></a>
+<a href="../pages/nicks-chocolate-peanut-cups.html" class="related-card"><div class="related-card__img-wrap"><img src="../images/nicks.jpg" alt="N!CK's Chocolate Peanut" class="related-card__img"></div><div class="related-card__info"><strong>N!CK's Chocolate Peanut</strong><span>€2,49</span></div></a>
     </div>
   </div>
 </section>
+
+<!-- REVIEWS -->
+<section class="section reviews desktop-only">
+  <div class="container">
+    <h2 class="section-title">Wat anderen zeggen 🍫🍫</h2>
+    <div class="reviews__slider-wrap">
+      <button class="related__nav related__nav--prev" id="reviews-prev">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="reviews__slider" id="reviews-slider">
+        <div class="review-card"><div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p>"Intense chocoladesmaak! Precies wat ik zocht."</p><span>Jade, 2 dagen geleden</span></div>
+<div class="review-card"><div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p>"Dubbele chocolade = dubbel lekker. Simpel."</p><span>Finn, 5 dagen geleden</span></div>
+<div class="review-card"><div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p>"Mijn go-to reep na het sporten."</p><span>Vera, 1 week geleden</span></div>
+<div class="review-card"><div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p>"Heerlijk en vullend. Aanrader voor chocoholics!"</p><span>Koen, 2 weken geleden</span></div>
+      </div>
+      <button class="related__nav related__nav--next" id="reviews-next">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- STICKY BAR -->
+<div class="sticky-bar" id="sticky-bar">
+  <div class="sticky-bar__inner">
+    <img src="../images/quest.jpg" alt="Quest" class="sticky-bar__img desktop-only" id="sticky-img">
+    <div class="sticky-bar__info">
+      <span class="sticky-bar__name">Quest – <span id="sticky-flavor-name">Double Chocolate Chunk</span></span>
+      <span class="sticky-bar__price" id="sticky-price">€2.99</span>
+    </div>
+    <div class="sticky-bar__actions">
+      <button class="btn btn--green sticky-bar__btn" id="bp-sticky-add-btn">
+        <span class="desktop-only">Voeg toe aan winkelwagen 💜</span>
+        <span class="mobile-only">+ Voeg toe 💜</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
 <div id="site-footer"></div>
 <script src="../js/shop.js?v=32"></script>
 <script src="../js/header-template.js?v=32"></script>
+<script src="../js/product.js?v=32"></script>
+<script src="../js/brand-picker.js?v=32"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  let qty = 1;
-  const qtyVal = document.getElementById('qty-val');
-  document.getElementById('qty-minus').addEventListener('click', () => { if(qty > 1) { qty--; qtyVal.textContent = qty; } });
-  document.getElementById('qty-plus').addEventListener('click', () => { qty++; qtyVal.textContent = qty; });
-  document.getElementById('add-to-cart-btn').addEventListener('click', function() {
-    const product = {
-      id: parseInt(this.dataset.id),
-      name: this.dataset.name,
-      brand: this.dataset.brand,
-      price: parseFloat(this.dataset.price),
-      img: this.dataset.img
-    };
-    window.SmikkieShop.addToCart(product, qty);
-    window.SmikkieShop.showToast(product.name + ' toegevoegd! 💜');
-  });
+  const urlParams = new URLSearchParams(window.location.search);
+  const highlightId = urlParams.get('smaak') || 'quest-double-choc';
+  window.BrandPicker.init([
+    { id: 'quest-double-choc', name: 'Double Chocolate Chunk', price: 2.99, img: '../images/quest.jpg', macros: { eiwit: '21g', suiker: '1g', kcal: '195' } },
+    { id: 'quest-choc-chip', name: 'Chocolate Chip Cookie', price: 2.99, img: '../images/quest.jpg', macros: { eiwit: '21g', suiker: '1g', kcal: '190' } },
+    { id: 'quest-peanut', name: 'Peanut Butter', price: 2.99, img: '../images/quest.jpg', macros: { eiwit: '21g', suiker: '1g', kcal: '200' } },
+    { id: 'quest-birthday', name: 'Birthday Cake', price: 2.99, img: '../images/quest.jpg', macros: { eiwit: '21g', suiker: '1g', kcal: '185' } },
+    { id: 'quest-cookies-cream', name: 'Cookies & Cream', price: 2.99, img: '../images/quest.jpg', macros: { eiwit: '21g', suiker: '1g', kcal: '188' } },
+    { id: 'quest-blueberry', name: 'Blueberry Muffin', price: 2.99, img: '../images/quest.jpg', macros: { eiwit: '21g', suiker: '1g', kcal: '183' } }
+  ], { brandName: 'Quest', brand: 'QUEST', highlightId: highlightId });
 });
 </script>
 </body>
