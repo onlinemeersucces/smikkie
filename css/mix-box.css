@@ -200,10 +200,10 @@
 
 .volume-steps {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
-  gap: 0;
-  max-width: 800px;
+  gap: 16px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -461,7 +461,8 @@
 }
 
 .box-size {
-  padding: 9px 18px;
+  position: relative;
+  padding: 18px 18px 9px;
   border: 2px solid #ddd;
   border-radius: 12px;
   background: #fff;
@@ -475,6 +476,7 @@
   align-items: center;
   gap: 2px;
   line-height: 1;
+  min-width: 80px;
 }
 
 .box-size small {
@@ -996,11 +998,13 @@
 /* Add to cart */
 .btn-add-to-cart {
   width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   background: var(--purple);
   color: #fff;
   border: none;
   border-radius: 14px;
-  padding: 16px 16px;
+  padding: 16px 12px;
   font-size: 14px;
   font-weight: 800;
   cursor: pointer;
@@ -1009,8 +1013,8 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  box-sizing: border-box;
   white-space: nowrap;
+  overflow: hidden;
 }
 
 .btn-add-to-cart:hover:not(:disabled) {

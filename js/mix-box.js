@@ -119,7 +119,7 @@
 
     // Render item list with image + qty controls
     if (itemsEl) {
-      let html = emptyEl ? emptyEl.outerHTML : '';
+      let html = '';
       items.forEach(item => {
         html += `<div class="summary-item">
           <img src="${item.img}" alt="${item.name}" class="summary-item__img" onerror="this.style.display='none'">
@@ -135,16 +135,21 @@
         </div>`;
       });
       itemsEl.innerHTML = html;
-      // Attach events to sidebar qty buttons
+      // Attach events to sidebar qty buttons — update state directly to avoid double-firing
       itemsEl.querySelectorAll('.summary-qty-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
           const id = btn.dataset.id;
           const action = btn.dataset.action;
-          const card = document.querySelector(`.flavor-card[data-id="${id}"]`);
-          if (card) {
-            const trigger = card.querySelector(action === 'inc' ? '.qty-btn--plus' : '.qty-btn--minus');
-            if (trigger) trigger.click();
+          if (!state.items[id]) return;
+          if (action === 'inc') {
+            state.items[id].qty++;
+          } else if (action === 'dec' && state.items[id].qty > 0) {
+            state.items[id].qty--;
           }
+          updateQtyDisplay(id);
+          updateFlavorCardState(id);
+          renderAll();
         });
       });
     }
@@ -477,41 +482,15 @@
       const toAdd = targetQty - totalQty;
       if (toAdd <= 0) return;
 
-      // Distribute extra items proportionally across existing selections
+      // Double each item's qty (simple and correct)
       const items = Object.values(state.items).filter(i => i.qty > 0);
       if (!items.length) return;
 
-      let remaining = toAdd;
-      items.forEach((item, idx) => {
-        const share = idx === items.length - 1
-          ? remaining
-          : Math.round(toAdd * (item.qty / totalQty));
-        state.items[item.id || Object.keys(state.items).find(k => state.items[k] === item)].qty += share;
-        remaining -= share;
-      });
-
-      // Recalculate properly using keys
-      const keys = Object.keys(state.items).filter(k => state.items[k].qty > 0);
-      let rem = toAdd;
-      keys.forEach((key, idx) => {
-        const share = idx === keys.length - 1
-          ? rem
-          : Math.round(toAdd * (state.items[key].qty / (totalQty + toAdd)));
-        // Already added above, skip
-      });
-
-      // Simpler: just double each item's qty
-      if (totalQty < 24) {
-        // Double everything
-        Object.keys(state.items).forEach(key => {
+      Object.keys(state.items).forEach(key => {
+        if (state.items[key].qty > 0) {
           state.items[key].qty *= 2;
-        });
-      } else {
-        // Double again
-        Object.keys(state.items).forEach(key => {
-          state.items[key].qty *= 2;
-        });
-      }
+        }
+      });
 
       // Update all qty displays
       Object.keys(state.items).forEach(key => {
