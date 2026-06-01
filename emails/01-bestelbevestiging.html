@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="nl" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jouw bestelling is ontvangen! – Smikkie</title>
+</head>
+<body style="margin:0;padding:0;background-color:#F5F3FF;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;">
+
+  <div style="display:none;max-height:0;overflow:hidden;">Bedankt voor je bestelling! We gaan er direct mee aan de slag. 🎉</div>
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#F5F3FF;">
+    <tr>
+      <td align="center" style="padding:32px 16px;">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;width:100%;">
+
+          <!-- Header -->
+          <tr>
+            <td align="center" style="background-color:#5B2D8E;border-radius:16px 16px 0 0;padding:28px 40px;">
+              <span style="font-size:28px;font-weight:900;color:#ffffff;">Smikkie<span style="color:#C4B5FD;">.</span></span>
+            </td>
+          </tr>
+
+          <!-- Body -->
+          <tr>
+            <td style="background-color:#ffffff;padding:40px;border-radius:0 0 16px 16px;">
+
+              <!-- Success icon -->
+              <div style="text-align:center;margin-bottom:24px;">
+                <div style="width:72px;height:72px;background-color:#F0FDF4;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:36px;line-height:72px;">✅</div>
+              </div>
+
+              <h1 style="font-size:24px;font-weight:900;color:#1F1235;text-align:center;margin:0 0 8px;">Bestelling ontvangen! 🎉</h1>
+              <p style="font-size:15px;color:#6B7280;text-align:center;margin:0 0 32px;">Hoi {{VOORNAAM}}, bedankt voor je bestelling bij Smikkie. We gaan er direct mee aan de slag!</p>
+
+              <!-- Order details box -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#F9F7FF;border-radius:12px;margin-bottom:24px;">
+                <tr>
+                  <td style="padding:20px 24px;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td style="font-size:13px;color:#6B7280;font-weight:700;padding-bottom:4px;">Bestelnummer</td>
+                        <td align="right" style="font-size:14px;color:#5B2D8E;font-weight:900;">{{BESTELNUMMER}}</td>
+                      </tr>
+                      <tr>
+                        <td style="font-size:13px;color:#6B7280;font-weight:700;padding-bottom:4px;padding-top:8px;">Besteldatum</td>
+                        <td align="right" style="font-size:14px;color:#1F1235;font-weight:700;">{{BESTELDATUM}}</td>
+                      </tr>
+                      <tr>
+                        <td style="font-size:13px;color:#6B7280;font-weight:700;padding-top:8px;">Verwachte levering</td>
+                        <td align="right" style="font-size:14px;color:#16A34A;font-weight:700;">{{LEVERDATUM}}</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Products -->
+              <h3 style="font-size:16px;font-weight:900;color:#1F1235;margin:0 0 12px;">Jouw bestelling</h3>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #E5E7EB;border-radius:10px;overflow:hidden;margin-bottom:24px;">
+                <!-- Product row (repeat for each product) -->
+                <tr style="border-bottom:1px solid #E5E7EB;">
+                  <td style="padding:12px 16px;">
+                    <span style="font-size:14px;font-weight:800;color:#1F1235;">{{PRODUCT_NAAM}}</span><br>
+                    <span style="font-size:12px;color:#6B7280;">{{PRODUCT_MERK}} &bull; {{PRODUCT_QTY}} stuks</span>
+                  </td>
+                  <td align="right" style="padding:12px 16px;font-size:14px;font-weight:900;color:#5B2D8E;white-space:nowrap;">{{PRODUCT_PRIJS}}</td>
+                </tr>
+                <!-- Totals -->
+                <tr>
+                  <td colspan="2" style="padding:0;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-top:2px solid #E5E7EB;">
+                      <tr>
+                        <td style="padding:10px 16px;font-size:13px;color:#6B7280;">Subtotaal</td>
+                        <td align="right" style="padding:10px 16px;font-size:13px;color:#1F1235;font-weight:700;">{{SUBTOTAAL}}</td>
+                      </tr>
+                      <tr>
+                        <td style="padding:4px 16px;font-size:13px;color:#6B7280;">Verzendkosten</td>
+                        <td align="right" style="padding:4px 16px;font-size:13px;color:#16A34A;font-weight:700;">{{VERZENDKOSTEN}}</td>
+                      </tr>
+                      <tr>
+                        <td style="padding:10px 16px;font-size:16px;font-weight:900;color:#1F1235;border-top:1px solid #E5E7EB;">Totaal</td>
+                        <td align="right" style="padding:10px 16px;font-size:16px;font-weight:900;color:#5B2D8E;border-top:1px solid #E5E7EB;">{{TOTAAL}}</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Delivery address -->
+              <h3 style="font-size:16px;font-weight:900;color:#1F1235;margin:0 0 12px;">Bezorgadres</h3>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#F9F7FF;border-radius:10px;margin-bottom:32px;">
+                <tr>
+                  <td style="padding:16px 20px;font-size:14px;color:#374151;line-height:1.6;">
+                    {{NAAM}}<br>
+                    {{STRAAT}} {{HUISNUMMER}}<br>
+                    {{POSTCODE}} {{STAD}}<br>
+                    Nederland
+                  </td>
+                </tr>
+              </table>
+
+              <!-- CTA -->
+              <div style="text-align:center;margin-bottom:32px;">
+                <a href="https://smikkie.nl/pages/bestellingen.html" style="display:inline-block;background-color:#5B2D8E;color:#ffffff;font-size:15px;font-weight:800;text-decoration:none;padding:14px 32px;border-radius:50px;">Bekijk mijn bestelling →</a>
+              </div>
+
+              <!-- Social proof -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFBEB;border-radius:10px;border-left:4px solid #F59E0B;">
+                <tr>
+                  <td style="padding:16px 20px;">
+                    <p style="font-size:14px;color:#92400E;font-weight:700;margin:0 0 4px;">💛 Smikkie's belofte</p>
+                    <p style="font-size:13px;color:#78350F;margin:0;">Jouw snacks worden zorgvuldig ingepakt en verstuurd. Niet tevreden? We lossen het altijd op. Dat beloven we.</p>
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+
+          <!-- Trust bar -->
+          <tr>
+            <td style="padding:20px 0 8px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td align="center" style="padding:0 8px;font-size:12px;color:#6B7280;font-weight:600;">📦 Gratis v.a. €40</td>
+                  <td align="center" style="padding:0 8px;font-size:12px;color:#6B7280;font-weight:600;">🚚 Morgen in huis</td>
+                  <td align="center" style="padding:0 8px;font-size:12px;color:#6B7280;font-weight:600;">🔄 14 dagen retour</td>
+                  <td align="center" style="padding:0 8px;font-size:12px;color:#6B7280;font-weight:600;">🔒 Veilig betalen</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td align="center" style="padding:16px 0 32px;">
+              <p style="font-size:12px;color:#9CA3AF;margin:0 0 6px;">Smikkie | Lekker snacken, zonder schuldgevoel</p>
+              <p style="font-size:12px;color:#9CA3AF;margin:0;">
+                <a href="https://smikkie.nl/pages/privacybeleid.html" style="color:#7C3AED;text-decoration:none;">Privacybeleid</a> &nbsp;|&nbsp;
+                <a href="https://smikkie.nl/pages/algemene-voorwaarden.html" style="color:#7C3AED;text-decoration:none;">Voorwaarden</a> &nbsp;|&nbsp;
+                <a href="https://smikkie.nl/pages/contact.html" style="color:#7C3AED;text-decoration:none;">Contact</a>
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

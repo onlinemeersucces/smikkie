@@ -351,4 +351,50 @@ function injectFooter() {
 document.addEventListener('DOMContentLoaded', () => {
   injectHeader();
   injectFooter();
+
+  // Inject search CSS
+  if (!document.querySelector('link[href*="search.css"]')) {
+    const base = getBasePath();
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = base + 'css/search.css?v=32';
+    document.head.appendChild(link);
+  }
+
+  // Inject search JS
+  if (!document.querySelector('script[src*="search.js"]')) {
+    const base = getBasePath();
+    const script = document.createElement('script');
+    script.src = base + 'js/search.js?v=32';
+    document.body.appendChild(script);
+  }
+
+  // Inject mobile CSS
+  if (!document.querySelector('link[href*="mobile.css"]')) {
+    const base = getBasePath();
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = base + 'css/mobile.css?v=32';
+    document.head.appendChild(link);
+  }
+
+  // Inject cookie consent CSS
+  if (!document.querySelector('link[href*="cookie-consent.css"]')) {
+    const base = getBasePath();
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = base + 'css/cookie-consent.css?v=32';
+    document.head.appendChild(link);
+  }
+
+  // Inject cookie consent JS
+  if (!document.querySelector('script[src*="cookie-consent.js"]')) {
+    const base = getBasePath();
+    const script = document.createElement('script');
+    script.src = base + 'js/cookie-consent.js?v=32';
+    document.body.appendChild(script);
+  }
+
+  // Signal that header is ready
+  document.dispatchEvent(new CustomEvent('smikkieHeaderReady'));
 });

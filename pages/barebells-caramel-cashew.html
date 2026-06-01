@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barebells Caramel Cashew – Smikkie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/base.css?v=32">
+  <link rel="stylesheet" href="../css/header.css?v=32">
+  <link rel="stylesheet" href="../css/footer.css?v=32">
+  <link rel="stylesheet" href="../css/product.css?v=32">
+</head>
+<body>
+<div id="site-header"></div>
+<div class="breadcrumb desktop-only">
+  <div class="container">
+    <nav class="breadcrumb__nav">
+      <a href="../index.html">Home</a>
+      <span class="sep">›</span>
+      <a href="eiwitrepen.html">Eiwitrepen</a>
+      <span class="sep">›</span>
+      <span class="current">Barebells Caramel Cashew</span>
+    </nav>
+  </div>
+</div>
+<section class="product-section">
+  <div class="container">
+    <div class="product-desktop desktop-only">
+      <div class="gallery-col">
+        <div class="gallery">
+          <div class="gallery__thumbs">
+            <button class="gallery__thumb gallery__thumb--active" data-img="barebells.jpg">
+              <img src="../images/barebells.jpg" alt="Barebells Caramel Cashew">
+            </button>
+          </div>
+          <div class="gallery__main">
+            <div class="gallery__img-wrap">
+              <img src="../images/barebells.jpg" alt="Barebells Caramel Cashew" id="gallery-main-img">
+            </div>
+          </div>
+        </div>
+        <div class="smikkie-zegt">
+          <div class="smikkie-zegt__badge">Smikkie zegt</div>
+          <p class="smikkie-zegt__text">"Barebells Caramel Cashew heeft een rijke karamelsmaak met knapperige cashewnoten..."</p>
+        </div>
+      </div>
+      <div class="product-info-col">
+        <div class="product-brand-badge">Barebells</div>
+        <h1 class="product-title">Barebells Caramel Cashew</h1>
+        <div class="product-rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-count">4.8 (124 reviews)</span>
+        </div>
+        <div class="product-price-row">
+          <span class="product-price">€2,49</span>
+          <span class="product-price-sub">per stuk</span>
+        </div>
+        <p class="product-desc">Barebells Caramel Cashew heeft een rijke karamelsmaak met knapperige cashewnoten. 20g eiwit per reep, geen suiker toegevoegd.</p>
+        <div class="product-macros">
+          <div class="macro-pill"><span class="macro-val">20g</span><span class="macro-label">Eiwit</span></div>
+          <div class="macro-pill"><span class="macro-val">1.3g</span><span class="macro-label">Suiker</span></div>
+          <div class="macro-pill"><span class="macro-val">214</span><span class="macro-label">Kcal</span></div>
+        </div>
+        <div class="product-qty-row">
+          <div class="qty-ctrl">
+            <button class="qty-btn" id="qty-minus">−</button>
+            <span class="qty-val" id="qty-val">1</span>
+            <button class="qty-btn" id="qty-plus">+</button>
+          </div>
+          <button class="btn btn--primary btn--lg product-add-btn" id="add-to-cart-btn" data-id="7" data-name="Barebells Caramel Cashew" data-price="2,49" data-brand="Barebells" data-img="../images/barebells.jpg">
+            Voeg toe aan mix
+          </button>
+        </div>
+        <div class="product-usps">
+          <div class="product-usp"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg><span>Gratis verzending v.a. €40</span></div>
+          <div class="product-usp"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><span>Voor 23:59 besteld = morgen in huis</span></div>
+          <div class="product-usp"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg><span>14 dagen bedenktijd</span></div>
+        </div>
+        <div class="product-discount-hint">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+          Bestel 12+ stuks en bespaar 5%. Bestel 24+ stuks en bespaar 10%.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div id="site-footer"></div>
+<script src="../js/shop.js?v=32"></script>
+<script src="../js/header-template.js?v=32"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  let qty = 1;
+  const qtyVal = document.getElementById('qty-val');
+  document.getElementById('qty-minus').addEventListener('click', () => { if(qty > 1) { qty--; qtyVal.textContent = qty; } });
+  document.getElementById('qty-plus').addEventListener('click', () => { qty++; qtyVal.textContent = qty; });
+  document.getElementById('add-to-cart-btn').addEventListener('click', function() {
+    const product = {
+      id: parseInt(this.dataset.id),
+      name: this.dataset.name,
+      brand: this.dataset.brand,
+      price: parseFloat(this.dataset.price),
+      img: this.dataset.img
+    };
+    window.SmikkieShop.addToCart(product, qty);
+    window.SmikkieShop.showToast(product.name + ' toegevoegd! 💜');
+  });
+});
+</script>
+</body>
+</html>
