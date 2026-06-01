@@ -72,13 +72,21 @@ function bpRenderFlavorList() {
       </button>
     `).join('');
 
+    // Build nutrition tooltip data attributes
+    const nutri = f.nutrition || {};
+
     return `
       <div class="pdp-flavor-row ${isFeatured ? 'is-featured' : ''}" data-flavor="${f.id}">
         <img src="${f.img}" alt="${f.name}" class="pdp-flavor-row__img" loading="lazy"
              onerror="this.src='../images/barebells.jpg'">
         <div class="pdp-flavor-row__info">
-          ${isFeatured ? '<span class="pdp-flavor-row__featured-badge">Jouw keuze</span>' : ''}
-          <div class="pdp-flavor-row__name">${f.name}</div>
+          <div class="pdp-flavor-row__name-row">
+            ${isFeatured ? '<span class="pdp-flavor-row__featured-badge">Jouw keuze</span>' : ''}
+            <div class="pdp-flavor-row__name">${f.name}</div>
+            <button class="pdp-info-btn" data-flavor="${f.id}" aria-label="Voedingswaarden" title="Voedingswaarden">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            </button>
+          </div>
           <div class="pdp-flavor-row__macros">
             <span>${f.macros.eiwit} eiwit</span>
             <span>${f.macros.suiker} suiker</span>
@@ -245,6 +253,74 @@ function bpRenderSummary() {
   `;
 }
 
+/* ---- SWAP HERO IMAGE ---- */
+function bpSwapHeroImage(flavorId) {
+  const flavor = bpState.flavors.find(f => f.id === flavorId);
+  if (!flavor) return;
+  const heroImg = document.getElementById('bp-hero-img');
+  if (heroImg) {
+    heroImg.src = flavor.img;
+    heroImg.alt = flavor.name;
+  }
+  const heroFlavor = document.getElementById('bp-hero-flavor');
+  if (heroFlavor) heroFlavor.textContent = flavor.name;
+  // Update active thumb
+  document.querySelectorAll('.pdp-hero__thumb').forEach(t =>
+    t.classList.toggle('is-active', t.dataset.flavor === flavorId)
+  );
+}
+
+/* ---- NUTRITION POPUP ---- */
+function bpShowNutritionPopup(flavorId) {
+  const flavor = bpState.flavors.find(f => f.id === flavorId);
+  if (!flavor) return;
+
+  // Remove existing popup
+  const existing = document.getElementById('bp-nutrition-popup');
+  if (existing) existing.remove();
+
+  const n = flavor.nutrition || {};
+  const rows = [
+    ['Energie',       n.energie   || flavor.macros.kcal],
+    ['Eiwit',         n.eiwit     || flavor.macros.eiwit],
+    ['Koolhydraten',  n.koolhydraten || '—'],
+    ['  waarvan suikers', n.suikers || flavor.macros.suiker],
+    ['Vetten',        n.vetten    || '—'],
+    ['  waarvan verzadigd', n.verzadigd || '—'],
+    ['Vezels',        n.vezels    || '—'],
+    ['Zout',          n.zout      || '—'],
+  ];
+
+  const popup = document.createElement('div');
+  popup.id = 'bp-nutrition-popup';
+  popup.className = 'bp-nutrition-popup';
+  popup.innerHTML = `
+    <div class="bp-nutrition-popup__inner">
+      <div class="bp-nutrition-popup__header">
+        <img src="${flavor.img}" alt="${flavor.name}" class="bp-nutrition-popup__img" onerror="this.src='../images/barebells.jpg'">
+        <div>
+          <div class="bp-nutrition-popup__name">${flavor.name}</div>
+          <div class="bp-nutrition-popup__sub">Voedingswaarden per reep (55g)</div>
+        </div>
+        <button class="bp-nutrition-popup__close" id="bp-nutrition-close" aria-label="Sluiten">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <table class="bp-nutrition-popup__table">
+        <thead><tr><th>Voedingsstof</th><th>Per reep</th></tr></thead>
+        <tbody>
+          ${rows.map(([label, val]) => `<tr><td>${label}</td><td>${val}</td></tr>`).join('')}
+        </tbody>
+      </table>
+    </div>
+    <div class="bp-nutrition-popup__backdrop" id="bp-nutrition-backdrop"></div>
+  `;
+  document.body.appendChild(popup);
+
+  document.getElementById('bp-nutrition-close').addEventListener('click', () => popup.remove());
+  document.getElementById('bp-nutrition-backdrop').addEventListener('click', () => popup.remove());
+}
+
 /* ---- EVENTS ---- */
 function bpInitEvents() {
   // Tabs
@@ -266,18 +342,29 @@ function bpInitEvents() {
       const plus  = e.target.closest('.pdp-qty-btn--plus');
       const quick = e.target.closest('.pdp-quick-btn');
 
+      const infoBtn = e.target.closest('.pdp-info-btn');
+
+      if (infoBtn) {
+        const id = infoBtn.dataset.flavor;
+        bpShowNutritionPopup(id);
+        return;
+      }
+
       if (minus) {
         const id = minus.dataset.flavor;
         bpState.qtys[id] = Math.max(0, (bpState.qtys[id] || 0) - 1);
+        bpSwapHeroImage(id);
         bpRenderAll();
       } else if (plus) {
         const id = plus.dataset.flavor;
         bpState.qtys[id] = (bpState.qtys[id] || 0) + 1;
+        bpSwapHeroImage(id);
         bpRenderAll();
       } else if (quick) {
         const id  = quick.dataset.flavor;
         const qty = parseInt(quick.dataset.qty, 10);
         bpState.qtys[id] = (bpState.qtys[id] === qty) ? 0 : qty;
+        bpSwapHeroImage(id);
         bpRenderAll();
       }
     });
