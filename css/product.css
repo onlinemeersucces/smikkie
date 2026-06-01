@@ -1219,20 +1219,24 @@
 .pdp-quick-btns {
   display: flex;
   gap: 4px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   flex: 1;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
+.pdp-quick-btns::-webkit-scrollbar { display: none; }
 .pdp-quick-btn {
   background: #fff;
   border: 1.5px solid var(--border);
   border-radius: 20px;
-  padding: 3px 9px;
-  font-size: 11px;
+  padding: 3px 8px;
+  font-size: 10px;
   font-weight: 700;
   color: var(--dark);
   cursor: pointer;
   transition: all .15s;
   white-space: nowrap;
+  flex-shrink: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
