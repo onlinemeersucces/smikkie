@@ -674,8 +674,70 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 14px 14px;
+  padding: 10px 14px 8px;
   gap: 0;
+}
+
+/* Quick-qty buttons (3 / 6 / 9 stuks) */
+.flavor-card__quick-qty {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  padding: 0 14px 14px;
+}
+
+.quick-qty-btn {
+  position: relative;
+  border: 2px solid #eee;
+  border-radius: 10px;
+  background: #fafafa;
+  cursor: pointer;
+  padding: 6px 4px 5px;
+  text-align: center;
+  transition: all .18s;
+  font-family: inherit;
+}
+
+.quick-qty-btn:hover {
+  border-color: var(--purple);
+  background: #faf8ff;
+}
+
+.quick-qty-btn.is-active {
+  border-color: var(--purple);
+  background: linear-gradient(145deg, #f5f0ff, #ede8ff);
+}
+
+.quick-qty-btn__badge {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--green);
+  color: #fff;
+  font-size: 8px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 8px;
+  white-space: nowrap;
+  line-height: 1.4;
+}
+
+.quick-qty-btn__num {
+  display: block;
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--dark);
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
+.quick-qty-btn__label {
+  display: block;
+  font-size: 9px;
+  color: #aaa;
+  font-weight: 600;
+  margin-top: 1px;
 }
 
 .qty-btn {

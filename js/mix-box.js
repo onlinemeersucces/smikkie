@@ -63,6 +63,8 @@
     updateVolumeSteps(totalQty);
     updateDiscountTierUI(totalQty);
     updateAddToCartBtn(totalQty);
+    // Refresh quick-qty active states for all cards
+    Object.keys(state.items).forEach(id => renderQuickQtyButtons(id));
   }
 
   function updateHeroCounter(totalQty) {
@@ -260,8 +262,27 @@
 
   /* ---- FLAVOR CARD QUANTITY CONTROLS ---- */
 
+  // Quick-qty options: [qty, kortingslabel]
+  const QUICK_QTY_OPTIONS = [
+    { qty: 3,  label: '1,25%' },
+    { qty: 6,  label: '2,5%' },
+    { qty: 9,  label: '3,75%' }
+  ];
+
+  function renderQuickQtyButtons(id) {
+    const card = document.querySelector(`.flavor-card[data-id="${id}"]`);
+    if (!card) return;
+    let wrap = card.querySelector('.flavor-card__quick-qty');
+    if (!wrap) return;
+    const currentQty = state.items[id] ? state.items[id].qty : 0;
+    wrap.querySelectorAll('.quick-qty-btn').forEach(btn => {
+      const q = parseInt(btn.dataset.qty);
+      btn.classList.toggle('is-active', currentQty === q);
+    });
+  }
+
   function initFlavorCards() {
-    // Read all flavor cards
+    // Read all flavor cards and inject quick-qty buttons
     document.querySelectorAll('.flavor-card').forEach(card => {
       const id = card.dataset.id;
       const price = parseFloat(card.dataset.price);
@@ -272,6 +293,21 @@
       // Initialize state
       if (!state.items[id]) {
         state.items[id] = { name, price, qty: 0, img, brand };
+      }
+
+      // Inject quick-qty row if not already present
+      if (!card.querySelector('.flavor-card__quick-qty')) {
+        const wrap = document.createElement('div');
+        wrap.className = 'flavor-card__quick-qty';
+        QUICK_QTY_OPTIONS.forEach(opt => {
+          const btn = document.createElement('button');
+          btn.className = 'quick-qty-btn';
+          btn.dataset.id = id;
+          btn.dataset.qty = opt.qty;
+          btn.innerHTML = `<span class="quick-qty-btn__badge">${opt.label}</span><span class="quick-qty-btn__num">${opt.qty}</span><span class="quick-qty-btn__label">stuks</span>`;
+          wrap.appendChild(btn);
+        });
+        card.appendChild(wrap);
       }
     });
 
@@ -300,6 +336,28 @@
         }
       });
     });
+
+    // Quick-qty buttons via delegation on the flavor grid
+    const grid = document.getElementById('flavor-grid');
+    if (grid) {
+      grid.addEventListener('click', (e) => {
+        const btn = e.target.closest('.quick-qty-btn');
+        if (!btn) return;
+        const id = btn.dataset.id;
+        const qty = parseInt(btn.dataset.qty);
+        if (!state.items[id]) return;
+        // Toggle: click same qty again to deselect (go back to 0)
+        if (state.items[id].qty === qty) {
+          state.items[id].qty = 0;
+        } else {
+          state.items[id].qty = qty;
+        }
+        updateQtyDisplay(id);
+        renderAll();
+        updateFlavorCardState(id);
+        renderQuickQtyButtons(id);
+      });
+    }
   }
 
   function updateQtyDisplay(id) {
