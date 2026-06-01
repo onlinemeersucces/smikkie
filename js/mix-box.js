@@ -7,21 +7,24 @@
   'use strict';
 
   /* ---- CONFIG ---- */
+  // Per-pagina overschrijfbaar via window.MIX_CONFIG (zie bijv. eiwitrepen.html)
+  const _cfg = window.MIX_CONFIG || {};
   const FREE_SHIPPING_THRESHOLD = 40.00;
-  const BOX_SIZES = [12, 24, 36, 48];
-  // Discount tiers: 1-11 = normaal, 12-23 = 5%, 24-35 = 10%, 36-47 = 15%, 48+ = 20%
-  const DISCOUNT_TIERS = [
+  const BOX_SIZES = _cfg.boxSizes || [12, 24, 36, 48];
+  const DISCOUNT_TIERS = _cfg.discountTiers || [
     { minQty: 48, discount: 0.20, label: '20% korting' },
     { minQty: 36, discount: 0.15, label: '15% korting' },
     { minQty: 24, discount: 0.10, label: '10% korting' },
     { minQty: 12, discount: 0.05, label: '5% korting' },
     { minQty: 0,  discount: 0,    label: null }
   ];
+  // Initiële doosgrootte (eerste BOX_SIZES waarde)
+  const INITIAL_BOX_SIZE = BOX_SIZES[0] || 12;
 
   /* ---- STATE ---- */
   let state = {
     items: {},       // { id: { name, price, qty, img, brand } }
-    boxSize: 12,     // current target box size
+    boxSize: INITIAL_BOX_SIZE, // current target box size
     cartItems: [],   // items added to cart (for drawer)
     cartTotal: 0
   };
@@ -234,27 +237,22 @@
     const nudgeBtn = document.getElementById('upsell-nudge-btn');
     if (!nudge) return;
 
-    if (totalQty > 0 && totalQty < 48) {
+    const tiersAsc = DISCOUNT_TIERS.filter(t => t.minQty > 0).slice().sort((a,b) => a.minQty - b.minQty);
+    const maxQty = tiersAsc[tiersAsc.length - 1] ? tiersAsc[tiersAsc.length - 1].minQty : 48;
+    const nextTier = tiersAsc.find(t => totalQty < t.minQty);
+
+    if (totalQty > 0 && nextTier) {
       nudge.style.display = 'flex';
-      if (totalQty < 12) {
-        const needed = 12 - totalQty;
-        if (nudgeText) nudgeText.textContent = `Nog ${needed} stuk${needed !== 1 ? 's' : ''} voor 5% korting!`;
-        if (nudgeBtn) nudgeBtn.textContent = 'Naar 1 doos (12 stuks)';
-      } else if (totalQty < 24) {
-        const needed = 24 - totalQty;
-        if (nudgeText) nudgeText.textContent = `Nog ${needed} stuk${needed !== 1 ? 's' : ''} voor 10% korting!`;
-        if (nudgeBtn) nudgeBtn.textContent = 'Verdubbel mijn doos';
-      } else if (totalQty < 36) {
-        const needed = 36 - totalQty;
-        if (nudgeText) nudgeText.textContent = `Nog ${needed} stuk${needed !== 1 ? 's' : ''} voor 15% korting!`;
-        if (nudgeBtn) nudgeBtn.textContent = 'Naar 3 dozen';
-      } else {
-        const needed = 48 - totalQty;
-        if (nudgeText) nudgeText.textContent = `Nog ${needed} stuk${needed !== 1 ? 's' : ''} voor 20% korting!`;
-        if (nudgeBtn) nudgeBtn.textContent = 'Naar 4 dozen';
-      }
+      const needed = nextTier.minQty - totalQty;
+      if (nudgeText) nudgeText.textContent = `Nog ${needed} stuk${needed !== 1 ? 's' : ''} voor ${nextTier.label}!`;
+      if (nudgeBtn) nudgeBtn.textContent = `Naar ${nextTier.minQty} stuks`;
+    } else if (totalQty > 0 && !nextTier) {
+      nudge.style.display = 'flex';
+      if (nudgeText) nudgeText.textContent = `${Math.round(tiersAsc[tiersAsc.length-1].discount*100)}% korting actief! 🎉`;
+      if (nudgeBtn) nudgeBtn.style.display = 'none';
     } else {
       nudge.style.display = 'none';
+      if (nudgeBtn) nudgeBtn.style.display = '';
     }
   }
 
@@ -267,35 +265,28 @@
   }
 
   function updateDiscountTierUI(totalQty) {
-    const seg1 = document.getElementById('tier-seg-1');
-    const seg2 = document.getElementById('tier-seg-2');
-    const seg3 = document.getElementById('tier-seg-3');
-    const seg4 = document.getElementById('tier-seg-4');
+    const segs = [1,2,3,4].map(i => document.getElementById('tier-seg-' + i));
     const fill = document.getElementById('tier-fill');
     const label = document.getElementById('discount-tier-label');
 
-    // Progress fill: 0-12=0%, 12-24=25%, 24-36=50%, 36-48=75%, 48+=100%
-    const fillPct = totalQty === 0 ? 0 : Math.min(100, (totalQty / 48) * 100);
+    // Tiers van laag naar hoog (zonder de 0-tier)
+    const tiersAsc = DISCOUNT_TIERS.filter(t => t.minQty > 0).slice().sort((a,b) => a.minQty - b.minQty);
+    const maxQty = tiersAsc[tiersAsc.length - 1] ? tiersAsc[tiersAsc.length - 1].minQty : 48;
+    const fillPct = totalQty === 0 ? 0 : Math.min(100, (totalQty / maxQty) * 100);
     if (fill) fill.style.width = fillPct + '%';
 
-    if (seg1) seg1.classList.toggle('is-active', totalQty >= 12);
-    if (seg2) seg2.classList.toggle('is-active', totalQty >= 24);
-    if (seg3) seg3.classList.toggle('is-active', totalQty >= 36);
-    if (seg4) seg4.classList.toggle('is-active', totalQty >= 48);
+    tiersAsc.forEach((tier, idx) => {
+      if (segs[idx]) segs[idx].classList.toggle('is-active', totalQty >= tier.minQty);
+    });
 
     if (label) {
+      const nextTier = tiersAsc.find(t => totalQty < t.minQty);
       if (totalQty === 0) {
         label.textContent = 'Voeg smaken toe voor volumekorting!';
-      } else if (totalQty < 12) {
-        label.textContent = `Nog ${12 - totalQty} stuks voor 5% korting!`;
-      } else if (totalQty < 24) {
-        label.textContent = `Nog ${24 - totalQty} stuks voor 10% korting!`;
-      } else if (totalQty < 36) {
-        label.textContent = `Nog ${36 - totalQty} stuks voor 15% korting!`;
-      } else if (totalQty < 48) {
-        label.textContent = `Nog ${48 - totalQty} stuks voor 20% korting!`;
+      } else if (nextTier) {
+        label.textContent = `Nog ${nextTier.minQty - totalQty} stuks voor ${nextTier.label}!`;
       } else {
-        label.textContent = '20% korting actief! 🎉';
+        label.textContent = `${Math.round(tiersAsc[tiersAsc.length-1].discount*100)}% korting actief! 🎉`;
       }
     }
   }

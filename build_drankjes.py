@@ -1,14 +1,22 @@
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Drankjes Mix | Smikkie</title>
-  <link rel="stylesheet" href="../css/base.css?v=22">
-  <link rel="stylesheet" href="../css/header.css?v=22">
-  <link rel="stylesheet" href="../css/footer.css?v=22">
-  <link rel="stylesheet" href="../css/mix-box.css?v=30">
-  <!-- MIX CONFIG: drankjes (doos = 6) -->
+"""
+Build drankjes.html from mix-box.html as exact copy,
+with adjusted title, breadcrumb, hero text, filter tabs,
+product cards (drankjes only), volume steps for doos=6,
+and MIX_CONFIG injection (doos = 6).
+"""
+import re
+
+with open('/home/ubuntu/smikkie-shop/pages/mix-box.html', 'r') as f:
+    html = f.read()
+
+# 1. Title
+html = html.replace(
+    '<title>Stel jouw Smikkie Mix samen – Smikkie</title>',
+    '<title>Drankjes Mix | Smikkie</title>'
+)
+
+# 2. Inject MIX_CONFIG before </head> — doos = 6
+mix_config = '''  <!-- MIX CONFIG: drankjes (doos = 6) -->
   <script>
     window.MIX_CONFIG = {
       boxSizes: [6, 12, 18, 24],
@@ -21,117 +29,83 @@
       ]
     };
   </script>
-</head>
-<body>
+</head>'''
+html = html.replace('</head>', mix_config)
 
-  <header class="site-header" id="site-header"></header>
+# 3. Breadcrumb
+html = html.replace(
+    '<span class="current">Stel jouw mix samen</span>',
+    '<span class="current">Drankjes</span>'
+)
 
-  <!-- SLIDE-IN CART DRAWER -->
-  <div class="cart-drawer" id="cart-drawer">
-    <div class="cart-drawer__backdrop" id="cart-backdrop"></div>
-    <div class="cart-drawer__panel">
-      <div class="cart-drawer__header">
-        <h3 class="cart-drawer__title">Jouw mix <span class="cart-drawer__count" id="drawer-count">0</span></h3>
-        <button class="cart-drawer__close" id="cart-close" aria-label="Sluiten">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
-      </div>
+# 4. Hero badge, title, subtitle
+html = html.replace(
+    '<div class="mix-hero__badge">🐻 Pick &amp; Mix</div>',
+    '<div class="mix-hero__badge">🥤 Drankjes</div>'
+)
+html = html.replace(
+    '<h1 class="mix-hero__title">Stel jouw <span class="text-purple">eigen doos</span> samen</h1>',
+    '<h1 class="mix-hero__title">Stel jouw <span class="text-purple">drankjes tray</span> samen</h1>'
+)
+html = html.replace(
+    'Kies precies de smaken die jij lekker vindt. Meng eiwitrepen, snacks en drankjes in één doos. Hoe meer je bestelt, hoe meer je bespaart.',
+    'Kies precies de smaken die jij lekker vindt. Meng NOCCO, Fanta Zero en meer in één tray. Hoe meer je bestelt, hoe meer je bespaart.'
+)
 
-      <!-- Staffel tier bar -->
-      <div class="cart-drawer__tier" id="drawer-tier-bar">
-        <!-- filled by JS -->
-      </div>
-
-      <!-- Free shipping progress -->
-      <div class="cart-drawer__shipping">
-        <div class="shipping-progress">
-          <div class="shipping-progress__label">
-            <span id="shipping-label">Nog <strong id="shipping-amount">€40,00</strong> tot gratis verzending 🚚</span>
-          </div>
-          <div class="shipping-progress__track">
-            <div class="shipping-progress__fill" id="shipping-fill" style="width:0%"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Cart items -->
-      <div class="cart-drawer__items" id="drawer-items">
-        <div class="cart-drawer__empty" id="drawer-empty">
-          <div class="cart-drawer__empty-icon">🛒</div>
-          <p>Je mix is nog leeg.<br>Voeg hieronder smaken toe!</p>
-        </div>
-      </div>
-
-      <!-- Discount badge in drawer -->
-      <div class="cart-drawer__discount" id="drawer-discount" style="display:none">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
-        <span id="drawer-discount-text">Je hebt 10% korting!</span>
-      </div>
-
-      <!-- Cart footer -->
-      <div class="cart-drawer__footer">
-        <div class="cart-drawer__totals">
-          <div class="cart-totals-row" id="drawer-original-row" style="display:none">
-            <span>Subtotaal</span>
-            <span id="drawer-original-price" class="price-strike"></span>
-          </div>
-          <div class="cart-totals-row" id="drawer-discount-row" style="display:none">
-            <span id="drawer-discount-label">Korting (10%)</span>
-            <span id="drawer-discount-amount" class="price-green"></span>
-          </div>
-          <div class="cart-totals-row cart-totals-row--total">
-            <span>Totaal</span>
-            <span id="drawer-total">€0,00</span>
-          </div>
-        </div>
-        <a href="checkout.html" class="btn-primary btn-full" id="drawer-checkout-btn">
-          Afrekenen
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-        </a>
-        <a href="winkelwagen.html" class="cart-drawer__view-cart">Bekijk winkelwagen</a>
-      </div>
-    </div>
-  </div>
-
-  <main>
-
-    <!-- BREADCRUMB -->
-    <div class="breadcrumb">
-      <div class="container">
-        <nav class="breadcrumb__nav">
-          <a href="../index.html">Home</a>
-          <span class="sep">›</span>
-          <a href="alle-snacks.html">Alle snacks</a>
-          <span class="sep">›</span>
-          <span class="current">Drankjes</span>
-        </nav>
-      </div>
-    </div>
-
-    <!-- PAGE HEADER -->
-    <section class="mix-hero">
-      <div class="container">
-        <div class="mix-hero__inner">
-          <div class="mix-hero__text">
-            <div class="mix-hero__badge">🥤 Drankjes</div>
-            <h1 class="mix-hero__title">Stel jouw <span class="text-purple">drankjes tray</span> samen</h1>
-            <p class="mix-hero__sub">Kies precies de smaken die jij lekker vindt. Meng NOCCO, Fanta Zero en meer in één tray. Hoe meer je bestelt, hoe meer je bespaart.</p>
-            <div class="mix-hero__perks">
-              <span class="perk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Gratis verzending v.a. €40</span>
-              <span class="perk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Morgen in huis</span>
-              <span class="perk"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Geen minimum bestelling</span>
+# 5. Volume steps: doos = 6 (tray)
+old_volume_steps = '''        <div class="volume-steps">
+          <div class="volume-step volume-step--single" id="vstep-0" data-qty="1">
+            <div class="volume-step__badge volume-step__badge--gray">Standaard</div>
+            <div class="volume-step__icon-box">1</div>
+            <div class="volume-step__info">
+              <strong>1 reep</strong>
+              <span>Normaal tarief</span>
             </div>
+            <div class="volume-step__price">Geen korting</div>
           </div>
+          <div class="volume-step__arrow">→</div>
+          <div class="volume-step" id="vstep-1" data-qty="12">
+            <div class="volume-step__badge">5% korting</div>
+            <div class="volume-step__icon-box">1×</div>
+            <div class="volume-step__info">
+              <strong>1 doos</strong>
+              <span>12 stuks</span>
+            </div>
+            <div class="volume-step__price volume-step__price--green">Bespaar 5%</div>
+          </div>
+          <div class="volume-step__arrow">→</div>
+          <div class="volume-step" id="vstep-2" data-qty="24">
+            <div class="volume-step__badge">10% korting</div>
+            <div class="volume-step__icon-box">2×</div>
+            <div class="volume-step__info">
+              <strong>2 dozen</strong>
+              <span>24 stuks</span>
+            </div>
+            <div class="volume-step__price volume-step__price--green">Bespaar 10%</div>
+          </div>
+          <div class="volume-step__arrow">→</div>
+          <div class="volume-step" id="vstep-3" data-qty="36">
+            <div class="volume-step__badge">15% korting</div>
+            <div class="volume-step__icon-box">3×</div>
+            <div class="volume-step__info">
+              <strong>3 dozen</strong>
+              <span>36 stuks</span>
+            </div>
+            <div class="volume-step__price volume-step__price--green">Bespaar 15%</div>
+          </div>
+          <div class="volume-step__arrow">→</div>
+          <div class="volume-step" id="vstep-4" data-qty="48">
+            <div class="volume-step__badge volume-step__badge--gold">20% korting</div>
+            <div class="volume-step__icon-box">4×</div>
+            <div class="volume-step__info">
+              <strong>4 dozen</strong>
+              <span>48 stuks</span>
+            </div>
+            <div class="volume-step__price volume-step__price--green">Bespaar 20%</div>
+          </div>
+        </div>'''
 
-        </div>
-      </div>
-    </section>
-
-    <!-- UPSELL VOLUME BANNER -->
-    <section class="volume-upsell">
-      <div class="container">
-        <p class="volume-upsell__title">Hoe meer je bestelt, hoe meer je bespaart</p>
-        <div class="volume-steps">
+new_volume_steps = '''        <div class="volume-steps">
           <div class="volume-step volume-step--single" id="vstep-0" data-qty="1">
             <div class="volume-step__badge volume-step__badge--gray">Standaard</div>
             <div class="volume-step__icon-box">1</div>
@@ -181,60 +155,29 @@
             </div>
             <div class="volume-step__price volume-step__price--green">Bespaar 20%</div>
           </div>
-        </div>
-      </div>
-    </section>
+        </div>'''
+html = html.replace(old_volume_steps, new_volume_steps)
 
-    <!-- MAIN CONTENT: two-column layout -->
-    <section class="mix-builder">
-      <div class="container">
+# 6. Tab labels: "Losse reepjes" -> "Losse blikjes", "Complete dozen" -> "Complete trays"
+html = html.replace('Losse reepjes', 'Losse blikjes')
+html = html.replace('Complete dozen', 'Complete trays')
 
-        <!-- ACTIVE UPSELL NUDGE (shows dynamically) -->
-        <div class="upsell-nudge" id="upsell-nudge" style="display:none">
-          <div class="upsell-nudge__inner">
-            <span class="upsell-nudge__icon">🎁</span>
-            <span id="upsell-nudge-text">Voeg nog 4 stuks toe voor 10% korting!</span>
-            <button class="upsell-nudge__btn" id="upsell-nudge-btn">Verdubbel mijn doos</button>
-          </div>
-        </div>
-
-        <div class="mix-builder__layout">
-
-          <!-- LEFT: Flavor picker -->
-          <div class="mix-builder__picker">
-
-            <!-- Tab switcher: Losse blikjes / Complete trays -->
-            <div class="mix-tabs">
-              <button class="mix-tab mix-tab--active" data-tab="losse">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-                Losse blikjes
-              </button>
-              <button class="mix-tab" data-tab="dozen">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-                Complete trays
-              </button>
-            </div>
-
-            <!-- TAB: Losse blikjes -->
-            <div class="mix-tab-content" id="tab-losse">
-              <div class="picker-header">
-                <h2 class="picker-title">Kies jouw smaken</h2>
-                <div class="picker-progress">
-                  <div class="picker-progress__bar">
-                    <div class="picker-progress__fill" id="picker-fill" style="width:0%"></div>
-                  </div>
-                  <span class="picker-progress__label"><span id="picker-count">0</span> / <span id="picker-max">12</span></span>
-                </div>
-              </div>
-
-              <!-- Filter buttons -->
-              <div class="flavor-filters">
+# 7. Filter buttons
+old_filters = '''              <div class="flavor-filters">
+                <button class="flavor-filter flavor-filter--active" data-filter="all">Alles</button>
+                <button class="flavor-filter" data-filter="eiwitreep">Eiwitrepen</button>
+                <button class="flavor-filter" data-filter="snack">Snacks</button>
+                <button class="flavor-filter" data-filter="drankje">Drankjes</button>
+              </div>'''
+new_filters = '''              <div class="flavor-filters">
                 <button class="flavor-filter flavor-filter--active" data-filter="all">Alles</button>
                 <button class="flavor-filter" data-filter="nocco">NOCCO</button>
                 <button class="flavor-filter" data-filter="fanta">Fanta Zero</button>
-              </div>
+              </div>'''
+html = html.replace(old_filters, new_filters)
 
-              <!-- Product grid -->
+# 8. Replace product grid with drankjes-only products
+new_grid = '''              <!-- Product grid -->
               <div class="flavor-grid" id="flavor-grid">
 
                 <!-- NOCCO Tropical -->
@@ -345,10 +288,42 @@
                   </div>
                 </div>
 
-              </div><!-- /flavor-grid -->
+              </div><!-- /flavor-grid -->'''
 
-              <!-- Box size selector -->
-              <div class="box-size-selector">
+pattern = r'              <!-- Product grid -->.*?</div><!-- /flavor-grid -->'
+html = re.sub(pattern, new_grid, html, flags=re.DOTALL)
+
+# 9. Box size selector: doos=6 labels
+old_box_sizes = '''              <div class="box-size-selector">
+                <h3 class="box-size-selector__title">Doosgrootte</h3>
+                <div class="box-sizes">
+                  <button class="box-size box-size--active" data-size="12">
+                    <span class="box-size__badge">5% korting</span>
+                    <span class="box-size__num">12</span>
+                    <span class="box-size__label">stuks</span>
+                    <span class="box-size__sub">1 doos</span>
+                  </button>
+                  <button class="box-size" data-size="24">
+                    <span class="box-size__badge">10% korting</span>
+                    <span class="box-size__num">24</span>
+                    <span class="box-size__label">stuks</span>
+                    <span class="box-size__sub">2 dozen</span>
+                  </button>
+                  <button class="box-size" data-size="36">
+                    <span class="box-size__badge">15% korting</span>
+                    <span class="box-size__num">36</span>
+                    <span class="box-size__label">stuks</span>
+                    <span class="box-size__sub">3 dozen</span>
+                  </button>
+                  <button class="box-size" data-size="48">
+                    <span class="box-size__badge box-size__badge--gold">20% korting</span>
+                    <span class="box-size__num">48</span>
+                    <span class="box-size__label">stuks</span>
+                    <span class="box-size__sub">4 dozen</span>
+                  </button>
+                </div>
+              </div>'''
+new_box_sizes = '''              <div class="box-size-selector">
                 <h3 class="box-size-selector__title">Traygrootte</h3>
                 <div class="box-sizes">
                   <button class="box-size box-size--active" data-size="6">
@@ -376,18 +351,24 @@
                     <span class="box-size__sub">4 trays</span>
                   </button>
                 </div>
-              </div>
+              </div>'''
+html = html.replace(old_box_sizes, new_box_sizes)
 
-            </div><!-- /tab-losse -->
+# 10. "Complete dozen" tab header
+html = html.replace(
+    '<h2 class="picker-title">Complete dozen per smaak</h2>',
+    '<h2 class="picker-title">Complete trays per smaak</h2>'
+)
+html = html.replace(
+    '<p class="picker-sub">Bestel een volledige doos van jouw favoriete smaak. Hoe meer dozen, hoe meer korting.</p>',
+    '<p class="picker-sub">Bestel een volledige tray van jouw favoriete smaak. Hoe meer trays, hoe meer korting.</p>'
+)
 
-            <!-- TAB: Complete trays -->
-            <div class="mix-tab-content" id="tab-dozen" style="display:none">
-              <div class="picker-header">
-                <h2 class="picker-title">Complete trays per smaak</h2>
-                <p class="picker-sub">Bestel een volledige tray van jouw favoriete smaak. Hoe meer trays, hoe meer korting.</p>
-              </div>
-
-              <div class="dozen-grid">
+# 11. Replace dozen-grid with drankjes trays
+old_dozen_grid_start = '              <div class="dozen-grid">'
+# Find the entire dozen-grid block and replace it
+pattern_dozen = r'              <div class="dozen-grid">.*?              </div><!-- /dozen-grid -->'
+new_dozen_grid = '''              <div class="dozen-grid">
 
                 <!-- NOCCO Tropical tray -->
                 <div class="dozen-product">
@@ -471,123 +452,28 @@
                   </button>
                 </div>
 
-              </div><!-- /dozen-grid -->
+              </div><!-- /dozen-grid -->'''
+html = re.sub(pattern_dozen, new_dozen_grid, html, flags=re.DOTALL)
 
-            </div><!-- /tab-dozen -->
+# 12. Sidebar tier labels: "1 doos" -> "1 tray" etc.
+html = html.replace('<small>1 doos</small>', '<small>1 tray</small>')
+html = html.replace('<small>2 dozen</small>', '<small>2 trays</small>')
+html = html.replace('<small>3 dozen</small>', '<small>3 trays</small>')
+html = html.replace('<small>4 dozen</small>', '<small>4 trays</small>')
 
-          </div><!-- /mix-builder__picker -->
+# 13. "stuks" -> "blikjes" in picker-progress
+html = html.replace(
+    '<span id="sidebar-count">0</span> / <span id="sidebar-max">12</span> stuks',
+    '<span id="sidebar-count">0</span> / <span id="sidebar-max">6</span> blikjes'
+)
 
-          <!-- RIGHT: Sticky order summary -->
-          <aside class="mix-builder__summary" id="mix-summary">
-            <div class="summary-card">
-              <div class="summary-card__header">
-                <h3>Jouw mix</h3>
-                <span class="summary-card__count" id="summary-count">0 stuks</span>
-              </div>
+# 14. Update CSS/JS version numbers
+html = html.replace('mix-box.css?v=23', 'mix-box.css?v=30')
+html = html.replace('header-template.js?v=22', 'header-template.js?v=30')
+html = html.replace('shop.js?v=22', 'shop.js?v=30')
+html = html.replace('mix-box.js?v=23', 'mix-box.js?v=30')
 
-              <!-- Discount tier indicator -->
-              <div class="discount-tier" id="discount-tier">
-                <div class="discount-tier__bar">
-                  <div class="discount-tier__fill" id="tier-fill" style="width:0%"></div>
-                </div>
-                <div class="discount-tier__steps">
-                  <div class="discount-tier__step" id="tier-seg-1">
-                    <div class="discount-tier__dot"></div>
-                    <span class="discount-tier__pct">5%</span>
-                    <small>1 tray</small>
-                  </div>
-                  <div class="discount-tier__step" id="tier-seg-2">
-                    <div class="discount-tier__dot"></div>
-                    <span class="discount-tier__pct">10%</span>
-                    <small>2 trays</small>
-                  </div>
-                  <div class="discount-tier__step" id="tier-seg-3">
-                    <div class="discount-tier__dot"></div>
-                    <span class="discount-tier__pct">15%</span>
-                    <small>3 trays</small>
-                  </div>
-                  <div class="discount-tier__step" id="tier-seg-4">
-                    <div class="discount-tier__dot"></div>
-                    <span class="discount-tier__pct">20%</span>
-                    <small>4 trays</small>
-                  </div>
-                </div>
-                <div class="discount-tier__label" id="discount-tier-label">Voeg meer toe voor korting!</div>
-              </div>
+with open('/home/ubuntu/smikkie-shop/pages/drankjes.html', 'w') as f:
+    f.write(html)
 
-              <!-- Progress bar in sidebar -->
-              <div class="summary-progress">
-                <div class="summary-progress__bar">
-                  <div class="summary-progress__fill" id="sidebar-fill" style="width:0%"></div>
-                </div>
-                <div class="summary-progress__label">
-                  <span id="sidebar-count">0</span> / <span id="sidebar-max">6</span> blikjes
-                </div>
-              </div>
-
-              <!-- Selected items list -->
-              <div class="summary-items" id="summary-items">
-                <p class="summary-empty" id="summary-empty">Nog geen smaken gekozen.</p>
-              </div>
-
-              <!-- Pricing -->
-              <div class="summary-pricing" id="summary-pricing" style="display:none">
-                <div class="summary-pricing__row" id="sum-original-row" style="display:none">
-                  <span>Subtotaal</span>
-                  <span id="sum-original" class="price-strike"></span>
-                </div>
-                <div class="summary-pricing__row" id="sum-discount-row" style="display:none">
-                  <span id="sum-discount-label">Volumekorting (10%)</span>
-                  <span id="sum-discount-amount" class="price-green"></span>
-                </div>
-                <div class="summary-pricing__row summary-pricing__row--total">
-                  <span>Totaal</span>
-                  <span id="sum-total">€0,00</span>
-                </div>
-              </div>
-
-              <!-- Add to cart button -->
-              <div style="padding: 0 20px 16px;">
-              <button class="btn-primary btn-full btn-add-to-cart" id="btn-add-to-cart" disabled>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-                Bestellen
-              </button>
-              </div>
-
-              <!-- Upsell: other flavors section -->
-              <div class="summary-upsell-flavors" id="summary-upsell-flavors" style="display:none">
-                <div class="summary-upsell-flavors__title">Voeg ook toe</div>
-                <div id="sidebar-upsell-list"></div>
-              </div>
-
-              <!-- Upsell button (double box) -->
-              <div class="summary-upsell" id="summary-upsell" style="display:none">
-                <button class="btn-upsell" id="btn-double">
-                  <span class="btn-upsell__icon">🎁</span>
-                  <span class="btn-upsell__text" id="upsell-btn-text">Verdubbel naar 24 stuks &amp; bespaar 10%</span>
-                  <span class="btn-upsell__arrow">→</span>
-                </button>
-              </div>
-
-              <!-- Trust badges -->
-              <div class="summary-trust">
-                <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Gratis v.a. €40</span>
-                <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>Morgen in huis</span>
-                <span><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>14 dagen retour</span>
-              </div>
-            </div>
-          </aside>
-
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="site-footer" id="site-footer"></footer>
-
-  <script src="../js/header-template.js?v=30"></script>
-  <script src="../js/shop.js?v=30"></script>
-  <script src="../js/mix-box.js?v=30"></script>
-</body>
-</html>
+print("drankjes.html written successfully, length:", len(html))

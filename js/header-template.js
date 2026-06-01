@@ -40,6 +40,7 @@ function injectHeader() {
           <a href="${base}pages/drankjes.html" class="nav-link ${currentPage === 'drankjes.html' ? 'nav-link--active' : ''}">Drankjes</a>
           <a href="${base}pages/treats.html" class="nav-link ${currentPage === 'treats.html' ? 'nav-link--active' : ''}">Treats</a>
           <a href="${base}pages/favorieten.html" class="nav-link nav-link--fav ${currentPage === 'favorieten.html' ? 'nav-link--active' : ''}">Smikkie's favorieten</a>
+          <a href="${base}pages/mix-box.html" class="nav-link nav-link--mixbox ${currentPage === 'mix-box.html' ? 'nav-link--active' : ''}">🎁 Mix-box</a>
         </div>
         <div class="navbar__actions">
           <button class="icon-btn" data-search-open aria-label="Zoeken">
@@ -196,8 +197,8 @@ function injectHeader() {
             <a href="${base}pages/favorieten.html" class="mobile-nav-item mobile-nav-item--purple">
               <span>Smikkie's favorieten ⭐</span>
             </a>
-            <a href="${base}pages/mix.html" class="mobile-nav-item mobile-nav-item--purple">
-              <span>Stel jouw mix samen 💜</span>
+            <a href="${base}pages/mix-box.html" class="mobile-nav-item mobile-nav-item--purple">
+              <span>Mix-box samenstellen 🎁</span>
             </a>
           </div>
           <!-- Level 1: Eiwitrepen -->

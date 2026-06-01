@@ -54,6 +54,16 @@
 .nav-link:hover { color: var(--purple); background: var(--purple-light); }
 .nav-link--active { color: var(--purple); }
 .nav-link--fav { color: var(--purple); }
+.nav-link--mixbox {
+  background: var(--purple);
+  color: #fff !important;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 700;
+  margin-left: 4px;
+  transition: background 0.2s;
+}
+.nav-link--mixbox:hover { background: var(--purple-dark, #5a1fa0); }
 .nav-link__chevron {
   transition: transform 0.2s;
   flex-shrink: 0;

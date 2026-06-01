@@ -3,152 +3,186 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jouw Smikkie mix – Winkelwagen</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/base.css">
-  <link rel="stylesheet" href="../css/header.css">
-  <link rel="stylesheet" href="../css/footer.css">
-  <link rel="stylesheet" href="../css/cart.css">
+  <title>Winkelwagen | Smikkie</title>
+  <link rel="stylesheet" href="../css/style.css?v=30">
+  <link rel="stylesheet" href="../css/header.css?v=30">
+  <link rel="stylesheet" href="../css/cart.css?v=30">
 </head>
 <body>
+  <header class="site-header" id="site-header"></header>
 
-<div id="site-header"></div>
+  <main class="cart-page">
+    <div class="container">
 
-<section class="cart-section">
-  <div class="container">
-    <h1 class="cart-title">Jouw Smikkie mix 💜</h1>
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb__nav" style="padding: 16px 0 8px;">
+        <a href="../index.html">Home</a>
+        <span class="sep">›</span>
+        <span class="current">Winkelwagen</span>
+      </nav>
 
-    <div class="cart-layout" id="cart-layout">
-      <!-- CART ITEMS -->
-      <div class="cart-items" id="cart-items-container">
-        <!-- Dynamically filled by JS -->
-        <div class="cart-empty" id="cart-empty" style="display:none;">
-          <div class="cart-empty__icon">
-            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--border)" stroke-width="1.5" stroke-linecap="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-          </div>
-          <h3>Je mix is nog leeg</h3>
-          <p>Voeg snacks toe aan jouw Smikkie mix!</p>
-          <a href="alle-snacks.html" class="btn btn--primary">Bekijk alle snacks</a>
-        </div>
-
-        <!-- Free shipping progress -->
-        <div class="shipping-progress" id="shipping-progress">
-          <div class="shipping-progress__bar-wrap">
-            <div class="shipping-progress__bar" id="shipping-bar" style="width:0%"></div>
-          </div>
-          <p class="shipping-progress__text" id="shipping-text">Voeg nog <strong>€40,00</strong> toe voor gratis verzending 🚚</p>
-        </div>
-
-        <div id="cart-items-list">
-          <!-- Items injected here -->
-        </div>
-
-        <!-- Suggested products -->
-        <div class="cart-suggested" id="cart-suggested">
-          <h3 class="cart-suggested__title">Vergeet deze niet 🍪</h3>
-          <div class="cart-suggested__grid">
-            <div class="suggested-card">
-              <img src="../images/barebells.jpg" alt="Barebells Cookies & Cream">
-              <div class="suggested-card__info">
-                <span>Barebells Cookies &amp; Cream</span>
-                <strong>€2,49</strong>
-              </div>
-              <button class="btn btn--primary btn--sm" data-add-to-cart="7">+ Voeg toe</button>
-            </div>
-            <div class="suggested-card">
-              <img src="../images/quest.jpg" alt="Quest Chocolate Chip Cookie">
-              <div class="suggested-card__info">
-                <span>Quest Choc Chip Cookie</span>
-                <strong>€2,99</strong>
-              </div>
-              <button class="btn btn--primary btn--sm" data-add-to-cart="3">+ Voeg toe</button>
-            </div>
-            <div class="suggested-card">
-              <img src="../images/nocco.png" alt="NOCCO BCAA Passion">
-              <div class="suggested-card__info">
-                <span>NOCCO BCAA Passion</span>
-                <strong>€2,49</strong>
-              </div>
-              <button class="btn btn--primary btn--sm" data-add-to-cart="4">+ Voeg toe</button>
-            </div>
-          </div>
-        </div>
+      <!-- Scarcity banner -->
+      <div class="cart-scarcity-bar" id="cart-scarcity-bar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <span id="scarcity-text">🔥 <strong>23 mensen</strong> bekijken nu hetzelfde product — populair!</span>
       </div>
 
-      <!-- ORDER SUMMARY -->
-      <div class="cart-summary" id="cart-summary">
-        <div class="cart-summary__box">
-          <h3 class="cart-summary__title">Jouw bestelling</h3>
+      <div class="cart-layout">
 
-          <div class="cart-summary__lines" id="summary-lines">
-            <!-- Dynamically filled -->
+        <!-- LEFT: Cart items -->
+        <div class="cart-main">
+          <div class="cart-main__header">
+            <h1 class="cart-main__title">Winkelwagen</h1>
+            <span class="cart-main__count" id="cart-item-count">0 producten</span>
           </div>
 
-          <div class="cart-summary__divider"></div>
-
-          <div class="cart-summary__row">
-            <span>Subtotaal</span>
-            <strong id="summary-subtotal">€0,00</strong>
-          </div>
-          <div class="cart-summary__row">
-            <span>Verzendkosten</span>
-            <strong id="summary-shipping" class="text-green">Gratis</strong>
-          </div>
-
-          <!-- Coupon -->
-          <div class="coupon-row">
-            <input type="text" class="coupon-input" id="coupon-input" placeholder="Kortingscode">
-            <button class="btn btn--ghost btn--sm" id="coupon-apply">Toepassen</button>
-          </div>
-          <div class="coupon-feedback" id="coupon-feedback"></div>
-
-          <div class="cart-summary__divider"></div>
-
-          <div class="cart-summary__row cart-summary__row--total">
-            <span>Totaal</span>
-            <strong id="summary-total">€0,00</strong>
-          </div>
-
-          <a href="checkout.html" class="btn btn--primary btn--full btn--lg" id="checkout-btn" style="margin-top:16px;">
-            Naar afrekenen →
-          </a>
-
-          <!-- Trust -->
-          <div class="cart-summary__trust">
-            <div class="cart-trust-item">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              <span>Veilig betalen met Klarna, iDEAL &amp; meer</span>
+          <!-- Free shipping progress -->
+          <div class="cart-shipping-progress" id="cart-shipping-progress">
+            <div class="cart-shipping-progress__label">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              <span id="shipping-progress-text">Nog <strong id="shipping-remaining">€40,00</strong> tot <span class="text-green">gratis verzending</span> 🎉</span>
             </div>
-            <div class="cart-trust-item">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-              <span>Voor 23:59 besteld = morgen in huis</span>
-            </div>
-            <div class="cart-trust-item">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg>
-              <span>14 dagen bedenktijd</span>
+            <div class="cart-shipping-progress__bar">
+              <div class="cart-shipping-progress__fill" id="shipping-fill" style="width:0%"></div>
             </div>
           </div>
 
-          <!-- Payment logos -->
-          <div class="payment-logos">
-            <span class="payment-logo">iDEAL</span>
-            <span class="payment-logo">Klarna</span>
-            <span class="payment-logo">Visa</span>
-            <span class="payment-logo">MC</span>
-            <span class="payment-logo">PayPal</span>
+          <!-- Cart items list -->
+          <div class="cart-items-list" id="cart-items-list">
+            <div class="cart-empty-state" id="cart-empty-state">
+              <div class="cart-empty-state__icon">🛒</div>
+              <h3>Je winkelwagen is leeg</h3>
+              <p>Voeg wat lekkers toe en stel jouw perfecte mix samen!</p>
+              <a href="mix-box.html" class="btn-primary">Stel jouw mix samen</a>
+            </div>
+          </div>
+
+          <!-- Upsell: voeg meer toe voor korting -->
+          <div class="cart-upsell-block" id="cart-upsell-block" style="display:none">
+            <div class="cart-upsell-block__inner">
+              <span class="cart-upsell-block__icon">🎁</span>
+              <div class="cart-upsell-block__text">
+                <strong id="cart-upsell-title">Voeg nog 4 stuks toe voor 10% korting!</strong>
+                <span id="cart-upsell-sub">Je bespaart dan extra</span>
+              </div>
+              <a href="mix-box.html" class="cart-upsell-block__btn">Meer toevoegen →</a>
+            </div>
+          </div>
+
+          <!-- Social proof -->
+          <div class="cart-social-proof">
+            <h3 class="cart-social-proof__title">Wat klanten zeggen</h3>
+            <div class="cart-social-proof__reviews">
+              <div class="cart-review">
+                <div class="cart-review__stars">★★★★★</div>
+                <div class="cart-review__text">"Heerlijk! De Barebells Chocolate Dough is mijn absolute favoriet. Snel geleverd ook!"</div>
+                <div class="cart-review__author">— Sanne V., <span class="verified">✓ Geverifieerde koper</span></div>
+              </div>
+              <div class="cart-review">
+                <div class="cart-review__stars">★★★★★</div>
+                <div class="cart-review__text">"Eindelijk een winkel waar je zelf je mix kunt samenstellen. Goede prijzen en de korting bij meer stuks is echt fijn."</div>
+                <div class="cart-review__author">— Thomas K., <span class="verified">✓ Geverifieerde koper</span></div>
+              </div>
+            </div>
+            <div class="cart-social-proof__stats">
+              <div class="cart-stat">
+                <span class="cart-stat__num">4.8</span>
+                <span class="cart-stat__label">★ Gemiddelde beoordeling</span>
+              </div>
+              <div class="cart-stat">
+                <span class="cart-stat__num">2.400+</span>
+                <span class="cart-stat__label">Tevreden klanten</span>
+              </div>
+              <div class="cart-stat">
+                <span class="cart-stat__num">98%</span>
+                <span class="cart-stat__label">Zou ons aanbevelen</span>
+              </div>
+            </div>
           </div>
         </div>
+
+        <!-- RIGHT: Order summary -->
+        <aside class="cart-summary">
+          <div class="cart-summary__box">
+            <h2 class="cart-summary__title">Besteloverzicht</h2>
+
+            <div class="cart-summary__rows">
+              <div class="cart-summary__row" id="sum-row-subtotal" style="display:none">
+                <span>Subtotaal</span>
+                <span id="sum-subtotal" class="price-strike">€0,00</span>
+              </div>
+              <div class="cart-summary__row cart-summary__row--discount" id="sum-row-discount" style="display:none">
+                <span id="sum-discount-label">Volumekorting</span>
+                <span id="sum-discount" class="price-green">-€0,00</span>
+              </div>
+              <div class="cart-summary__row">
+                <span>Verzending</span>
+                <span id="sum-shipping" class="price-green">Gratis</span>
+              </div>
+              <div class="cart-summary__divider"></div>
+              <div class="cart-summary__row cart-summary__row--total">
+                <span>Totaal</span>
+                <strong id="sum-total">€0,00</strong>
+              </div>
+            </div>
+
+            <!-- Discount badge -->
+            <div class="cart-summary__discount-badge" id="sum-discount-badge" style="display:none">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+              <span id="sum-discount-badge-text">Je bespaart met volumekorting!</span>
+            </div>
+
+            <!-- CTA -->
+            <a href="checkout.html" class="btn-primary btn-full cart-summary__cta" id="cart-checkout-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 12l2 2 4-4"/><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/></svg>
+              Veilig afrekenen
+            </a>
+            <p class="cart-summary__cta-sub">🔒 Beveiligd met SSL — jouw gegevens zijn veilig</p>
+
+            <!-- Payment icons -->
+            <div class="cart-summary__payments">
+              <span class="payment-icon payment-icon--ideal">iDEAL</span>
+              <span class="payment-icon payment-icon--klarna">Klarna</span>
+              <span class="payment-icon payment-icon--visa">VISA</span>
+              <span class="payment-icon payment-icon--mc">MC</span>
+              <span class="payment-icon payment-icon--paypal">PayPal</span>
+            </div>
+
+            <!-- USPs -->
+            <div class="cart-summary__usps">
+              <div class="cart-usp">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Gratis verzending v.a. €40</span>
+              </div>
+              <div class="cart-usp">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                <span>Morgen in huis bij bestelling voor 22:00</span>
+              </div>
+              <div class="cart-usp">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg>
+                <span>14 dagen retourrecht</span>
+              </div>
+              <div class="cart-usp">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span>Veilig betalen met SSL</span>
+              </div>
+            </div>
+
+            <!-- Activity indicator -->
+            <div class="cart-summary__activity">
+              <span class="activity-dot"></span>
+              <span id="activity-text">In de afgelopen 24 uur zijn er <strong>47 bestellingen</strong> geplaatst</span>
+            </div>
+          </div>
+        </aside>
+
       </div>
     </div>
-  </div>
-</section>
+  </main>
 
-<div id="site-footer"></div>
-
-<script src="../js/shop.js"></script>
-<script src="../js/header-template.js"></script>
-<script src="../js/cart.js"></script>
+  <footer class="site-footer" id="site-footer"></footer>
+  <script src="../js/header-template.js?v=30"></script>
+  <script src="../js/shop.js?v=30"></script>
+  <script src="../js/cart-page.js?v=30"></script>
 </body>
 </html>
