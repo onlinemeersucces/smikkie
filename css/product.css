@@ -1342,11 +1342,16 @@
 }
 .pdp-dozen-card__name { font-size: 16px; font-weight: 800; color: var(--dark); }
 .pdp-dozen-card__info { font-size: 13px; color: var(--gray); }
-.pdp-dozen-options { display: flex; flex-direction: column; gap: 8px; }
+.pdp-dozen-options { display: flex; flex-direction: row; gap: 8px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+.pdp-dozen-options::-webkit-scrollbar { display: none; }
 .pdp-dozen-option {
+  flex: 1;
+  min-width: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  text-align: center;
   background: #fafafa;
   border: 1.5px solid var(--border);
   border-radius: 12px;
@@ -1359,9 +1364,9 @@
   border-color: var(--purple);
   background: #f5f0ff;
 }
-.pdp-dozen-option__label { font-size: 14px; font-weight: 700; color: var(--dark); }
-.pdp-dozen-option__discount { font-size: 12px; font-weight: 700; color: #22c55e; }
-.pdp-dozen-option__price { font-size: 15px; font-weight: 800; color: var(--purple); }
+.pdp-dozen-option__label { font-size: 12px; font-weight: 700; color: var(--dark); display: block; }
+.pdp-dozen-option__discount { font-size: 11px; font-weight: 700; color: #22c55e; display: block; }
+.pdp-dozen-option__price { font-size: 13px; font-weight: 800; color: var(--purple); display: block; }
 .pdp-dozen-card__add-btn {
   background: var(--purple);
   color: #fff;
