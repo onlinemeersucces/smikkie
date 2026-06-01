@@ -529,28 +529,22 @@
       const totalQty = getTotalQty();
       if (totalQty === 0) return;
 
-      const subtotal = getSubtotal();
-      const tier = getDiscount(totalQty);
-      const discountAmt = subtotal * tier.discount;
-      const finalTotal = subtotal - discountAmt;
-
-      // Build a single cart item for the mix
+      // Add each product individually to the cart drawer
       const items = Object.values(state.items).filter(i => i.qty > 0);
-      const names = items.map(i => `${i.qty}x ${i.name.split(' ').slice(-1)[0]}`).join(', ');
-
-      addToCartDrawer({
-        id: 'smikkie-mix-' + Date.now(),
-        name: `Smikkie Mix (${totalQty} stuks)`,
-        price: finalTotal,
-        qty: 1,
-        img: items[0] ? items[0].img : '',
-        unitLabel: names,
-        discount: tier.discount > 0 ? `${Math.round(tier.discount * 100)}% korting` : null
+      items.forEach(item => {
+        addToCartDrawer({
+          id: item.id,
+          name: item.name,
+          brand: item.brand || '',
+          unitPrice: item.price,
+          qty: item.qty,
+          img: item.img
+        });
       });
 
       // Animate button
       const origHTML = btn.innerHTML;
-      btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Toegevoegd aan winkelwagen!';
+      btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Toegevoegd!';
       btn.style.background = 'var(--green)';
       setTimeout(() => {
         btn.innerHTML = origHTML;
@@ -615,16 +609,30 @@
   /* ---- CART DRAWER ---- */
 
   function addToCartDrawer(item) {
-    // Check if item already in cart
+    // item: { id, name, brand, unitPrice, qty, img }
     const existing = state.cartItems.find(i => i.id === item.id);
     if (existing) {
       existing.qty += item.qty;
-      existing.price += item.price;
     } else {
-      state.cartItems.push({ ...item });
+      state.cartItems.push({
+        id: item.id,
+        name: item.name,
+        brand: item.brand || '',
+        unitPrice: item.unitPrice || item.price,
+        qty: item.qty,
+        img: item.img || ''
+      });
     }
     renderCartDrawer();
     openCartDrawer();
+  }
+
+  function getCartTotalQty() {
+    return state.cartItems.reduce((s, i) => s + i.qty, 0);
+  }
+
+  function getCartSubtotal() {
+    return state.cartItems.reduce((s, i) => s + i.unitPrice * i.qty, 0);
   }
 
   function renderCartDrawer() {
@@ -632,73 +640,171 @@
     const emptyEl = document.getElementById('drawer-empty');
     const countEl = document.getElementById('drawer-count');
     const totalEl = document.getElementById('drawer-total');
-    const discountEl = document.getElementById('drawer-discount');
-    const discountText = document.getElementById('drawer-discount-text');
     const origRow = document.getElementById('drawer-original-row');
     const origPrice = document.getElementById('drawer-original-price');
     const discRow = document.getElementById('drawer-discount-row');
     const discLabel = document.getElementById('drawer-discount-label');
     const discAmt = document.getElementById('drawer-discount-amount');
+    const discountEl = document.getElementById('drawer-discount');
+    const discountText = document.getElementById('drawer-discount-text');
 
     if (!itemsEl) return;
 
-    const totalItems = state.cartItems.reduce((s, i) => s + i.qty, 0);
-    const subtotal = state.cartItems.reduce((s, i) => s + i.price, 0);
+    const totalQty = getCartTotalQty();
+    const subtotal = getCartSubtotal();
+    const tier = getDiscount(totalQty);
+    const discountAmt = subtotal * tier.discount;
+    const finalTotal = subtotal - discountAmt;
 
-    if (countEl) countEl.textContent = totalItems;
-    if (totalEl) totalEl.textContent = fmt(subtotal);
+    if (countEl) countEl.textContent = totalQty;
+    if (totalEl) totalEl.textContent = fmt(finalTotal);
 
     // Shipping progress
-    updateShippingProgress(subtotal);
+    updateShippingProgress(finalTotal);
 
-    // Discount display
-    const hasDiscount = state.cartItems.some(i => i.discount);
-    if (discountEl) discountEl.style.display = hasDiscount ? 'flex' : 'none';
-    if (hasDiscount && discountText) {
-      const discItem = state.cartItems.find(i => i.discount);
-      discountText.textContent = `Je hebt ${discItem.discount}!`;
+    // Tier progress bar in drawer
+    updateDrawerTierBar(totalQty, tier);
+
+    // Discount rows
+    if (tier.discount > 0) {
+      if (origRow) origRow.style.display = 'flex';
+      if (origPrice) origPrice.textContent = fmt(subtotal);
+      if (discRow) discRow.style.display = 'flex';
+      if (discLabel) discLabel.textContent = `Korting (${Math.round(tier.discount * 100)}%)`;
+      if (discAmt) discAmt.textContent = '- ' + fmt(discountAmt);
+      if (discountEl) discountEl.style.display = 'flex';
+      if (discountText) discountText.textContent = `Je hebt ${tier.label}!`;
+    } else {
+      if (origRow) origRow.style.display = 'none';
+      if (discRow) discRow.style.display = 'none';
+      if (discountEl) discountEl.style.display = 'none';
     }
 
     if (!state.cartItems.length) {
-      if (emptyEl) emptyEl.style.display = 'block';
-      itemsEl.innerHTML = emptyEl ? emptyEl.outerHTML : '';
+      if (emptyEl) emptyEl.style.display = 'flex';
+      itemsEl.innerHTML = emptyEl ? emptyEl.outerHTML : '<div class="cart-drawer__empty"><div class="cart-drawer__empty-icon">🛒</div><p>Je mix is nog leeg.<br>Voeg hieronder smaken toe!</p></div>';
       return;
     }
     if (emptyEl) emptyEl.style.display = 'none';
 
+    const QUICK_QTYS = [
+      { qty: 3,  label: '3',       sub: '1,25% korting' },
+      { qty: 6,  label: '6',       sub: '2,5% korting' },
+      { qty: 9,  label: '9',       sub: '3,75% korting' },
+      { qty: 12, label: '1 doos',  sub: '5% korting' },
+      { qty: 24, label: '2 dozen', sub: '10% korting' },
+      { qty: 36, label: '3 dozen', sub: '15% korting' },
+      { qty: 48, label: '4 dozen', sub: '20% korting' }
+    ];
+
     let html = '';
     state.cartItems.forEach(item => {
-      const unitPrice = item.unitPrice || (item.qty > 0 ? item.price / item.qty : item.price);
-      const discountLabel = item.discount ? `<span class="cart-item__discount-badge">${item.discount}</span>` : '';
+      const lineTotal = item.unitPrice * item.qty;
+      const quickBtns = QUICK_QTYS.map(q => {
+        const isActive = item.qty === q.qty ? ' is-active' : '';
+        return `<button class="drawer-quick-btn${isActive}" data-id="${item.id}" data-qty="${q.qty}">${q.label}<span>${q.sub}</span></button>`;
+      }).join('');
+
       html += `
         <div class="cart-item" data-id="${item.id}">
-          <div class="cart-item__img">
-            <img src="${item.img}" alt="${item.name}" onerror="this.parentElement.style.background='var(--purple-light)'">
+          <div class="cart-item__top">
+            <div class="cart-item__img">
+              <img src="${item.img}" alt="${item.name}" onerror="this.parentElement.style.background='#ede9ff'">
+            </div>
+            <div class="cart-item__info">
+              <span class="cart-item__brand">${item.brand}</span>
+              <span class="cart-item__name">${item.name}</span>
+              <span class="cart-item__unit">${item.qty}× ${fmt(item.unitPrice)}</span>
+              <span class="cart-item__price">${fmt(lineTotal)}</span>
+            </div>
+            <div class="cart-item__actions">
+              <button class="cart-item__remove" data-remove="${item.id}" aria-label="Verwijderen">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </button>
+              <div class="cart-item__qty-ctrl">
+                <button class="cart-item__qty-btn" data-id="${item.id}" data-action="dec">−</button>
+                <span class="cart-item__qty-val">${item.qty}</span>
+                <button class="cart-item__qty-btn" data-id="${item.id}" data-action="inc">+</button>
+              </div>
+            </div>
           </div>
-          <div class="cart-item__info">
-            <span class="cart-item__brand">${item.brand || ''}</span>
-            <span class="cart-item__name">${item.name}</span>
-            <span class="cart-item__unit">${item.qty}× ${fmt(unitPrice)}</span>
-            <span class="cart-item__price">${fmt(item.price)}${item.discount ? ` <span style="color:var(--green);font-size:11px;font-weight:800;">(${item.discount})</span>` : ''}</span>
-          </div>
-          <div class="cart-item__actions">
-            <button class="cart-item__remove" data-remove="${item.id}" aria-label="Verwijderen">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            </button>
-          </div>
+          <div class="cart-item__quick-row">${quickBtns}</div>
         </div>
       `;
     });
     itemsEl.innerHTML = html;
 
-    // Remove buttons
-    itemsEl.querySelectorAll('[data-remove]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const id = btn.dataset.remove;
+    // Event delegation via one listener on itemsEl
+    itemsEl.addEventListener('click', handleDrawerItemClick, { once: true });
+  }
+
+  function handleDrawerItemClick(e) {
+    // Re-attach for next render
+    const itemsEl = document.getElementById('drawer-items');
+
+    const removeBtn = e.target.closest('[data-remove]');
+    if (removeBtn) {
+      const id = removeBtn.dataset.remove;
+      state.cartItems = state.cartItems.filter(i => i.id !== id);
+      renderCartDrawer();
+      return;
+    }
+
+    const qtyBtn = e.target.closest('.cart-item__qty-btn');
+    if (qtyBtn) {
+      const id = qtyBtn.dataset.id;
+      const action = qtyBtn.dataset.action;
+      const item = state.cartItems.find(i => i.id === id);
+      if (!item) return;
+      if (action === 'inc') item.qty++;
+      else if (action === 'dec' && item.qty > 1) item.qty--;
+      else if (action === 'dec' && item.qty === 1) {
         state.cartItems = state.cartItems.filter(i => i.id !== id);
-        renderCartDrawer();
-      });
-    });
+      }
+      renderCartDrawer();
+      return;
+    }
+
+    const quickBtn = e.target.closest('.drawer-quick-btn');
+    if (quickBtn) {
+      const id = quickBtn.dataset.id;
+      const qty = parseInt(quickBtn.dataset.qty);
+      const item = state.cartItems.find(i => i.id === id);
+      if (!item) return;
+      item.qty = qty;
+      renderCartDrawer();
+      return;
+    }
+  }
+
+  function updateDrawerTierBar(totalQty, tier) {
+    const barEl = document.getElementById('drawer-tier-bar');
+    if (!barEl) return;
+
+    const tiers = [
+      { minQty: 12, label: '5%',  qty: 12 },
+      { minQty: 24, label: '10%', qty: 24 },
+      { minQty: 36, label: '15%', qty: 36 },
+      { minQty: 48, label: '20%', qty: 48 }
+    ];
+
+    // Find next tier
+    const nextTier = tiers.find(t => totalQty < t.minQty);
+    const pct = nextTier ? Math.min(100, (totalQty / nextTier.minQty) * 100) : 100;
+
+    const nudgeText = nextTier
+      ? `Nog <strong>${nextTier.minQty - totalQty} stuks</strong> voor ${nextTier.label} korting!`
+      : `<strong>🎉 Maximale korting (20%) bereikt!</strong>`;
+
+    barEl.innerHTML = `
+      <div class="drawer-tier-bar__labels">
+        ${tiers.map(t => `<span class="drawer-tier-bar__label${totalQty >= t.minQty ? ' is-reached' : ''}">${t.label}</span>`).join('')}
+      </div>
+      <div class="drawer-tier-bar__track">
+        <div class="drawer-tier-bar__fill" style="width:${pct}%"></div>
+      </div>
+      <div class="drawer-tier-bar__nudge">${nudgeText}</div>
+    `;
   }
 
   function updateShippingProgress(subtotal) {
