@@ -664,19 +664,28 @@
       itemsEl.innerHTML = emptyEl ? emptyEl.outerHTML : '';
       return;
     }
+    if (emptyEl) emptyEl.style.display = 'none';
 
     let html = '';
     state.cartItems.forEach(item => {
+      const unitPrice = item.unitPrice || (item.qty > 0 ? item.price / item.qty : item.price);
+      const discountLabel = item.discount ? `<span class="cart-item__discount-badge">${item.discount}</span>` : '';
       html += `
-        <div class="drawer-item" data-id="${item.id}">
-          <img src="${item.img}" alt="${item.name}" class="drawer-item__img" onerror="this.style.background='var(--purple-light)'">
-          <div class="drawer-item__info">
-            <div class="drawer-item__name">${item.name}</div>
-            <div class="drawer-item__price">${fmt(item.price)}${item.discount ? ` <span style="color:var(--green);font-weight:800;">(${item.discount})</span>` : ''}</div>
+        <div class="cart-item" data-id="${item.id}">
+          <div class="cart-item__img">
+            <img src="${item.img}" alt="${item.name}" onerror="this.parentElement.style.background='var(--purple-light)'">
           </div>
-          <button class="drawer-item__remove" data-remove="${item.id}" aria-label="Verwijderen">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-          </button>
+          <div class="cart-item__info">
+            <span class="cart-item__brand">${item.brand || ''}</span>
+            <span class="cart-item__name">${item.name}</span>
+            <span class="cart-item__unit">${item.qty}× ${fmt(unitPrice)}</span>
+            <span class="cart-item__price">${fmt(item.price)}${item.discount ? ` <span style="color:var(--green);font-size:11px;font-weight:800;">(${item.discount})</span>` : ''}</span>
+          </div>
+          <div class="cart-item__actions">
+            <button class="cart-item__remove" data-remove="${item.id}" aria-label="Verwijderen">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </div>
         </div>
       `;
     });
