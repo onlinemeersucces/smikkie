@@ -76,16 +76,16 @@ function bpRenderFlavorList() {
     const nutri = f.nutrition || {};
 
     return `
-      <div class="pdp-flavor-row ${isFeatured ? 'is-featured' : ''}" data-flavor="${f.id}">
+      <div class="pdp-flavor-row ${isFeatured ? 'is-featured' : ''}" data-flavor="${f.id}" style="position:relative">
+        <button class="pdp-info-btn pdp-info-btn--corner" data-flavor="${f.id}" aria-label="Voedingswaarden" title="Voedingswaarden">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        </button>
         <img src="${f.img}" alt="${f.name}" class="pdp-flavor-row__img" loading="lazy"
              onerror="this.src='../images/barebells.jpg'">
         <div class="pdp-flavor-row__info">
           <div class="pdp-flavor-row__name-row">
             ${isFeatured ? '<span class="pdp-flavor-row__featured-badge">Jouw keuze</span>' : ''}
             <div class="pdp-flavor-row__name">${f.name}</div>
-            <button class="pdp-info-btn" data-flavor="${f.id}" aria-label="Voedingswaarden" title="Voedingswaarden">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-            </button>
           </div>
           <div class="pdp-flavor-row__macros">
             <span>${f.macros.eiwit} eiwit</span>

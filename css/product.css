@@ -1601,3 +1601,11 @@
   color: var(--purple);
 }
 .bp-nutrition-popup__table tr:last-child td { border-bottom: none; }
+
+/* Info button — corner position */
+.pdp-info-btn--corner {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+}
