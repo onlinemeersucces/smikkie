@@ -119,25 +119,71 @@
     if (emptyEl) emptyEl.style.display = items.length ? 'none' : 'block';
     if (pricingEl) pricingEl.style.display = items.length ? 'block' : 'none';
 
-    // Render item list with image + qty controls
+    // Render item list with rich card layout
     if (itemsEl) {
       let html = '';
       items.forEach(item => {
+        // Per-item nudge: next step in 3/6/9/12
+        const nudgeSteps = [3, 6, 9, 12, 24, 36, 48];
+        const nextStep = nudgeSteps.find(s => s > item.qty);
+        let nudgeHtml = '';
+        if (nextStep && nextStep <= 48) {
+          const add = nextStep - item.qty;
+          const discPct = nextStep >= 48 ? 20 : nextStep >= 36 ? 15 : nextStep >= 24 ? 10 : nextStep >= 12 ? 5 : nextStep >= 9 ? 3.75 : nextStep >= 6 ? 2.5 : 1.25;
+          nudgeHtml = `<div class="summary-item__nudge">
+            <span>+${add} stuks → ${nextStep}x voor ${discPct}% korting</span>
+            <button class="summary-item__nudge-btn" data-id="${item.id}" data-qty="${nextStep}">+${add}</button>
+          </div>`;
+        }
         html += `<div class="summary-item">
-          <img src="${item.img}" alt="${item.name}" class="summary-item__img" onerror="this.style.display='none'">
-          <div class="summary-item__info">
-            <span class="summary-item__name">${item.name}</span>
+          <div class="summary-item__row">
+            <img src="${item.img}" alt="${item.name}" class="summary-item__img" onerror="this.style.display='none'">
+            <div class="summary-item__info">
+              <span class="summary-item__brand">${item.brand || ''}</span>
+              <span class="summary-item__name">${item.name}</span>
+              <span class="summary-item__unit">${item.qty}× ${fmt(item.price)}</span>
+            </div>
             <span class="summary-item__price">${fmt(item.qty * item.price)}</span>
+            <div class="summary-item__qty-ctrl">
+              <button class="summary-qty-btn" data-id="${item.id}" data-action="dec">−</button>
+              <span class="summary-qty-val">${item.qty}</span>
+              <button class="summary-qty-btn" data-id="${item.id}" data-action="inc">+</button>
+            </div>
           </div>
-          <div class="summary-item__qty-ctrl">
-            <button class="summary-qty-btn" data-id="${item.id}" data-action="dec">−</button>
-            <span class="summary-qty-val">${item.qty}</span>
-            <button class="summary-qty-btn" data-id="${item.id}" data-action="inc">+</button>
-          </div>
+          ${nudgeHtml}
         </div>`;
       });
       itemsEl.innerHTML = html;
       // Events handled via delegation on itemsEl (set up once in initSummaryQtyDelegation)
+    }
+
+    // Render upsell flavors (products NOT yet in the mix, max 3)
+    const upsellFlavorsWrap = document.getElementById('summary-upsell-flavors');
+    const upsellList = document.getElementById('sidebar-upsell-list');
+    if (upsellFlavorsWrap && upsellList) {
+      const allItems = Object.values(state.items);
+      const notInMix = allItems.filter(i => i.qty === 0).slice(0, 3);
+      if (notInMix.length > 0 && items.length > 0) {
+        upsellFlavorsWrap.style.display = 'block';
+        const upsellQtyOpts = [3, 6, 9, 12];
+        let uHtml = '';
+        notInMix.forEach(item => {
+          const btns = upsellQtyOpts.map(q =>
+            `<button class="sidebar-upsell-btn" data-id="${item.id}" data-qty="${q}">${q}×</button>`
+          ).join('');
+          uHtml += `<div class="sidebar-upsell-item">
+            <img src="${item.img}" alt="${item.name}" class="sidebar-upsell-item__img" onerror="this.style.display='none'">
+            <div class="sidebar-upsell-item__info">
+              <span class="sidebar-upsell-item__name">${item.name}</span>
+              <span class="sidebar-upsell-item__price">${fmt(item.price)} / stuk</span>
+            </div>
+            <div class="sidebar-upsell-item__btns">${btns}</div>
+          </div>`;
+        });
+        upsellList.innerHTML = uHtml;
+      } else {
+        upsellFlavorsWrap.style.display = 'none';
+      }
     }
 
     // Update sidebar progress bar
@@ -710,24 +756,60 @@
 
   /* ---- SIDEBAR QTY DELEGATION (survives innerHTML re-renders) ---- */
   function initSummaryQtyDelegation() {
+    // Delegation on summary-items: +/- buttons and per-item nudge buttons
     const itemsEl = document.getElementById('summary-items');
-    if (!itemsEl) return;
-    itemsEl.addEventListener('click', (e) => {
-      const btn = e.target.closest('.summary-qty-btn');
-      if (!btn) return;
-      e.stopPropagation();
-      const id = btn.dataset.id;
-      const action = btn.dataset.action;
-      if (!state.items[id]) return;
-      if (action === 'inc') {
-        state.items[id].qty++;
-      } else if (action === 'dec' && state.items[id].qty > 0) {
-        state.items[id].qty--;
-      }
-      updateQtyDisplay(id);
-      updateFlavorCardState(id);
-      renderAll();
-    });
+    if (itemsEl) {
+      itemsEl.addEventListener('click', (e) => {
+        // +/- qty buttons
+        const qtyBtn = e.target.closest('.summary-qty-btn');
+        if (qtyBtn) {
+          e.stopPropagation();
+          const id = qtyBtn.dataset.id;
+          const action = qtyBtn.dataset.action;
+          if (!state.items[id]) return;
+          if (action === 'inc') {
+            state.items[id].qty++;
+          } else if (action === 'dec' && state.items[id].qty > 0) {
+            state.items[id].qty--;
+          }
+          updateQtyDisplay(id);
+          updateFlavorCardState(id);
+          renderAll();
+          return;
+        }
+        // Per-item nudge button
+        const nudgeBtn = e.target.closest('.summary-item__nudge-btn');
+        if (nudgeBtn) {
+          e.stopPropagation();
+          const id = nudgeBtn.dataset.id;
+          const qty = parseInt(nudgeBtn.dataset.qty);
+          if (!state.items[id]) return;
+          state.items[id].qty = qty;
+          updateQtyDisplay(id);
+          updateFlavorCardState(id);
+          renderAll();
+          renderQuickQtyButtons(id);
+        }
+      });
+    }
+
+    // Delegation on sidebar upsell flavors list
+    const upsellList = document.getElementById('sidebar-upsell-list');
+    if (upsellList) {
+      upsellList.addEventListener('click', (e) => {
+        const btn = e.target.closest('.sidebar-upsell-btn');
+        if (!btn) return;
+        e.stopPropagation();
+        const id = btn.dataset.id;
+        const qty = parseInt(btn.dataset.qty);
+        if (!state.items[id]) return;
+        state.items[id].qty = qty;
+        updateQtyDisplay(id);
+        updateFlavorCardState(id);
+        renderAll();
+        renderQuickQtyButtons(id);
+      });
+    }
   }
 
   document.addEventListener('DOMContentLoaded', () => {
