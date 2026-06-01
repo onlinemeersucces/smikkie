@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <div class="cart-item__info">
           <span class="cart-item__brand">${item.brand || ''}</span>
           <span class="cart-item__name">${item.name}</span>
+          <span class="cart-item__unit-price">€${item.price.toFixed(2).replace('.', ',')} per stuk</span>
           <div class="qty-ctrl">
             <button class="qty-btn cart-qty-minus" data-id="${item.id}">−</button>
             <span class="qty-val">${item.qty}</span>

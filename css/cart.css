@@ -74,6 +74,7 @@
 .cart-item__brand { font-size: 12px; color: var(--gray); font-weight: 700; display: block; margin-bottom: 2px; }
 .cart-item__name { font-size: 16px; font-weight: 800; color: var(--dark); display: block; margin-bottom: 8px; }
 .cart-item__price { font-size: 15px; font-weight: 900; color: var(--purple); }
+.cart-item__unit-price { font-size: 12px; color: var(--gray); font-weight: 600; display: block; margin-bottom: 8px; }
 .cart-item__actions {
   display: flex;
   flex-direction: column;
@@ -290,4 +291,11 @@
 @keyframes cart-pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.3; }
+}
+
+/* Left column wrapper — takes the first grid column */
+.cart-left-col {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
 }
