@@ -209,15 +209,18 @@ function _initCartSidebar() {
   sidebar.innerHTML = `
     <div class="cart-header">
       <div class="cart-header__left">
-        <h3>Jouw winkelwagen 💜</h3>
-        <span class="cart-header__count" id="cart-header-count">${_getCartCount()} items</span>
+        <h3>Jouw winkelwagen</h3>
+        <span class="cart-header__count" id="cart-header-count">${_getCartCount()} item${_getCartCount() !== 1 ? 's' : ''}</span>
       </div>
-      <button class="cart-close-btn" id="cart-close-btn">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      <button class="cart-close-btn" id="cart-close-btn" aria-label="Sluit winkelwagen">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
       </button>
     </div>
     <div class="cart-shipping-bar" id="cart-shipping-bar">
-      <div class="cart-shipping-bar__text" id="cart-shipping-text">📦 Nog €40,00 voor gratis verzending</div>
+      <div class="cart-shipping-bar__text" id="cart-shipping-text">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        Nog €40,00 voor gratis verzending
+      </div>
       <div class="cart-shipping-bar__track">
         <div class="cart-shipping-bar__fill" id="cart-shipping-fill" style="width:0%"></div>
       </div>
@@ -225,14 +228,29 @@ function _initCartSidebar() {
     <div class="cart-items" id="cart-items-list"></div>
     <div class="cart-footer">
       <div class="cart-subtotal"><span>Subtotaal</span><span id="cart-subtotal-val">€0,00</span></div>
-      <div class="cart-discount-row" id="cart-discount-row" style="display:none"><span id="cart-discount-label">Korting</span><span id="cart-discount-val">-€0,00</span></div>
+      <div class="cart-discount-row" id="cart-discount-row" style="display:none">
+        <span id="cart-discount-label">Korting</span>
+        <span id="cart-discount-val">-€0,00</span>
+      </div>
       <div class="cart-total"><span>Totaal</span><span id="cart-total-val">€0,00</span></div>
-      <a href="${cartPageUrl}" class="cart-checkout-btn">🛒 Afrekenen</a>
+      <a href="${cartPageUrl}" class="cart-checkout-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 21a1 1 0 1 0 2 0 1 1 0 0 0-2 0"/><path d="M20 21a1 1 0 1 0 2 0 1 1 0 0 0-2 0"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        Afrekenen
+      </a>
       <button class="cart-continue-btn" id="cart-continue-btn">Verder winkelen</button>
       <div class="cart-trust">
-        <span>🔒 Veilig betalen</span>
-        <span>📦 Gratis v.a. €40</span>
-        <span>↩ 14 dagen retour</span>
+        <span>
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Veilig betalen
+        </span>
+        <span>
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          Gratis v.a. €40
+        </span>
+        <span>
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.5"/></svg>
+          14 dagen retour
+        </span>
       </div>
     </div>
   `;

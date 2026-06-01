@@ -49,10 +49,10 @@ function injectHeader() {
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
           </a>
           <div class="cart-wrap">
-            <a href="${base}pages/winkelwagen.html" class="icon-btn cart-icon-link" aria-label="Winkelwagen" style="position:relative;display:flex;align-items:center;justify-content:center;">
+            <button class="icon-btn cart-open-btn" aria-label="Winkelwagen" style="position:relative;display:flex;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;padding:8px;border-radius:8px;">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
               <span class="cart-badge">0</span>
-            </a>
+            </button>
           </div>
         </div>
       </div>
@@ -150,10 +150,10 @@ function injectHeader() {
         <span class="logo-text">Smikkie<span class="logo-dot">.</span></span>
       </a>
       <div class="cart-wrap">
-        <a href="${base}pages/winkelwagen.html" class="mobile-cart-btn" aria-label="Winkelwagen" style="position:relative;display:flex;align-items:center;justify-content:center;">
+        <button class="mobile-cart-btn cart-open-btn" aria-label="Winkelwagen" style="position:relative;display:flex;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
           <span class="cart-badge">0</span>
-        </a>
+        </button>
       </div>
     </div>
 
