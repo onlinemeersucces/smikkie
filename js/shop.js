@@ -90,14 +90,17 @@ function _addToCart(productOrId, qty = 1) {
 }
 
 function _removeFromCart(productId) {
-  _cart = _cart.filter(i => i.id !== productId);
+  // Normalize: compare as string to handle both numeric and string IDs
+  const idStr = String(productId);
+  _cart = _cart.filter(i => String(i.id) !== idStr);
   _saveCart();
   _updateCartUI();
   _renderCartItems();
 }
 
 function _updateCartQty(productId, delta) {
-  const item = _cart.find(i => i.id === productId);
+  const idStr = String(productId);
+  const item = _cart.find(i => String(i.id) === idStr);
   if (!item) return;
   item.qty = Math.max(1, item.qty + delta);
   _saveCart();
@@ -153,11 +156,11 @@ function _renderCartItems() {
       </div>
       <div class="cart-item__actions">
         <div class="cart-item__qty-ctrl">
-          <button class="cart-item__qty-btn" onclick="window.SmikkieShop.updateCartQty(${item.id}, -1)">−</button>
+          <button class="cart-item__qty-btn" data-cart-minus data-id="${item.id}" aria-label="Minder">−</button>
           <span class="cart-item__qty-val">${item.qty}</span>
-          <button class="cart-item__qty-btn" onclick="window.SmikkieShop.updateCartQty(${item.id}, 1)">+</button>
+          <button class="cart-item__qty-btn" data-cart-plus data-id="${item.id}" aria-label="Meer">+</button>
         </div>
-        <button class="cart-item__remove" onclick="window.SmikkieShop.removeFromCart(${item.id})" title="Verwijderen">
+        <button class="cart-item__remove" data-cart-remove data-id="${item.id}" title="Verwijderen">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4h6v2"/></svg>
         </button>
       </div>
@@ -278,6 +281,19 @@ function _initCartSidebar() {
   document.getElementById('cart-close-btn').addEventListener('click', closeCart);
   backdrop.addEventListener('click', closeCart);
   document.getElementById('cart-continue-btn').addEventListener('click', closeCart);
+
+  // Event delegation for cart item buttons (works after innerHTML re-renders)
+  const cartItemsList = document.getElementById('cart-items-list');
+  if (cartItemsList) {
+    cartItemsList.addEventListener('click', (e) => {
+      const minusBtn = e.target.closest('[data-cart-minus]');
+      const plusBtn  = e.target.closest('[data-cart-plus]');
+      const removeBtn = e.target.closest('[data-cart-remove]');
+      if (minusBtn)  { e.stopPropagation(); _updateCartQty(minusBtn.dataset.id, -1); }
+      else if (plusBtn)   { e.stopPropagation(); _updateCartQty(plusBtn.dataset.id, 1); }
+      else if (removeBtn) { e.stopPropagation(); _removeFromCart(removeBtn.dataset.id); }
+    });
+  }
 
   window.SmikkieShop.openCart = openCart;
   window.SmikkieShop.closeCart = closeCart;
