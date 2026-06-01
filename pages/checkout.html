@@ -3,327 +3,322 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Afrekenen | Smikkie</title>
+  <title>Afrekenen – Smikkie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/header.css">
   <link rel="stylesheet" href="../css/checkout.css">
 </head>
 <body class="checkout-body">
-  <header class="site-header site-header--checkout" id="site-header"></header>
 
-  <main class="checkout-page">
-    <div class="container">
+<!-- Minimal header -->
+<header class="checkout-header">
+  <div class="checkout-header__inner">
+    <a href="../index.html" class="checkout-header__logo">
+      <span class="logo-text">Smikkie<span style="color:#7DC242">.</span></span>
+    </a>
+    <div class="checkout-steps">
+      <div class="checkout-step checkout-step--active">
+        <span class="step-num">1</span>
+        <span class="step-label">Gegevens</span>
+      </div>
+      <div class="checkout-step-sep">—</div>
+      <div class="checkout-step" id="step-2-indicator">
+        <span class="step-num">2</span>
+        <span class="step-label">Verzending</span>
+      </div>
+      <div class="checkout-step-sep">—</div>
+      <div class="checkout-step" id="step-3-indicator">
+        <span class="step-num">3</span>
+        <span class="step-label">Betaling</span>
+      </div>
+    </div>
+    <a href="winkelwagen.html" class="checkout-header__back">← Terug naar mix</a>
+  </div>
+</header>
+
+<div class="checkout-layout">
+  <!-- LEFT: Form -->
+  <div class="checkout-form-wrap">
+
+    <!-- Step 1: Contact + Address -->
+    <div class="checkout-step-panel" id="step-1">
 
       <!-- Trust bar -->
       <div class="checkout-trust-bar">
         <div class="checkout-trust-bar__item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           <span>Veilig betalen (SSL)</span>
         </div>
         <div class="checkout-trust-bar__item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
           <span>Morgen in huis</span>
         </div>
         <div class="checkout-trust-bar__item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg>
           <span>14 dagen retour</span>
         </div>
         <div class="checkout-trust-bar__item">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
           <span>Gratis v.a. €40</span>
         </div>
       </div>
 
-      <div class="checkout-layout">
+      <h2 class="checkout-step-title">Jouw gegevens</h2>
+      <p class="checkout-step-sub">We gebruiken deze gegevens alleen voor jouw bestelling en eventuele vragen.</p>
 
-        <!-- LEFT: Form -->
-        <div class="checkout-form-col">
-
-          <!-- Step indicator -->
-          <div class="checkout-steps">
-            <div class="checkout-step checkout-step--active" id="step-indicator-1">
-              <span class="checkout-step__num">1</span>
-              <span class="checkout-step__label">Gegevens</span>
-            </div>
-            <div class="checkout-step__line"></div>
-            <div class="checkout-step" id="step-indicator-2">
-              <span class="checkout-step__num">2</span>
-              <span class="checkout-step__label">Bezorging</span>
-            </div>
-            <div class="checkout-step__line"></div>
-            <div class="checkout-step" id="step-indicator-3">
-              <span class="checkout-step__num">3</span>
-              <span class="checkout-step__label">Betaling</span>
-            </div>
+      <div class="form-section">
+        <h3 class="form-section__title">Contactgegevens</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Voornaam *</label>
+            <input type="text" class="form-input" id="first-name" placeholder="Emma" required>
           </div>
-
-          <!-- STEP 1: Contactgegevens -->
-          <div class="checkout-panel" id="panel-1">
-            <h2 class="checkout-panel__title">Jouw gegevens</h2>
-            <p class="checkout-panel__sub">We gebruiken deze gegevens alleen voor jouw bestelling en eventuele vragen.</p>
-
-            <div class="form-row form-row--2">
-              <div class="form-group">
-                <label class="form-label" for="first-name">Voornaam <span class="req">*</span></label>
-                <input type="text" id="first-name" class="form-input" placeholder="Emma" autocomplete="given-name" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="last-name">Achternaam <span class="req">*</span></label>
-                <input type="text" id="last-name" class="form-input" placeholder="de Vries" autocomplete="family-name" required>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="email">E-mailadres <span class="req">*</span></label>
-              <input type="email" id="email" class="form-input" placeholder="emma@voorbeeld.nl" autocomplete="email" required>
-              <p class="form-hint">Je ontvangt je bestelbevestiging op dit adres.</p>
-            </div>
-
-            <div class="form-group">
-              <label class="form-label" for="phone">Telefoonnummer <span class="req">*</span></label>
-              <input type="tel" id="phone" class="form-input" placeholder="06 12345678" autocomplete="tel" required>
-              <p class="form-hint">Alleen voor vragen over jouw bestelling. We bellen je nooit zomaar.</p>
-            </div>
-
-            <!-- Mini social proof -->
-            <div class="checkout-mini-proof">
-              <div class="checkout-mini-proof__avatars">
-                <span class="avatar" style="background:#7c3aed;">S</span>
-                <span class="avatar" style="background:#0ea5e9;">T</span>
-                <span class="avatar" style="background:#f59e0b;">M</span>
-                <span class="avatar" style="background:#10b981;">J</span>
-              </div>
-              <span>Meer dan <strong>2.400 klanten</strong> gingen je voor — gemiddeld 4.8 ★</span>
-            </div>
-
-            <button class="btn btn--primary btn--full checkout-next-btn" id="next-to-2">
-              Doorgaan naar bezorging
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-            </button>
+          <div class="form-group">
+            <label>Achternaam *</label>
+            <input type="text" class="form-input" id="last-name" placeholder="Jansen" required>
           </div>
-
-          <!-- STEP 2: Bezorgadres -->
-          <div class="checkout-panel" id="panel-2" style="display:none">
-            <h2 class="checkout-panel__title">Bezorgadres</h2>
-
-            <div class="form-group">
-              <label class="form-label" for="street">Straatnaam <span class="req">*</span></label>
-              <input type="text" id="street" class="form-input" placeholder="Hoofdstraat" autocomplete="address-line1" required>
-            </div>
-
-            <div class="form-row form-row--3">
-              <div class="form-group">
-                <label class="form-label" for="housenr">Huisnummer <span class="req">*</span></label>
-                <input type="text" id="housenr" class="form-input" placeholder="12" autocomplete="address-line2" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="addition">Toevoeging</label>
-                <input type="text" id="addition" class="form-input" placeholder="A">
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="postcode">Postcode <span class="req">*</span></label>
-                <input type="text" id="postcode" class="form-input" placeholder="1234 AB" autocomplete="postal-code" required>
-              </div>
-            </div>
-
-            <div class="form-row form-row--2">
-              <div class="form-group">
-                <label class="form-label" for="city">Woonplaats <span class="req">*</span></label>
-                <input type="text" id="city" class="form-input" placeholder="Amsterdam" autocomplete="address-level2" required>
-              </div>
-              <div class="form-group">
-                <label class="form-label" for="country">Land</label>
-                <select id="country" class="form-input form-select" autocomplete="country">
-                  <option value="NL" selected>Nederland</option>
-                  <option value="BE">België</option>
-                  <option value="DE">Duitsland</option>
-                </select>
-              </div>
-            </div>
-
-            <!-- Delivery USP -->
-            <div class="checkout-delivery-usp">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-              <div>
-                <strong>Morgen in huis</strong> bij bestelling voor 22:00 uur
-                <span class="text-green"> — Gratis verzending v.a. €40</span>
-              </div>
-            </div>
-
-            <div class="checkout-nav">
-              <button class="btn btn--ghost" id="back-to-1">← Terug</button>
-              <button class="btn btn--primary checkout-next-btn" id="next-to-3">
-                Doorgaan naar betaling
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
-              </button>
-            </div>
-          </div>
-
-          <!-- STEP 3: Betaling -->
-          <div class="checkout-panel" id="panel-3" style="display:none">
-            <h2 class="checkout-panel__title">Betaalmethode</h2>
-
-            <div class="payment-methods">
-              <label class="payment-method payment-method--active">
-                <input type="radio" name="payment" value="ideal" checked>
-                <div class="payment-method__logo payment-method__logo--ideal">iDEAL</div>
-                <span>iDEAL</span>
-                <span class="payment-method__popular">Meest gekozen</span>
-              </label>
-              <label class="payment-method">
-                <input type="radio" name="payment" value="klarna">
-                <div class="payment-method__logo payment-method__logo--klarna">K</div>
-                <span>Klarna — Achteraf betalen</span>
-              </label>
-              <label class="payment-method">
-                <input type="radio" name="payment" value="creditcard">
-                <div class="payment-method__logo">💳</div>
-                <span>Creditcard (Visa / Mastercard)</span>
-              </label>
-              <label class="payment-method">
-                <input type="radio" name="payment" value="paypal">
-                <div class="payment-method__logo payment-method__logo--paypal">PP</div>
-                <span>PayPal</span>
-              </label>
-              <label class="payment-method">
-                <input type="radio" name="payment" value="bancontact">
-                <div class="payment-method__logo">BC</div>
-                <span>Bancontact</span>
-              </label>
-            </div>
-
-            <!-- iDEAL bank selector -->
-            <div class="ideal-banks" id="ideal-banks">
-              <label class="form-label">Kies jouw bank:</label>
-              <select class="form-input form-select" id="ideal-bank">
-                <option value="">— Selecteer bank —</option>
-                <option>ABN AMRO</option>
-                <option>ING</option>
-                <option>Rabobank</option>
-                <option>SNS Bank</option>
-                <option>ASN Bank</option>
-                <option>Bunq</option>
-                <option>Knab</option>
-                <option>Revolut</option>
-                <option>Triodos Bank</option>
-              </select>
-            </div>
-
-            <!-- Order review -->
-            <div class="checkout-order-review">
-              <h3 class="checkout-order-review__title">Controleer jouw bestelling</h3>
-              <div id="checkout-order-items" class="checkout-order-items"></div>
-              <div class="checkout-order-review__total">
-                <span>Totaal</span>
-                <strong id="checkout-total">€0,00</strong>
-              </div>
-            </div>
-
-            <!-- Terms -->
-            <label class="terms-check">
-              <input type="checkbox" id="terms-agree">
-              <span>Ik ga akkoord met de <a href="algemene-voorwaarden.html" class="link" target="_blank">algemene voorwaarden</a> en het <a href="privacybeleid.html" class="link" target="_blank">privacybeleid</a></span>
-            </label>
-
-            <!-- Trust reminder -->
-            <div class="checkout-trust-reminder">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              <span>Jouw betaling is beveiligd met 256-bit SSL encryptie</span>
-            </div>
-
-            <div class="checkout-nav">
-              <button class="btn btn--ghost" id="back-to-2">← Terug</button>
-              <button class="btn btn--primary btn--lg checkout-next-btn" id="place-order">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M9 12l2 2 4-4"/><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/></svg>
-                Bestelling plaatsen
-              </button>
-            </div>
-          </div>
-
-          <!-- STEP 4: Bevestiging -->
-          <div class="checkout-panel checkout-panel--confirmation" id="panel-4" style="display:none">
-            <div class="order-confirmation">
-              <div class="order-confirmation__icon">
-                <svg width="64" height="64" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#22c55e"/><polyline points="6 12 10 16 18 8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </div>
-              <h2>Bestelling geplaatst! 🎉</h2>
-              <p>Bedankt voor jouw bestelling! Je ontvangt een bevestiging per e-mail.<br>Jouw Smikkie mix is <strong>morgen al in huis</strong> 🚚</p>
-              <div class="order-confirmation__number">
-                Bestelnummer: <strong>#SMK-<span id="order-number">00000</span></strong>
-              </div>
-              <div class="order-confirmation__usps">
-                <div class="order-confirmation__usp">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  Bevestiging verstuurd naar jouw e-mail
-                </div>
-                <div class="order-confirmation__usp">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  Track & trace link volgt zodra je pakket onderweg is
-                </div>
-              </div>
-              <a href="../index.html" class="btn btn--primary" style="margin-top:24px;">Terug naar de shop</a>
-            </div>
-          </div>
-
+        </div>
+        <div class="form-group">
+          <label>E-mailadres *</label>
+          <input type="email" class="form-input" id="email" placeholder="emma@voorbeeld.nl" required>
+          <span class="form-hint">We sturen je orderbevestiging hiernaartoe</span>
+        </div>
+        <div class="form-group">
+          <label>Telefoonnummer <span class="form-req">*</span></label>
+          <input type="tel" class="form-input" id="phone" placeholder="06 12345678" required>
+          <span class="form-hint">Alleen voor vragen over jouw bestelling. We bellen je nooit zomaar.</span>
         </div>
 
-        <!-- RIGHT: Order summary -->
-        <aside class="checkout-summary">
-          <div class="checkout-summary__box">
-            <h3 class="checkout-summary__title">Jouw bestelling</h3>
-
-            <div id="checkout-summary-items" class="checkout-summary-items"></div>
-
-            <div class="checkout-summary__divider"></div>
-
-            <div class="checkout-summary__row">
-              <span>Subtotaal</span>
-              <span id="checkout-subtotal">€0,00</span>
-            </div>
-            <div class="checkout-summary__row" id="checkout-discount-row" style="display:none">
-              <span id="checkout-discount-label">Volumekorting</span>
-              <span id="checkout-discount-amount" class="price-green">-€0,00</span>
-            </div>
-            <div class="checkout-summary__row">
-              <span>Verzending</span>
-              <span id="checkout-shipping" class="price-green">Gratis</span>
-            </div>
-
-            <div class="checkout-summary__divider"></div>
-
-            <div class="checkout-summary__row checkout-summary__row--total">
-              <span>Totaal</span>
-              <strong id="checkout-total-summary">€0,00</strong>
-            </div>
-
-            <!-- Trust -->
-            <div class="checkout-summary__trust">
-              <div class="checkout-trust-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                <span>Veilig betalen</span>
-              </div>
-              <div class="checkout-trust-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg>
-                <span>14 dagen bedenktijd</span>
-              </div>
-            </div>
-
-            <!-- Review snippet -->
-            <div class="checkout-summary__review">
-              <div class="checkout-summary__review-stars">★★★★★</div>
-              <p class="checkout-summary__review-text">"Super snel geleverd en heerlijke smaken. Bestel al maanden bij Smikkie!"</p>
-              <span class="checkout-summary__review-author">— Lisa M., geverifieerde koper</span>
-            </div>
+        <!-- Mini social proof -->
+        <div class="checkout-mini-proof">
+          <div class="checkout-mini-proof__avatars">
+            <span class="checkout-avatar" style="background:#7c3aed;">S</span>
+            <span class="checkout-avatar" style="background:#0ea5e9;">T</span>
+            <span class="checkout-avatar" style="background:#f59e0b;">M</span>
+            <span class="checkout-avatar" style="background:#10b981;">J</span>
           </div>
-        </aside>
+          <span>Meer dan <strong>2.400 klanten</strong> gingen je voor — gemiddeld 4.8 ★</span>
+        </div>
+      </div>
 
+      <div class="form-section">
+        <h3 class="form-section__title">Bezorgadres</h3>
+        <div class="form-row">
+          <div class="form-group form-group--wide">
+            <label>Straatnaam *</label>
+            <input type="text" class="form-input" id="street" placeholder="Hoofdstraat" required>
+          </div>
+          <div class="form-group form-group--narrow">
+            <label>Huisnummer *</label>
+            <input type="text" class="form-input" id="housenr" placeholder="42" required>
+          </div>
+          <div class="form-group form-group--narrow">
+            <label>Toevoeging</label>
+            <input type="text" class="form-input" id="addition" placeholder="A">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group form-group--narrow">
+            <label>Postcode *</label>
+            <input type="text" class="form-input" id="postcode" placeholder="1234 AB" required>
+          </div>
+          <div class="form-group form-group--wide">
+            <label>Stad *</label>
+            <input type="text" class="form-input" id="city" placeholder="Amsterdam" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Land</label>
+          <select class="form-input form-select" id="country">
+            <option value="NL" selected>Nederland</option>
+            <option value="BE">België</option>
+            <option value="DE">Duitsland</option>
+          </select>
+        </div>
+      </div>
+
+      <button class="btn btn--primary btn--full btn--lg" id="to-step-2">
+        Verder naar verzending →
+      </button>
+    </div>
+
+    <!-- Step 2: Shipping -->
+    <div class="checkout-step-panel" id="step-2" style="display:none;">
+      <h2 class="checkout-step-title">Verzendmethode</h2>
+      <div class="shipping-options">
+        <label class="shipping-option shipping-option--selected">
+          <input type="radio" name="shipping" value="standard" checked>
+          <div class="shipping-option__info">
+            <div class="shipping-option__name">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              <strong>Standaard bezorging</strong>
+            </div>
+            <span>Morgen in huis (voor 23:59 besteld)</span>
+          </div>
+          <span class="shipping-option__price text-green">Gratis</span>
+        </label>
+        <label class="shipping-option">
+          <input type="radio" name="shipping" value="express">
+          <div class="shipping-option__info">
+            <div class="shipping-option__name">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              <strong>Express bezorging</strong>
+            </div>
+            <span>Vandaag nog in huis (voor 12:00 besteld)</span>
+          </div>
+          <span class="shipping-option__price">€4,95</span>
+        </label>
+        <label class="shipping-option">
+          <input type="radio" name="shipping" value="pickup">
+          <div class="shipping-option__info">
+            <div class="shipping-option__name">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <strong>Afhalen bij afhaalpunt</strong>
+            </div>
+            <span>Kies een PostNL afhaalpunt bij jou in de buurt</span>
+          </div>
+          <span class="shipping-option__price text-green">Gratis</span>
+        </label>
+      </div>
+      <div class="checkout-nav">
+        <button class="btn btn--ghost" id="back-to-1">← Terug</button>
+        <button class="btn btn--primary btn--lg" id="to-step-3">Verder naar betaling →</button>
       </div>
     </div>
-  </main>
 
-  <footer class="site-footer site-footer--minimal" id="site-footer"></footer>
-  <script src="../js/header-template.js"></script>
-  <script src="../js/shop.js"></script>
-  <script src="../js/checkout.js"></script>
+    <!-- Step 3: Payment -->
+    <div class="checkout-step-panel" id="step-3" style="display:none;">
+      <h2 class="checkout-step-title">Betaalmethode</h2>
+      <div class="payment-methods">
+        <label class="payment-method payment-method--selected">
+          <input type="radio" name="payment" value="ideal" checked>
+          <div class="payment-method__logo ideal-logo">iDEAL</div>
+          <span>iDEAL</span>
+        </label>
+        <label class="payment-method">
+          <input type="radio" name="payment" value="klarna">
+          <div class="payment-method__logo klarna-logo">K</div>
+          <span>Klarna — Achteraf betalen</span>
+        </label>
+        <label class="payment-method">
+          <input type="radio" name="payment" value="creditcard">
+          <div class="payment-method__logo">💳</div>
+          <span>Creditcard (Visa / Mastercard)</span>
+        </label>
+        <label class="payment-method">
+          <input type="radio" name="payment" value="paypal">
+          <div class="payment-method__logo paypal-logo">PP</div>
+          <span>PayPal</span>
+        </label>
+        <label class="payment-method">
+          <input type="radio" name="payment" value="bancontact">
+          <div class="payment-method__logo">BC</div>
+          <span>Bancontact</span>
+        </label>
+      </div>
+
+      <!-- iDEAL bank selector -->
+      <div class="ideal-banks" id="ideal-banks">
+        <label>Kies jouw bank:</label>
+        <select class="form-input form-select" id="ideal-bank">
+          <option value="">— Selecteer bank —</option>
+          <option>ABN AMRO</option>
+          <option>ING</option>
+          <option>Rabobank</option>
+          <option>SNS Bank</option>
+          <option>ASN Bank</option>
+          <option>Bunq</option>
+          <option>Knab</option>
+          <option>Revolut</option>
+          <option>Triodos Bank</option>
+        </select>
+      </div>
+
+      <!-- Order review -->
+      <div class="order-review">
+        <h3>Controleer jouw bestelling</h3>
+        <div id="checkout-order-items"></div>
+        <div class="order-review__total">
+          <span>Totaal</span>
+          <strong id="checkout-total">€0,00</strong>
+        </div>
+      </div>
+
+      <!-- Terms -->
+      <label class="terms-check">
+        <input type="checkbox" id="terms-agree">
+        <span>Ik ga akkoord met de <a href="algemene-voorwaarden.html" class="link" target="_blank">algemene voorwaarden</a> en het <a href="privacybeleid.html" class="link" target="_blank">privacybeleid</a></span>
+      </label>
+
+      <div class="checkout-nav">
+        <button class="btn btn--ghost" id="back-to-2">← Terug</button>
+        <button class="btn btn--green btn--lg" id="place-order">
+          Bestelling plaatsen →
+        </button>
+      </div>
+    </div>
+
+    <!-- Step 4: Confirmation -->
+    <div class="checkout-step-panel" id="step-4" style="display:none;">
+      <div class="order-confirmation">
+        <div class="order-confirmation__icon">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="11" fill="#7DC242"/><polyline points="6 12 10 16 18 8" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h2>Bestelling geplaatst! 🎉</h2>
+        <p>Bedankt voor jouw bestelling! Je ontvangt een bevestiging per e-mail.<br>Jouw Smikkie mix is morgen al in huis 🚚</p>
+        <div class="order-confirmation__number">
+          Bestelnummer: <strong>#SMK-<span id="order-number">00000</span></strong>
+        </div>
+        <a href="../index.html" class="btn btn--primary btn--lg" style="margin-top:24px;">Terug naar de shop</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RIGHT: Order summary -->
+  <div class="checkout-summary">
+    <div class="checkout-summary__box">
+      <h3>Jouw mix</h3>
+      <div id="checkout-summary-items"></div>
+      <div class="checkout-summary__divider"></div>
+      <div class="checkout-summary__row">
+        <span>Subtotaal</span>
+        <strong id="checkout-subtotal">€0,00</strong>
+      </div>
+      <div class="checkout-summary__row">
+        <span>Verzending</span>
+        <strong class="text-green" id="checkout-shipping">Gratis</strong>
+      </div>
+      <div class="checkout-summary__divider"></div>
+      <div class="checkout-summary__row checkout-summary__row--total">
+        <span>Totaal</span>
+        <strong id="checkout-total-summary">€0,00</strong>
+      </div>
+      <div class="checkout-summary__trust">
+        <div class="cart-trust-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>Veilig betalen</span>
+        </div>
+        <div class="cart-trust-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.5"/></svg>
+          <span>14 dagen bedenktijd</span>
+        </div>
+      </div>
+
+      <!-- Review snippet -->
+      <div class="checkout-review-snippet">
+        <div class="cart-review__stars">★★★★★</div>
+        <p class="cart-review__text">"Super snel geleverd en heerlijke smaken. Bestel al maanden bij Smikkie!"</p>
+        <span class="cart-review__author">— Lisa M., geverifieerde koper</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="../js/shop.js"></script>
+<script src="../js/checkout.js"></script>
 </body>
 </html>
